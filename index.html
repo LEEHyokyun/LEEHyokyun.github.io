@@ -389,6 +389,85 @@
             line-height: 1.7;
         }
 
+        /* 수치화 대시보드 섹션 스타일 */
+        #stats-dashboard {
+            padding: 80px 10%;
+            background-color: #ffffff; /* 깔끔한 화이트 배경 */
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4열 배치 */
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .stats-card {
+            position: relative;
+            padding: 20px 10px;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* 숫자 텍스트 스타일 (참고 사이트 특유의 굵고 와이드한 서체 느낌 구현) */
+        .stats-num {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--primary-color); /* 기존 정의한 블루 컬러 사용 */
+            line-height: 1;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+        
+        /* 숫자 밑에 들어가는 얇은 블루 포인트 라인 */
+        .stats-card::after {
+            content: '';
+            position: absolute;
+            top: 65px; /* 숫자의 바로 아래쯤 위치하도록 조정 */
+            left: 10px;
+            width: 35px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        /* 라벨 스타일 (진행 프로젝트 등) */
+        .stats-label {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-top: 15px; /* 포인트 라인과의 간격 */
+            margin-bottom: 12px;
+        }
+        
+        /* 세부 설명 텍스트 스타일 */
+        .stats-desc {
+            font-size: 0.9rem;
+            color: var(--gray-color);
+            line-height: 1.6;
+            word-break: keep-all; /* 한글 단어가 어색하게 깨지지 않도록 설정 */
+        }
+        
+        /* 모바일/태블릿 환경 반응형 대응 */
+        @media screen and (max-width: 1024px) {
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr); /* 화면이 좁아지면 2열로 변경 */
+                gap: 40px 20px;
+            }
+        }
+        
+        @media screen and (max-width: 600px) {
+            .stats-container {
+                grid-template-columns: 1fr; /* 모바일에서는 1열 세로 정렬 */
+                text-align: center;
+            }
+            .stats-card::after {
+                left: 50%;
+                transform: translateX(-50%); /* 모바일 가운데 정렬 시 라인도 중앙으로 */
+            }
+        }
+
         /* 반응형 디자인 수립 */
         @media screen and (max-width: 1024px) {
             header { padding: 0 5%; }
@@ -434,6 +513,34 @@
             </div>
             <div class="intro-image-zone">
                 <img class="intro-profile-img" src="image/profile_image.jpg" alt="프로필 이미지" />
+            </div>
+        </section>
+
+        <section id="stats-dashboard">
+            <div class="stats-container">
+                <div class="stats-card">
+                    <div class="stats-num">6+</div>
+                    <div class="stats-label">진행 프로젝트</div>
+                    <p class="stats-desc">웹 애플리케이션 및 풀스택 토이 프로젝트 설계 및 리드</p>
+                </div>
+                
+                <div class="stats-card">
+                    <div class="stats-num">1,200+</div>
+                    <div class="stats-label">누적 코드 커밋 수</div>
+                    <p class="stats-desc">Git을 통한 체계적인 버전 관리 및 일일 커밋 정기화</p>
+                </div>
+        
+                <div class="stats-card">
+                    <div class="stats-num">100%</div>
+                    <div class="stats-label">일정 준수율</div>
+                    <p class="stats-desc">철저한 요구사항 분석 및 스프린트 계획 수립을 통한 적기 배포</p>
+                </div>
+        
+                <div class="stats-card">
+                    <div class="stats-num">85%</div>
+                    <div class="stats-label">성능 최적화 개선</div>
+                    <p class="stats-desc">Lighthouse 기준 초기 로딩 속도 및 번들 크기 경량화 달성</p>
+                </div>
             </div>
         </section>
 
