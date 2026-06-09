@@ -49,7 +49,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 70px;
+            height: 80px; /* 로고가 커지는 만큼 상단바 높이도 70px -> 80px로 여유있게 확보 */
             background-color: rgba(255, 255, 255, 0.95);
             border-bottom: 1px solid var(--border-color);
             display: flex;
@@ -61,7 +61,15 @@
         }
 
         .header-logo {
-            height: 35px;
+            height: 52px;       /* 💡 기존 35px에서 52px로 대폭 키워 시원하게 노출시킵니다 */
+            width: auto;        /* 가로 비율이 깨지지 않도록 자동 맞춤 */
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .header-logo:hover {
+            transform: scale(1.02); /* 마우스를 올렸을 때 미세하게 반응하여 사용자 경험 향상 */
         }
 
         .header-nav a {
@@ -79,8 +87,8 @@
 
         /* 메인 컨테이너 구조 변경 (원형 사이드바 제거, 와이드 레이아웃) */
         main {
-            margin-top: 70px;
-            width: 100%;
+            margin-top: 80px;
+            /*width: 100%;*/
         }
 
         section {
