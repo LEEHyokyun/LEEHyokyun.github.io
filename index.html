@@ -49,13 +49,14 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 80px; /* 로고가 커지는 만큼 상단바 높이도 70px -> 80px로 여유있게 확보 */
+            height: auto; /* 모바일에서 높이가 유연하게 늘어나도록 auto로 변경 */
+            min-height: 75px;
             background-color: rgba(255, 255, 255, 0.95);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 10%;
+            padding: 10px 5%; /* 좌우 여백을 줄여 공간 확보 */
             z-index: 1000;
             backdrop-filter: blur(5px);
         }
@@ -72,12 +73,17 @@
             transform: scale(1.02); /* 마우스를 올렸을 때 미세하게 반응하여 사용자 경험 향상 */
         }
 
+        header-nav {
+            display: flex;
+            gap: 15px; /* 메뉴 간격 살짝 최적화 */
+        }
+        
         .header-nav a {
             text-decoration: none;
             color: var(--dark-color);
             font-weight: 500;
-            margin-left: 30px;
             font-size: 0.95rem;
+            white-space: nowrap; /* 메뉴 글씨가 아래로 줄바꿈되지 않도록 고정 */
             transition: color 0.2s;
         }
 
@@ -140,16 +146,19 @@
         }
 
         .intro-text {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            line-height: 1.3;
+            line-height: 1.4;
             margin-bottom: 25px;
+            word-break: keep-all;     /* 한글 단어 단위로 예쁘게 줄바꿈 */
+            overflow-wrap: break-word; /* 영어 긴 문장이 화면을 뚫고 나가지 않게 강제 줄바꿈 */
         }
 
         .intro-text-detail {
             font-size: 1.1rem;
             color: var(--gray-color);
             line-height: 1.8;
+            word-break: keep-all;
         }
 
         .intro-image-zone {
@@ -489,9 +498,51 @@
         }
 
         @media screen and (max-width: 600px) {
-            .header-nav { display: none; } /* 모바일에서 네비게이션 숨김 */
-            .proj-container { grid-template-columns: 1fr; }
-            .intro-profile-img { height: 300px; }
+            /* 1. 모바일 상단 바를 세로 레이아웃으로 변경하되, 메뉴는 가로로 스크롤 가능하게 처리 */
+            header {
+                flex-direction: column;
+                align-items: flex-start; /* 로고를 좌측 정렬 */
+                padding: 12px 15px;
+                gap: 10px;
+            }
+        
+            .header-logo {
+                height: 40px; /* 모바일에서는 로고 크기를 살짝 줄임 */
+            }
+        
+            /* 💡 핵심: 메뉴가 잘리지 않고 손가락으로 밀어서(스크롤) 볼 수 있게 만듭니다 */
+            .header-nav {
+                width: 100%;
+                overflow-x: auto; /* 가로 스크롤 활성화 */
+                white-space: nowrap;
+                padding-bottom: 5px; /* 스크롤바 공간 살짝 확보 */
+                -webkit-overflow-scrolling: touch; /* 아이폰에서 부드러운 스크롤 지원 */
+                gap: 20px;
+            }
+            
+            /* 모바일 브라우저의 투박한 스크롤바 숨기기 (선택 사항) */
+            .header-nav::-webkit-scrollbar {
+                display: none;
+            }
+        
+            /* 2. 글귀가 모바일 화면에 맞춰 작아지도록 세팅 */
+            main {
+                margin-top: 105px; /* 헤더가 두 줄이 되었으므로 메인 콘텐츠 영역을 더 내려줌 */
+            }
+        
+            .intro-text {
+                font-size: 1.7rem; /* 모바일 화면에 맞게 폰트 크기 축소 */
+                text-align: left;
+            }
+        
+            .intro-text-detail {
+                font-size: 0.95rem;
+                text-align: left;
+            }
+            
+            section {
+                padding: 50px 20px; /* 모바일 사이드 여백 최적화 */
+            }
         }
     </style>
 </head>
