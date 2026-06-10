@@ -252,6 +252,12 @@
             margin-bottom: 20px;
         }
 
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
         .skill-info {
             display: flex;
             justify-content: space-between;
@@ -276,6 +282,51 @@
             transition: width 1s ease-in-out;
         }
 
+        /* 상중하 텍스트 공통 스타일 */
+        .skill-level {
+            font-size: 0.9rem;
+            font-weight: 800;
+        }
+
+        /* 1. '상' 상태 (Red) */
+        .level-high {
+            color: #ef4444 !important; /* 상 텍스트 빨간색 */
+        }
+        .skill-step-bar.level-high .step.active {
+            background-color: #ef4444; /* 활성화된 칸 빨간색 */
+        }
+        
+        /* 2. '중' 상태 (Blue) */
+        .level-mid {
+            color: #2563eb !important; /* 중 텍스트 파란색 */
+        }
+        .skill-step-bar.level-mid .step.active {
+            background-color: #2563eb; /* 활성화된 칸 파란색 */
+        }
+        
+        /* 3. '하' 상태 (Green) */
+        .level-low {
+            color: #10b981 !important; /* 하 텍스트 녹색 */
+        }
+        .skill-step-bar.level-low .step.active {
+            background-color: #10b981; /* 활성화된 칸 녹색 */
+        }
+        
+        /* --- 3개로 쪼개진 실전 스텝 바 기본 스타일 --- */
+        .skill-step-bar {
+            display: flex;
+            gap: 4px; /* 3개의 칸을 완벽하게 분할하는 구분선 역할 */
+            width: 100%;
+            height: 10px;
+        }
+        
+        /* 개별 칸의 기본 상태 (비어있는 회색 칸) */
+        .skill-step-bar .step {
+            flex: 1;
+            background-color: #e5e7eb; /* 채워지지 않은 칸의 기본 배경 */
+            border-radius: 2px;
+        }
+        
         .license-item, .edu-item {
             padding: 15px 0;
             border-bottom: 1px dashed var(--border-color);
@@ -771,36 +822,67 @@
                     </div>
                     
                     <div class="skill-list">
+    
                         <div class="skill-item">
-                            <div class="skill-info"><span>Java / Spring</span><span class="skill-per">85%</span></div>
-                            <div class="skill-bar" data-progress="85">
-                                <div class="skill-bar-progress" style="width: 85%;"></div>
+                            <div class="skill-info">
+                                <span>Java / Spring</span>
+                                <span class="skill-level level-high">상</span>
+                            </div>
+                            <div class="skill-step-bar level-high">
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
                             </div>
                         </div>
+                    
                         <div class="skill-item">
-                            <div class="skill-info"><span>데이터베이스 / 모델링</span><span class="skill-per">80%</span></div>
-                            <div class="skill-bar" data-progress="80">
-                                <div class="skill-bar-progress" style="width: 80%;"></div>
+                            <div class="skill-info">
+                                <span>데이터베이스 / 모델링</span>
+                                <span class="skill-level level-high">상</span>
+                            </div>
+                            <div class="skill-step-bar level-high">
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
                             </div>
                         </div>
+                    
                         <div class="skill-item">
-                            <div class="skill-info"><span>클린 아키텍처</span><span class="skill-per">75%</span></div>
-                            <div class="skill-bar" data-progress="75">
-                                <div class="skill-bar-progress" style="width: 75%;"></div>
+                            <div class="skill-info">
+                                <span>클린 아키텍처</span>
+                                <span class="skill-level level-mid">중</span>
+                            </div>
+                            <div class="skill-step-bar level-mid">
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step"></div>
                             </div>
                         </div>
+                    
                         <div class="skill-item">
-                            <div class="skill-info"><span>분산 환경 (Redis / Kafka)</span><span class="skill-per">70%</span></div>
-                            <div class="skill-bar" data-progress="70">
-                                <div class="skill-bar-progress" style="width: 70%;"></div>
+                            <div class="skill-info">
+                                <span>분산 환경 (Redis / Kafka)</span>
+                                <span class="skill-level level-mid">중</span>
+                            </div>
+                            <div class="skill-step-bar level-mid">
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step"></div>
                             </div>
                         </div>
+                    
                         <div class="skill-item">
-                            <div class="skill-info"><span>TDD (테스트 주도 개발)</span><span class="skill-per">70%</span></div>
-                            <div class="skill-bar" data-progress="70">
-                                <div class="skill-bar-progress" style="width: 70%;"></div>
+                            <div class="skill-info">
+                                <span>TDD (테스트 주도 개발)</span>
+                                <span class="skill-level level-low">하</span>
+                            </div>
+                            <div class="skill-step-bar level-low">
+                                <div class="step active"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
                             </div>
                         </div>
+                    
                     </div>
                 </div>
             
@@ -819,12 +901,8 @@
                             <strong class="edu-val">한양대학교 ERICA 기계공학과</strong>                                
                         </div>
                         <div class="edu-item">
-                            <span class="edu-label">전체 학점</span>
-                            <strong class="edu-val">4.2 / 4.5</strong>                                
-                        </div>
-                        <div class="edu-item">
-                            <span class="edu-label">전공 학점</span>
-                            <strong class="edu-val">4.18 / 4.5</strong>                                
+                            <span class="edu-label">전체(전공) 학점</span>
+                            <strong class="edu-val">4.2(4.18) / 4.5</strong>                                
                         </div>
                         <div class="edu-item">
                             <span class="edu-label">자격증</span>
