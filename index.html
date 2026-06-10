@@ -596,6 +596,70 @@
             margin-top: 15px;
             margin-bottom: 12px;
         }
+
+        /* --- Develop Universe 타이틀 및 부연설명 구역 --- */
+        .link-universe-container {
+            margin-bottom: 32px;
+            padding: 0 4px;
+        }
+        
+        .universe-header {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .universe-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #111827;
+        }
+        
+        .universe-subtitle {
+            font-size: 0.88rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        
+        /* --- 한 줄 링크 배치 스타일 --- */
+        .about-links-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px; /* 링크 간 간격 */
+            padding-bottom: 16px;
+            border-bottom: 1px dashed #e5e7eb; /* 하단 구분을 위한 옅은 점선 절취선 */
+        }
+        
+        /* 개별 텍스트 링크 아이템 구조 */
+        .text-link-item {
+            display: inline-flex;
+            flex-direction: column; /* 라벨 밑에 URL이 오는 깔끔한 세로 배치 구조 */
+            gap: 4px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        /* 옅은 상단 제목 */
+        .link-label {
+            font-size: 0.85rem;
+            color: #4b5563;
+            font-weight: 600;
+        }
+        
+        /* 강조할 메인 URL 링크 텍스트 */
+        .link-url {
+            font-size: 1.05rem;
+            color: #2563eb; /* 신뢰감을 주는 블루 계열 링크 색상 적용 */
+            font-weight: 700;
+            border-bottom: 1px solid transparent;
+        }
+        
+        /* 링크 마우스 오버 효과 (깔끔하게 언더라인만 등장) */
+        .text-link-item:hover .link-url {
+            color: #1d4ed8;
+            border-bottom: 1px solid #1d4ed8;
+        }
         
         /* 반응형 디자인 수립 */
         @media screen and (max-width: 1024px) {
@@ -774,35 +838,30 @@
         <section id="about">
             <h2 class="section-title">ABOUT</h2>
         
-            <div class="about-grid">
-                <a href="https://www.linkedin.com/in/hyokyun/" target="_blank" class="about-card">
-                    <object class="about-icon" data="image/detail-1.svg"></object>
-                    <div class="about-card-content">
-                        <div class="about-info-title">링크드인</div>
-                        <div class="about-info-desc">linkedin.com/in/hyokyun</div>
-                    </div>
-                </a>
-                <a href="https://github.com/leehyokyun" target="_blank" class="about-card">
-                    <img class="about-icon" src="image/detail-2.svg" alt="GitHub" />
-                    <div class="about-card-content">
-                        <div class="about-info-title">개발내역</div>
-                        <div class="about-info-desc">github.com/leehyokyun</div>
-                    </div>
-                </a>
-                <a href="https://velog.io/@gyrbs22" target="_blank" class="about-card">
-                    <img class="about-icon" src="image/detail-3.svg" alt="Velog" />
-                    <div class="about-card-content">
-                        <div class="about-info-title">설계과정</div>
-                        <div class="about-info-desc">velog.io/@gyrbs22</div>
-                    </div>
-                </a>
-                <a href="https://docs.google.com/presentation/d/1VLkLnOUk4nGhi-_sU1PrcWS0rJ16TapmLUh3PrAOAGY/edit?slide=id.g317751bba63_0_150#slide=id.g317751bba63_0_150" target="_blank" class="about-card">
-                    <img class="about-icon" src="image/detail-4.svg" alt="Storyboard" />
-                    <div class="about-card-content">
-                        <div class="about-info-title">스토리보드</div>
-                        <div class="about-info-desc">구글 슬라이드 문서 보기</div>
-                    </div>
-                </a>
+            <div class="link-universe-container">
+                <div class="universe-header">
+                    <span class="universe-title">Develop Universe</span>
+                    <span class="universe-subtitle">이효균의 핵심 개발 기록 및 설계 스토리 링크</span>
+                </div>
+                
+                <div class="about-links-line">
+                    <a href="https://www.linkedin.com/in/hyokyun/" target="_blank" class="text-link-item">
+                        <span class="link-label">링크드인</span>
+                        <span class="link-url">linkedin.com/in/hyokyun</span>
+                    </a>
+                    <a href="https://github.com/leehyokyun" target="_blank" class="text-link-item">
+                        <span class="link-label">개발내역</span>
+                        <span class="link-url">github.com/leehyokyun</span>
+                    </a>
+                    <a href="https://velog.io/@gyrbs22" target="_blank" class="text-link-item">
+                        <span class="link-label">설계과정</span>
+                        <span class="link-url">velog.io/@gyrbs22</span>
+                    </a>
+                    <a href="https://docs.google.com/presentation/d/1VLkLnOUk4nGhi-_sU1PrcWS0rJ16TapmLUh3PrAOAGY/edit?slide=id.g317751bba63_0_150#slide=id.g317751bba63_0_150" target="_blank" class="text-link-item">
+                        <span class="link-label">스토리보드</span>
+                        <span class="link-url">스토리 보드</span>
+                    </a>
+                </div>
             </div>
         
             <div class="sub-info-grid">
@@ -850,9 +909,9 @@
                         <div class="skill-item">
                             <div class="skill-info">
                                 <span>클린 아키텍처</span>
-                                <span class="skill-level level-mid">중</span>
+                                <span class="skill-level level-high">상</span>
                             </div>
-                            <div class="skill-step-bar level-mid">
+                            <div class="skill-step-bar level-high">
                                 <div class="step active"></div>
                                 <div class="step active"></div>
                                 <div class="step"></div>
@@ -874,7 +933,7 @@
                         <div class="skill-item">
                             <div class="skill-info">
                                 <span>TDD (테스트 주도 개발)</span>
-                                <span class="skill-level level-low">하</span>
+                                <span class="skill-level level-low">중</span>
                             </div>
                             <div class="skill-step-bar level-low">
                                 <div class="step active"></div>
