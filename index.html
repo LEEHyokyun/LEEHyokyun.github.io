@@ -427,12 +427,29 @@
         }
         
         .stats-num {
-            font-size: 3.2rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            line-height: 1;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
+            /* 1. 기존의 지저분한 밑줄 및 텍스트 효과 제거 */
+            text-decoration: none !important;
+            border-bottom: none !important;
+        
+            /* 2. 시각적 강조를 위한 깔끔한 스타일 적용 */
+            font-size: 1.1rem;               /* 글자 크기 조정 */
+            font-weight: 700;                /* 숫자가 명확히 보이도록 굵게 처리 */
+            color: #222425;                  /* 이력서 메인 톤에 맞춘 세련된 다크 그레이 */
+            
+            /* 3. 배지(Badge) 스타일로 깔끔하게 감싸기 (선택 사항) */
+            background-color: #eef2f6;       /* 부드러운 연한 블루 그레이 배경 */
+            padding: 3px 8px;                /* 숫자 주변 여백 */
+            border-radius: 4px;              /* 모서리를 살짝 둥글게 */
+            
+            /* 4. 정렬 및 자간 최적화 */
+            display: inline-block;
+            letter-spacing: -0.02em;         /* 숫자가 벌어져 보이지 않도록 자간 조절 */
+            margin-right: 4px;
+        }
+
+        /* 마우스 호버 시에도 밑줄이 생기지 않도록 방지 */
+        .stat-number:hover {
+            text-decoration: none !important;
         }
         
         .stats-card::after {
