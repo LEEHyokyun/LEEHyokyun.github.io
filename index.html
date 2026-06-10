@@ -8,7 +8,7 @@
     <meta property="og:url" content="https://scccurri.github.io/portfolio/index.html" />
     <meta property="og:title" content="이효균의 포트폴리오" />
     <meta property="og:image" content="image/OGimage.png" />
-    <meta property="og:description" content="Lee Hyo Kyun's Portfolio" />
+    <meta property="og:description" content="LEE HYO KYUN PORTFOLIO" />
     <meta property="og:site_name" content="SCC Portfolio" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:image:width" content="1200" />
@@ -49,33 +49,33 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: auto; /* 모바일에서 높이가 유연하게 늘어나도록 auto로 변경 */
             min-height: 75px;
             background-color: rgba(255, 255, 255, 0.95);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 5%; /* 좌우 여백을 줄여 공간 확보 */
+            padding: 10px 5%;
             z-index: 1000;
             backdrop-filter: blur(5px);
         }
 
         .header-logo {
-            height: 52px;       /* 💡 기존 35px에서 52px로 대폭 키워 시원하게 노출시킵니다 */
-            width: auto;        /* 가로 비율이 깨지지 않도록 자동 맞춤 */
+            height: 52px;
+            width: auto;
             object-fit: contain;
             cursor: pointer;
             transition: transform 0.2s ease;
         }
 
         .header-logo:hover {
-            transform: scale(1.02); /* 마우스를 올렸을 때 미세하게 반응하여 사용자 경험 향상 */
+            transform: scale(1.02);
         }
 
-        header-nav {
+        /* 💡 오타 수정 및 공통 네비게이션 스타일 정돈 */
+        .header-nav {
             display: flex;
-            gap: 15px; /* 메뉴 간격 살짝 최적화 */
+            gap: 24px; /* 데스크톱에서 메뉴 간격 넓혀서 시원하게 배치 */
         }
         
         .header-nav a {
@@ -83,18 +83,18 @@
             color: var(--dark-color);
             font-weight: 500;
             font-size: 0.95rem;
-            white-space: nowrap; /* 메뉴 글씨가 아래로 줄바꿈되지 않도록 고정 */
-            transition: color 0.2s;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            position: relative;
+            padding: 4px 0;
         }
 
         .header-nav a:hover {
             color: var(--primary-color);
         }
 
-        /* 메인 컨테이너 구조 변경 (원형 사이드바 제거, 와이드 레이아웃) */
         main {
             margin-top: 80px;
-            /*width: 100%;*/
         }
 
         section {
@@ -150,8 +150,8 @@
             font-weight: 700;
             line-height: 1.4;
             margin-bottom: 25px;
-            word-break: keep-all;     /* 한글 단어 단위로 예쁘게 줄바꿈 */
-            overflow-wrap: break-word; /* 영어 긴 문장이 화면을 뚫고 나가지 않게 강제 줄바꿈 */
+            word-break: keep-all;
+            overflow-wrap: break-word;
         }
 
         .intro-text-detail {
@@ -177,7 +177,7 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
-        /* 3. ABOUT ME (기존 사이드바 정보를 깔끔한 그리드로) */
+        /* 3. ABOUT ME */
         .about-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -213,7 +213,6 @@
             word-break: break-all;
         }
 
-        /* 역량/자격증/학력 서브 그리드 */
         .sub-info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -243,7 +242,6 @@
             font-weight: 500;
         }
 
-        /* 스킬바 재디자인 */
         .skill-item {
             margin-bottom: 20px;
         }
@@ -267,7 +265,7 @@
         .skill-bar-progress {
             height: 100%;
             background-color: var(--primary-color);
-            width: 0%; /* JS로 제어 */
+            width: 0%;
             border-radius: 10px;
             transition: width 1s ease-in-out;
         }
@@ -283,7 +281,7 @@
             margin-top: 5px;
         }
 
-        /* 4. EXPERIENCE (회사소개 페이지 핵심: 가로 타임라인 연출) */
+        /* 4. EXPERIENCE */
         .exp-timeline {
             display: flex;
             flex-direction: column;
@@ -362,7 +360,7 @@
             color: var(--gray-color);
         }
 
-        /* 5. PROJECT (트레이드잇브릿지 스타일 카드 그리드) */
+        /* 5. PROJECT */
         .proj-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -409,12 +407,12 @@
         /* 수치화 대시보드 섹션 스타일 */
         #stats-dashboard {
             padding: 80px 10%;
-            background-color: #ffffff; /* 깔끔한 화이트 배경 */
+            background-color: #ffffff;
         }
         
         .stats-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4열 배치 */
+            grid-template-columns: repeat(4, 1fr);
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
@@ -428,63 +426,40 @@
             flex-direction: column;
         }
         
-        /* 숫자 텍스트 스타일 (참고 사이트 특유의 굵고 와이드한 서체 느낌 구현) */
         .stats-num {
             font-size: 3.2rem;
             font-weight: 700;
-            color: var(--primary-color); /* 기존 정의한 블루 컬러 사용 */
+            color: var(--primary-color);
             line-height: 1;
             margin-bottom: 15px;
             letter-spacing: -1px;
         }
         
-        /* 숫자 밑에 들어가는 얇은 블루 포인트 라인 */
         .stats-card::after {
             content: '';
             position: absolute;
-            top: 65px; /* 숫자의 바로 아래쯤 위치하도록 조정 */
+            top: 65px;
             left: 10px;
             width: 35px;
             height: 3px;
             background-color: var(--primary-color);
         }
         
-        /* 라벨 스타일 (진행 프로젝트 등) */
         .stats-label {
             font-size: 1.15rem;
             font-weight: 700;
             color: var(--dark-color);
-            margin-top: 15px; /* 포인트 라인과의 간격 */
+            margin-top: 15px;
             margin-bottom: 12px;
         }
         
-        /* 세부 설명 텍스트 스타일 */
         .stats-desc {
             font-size: 0.9rem;
             color: var(--gray-color);
             line-height: 1.6;
-            word-break: keep-all; /* 한글 단어가 어색하게 깨지지 않도록 설정 */
+            word-break: keep-all;
         }
         
-        /* 모바일/태블릿 환경 반응형 대응 */
-        @media screen and (max-width: 1024px) {
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr); /* 화면이 좁아지면 2열로 변경 */
-                gap: 40px 20px;
-            }
-        }
-        
-        @media screen and (max-width: 600px) {
-            .stats-container {
-                grid-template-columns: 1fr; /* 모바일에서는 1열 세로 정렬 */
-                text-align: center;
-            }
-            .stats-card::after {
-                left: 50%;
-                transform: translateX(-50%); /* 모바일 가운데 정렬 시 라인도 중앙으로 */
-            }
-        }
-
         /* 반응형 디자인 수립 */
         @media screen and (max-width: 1024px) {
             header { padding: 0 5%; }
@@ -495,68 +470,70 @@
             .sub-info-grid { grid-template-columns: 1fr; }
             .exp-row { flex-direction: column; gap: 10px; }
             .exp-time { width: 100%; }
+            .stats-container { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
         }
 
+        /* 💡 가독성을 극대화한 모바일 반응형 코드 수정 단락 */
         @media screen and (max-width: 600px) {
-            /* 1. 모바일 상단 바를 세로 레이아웃으로 변경하되, 메뉴는 가로로 스크롤 가능하게 처리 */
             header {
                 flex-direction: column;
-                align-items: flex-start;
-                padding: 15px 0 12px 20px; /* 오른쪽 여백을 0으로 하여 스크롤이 끝까지 흐르게 변경 */
-                gap: 14px;
-                height: auto;
+                align-items: center; /* 로고와 메뉴 모두 중앙 정렬하여 안정감 확보 */
+                padding: 15px 20px 10px 20px;
+                gap: 12px;
             }
         
             .header-logo {
-                height: 38px; /* 모바일에서는 로고 크기를 살짝 줄임 */
+                height: 36px;
             }
         
-            /* 💡 핵심: 메뉴가 잘리지 않고 손가락으로 밀어서(스크롤) 볼 수 있게 만듭니다 */
             .header-nav {
                 width: 100%;
                 display: flex;
                 overflow-x: auto;
                 white-space: nowrap;
-                padding-right: 20px; /* 스크롤 끝부분 여백 확보 */
-                padding-bottom: 4px;
-                gap: 8px; /* 칩 사이의 간격 */
+                justify-content: flex-start;
+                padding: 4px 10px 10px 10px; /* 아래쪽 패딩을 주어 커스텀 스크롤바 공간 확보 */
+                gap: 12px; /* 칩 사이의 간격을 넓혀 가독성 향상 */
                 -webkit-overflow-scrolling: touch;
-                
-                /* 우측에 메뉴가 더 있다는 것을 시각적으로 보여주는 그라데이션 마스크 효과 (선택) */
-                mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
-                -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+                mask-image: none; /* 답답하게 가리던 그라데이션 제거 */
+                -webkit-mask-image: none;
             }
             
-            /* 모바일 브라우저의 투박한 스크롤바 숨기기 (선택 사항) */
+            /* 💡 스크롤이 가능하다는 것을 얇고 깔끔한 바 형태로 직관적 명시 */
             .header-nav::-webkit-scrollbar {
-                display: none;
+                height: 3px;
+            }
+            .header-nav::-webkit-scrollbar-track {
+                background: #f1f3f5;
+            }
+            .header-nav::-webkit-scrollbar-thumb {
+                background: #ced4da;
+                border-radius: 2px;
             }
 
-            header-nav a {
-                font-size: 0.85rem;
+            .header-nav a {
+                font-size: 0.88rem; /* 미세하게 크기 조절 */
                 font-weight: 500;
-                color: #4a4a4a;
-                background-color: #f1f3f5; /* 연한 그레이 배경으로 각 메뉴를 독립된 버튼처럼 분리 */
-                padding: 8px 14px;         /* 터치 영역 확보 및 가독성 향상 */
-                border-radius: 20px;       /* 둥글게 처리하여 트렌디한 무드 연출 */
-                text-decoration: none;
-                transition: all 0.2s ease;
+                color: #495057;
+                background-color: #f1f3f5;
+                padding: 8px 16px; /* 여백을 넓혀 터치 타겟과 텍스트 분리 확보 */
+                border-radius: 30px;
+                transition: all 0.15s ease;
             }
 
-            header-nav a:hover, 
+            .header-nav a:hover, 
             .header-nav a:active {
                 color: #ffffff;
-                background-color: var(--primary-color); /* 포인트 블루 컬러로 반전 */
+                background-color: var(--primary-color);
                 font-weight: 700;
             }
             
-            /* 2. 글귀가 모바일 화면에 맞춰 작아지도록 세팅 */
             main {
-                margin-top: 115px; /* 헤더가 두 줄이 되었으므로 메인 콘텐츠 영역을 더 내려줌 */
+                margin-top: 130px; /* 헤더 공간만큼 메인 콘텐츠를 여유 있게 내림 */
             }
         
             .intro-text {
-                font-size: 1.7rem; /* 모바일 화면에 맞게 폰트 크기 축소 */
+                font-size: 1.7rem;
                 text-align: left;
             }
         
@@ -566,7 +543,16 @@
             }
             
             section {
-                padding: 50px 20px; /* 모바일 사이드 여백 최적화 */
+                padding: 50px 20px;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .stats-card::after {
+                left: 50%;
+                transform: translateX(-50%);
             }
         }
     </style>
@@ -603,26 +589,22 @@
 
         <section id="boards">
             <h2 class="section-title">BOARDS</h2>
-            
             <div class="stats-container">
                 <div class="stats-card">
                     <div class="stats-num">6+</div>
                     <div class="stats-label">TBD</div>
                     <p class="stats-desc">웹 애플리케이션 및 풀스택 토이 프로젝트 설계</p>
                 </div>
-                
                 <div class="stats-card">
                     <div class="stats-num">1200+</div>
                     <div class="stats-label">TBD</div>
                     <p class="stats-desc">Git을 통한 체계적인 버전 관리 및 일일 커밋 정기화</p>
                 </div>
-        
                 <div class="stats-card">
                     <div class="stats-num">100%</div>
                     <div class="stats-label">TBD</div>
                     <p class="stats-desc">철저한 요구사항 분석 및 스프린트 계획 수립을 통한 적기 배포</p>
                 </div>
-        
                 <div class="stats-card">
                     <div class="stats-num">85%</div>
                     <div class="stats-label">TBD</div>
@@ -631,252 +613,24 @@
             </div>
         </section>
 
-        <section id="about">
-            <h2 class="section-title">ABOUT</h2>
-
-            <div class="about-grid">
-                <div class="about-card">
-                    <object class="about-icon" data="image/detail-1.svg"></object>
-                    <div>
-                        <div class="about-info-title">링크드인</div>
-                        <div class="about-info-desc">https://www.linkedin.com/in/hyokyun/</div>
-                    </div>
-                </div>
-                <div class="about-card">
-                    <img class="about-icon" src="image/detail-2.svg" />
-                    <div>
-                        <div class="about-info-title">개발내역</div>
-                        <div class="about-info-desc"><h2>https://github.com/leehyokyun</h2></div>
-                    </div>
-                </div>
-                <div class="about-card">
-                    <img class="about-icon" src="image/detail-3.svg" />
-                    <div>
-                        <div class="about-info-title">설계과정</div>
-                        <div class="about-info-desc"><h2>https://velog.io/@gyrbs22</h2></div>
-                    </div>
-                </div>
-                <div class="about-card">
-                    <img class="about-icon" src="image/detail-4.svg" />
-                    <div>
-                        <div class="about-info-title">스토리보드</div>
-                        <div class="about-info-desc"><h2>스토리보드_링크</h2></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sub-info-grid">
-                <div class="sub-info-box">
-                    <h3>SKILL & POINTS</h3>
-                    <div class="strength-tags">
-                        <div class="strength-tag">0 to 1</div>
-                        <div class="strength-tag">자동화</div>
-                        <div class="strength-tag">문서화</div>
-                        <div class="strength-tag">표준화</div>
-                        <div class="strength-tag">협업화</div>
-                    </div>
-                    
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-info"><span>자바</span></div>
-                            <div class="skill-bar" data-progress="85">
-                                <div class="skill-bar-progress"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info"><span>스프링</span></div>
-                            <div class="skill-bar" data-progress="80">
-                                <div class="skill-bar-progress"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info"><span>클린 아키텍칭</span></div>
-                            <div class="skill-bar" data-progress="75">
-                                <div class="skill-bar-progress"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info"><span>Redis</span></div>
-                            <div class="skill-bar" data-progress="70">
-                                <div class="skill-bar-progress"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info"><span>TDD</span></div>
-                            <div class="skill-bar" data-progress="70">
-                                <div class="skill-bar-progress"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info"><span>분산환경</span></div>
-                            <div class="skill-bar" data-progress="70">
-                                <div class="skill-bar-progress"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sub-info-box">
-                    <h3>EDUCATION & LICENSE</h3>
-                    <div style="margin-bottom: 30px;">
-                        <div class="edu-item">
-                            <p>학력</p>
-                            <strong>한양대학교 ERICA 캠퍼스 기계공학과</strong>                            
-                        </div>
-                    </div>
-                    <div>
-                        <div class="edu-item">
-                            <p>자격증</p>
-                            <div class="license-item"><strong>SQLD & 정보처리기사</strong></div>
-                        </div>
-                            <div class="license-item"><strong>인프런 ~ 외 30건 교육 수료</strong></div>
-                        <div class="license-item"><strong>항해플러스 백엔드 20기 교육 수료</strong></div>
-                        <div class="license-item"><strong>한국소프트웨어 기술진흥협회 백엔드 20기 교육 수료</strong></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience">
-            <h2 class="section-title">EXPERIENCES</h2>
-            <div class="exp-timeline">
-                
-                <div class="exp-row">
-                    <div class="exp-time">2023.01 ~ 2023.06</div>
-                    <div class="exp-body">
-                        <div class="exp-company">식스티헤르츠 주식회사</div>
-                        <div class="exp-team">EAC Registry</div>
-                        <div class="exp-details">
-                            <div class="exp-project-title">📂 고객 관리 시스템 개선 프로젝트 (2023.02 ~ 2023.05)</div>
-                            <p class="exp-desc">React를 사용한 대시보드 UI 개선 및 성능 최적화 작업을 주도했습니다.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="exp-row">
-                    <div class="exp-time">2022.08 ~ 2022.11</div>
-                    <div class="exp-body">
-                        <div class="exp-company">교보DTS 주식회사</div>
-                        <div class="exp-team">백엔드 개발팀, 인턴 개발자 ∙ RESTful API 개발 및 데이터베이스 관리</div>
-                        <div class="exp-details">
-                            <div class="exp-project-title">📂 소셜 미디어 분석 플랫폼 (2022.09 ~ 2022.11)</div>
-                            <p class="exp-desc">Node.js와 Express를 사용한 API 개발 및 MongoDB 연동 인터페이스를 구축했습니다.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="exp-row">
-                    <div class="exp-time">2022.05 ~ 2022.07</div>
-                    <div class="exp-body">
-                        <div class="exp-company">디스콰이엇 주식회사</div>
-                        <div class="exp-team">풀스택 개발팀, 프리랜서 개발자 ∙ 웹 애플리케이션 개발 및 배포</div>
-                        <div class="exp-details">
-                            <div class="exp-project-title">📂 온라인 학습 플랫폼 개발 (2022.05 ~ 2022.07)</div>
-                            <p class="exp-desc">React와 Django를 사용한 풀스택 웹 애플리케이션 아키텍처 구현 및 기능을 개발했습니다.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="exp-row">
-                    <div class="exp-time">2022.05 ~ 2022.07</div>
-                    <div class="exp-body">
-                        <div class="exp-company">삼성전자 주식회사</div>
-                        <div class="exp-team">풀스택 개발팀, 프리랜서 개발자 ∙ 웹 애플리케이션 개발 및 배포</div>
-                        <div class="exp-details">
-                            <div class="exp-project-title">📂 온라인 학습 플랫폼 개발 (2022.05 ~ 2022.07)</div>
-                            <p class="exp-desc">React와 Django를 사용한 풀스택 웹 애플리케이션 아키텍처 구현 및 기능을 개발했습니다.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="project">
-            <h2 class="section-title">PROJECT</h2>
-            <div class="proj-container">
-                
-                <div class="proj" onclick="location.href='project.html'">
-                    <img src="image/p1.png" alt="프로젝트 이미지" class="proj-main-img" />
-                    <div class="proj-content">
-                        <div class="proj-content-title">이글루 모임 출석 자동화 프로젝트</div>
-                        <p class="proj-content-text">
-                            유학생 커뮤니티 플랫폼 개발을 목표로 하였습니다. 유학생들이 서로 정보를 공유하고 교류할 수 있도록 게시판, 채팅, 이벤트 관리 기능을 구현했습니다. React와 Node.js를 사용하여 웹 애플리케이션을 개발하였고, MongoDB를 통해 유연한 데이터 관리를 실현했습니다. 이를 통해 유학생들이 보다 쉽게 네트워킹에 필요한 정보를 얻을 수 있는 플랫폼을 제공했습니다.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="proj" onclick="location.href='project2.html'">
-                    <img src="image/p2.png" alt="프로젝트 이미지" class="proj-main-img" />
-                    <div class="proj-content">
-                        <div class="proj-content-title">백엔드 엔지니어링 오픈북 프로젝트</div>
-                        <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 기능을 활용할 수 있도록 설계되었습니다. React와 Node.js를 사용하여 개발된 이 웹 애플리케이션은 효율적인 협업과 원활한 커뮤니케이션을 지원합니다. 이를 통해 개발자들은 전 세계 어디서든 팀워크를 강화하고 프로젝트를 성공적으로 완수할 수 있습니다.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="proj" onclick="location.href='project2.html'">
-                    <img src="image/p2.png" alt="프로젝트 이미지" class="proj-main-img" />
-                    <div class="proj-content">
-                        <div class="proj-content-title">식스티헤르츠 신재생 에너지 거래 시스템 구축 및 관리</div>
-                        <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 기능을 활용할 수 있도록 설계되었습니다. React와 Node.js를 사용하여 개발된 이 웹 애플리케이션은 효율적인 협업과 원활한 커뮤니케이션을 지원합니다. 이를 통해 개발자들은 전 세계 어디서든 팀워크를 강화하고 프로젝트를 성공적으로 완수할 수 있습니다.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="proj" onclick="location.href='project2.html'">
-                    <img src="image/p2.png" alt="프로젝트 이미지" class="proj-main-img" />
-                    <div class="proj-content">
-                        <div class="proj-content-title">KIDB 채권 계약 관리 차세대 시스템 구축</div>
-                        <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 기능을 활용할 수 있도록 설계되었습니다. React와 Node.js를 사용하여 개발된 이 웹 애플리케이션은 효율적인 협업과 원활한 커뮤니케이션을 지원합니다. 이를 통해 개발자들은 전 세계 어디서든 팀워크를 강화하고 프로젝트를 성공적으로 완수할 수 있습니다.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="proj" onclick="location.href='project2.html'">
-                    <img src="image/p2.png" alt="프로젝트 이미지" class="proj-main-img" />
-                    <div class="proj-content">
-                        <div class="proj-content-title">KB Bukopin 국외전산 차세대 시스템 구축</div>
-                        <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 기능을 활용할 수 있도록 설계되었습니다. React와 Node.js를 사용하여 개발된 이 웹 애플리케이션은 효율적인 협업과 원활한 커뮤니케이션을 지원합니다. 이를 통해 개발자들은 전 세계 어디서든 팀워크를 강화하고 프로젝트를 성공적으로 완수할 수 있습니다.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="proj" onclick="location.href='project2.html'">
-                    <img src="image/p2.png" alt="프로젝트 이미지" class="proj-main-img" />
-                    <div class="proj-content">
-                        <div class="proj-content-title">교보증권 HTS 시스템 개발 및 운영관리</div>
-                        <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 기능을 활용할 수 있도록 설계되었습니다. React와 Node.js를 사용하여 개발된 이 웹 애플리케이션은 효율적인 협업과 원활한 커뮤니케이션을 지원합니다. 이를 통해 개발자들은 전 세계 어디서든 팀워크를 강화하고 프로젝트를 성공적으로 완수할 수 있습니다.
-                        </p>
-                    </div>
-                </div>    
-                    
-            </div>
-        </section>
-    </main>
+        </main>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             animateSkillBars();
         });
 
-        // 참고 사이트처럼 부드럽게 차오르는 게이지 바 애니메이션 효과 적용
+         Berk
         function animateSkillBars() {
             const skillBars = document.querySelectorAll(".skill-bar");
             skillBars.forEach((bar) => {
                 const progress = bar.getAttribute("data-progress");
                 const progressBar = bar.querySelector(".skill-bar-progress");
                 if (progressBar) {
-                    // 데이터 프로그레스에 적힌 수치(%)만큼 바 길이를 채움 (기존 하드코딩 수치 보완)
                     progressBar.style.width = `${progress}%`;
                 }
             });
         }
     </script>
 </body>
-
 </html>
