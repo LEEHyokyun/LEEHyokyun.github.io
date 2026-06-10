@@ -227,19 +227,25 @@
             color: var(--dark-color);
         }
 
+        /* --- Contributions 태그 영역 전면 수정 --- */
         .strength-tags {
             display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;               /* 태그들 사이의 여유 공간 */
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #f3f4f6;
         }
-
+        
+        /* 억지스러운 동그란 박스를 없애고 깔끔한 해시태그 디자인으로 변경 */
         .strength-tag {
-            background-color: #e6f0ff;
-            color: var(--primary-color);
-            padding: 8px 16px;
-            border-radius: 30px;
             font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: 700;
+            color: #2563eb;          /* 아이덴티티 블루 컬러 사용 */
+            background: none !important; /* 배경 투명화 */
+            border: none !important;     /* 테두리 제거 */
+            padding: 0 !important;       /* 내부 여백 제거로 글자 깨짐 완전 방지 */
+            white-space: nowrap;     /* 어떤 상황에서도 글자 줄바꿈 금지 */
         }
 
         .skill-item {
@@ -275,6 +281,40 @@
             border-bottom: 1px dashed var(--border-color);
         }
 
+        /* --- Details 세로 정렬 구조 적용 --- */
+        .edu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;               /* 각 항목 간 격리 여백 */
+        }
+        
+        .edu-item {
+            display: flex;
+            flex-direction: column;  /* 좌우 정렬에서 위(라벨)-아래(내용) 정렬로 전면 수정 */
+            align-items: flex-start; /* 왼쪽 정렬 */
+            gap: 4px;                /* 라벨과 실제 내용 사이의 좁은 간격 */
+        }
+        
+        .edu-label {
+            font-size: 0.85rem;      /* 라벨은 작고 옅게 처리하여 시선 방해 차단 */
+            color: #6b7280;
+            font-weight: 600;
+        }
+        
+        .edu-val {
+            font-size: 1.1rem;       /* 핵심 데이터는 크게 확대 */
+            color: #111827;
+            font-weight: 800;        /* 묵직하게 두께 부여 */
+            display: block;
+        }
+        
+        /* 자격증 두 개가 세로로 이쁘게 쌓이도록 래퍼 클래스 지정 */
+        .edu-val-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;                /* 정보처리기사와 SQLD 사이의 간격 */
+        }
+        
         .edu-item p {
             color: var(--gray-color);
             font-size: 0.9rem;
