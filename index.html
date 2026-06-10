@@ -427,33 +427,48 @@
         }
         
         .stats-num {
-            /* 1. 밑줄 및 배경색 제거 (개방감 확보) */
             text-decoration: none !important;
             border-bottom: none !important;
-            background-color: transparent !important; /* 회색 배경 완전 제거 */
+            background-color: transparent !important;
             padding: 0 !important;
         
-            /* 2. 크기 대폭 키우기 및 가독성 최적화 */
-            font-size: 1.8rem;                /* 일반 텍스트보다 훨씬 크고 시원하게 설정 */
-            font-weight: 800;                 /* 숫자가 번져 보이지 않고 묵직하게 박히도록 대폭 강조 */
-            line-height: 1.1;                 /* 폰트가 커짐에 따라 위아래 여백 균형 맞춤 */
+            /* 1. 크기를 기존의 2배 이상인 3.5rem으로 파격적으로 확대 */
+            font-size: 3.5rem;                
+            font-weight: 900;                 /* 가장 두꺼운 굵기로 시선 고정 */
+            line-height: 1;                   /* 크기가 커진 만큼 행간을 바짝 붙여 여백 최적화 */
             
-            /* 3. 포인트 색상 적용 */
-            color: #2563eb;                   /* 신뢰감과 전문성을 주는 세련된 블루 (포인트 컬러) */
+            /* 2. 신뢰감을 주는 확실한 블루/네이비 포인트 컬러 */
+            color: #1e40af;                   
             
-            /* 4. 디테일 조정 */
+            /* 3. 정렬 및 가독성 디테일 */
             display: inline-block;
-            letter-spacing: -0.03em;          /* 숫자가 커졌을 때 벙벙해 보이지 않도록 자간 밀착 */
-            vertical-align: middle;           /* 옆에 있는 텍스트나 라벨과의 정렬 유지 */
-            margin: 0 4px;                    /* 좌우 약간의 여백 */
+            letter-spacing: -0.04em;          /* 글자가 커졌으므로 자간을 더 긴밀하게 축소 */
+            font-family: sans-serif;          /* 숫자가 가장 깔끔하게 떨어지는 기본 고딕 계열 추천 */
         }
 
-        /* (선택 사항) 만약 두 숫자의 색상을 다르게 하여 변주를 주고 싶다면 */
-        .stats-num.primary {
-            color: #2563eb;                   /* 직무적합도: 신뢰의 블루 */
+        /* 숫자 뒤에 붙는 % 단위가 너무 커서 부담스럽지 않도록 밸런스 조정 */
+        .stat-unit {
+            font-size: 1.5rem;                /* 숫자의 절반 크기 정도로 설정 */
+            font-weight: 700;
+            color: #1e40af;                   /* 숫자와 동일한 색상 적용 */
+            margin-left: 2px;
+            vertical-align: baseline;         /* 숫자의 하단 라인과 맞춤 */
         }
-        .stats-num.secondary {
-            color: #10b981;                   /* 인재상부합도: 통과/긍정의 그린 */
+        
+        /* 숫자가 너무 커서 라벨과 겹치지 않도록 감싸는 박스에 여백 추가 */
+        .resume-stat-item {
+            display: flex;
+            flex-direction: column;           /* 라벨을 위로, 숫자를 아래로 배치하는 것을 추천 (선택) */
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        /* 숫자 위에 작고 깔끔하게 배치될 라벨 스타일 */
+        .stat-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #6b7280;                   /* 은은한 회색으로 숫자를 방해하지 않음 */
+            margin-bottom: 4px;
         }
         
         /* 마우스 호버 시에도 밑줄이 생기지 않도록 방지 */
@@ -617,13 +632,17 @@
             <h2 class="section-title">BOARDS</h2>
             <div class="stats-container">
                 <div class="stats-card">
-                    <div class="stats-num primary">6+</div>
-                    <div class="stats-label">TBD</div>
+                    <span class="stat-label">TBD</span>
+                    <div>
+                        <span class="stats-num">95</span><span class="stat-unit">%</span>
+                    </div>
                     <p class="stats-desc">웹 애플리케이션 및 풀스택 토이 프로젝트 설계</p>
                 </div>
                 <div class="stats-card">
-                    <div class="stats-num second">1200+</div>
-                    <div class="stats-label">TBD</div>
+                    <span class="stat-label">TBD</span>
+                    <div>
+                        <span class="stats-num">90</span><span class="stat-unit">%</span>
+                    </div>
                     <p class="stats-desc">Git을 통한 체계적인 버전 관리 및 일일 커밋 정기화</p>
                 </div>
                 <div class="stats-card">
