@@ -427,26 +427,35 @@
         }
         
         .stats-num {
-            /* 1. 기존의 지저분한 밑줄 및 텍스트 효과 제거 */
+            /* 1. 밑줄 및 배경색 제거 (개방감 확보) */
             text-decoration: none !important;
             border-bottom: none !important;
+            background-color: transparent !important; /* 회색 배경 완전 제거 */
+            padding: 0 !important;
         
-            /* 2. 시각적 강조를 위한 깔끔한 스타일 적용 */
-            font-size: 1.1rem;               /* 글자 크기 조정 */
-            font-weight: 700;                /* 숫자가 명확히 보이도록 굵게 처리 */
-            color: #222425;                  /* 이력서 메인 톤에 맞춘 세련된 다크 그레이 */
+            /* 2. 크기 대폭 키우기 및 가독성 최적화 */
+            font-size: 1.8rem;                /* 일반 텍스트보다 훨씬 크고 시원하게 설정 */
+            font-weight: 800;                 /* 숫자가 번져 보이지 않고 묵직하게 박히도록 대폭 강조 */
+            line-height: 1.1;                 /* 폰트가 커짐에 따라 위아래 여백 균형 맞춤 */
             
-            /* 3. 배지(Badge) 스타일로 깔끔하게 감싸기 (선택 사항) */
-            background-color: #eef2f6;       /* 부드러운 연한 블루 그레이 배경 */
-            padding: 3px 8px;                /* 숫자 주변 여백 */
-            border-radius: 4px;              /* 모서리를 살짝 둥글게 */
+            /* 3. 포인트 색상 적용 */
+            color: #2563eb;                   /* 신뢰감과 전문성을 주는 세련된 블루 (포인트 컬러) */
             
-            /* 4. 정렬 및 자간 최적화 */
+            /* 4. 디테일 조정 */
             display: inline-block;
-            letter-spacing: -0.02em;         /* 숫자가 벌어져 보이지 않도록 자간 조절 */
-            margin-right: 4px;
+            letter-spacing: -0.03em;          /* 숫자가 커졌을 때 벙벙해 보이지 않도록 자간 밀착 */
+            vertical-align: middle;           /* 옆에 있는 텍스트나 라벨과의 정렬 유지 */
+            margin: 0 4px;                    /* 좌우 약간의 여백 */
         }
 
+        /* (선택 사항) 만약 두 숫자의 색상을 다르게 하여 변주를 주고 싶다면 */
+        .stats-num.primary {
+            color: #2563eb;                   /* 직무적합도: 신뢰의 블루 */
+        }
+        .stats-num.secondary {
+            color: #10b981;                   /* 인재상부합도: 통과/긍정의 그린 */
+        }
+        
         /* 마우스 호버 시에도 밑줄이 생기지 않도록 방지 */
         .stat-number:hover {
             text-decoration: none !important;
@@ -608,12 +617,12 @@
             <h2 class="section-title">BOARDS</h2>
             <div class="stats-container">
                 <div class="stats-card">
-                    <div class="stats-num">6+</div>
+                    <div class="stats-num primary">6+</div>
                     <div class="stats-label">TBD</div>
                     <p class="stats-desc">웹 애플리케이션 및 풀스택 토이 프로젝트 설계</p>
                 </div>
                 <div class="stats-card">
-                    <div class="stats-num">1200+</div>
+                    <div class="stats-num second">1200+</div>
                     <div class="stats-label">TBD</div>
                     <p class="stats-desc">Git을 통한 체계적인 버전 관리 및 일일 커밋 정기화</p>
                 </div>
