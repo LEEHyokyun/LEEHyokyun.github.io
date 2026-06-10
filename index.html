@@ -410,49 +410,27 @@
             background-color: #ffffff;
         }
         
+        /* 1. 카드를 감싸는 컨테이너 설정 */
         .stats-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .stats-card {
-            position: relative;
-            padding: 20px 10px;
-            background: #ffffff;
             display: flex;
-            flex-direction: column;
+            gap: 20px; /* 카드 사이의 간격 */
+            flex-wrap: wrap; /* 화면이 좁아지면 자연스럽게 아래로 떨어지도록 */
         }
         
-        .stats-num {
+        /* 2. 개별 스탯 카드 스타일 (하단 쓸데없는 여백 제거) */
+        .stats-card {
+            flex: 1;
+            min-width: 200px;
+            background-color: transparent !important; /* 배경 투명하게 */
+            border: none !important;                  /* 테두리 제거 */
+            box-shadow: none !important;              /* 그림자 제거 */
+            
+            /* 여백 최적화 */
+            padding: 10px 0 !important;               /* 위아래 최소한의 여백만 남김 */
+            height: auto !important;                  /* 고정 높이를 해제하여 하단 공백 제거 */
+            
+            /* 밑줄 원천 차단 */
             text-decoration: none !important;
-            border-bottom: none !important;
-            background-color: transparent !important;
-            padding: 0 !important;
-        
-            /* 1. 크기를 기존의 2배 이상인 3.5rem으로 파격적으로 확대 */
-            font-size: 3.5rem;                
-            font-weight: 900;                 /* 가장 두꺼운 굵기로 시선 고정 */
-            line-height: 1;                   /* 크기가 커진 만큼 행간을 바짝 붙여 여백 최적화 */
-            
-            /* 2. 신뢰감을 주는 확실한 블루/네이비 포인트 컬러 */
-            color: #1e40af;                   
-            
-            /* 3. 정렬 및 가독성 디테일 */
-            display: inline-block;
-            letter-spacing: -0.04em;          /* 글자가 커졌으므로 자간을 더 긴밀하게 축소 */
-            font-family: sans-serif;          /* 숫자가 가장 깔끔하게 떨어지는 기본 고딕 계열 추천 */
-        }
-
-        /* 숫자 뒤에 붙는 % 단위가 너무 커서 부담스럽지 않도록 밸런스 조정 */
-        .stat-unit {
-            font-size: 1.5rem;                /* 숫자의 절반 크기 정도로 설정 */
-            font-weight: 700;
-            color: #1e40af;                   /* 숫자와 동일한 색상 적용 */
-            margin-left: 2px;
-            vertical-align: baseline;         /* 숫자의 하단 라인과 맞춤 */
         }
         
         /* 숫자가 너무 커서 라벨과 겹치지 않도록 감싸는 박스에 여백 추가 */
@@ -463,17 +441,51 @@
             margin-bottom: 20px;
         }
         
-        /* 숫자 위에 작고 깔끔하게 배치될 라벨 스타일 */
+        /* 3. 상단 작은 라벨 */
         .stat-label {
+            display: block;
             font-size: 0.85rem;
-            font-weight: 600;
-            color: #6b7280;                   /* 은은한 회색으로 숫자를 방해하지 않음 */
-            margin-bottom: 4px;
+            font-weight: 700;
+            color: #6b7280;                           /* 차분한 회색 */
+            margin-bottom: 6px;                       /* 숫자와의 간격 */
+            text-decoration: none !important;
+        }
+
+        /* 4. 압도적인 대형 숫자 (최소 2배 이상 크기) */
+        .stats-num {
+            font-size: 3.8rem;                        /* 시선을 사로잡는 압도적인 크기 */
+            font-weight: 900;                         /* 가장 두껍게 */
+            color: #1e40af;                           /* 신뢰감을 주는 확실한 블루 계열 */
+            line-height: 1 !important;                /* 행간을 바짝 붙여 불필요한 공백 제거 */
+            letter-spacing: -0.04em;                  /* 자간 밀착 */
+            display: inline-block;
+            text-decoration: none !important;         /* 밑줄 제거 */
+        }
+
+        /* 5. 숫자 옆 % 단위 */
+        .stat-unit {
+            font-size: 1.6rem;                        /* 숫자의 절반 크기 수준 */
+            font-weight: 800;
+            color: #1e40af;                           /* 숫자와 동일한 블루 */
+            margin-left: 2px;
+            vertical-align: baseline;                 /* 숫자 하단 라인에 맞춤 */
+            text-decoration: none !important;         /* 밑줄 제거 */
+        }
+
+        /* 6. 하단 세부 설명 (설명이 끝나면 박스 여백도 딱 끝나도록) */
+        .stats-desc {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #374151;
+            margin-top: 10px;                         /* 숫자와의 최소 간격 */
+            margin-bottom: 0 !important;              /* 하단 여백 완전 제거 */
+            text-decoration: none !important;
         }
         
         /* 마우스 호버 시에도 밑줄이 생기지 않도록 방지 */
-        .stat-number:hover {
+        .stats-card *, .stats-card:hover * {
             text-decoration: none !important;
+            border-bottom: none !important;
         }
         
         .stats-card::after {
@@ -492,13 +504,6 @@
             color: var(--dark-color);
             margin-top: 15px;
             margin-bottom: 12px;
-        }
-        
-        .stats-desc {
-            font-size: 0.9rem;
-            color: var(--gray-color);
-            line-height: 1.6;
-            word-break: keep-all;
         }
         
         /* 반응형 디자인 수립 */
@@ -631,33 +636,42 @@
         <section id="boards">
             <h2 class="section-title">BOARDS</h2>
             <div class="stats-container">
+                
                 <div class="stats-card">
-                    <span class="stat-label">TBD</span>
+                    <span class="stat-label">직무 적합도</span>
                     <div>
                         <span class="stats-num">95</span><span class="stat-unit">%</span>
                     </div>
                     <p class="stats-desc">웹 애플리케이션 및 풀스택 토이 프로젝트 설계</p>
                 </div>
+        
                 <div class="stats-card">
-                    <span class="stat-label">TBD</span>
+                    <span class="stat-label">인재상 부합도</span>
                     <div>
                         <span class="stats-num">90</span><span class="stat-unit">%</span>
                     </div>
                     <p class="stats-desc">Git을 통한 체계적인 버전 관리 및 일일 커밋 정기화</p>
                 </div>
+        
                 <div class="stats-card">
-                    <div class="stats-num">100%</div>
-                    <div class="stats-label">TBD</div>
+                    <span class="stat-label">프로젝트 완수율</span>
+                    <div>
+                        <span class="stats-num">100</span><span class="stat-unit">%</span>
+                    </div>
                     <p class="stats-desc">철저한 요구사항 분석 및 스프린트 계획 수립을 통한 적기 배포</p>
                 </div>
+        
                 <div class="stats-card">
-                    <div class="stats-num">85%</div>
-                    <div class="stats-label">TBD</div>
+                    <span class="stat-label">성능 최적화</span>
+                    <div>
+                        <span class="stats-num">85</span><span class="stat-unit">%</span>
+                    </div>
                     <p class="stats-desc">Lighthouse 기준 초기 로딩 속도 및 번들 크기 경량화 달성</p>
                 </div>
+        
             </div>
         </section>
-
+        
         <section id="about">
             <h2 class="section-title">ABOUT</h2>
 
