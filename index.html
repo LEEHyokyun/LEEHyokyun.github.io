@@ -599,21 +599,25 @@
 
         /* --- Develop Universe 타이틀 및 부연설명 구역 --- */
         .link-universe-container {
-            margin-bottom: 32px;
-            padding: 0 4px;
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            box-sizing: border-box;
         }
         
-        .universe-header {
-            display: flex;
-            align-items: baseline;
-            gap: 12px;
-            margin-bottom: 16px;
+       .universe-header {
+            width: 100%;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #111827; /* 타이틀 아래 든든한 경계선 추가 */
+            padding-bottom: 12px;
         }
         
         .universe-title {
-            font-size: 1.4rem;
+            font-size: 1.65rem; /* 글씨 크기 확대 */
             font-weight: 800;
             color: #111827;
+            margin: 0;
+            letter-spacing: -0.03em;
         }
         
         .universe-subtitle {
@@ -621,44 +625,61 @@
             color: #6b7280;
             font-weight: 500;
         }
-        
-        /* --- 한 줄 링크 배치 스타일 --- */
-        .about-links-line {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px; /* 링크 간 간격 */
-            padding-bottom: 16px;
-            border-bottom: 1px dashed #e5e7eb; /* 하단 구분을 위한 옅은 점선 절취선 */
+
+        .title-divider {
+            color: #d1d5db;
+            margin: 0 8px;
+            font-weight: 300;
         }
         
-        /* 개별 텍스트 링크 아이템 구조 */
-        .text-link-item {
-            display: inline-flex;
-            flex-direction: column; /* 라벨 밑에 URL이 오는 깔끔한 세로 배치 구조 */
-            gap: 4px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-        
-        /* 옅은 상단 제목 */
-        .link-label {
-            font-size: 0.85rem;
+        .en-title {
+            font-size: 1.45rem;
             color: #4b5563;
             font-weight: 600;
         }
         
+        /* --- 한 줄 링크 배치 스타일 --- */
+        .about-links-line {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            gap: 32px; /* 아이템 간 여유 공간 */
+            box-sizing: border-box;
+        }
+        
+        /* 개별 텍스트 링크 아이템 구조 */
+        .text-link-item {
+            flex: 1; /* ★ 핵심: 웅장하게 꽉 차도록 영역을 넓힘 */
+            display: flex;
+            flex-direction: column;
+            gap: 8px; /* 라벨과 URL 사이 간격 확대 */
+            text-decoration: none;
+            background-color: #f9fafb; /* 미세한 배경색을 주어 빈 공간 채움 */
+            padding: 16px; /* 내부 여백을 주어 텍스트가 꽉 차 보임 */
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        /* 옅은 상단 제목 */
+        .link-label {
+          font-size: 0.95rem;
+            color: #6b7280;
+            font-weight: 700;
+        }
+        
         /* 강조할 메인 URL 링크 텍스트 */
         .link-url {
-            font-size: 1.05rem;
-            color: #2563eb; /* 신뢰감을 주는 블루 계열 링크 색상 적용 */
-            font-weight: 700;
-            border-bottom: 1px solid transparent;
+            font-size: 1.15rem; /* 글씨 크기 확대 */
+            color: #2563eb;
+            font-weight: 800;
+            word-break: break-all; /* 주소가 길어도 영역 밖으로 깨짐 방지 */
+            transition: color 0.2s ease;
         }
         
         /* 링크 마우스 오버 효과 (깔끔하게 언더라인만 등장) */
-        .text-link-item:hover .link-url {
-            color: #1d4ed8;
-            border-bottom: 1px solid #1d4ed8;
+        .text-link-item:hover{
+            background-color: #f3f4f6;
+            transform: translateY(-2px);
         }
         
         /* 반응형 디자인 수립 */
@@ -840,7 +861,7 @@
         
             <div class="link-universe-container">
                 <div class="universe-header">
-                    <span class="universe-title">이효균의 개발 기록 | Develop Universe</span>
+                    <h2 class="universe-title">이효균의 개발 기록 <span class="title-divider">|</span> <span class="en-title">Develop Universe</span></h2>
                 </div>
                 
                 <div class="about-links-line">
@@ -858,7 +879,7 @@
                     </a>
                     <a href="https://docs.google.com/presentation/d/1VLkLnOUk4nGhi-_sU1PrcWS0rJ16TapmLUh3PrAOAGY/edit?slide=id.g317751bba63_0_150#slide=id.g317751bba63_0_150" target="_blank" class="text-link-item">
                         <span class="link-label">스토리보드</span>
-                        <span class="link-url">스토리 보드</span>
+                        <span class="link-url text-highlight">스토리 보드 보기</span>
                     </a>
                 </div>
             </div>
