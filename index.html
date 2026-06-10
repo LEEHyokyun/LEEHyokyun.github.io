@@ -501,33 +501,58 @@
             /* 1. 모바일 상단 바를 세로 레이아웃으로 변경하되, 메뉴는 가로로 스크롤 가능하게 처리 */
             header {
                 flex-direction: column;
-                align-items: flex-start; /* 로고를 좌측 정렬 */
-                padding: 12px 15px;
-                gap: 10px;
+                align-items: flex-start;
+                padding: 15px 0 12px 20px; /* 오른쪽 여백을 0으로 하여 스크롤이 끝까지 흐르게 변경 */
+                gap: 14px;
+                height: auto;
             }
         
             .header-logo {
-                height: 40px; /* 모바일에서는 로고 크기를 살짝 줄임 */
+                height: 38px; /* 모바일에서는 로고 크기를 살짝 줄임 */
             }
         
             /* 💡 핵심: 메뉴가 잘리지 않고 손가락으로 밀어서(스크롤) 볼 수 있게 만듭니다 */
             .header-nav {
                 width: 100%;
-                overflow-x: auto; /* 가로 스크롤 활성화 */
+                display: flex;
+                overflow-x: auto;
                 white-space: nowrap;
-                padding-bottom: 5px; /* 스크롤바 공간 살짝 확보 */
-                -webkit-overflow-scrolling: touch; /* 아이폰에서 부드러운 스크롤 지원 */
-                gap: 20px;
+                padding-right: 20px; /* 스크롤 끝부분 여백 확보 */
+                padding-bottom: 4px;
+                gap: 8px; /* 칩 사이의 간격 */
+                -webkit-overflow-scrolling: touch;
+                
+                /* 우측에 메뉴가 더 있다는 것을 시각적으로 보여주는 그라데이션 마스크 효과 (선택) */
+                mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+                -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
             }
             
             /* 모바일 브라우저의 투박한 스크롤바 숨기기 (선택 사항) */
             .header-nav::-webkit-scrollbar {
                 display: none;
             }
-        
+
+            header-nav a {
+                font-size: 0.85rem;
+                font-weight: 500;
+                color: #4a4a4a;
+                background-color: #f1f3f5; /* 연한 그레이 배경으로 각 메뉴를 독립된 버튼처럼 분리 */
+                padding: 8px 14px;         /* 터치 영역 확보 및 가독성 향상 */
+                border-radius: 20px;       /* 둥글게 처리하여 트렌디한 무드 연출 */
+                text-decoration: none;
+                transition: all 0.2s ease;
+            }
+
+            header-nav a:hover, 
+            .header-nav a:active {
+                color: #ffffff;
+                background-color: var(--primary-color); /* 포인트 블루 컬러로 반전 */
+                font-weight: 700;
+            }
+            
             /* 2. 글귀가 모바일 화면에 맞춰 작아지도록 세팅 */
             main {
-                margin-top: 105px; /* 헤더가 두 줄이 되었으므로 메인 콘텐츠 영역을 더 내려줌 */
+                margin-top: 115px; /* 헤더가 두 줄이 되었으므로 메인 콘텐츠 영역을 더 내려줌 */
             }
         
             .intro-text {
