@@ -265,7 +265,7 @@
             font-weight: 500;
         }
 
-        /* 링크 카드 정렬 방식 - 4 컬럼 고정 */
+        /* 링크 카드 정렬 방식 수정 (Flex-wrap으로 유연하게 배치) */
         .about-links-line {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -331,12 +331,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            width: 100%;
-        }
-
-        .sub-info-box {
-            display: flex;
-            flex-direction: column;
+            margin-top: 50px;
         }
 
         .sub-info-box h3 {
@@ -444,7 +439,7 @@
             font-size: 0.95rem;
         }
 
-        /* 6. EXPERIENCES 섹션 스타일 */
+        /* 6. EXPERIENCES 섹션 스타일 (개선) */
         .exp-domains-summary {
             display: flex;
             gap: 12px;
@@ -474,7 +469,7 @@
         .exp-timeline::before {
             content: '';
             position: absolute;
-            left: 100px;
+            left: 44px;
             top: 30px;
             bottom: 0;
             width: 2px;
@@ -509,8 +504,8 @@
         .exp-time::before {
             content: '';
             position: absolute;
-            left: -20px;
-            top: 12px;
+            left: -58px;
+            top: 8px;
             width: 16px;
             height: 16px;
             background-color: var(--primary-color);
@@ -523,8 +518,8 @@
         .exp-time::after {
             content: '';
             position: absolute;
-            left: -22px;
-            top: 10px;
+            left: -60px;
+            top: 6px;
             width: 20px;
             height: 20px;
             border-radius: 50%;
@@ -673,15 +668,15 @@
             .about-links-line { grid-template-columns: repeat(2, 1fr); }
             
             .exp-timeline::before {
-                left: 100px;
+                left: 44px;
             }
             
             .exp-time::before {
-                left: -20px;
+                left: -58px;
             }
             
             .exp-time::after {
-                left: -22px;
+                left: -60px;
             }
             
             .project-grid { grid-template-columns: 1fr; }
@@ -766,29 +761,25 @@
             }
 
             .exp-timeline::before {
-                left: 80px;
-            }
-
-            .exp-time {
-                min-width: 120px;
-            }
-
-            .exp-time-box {
-                font-size: 0.85rem;
-                padding: 8px 12px;
+                left: 32px;
             }
 
             .exp-time::before {
-                left: -16px;
+                left: -46px;
                 width: 14px;
                 height: 14px;
                 border-width: 2px;
             }
 
             .exp-time::after {
-                left: -18px;
+                left: -48px;
                 width: 18px;
                 height: 18px;
+            }
+
+            .exp-time-box {
+                font-size: 0.85rem;
+                padding: 8px 12px;
             }
 
             .exp-body {
