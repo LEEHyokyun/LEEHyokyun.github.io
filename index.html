@@ -66,6 +66,7 @@
             object-fit: contain;
             cursor: pointer;
             transition: transform 0.2s ease;
+            flex-shrink: 0;
         }
 
         .header-logo:hover {
@@ -439,46 +440,298 @@
 
         /* 📱 반응형 웹 디자인 수립 (태블릿 & 모바일 표준) */
         @media screen and (max-width: 1024px) {
-            header { padding: 0 5%; }
-            section { padding: 80px 5%; }
-            #intro { flex-direction: column; text-align: center; gap: 40px; }
-            .intro-image-zone { order: -1; }
-            .intro-text { font-size: 2.2rem; }
-            .sub-info-grid { grid-template-columns: 1fr; }
-            .about-links-line { grid-template-columns: repeat(2, 1fr); }
+            header { 
+                padding: 10px 5%;
+                min-height: 70px;
+            }
+            .header-nav { 
+                gap: 20px;
+            }
+            .header-nav a {
+                font-size: 0.9rem;
+            }
+            section { 
+                padding: 80px 5%; 
+            }
+            #intro { 
+                flex-direction: column; 
+                text-align: center; 
+                gap: 40px; 
+            }
+            .intro-image-zone { 
+                order: -1; 
+            }
+            .intro-text { 
+                font-size: 2.2rem; 
+            }
+            .sub-info-grid { 
+                grid-template-columns: 1fr; 
+            }
+            .about-links-line { 
+                grid-template-columns: repeat(2, 1fr); 
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+                padding: 8px 4%;
+                min-height: auto;
+                gap: 8px;
+            }
+        
+            .header-logo { 
+                height: 38px;
+                flex-basis: 100%;
+                text-align: center;
+            }
+            
+            .header-nav { 
+                gap: 12px;
+                flex-basis: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .header-nav a { 
+                font-size: 0.8rem;
+                padding: 6px 8px;
+            }
+            
+            main { 
+                margin-top: auto;
+            }
+
+            section { 
+                padding: 70px 5%; 
+            }
+            
+            .intro-text { 
+                font-size: 1.9rem; 
+            }
+            .intro-text-detail { 
+                font-size: 0.95rem; 
+            }
+
+            .about-links-line { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 12px;
+            }
+
+            .icon-link-item { 
+                padding: 18px 12px; 
+                gap: 10px; 
+            }
+
+            .icon-wrapper { 
+                width: 48px; 
+                height: 48px; 
+            }
+
+            .icon-wrapper svg { 
+                width: 22px; 
+                height: 22px; 
+            }
+
+            .icon-link-label { 
+                font-size: 0.9rem; 
+            }
+
+            .stats-num {
+                font-size: 4.5rem;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
         }
 
         @media screen and (max-width: 600px) {
             header {
                 flex-direction: column;
                 align-items: center;
-                padding: 12px 20px;
-                gap: 10px;
+                padding: 10px 4%;
+                gap: 8px;
+                min-height: auto;
             }
         
-            .header-logo { height: 34px; }
-            .header-nav { gap: 16px; }
-            .header-nav a { font-size: 0.85rem; }
+            .header-logo { 
+                height: 32px;
+                width: auto;
+            }
+
+            .header-nav { 
+                gap: 8px;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .header-nav a { 
+                font-size: 0.75rem;
+                padding: 4px 6px;
+            }
             
-            main { margin-top: 110px; }
-            section { padding: 60px 20px; }
+            main { 
+                margin-top: 120px; 
+            }
+
+            section { 
+                padding: 50px 4%; 
+            }
             
-            .intro-text { font-size: 1.8rem; text-align: center; }
-            .intro-text-detail { font-size: 0.95rem; text-align: center; }
+            .intro-text { 
+                font-size: 1.5rem; 
+                text-align: center; 
+            }
+
+            .intro-text-detail { 
+                font-size: 0.9rem; 
+                text-align: center; 
+            }
             
-            .stats-container { grid-template-columns: 1fr; text-align: center; }
-            .stats-card { align-items: center; }
-            .stats-num { font-size: 4rem; }
+            .stats-container { 
+                grid-template-columns: 1fr; 
+                text-align: center; 
+            }
+
+            .stats-card { 
+                align-items: center; 
+            }
+
+            .stats-num { 
+                font-size: 3.5rem; 
+            }
+
+            .stat-unit {
+                font-size: 1.2rem;
+            }
             
-            .universe-title { font-size: 1.2rem; flex-direction: column; align-items: flex-start; gap: 4px; }
-            .title-divider { display: none; }
-            .en-title { font-size: 0.95rem; }
+            .universe-title { 
+                font-size: 1.1rem; 
+                flex-direction: column; 
+                align-items: flex-start; 
+                gap: 4px; 
+            }
+
+            .title-divider { 
+                display: none; 
+            }
+
+            .en-title { 
+                font-size: 0.9rem; 
+            }
             
-            .about-links-line { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .icon-link-item { padding: 16px 8px; gap: 10px; }
-            .icon-wrapper { width: 44px; height: 44px; }
-            .icon-wrapper svg { width: 20px; height: 20px; }
-            .icon-link-label { font-size: 0.88rem; }
+            .about-links-line { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 8px; 
+            }
+
+            .icon-link-item { 
+                padding: 14px 8px; 
+                gap: 8px; 
+            }
+
+            .icon-wrapper { 
+                width: 40px; 
+                height: 40px; 
+            }
+
+            .icon-wrapper svg { 
+                width: 18px; 
+                height: 18px; 
+            }
+
+            .icon-link-label { 
+                font-size: 0.8rem; 
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+                margin-bottom: 30px;
+            }
+
+            .sub-info-grid {
+                gap: 30px;
+            }
+
+            .sub-info-box h3 {
+                font-size: 1.1rem;
+            }
+
+            .strength-tag {
+                font-size: 0.8rem;
+                padding: 5px 10px;
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+            }
+
+            .stats-desc {
+                font-size: 0.85rem;
+            }
+
+            .skill-info {
+                font-size: 0.9rem;
+            }
+
+            .skill-level {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            header {
+                padding: 8px 3%;
+            }
+
+            .header-logo { 
+                height: 28px;
+            }
+
+            .header-nav a { 
+                font-size: 0.7rem;
+                padding: 3px 4px;
+            }
+
+            main { 
+                margin-top: 130px; 
+            }
+
+            section { 
+                padding: 40px 3%; 
+            }
+
+            .intro-text { 
+                font-size: 1.3rem; 
+            }
+
+            .stats-num { 
+                font-size: 3rem; 
+            }
+
+            .about-links-line { 
+                grid-template-columns: 1fr;
+            }
+
+            .icon-link-item { 
+                padding: 12px 8px; 
+            }
+
+            .icon-wrapper { 
+                width: 36px; 
+                height: 36px; 
+            }
+
+            .icon-wrapper svg { 
+                width: 16px; 
+                height: 16px; 
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -572,26 +825,26 @@
                 <div class="about-links-line">
                     <a href="https://www.linkedin.com/in/hyokyun/" target="_blank" class="icon-link-item">
                         <div class="icon-wrapper bg-linkedin">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.39v-1.2h-2.5v8.5h2.5v-4.34c0-.77.62-1.4 1.4-1.4.77 0 1.4.63 1.4 1.4v4.34h2.5M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.5H5.5v8.5h2.77z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0[...]
                         </div>
                         <span class="icon-link-label">링크드인</span>
                     </a>
             
                     <a href="https://github.com/leehyokyun" target="_blank" class="icon-link-item">
                         <div class="icon-wrapper bg-github">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.83-2.34 4.68-4.57 4.93.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.4[...]
                         </div>
                         <span class="icon-link-label">개발내역</span>
                     </a>
             
                     <a href="https://velog.io/@gyrbs22" target="_blank" class="icon-link-item">
                         <div class="icon-wrapper bg-velog">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="16" font-weight="bold" fill="white" font-family="Arial">V</text></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="16" font-weight="bold" fill="white" font-famil[...]
                         </div>
                         <span class="icon-link-label">설계과정</span>
                     </a>
             
-                    <a href="https://docs.google.com/presentation/d/1VLkLnOUk4nGhi-_sU1PrcWS0rJ16TapmLUh3PrAOAGY/edit?slide=id.g317751bba63_0_150#slide=id.g317751bba63_0_150" target="_blank" class="icon-link-item">
+                    <a href="https://docs.google.com/presentation/d/1VLkLnOUk4nGhi-_sU1PrcWS0rJ16TapmLUh3PrAOAGY/edit?slide=id.g317751bba63_0_150#slide=id.g317751bba63_0_150" target="_blank" class="ic[...]
                         <div class="icon-wrapper bg-storyboard">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
                         </div>
@@ -778,7 +1031,7 @@
                     <div class="proj-content">
                         <div class="proj-content-title">백엔드 엔지니어링 오픈북 프로젝트</div>
                         <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [...]
+                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [[...]
                         </p>
                     </div>
                 </div>
@@ -788,7 +1041,7 @@
                     <div class="proj-content">
                         <div class="proj-content-title">식스티헤르츠 신재생 에너지 거래 시스템 구축 및 관리</div>
                         <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [...]
+                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [[...]
                         </p>
                     </div>
                 </div>
@@ -798,7 +1051,7 @@
                     <div class="proj-content">
                         <div class="proj-content-title">KIDB 채권 계약 관리 차세대 시스템 구축</div>
                         <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [...]
+                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [[...]
                         </p>
                     </div>
                 </div>
@@ -808,7 +1061,7 @@
                     <div class="proj-content">
                         <div class="proj-content-title">KB Bukopin 국외전산 차세대 시스템 구축</div>
                         <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [...]
+                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [[...]
                         </p>
                     </div>
                 </div>
@@ -818,7 +1071,7 @@
                     <div class="proj-content">
                         <div class="proj-content-title">교보증권 HTS 시스템 개발 및 운영관리</div>
                         <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [...]
+                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [[...]
                         </p>
                     </div>
                 </div>    
@@ -828,7 +1081,7 @@
                     <div class="proj-content">
                         <div class="proj-content-title">이 외 프로젝트</div>
                         <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [...]
+                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [[...]
                         </p>
                     </div>
                 </div>    
