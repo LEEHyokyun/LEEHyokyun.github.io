@@ -17,14 +17,14 @@
     <title>LEEHYOKYUN PORTFOLIO</title>
     <style>
         @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
-        @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap");
 
         :root {
-            --primary-color: #0066ff; 
-            --dark-color: #1a1a1a;
-            --gray-color: #666666;
-            --light-bg: #f8f9fa;
-            --border-color: #e9ecef;
+            --primary-color: #2563eb; 
+            --dark-color: #111827;
+            --gray-color: #4b5563;
+            --light-bg: #f9fafb;
+            --border-color: #e5e7eb;
             --font-family: "Noto Sans KR", sans-serif;
         }
 
@@ -61,7 +61,7 @@
         }
 
         .header-logo {
-            height: 52px;
+            height: 45px;
             width: auto;
             object-fit: contain;
             cursor: pointer;
@@ -72,10 +72,9 @@
             transform: scale(1.02);
         }
 
-        /* 💡 오타 수정 및 공통 네비게이션 스타일 정돈 */
         .header-nav {
             display: flex;
-            gap: 24px; /* 데스크톱에서 메뉴 간격 넓혀서 시원하게 배치 */
+            gap: 28px;
         }
         
         .header-nav a {
@@ -85,7 +84,6 @@
             font-size: 0.95rem;
             white-space: nowrap;
             transition: all 0.2s ease;
-            position: relative;
             padding: 4px 0;
         }
 
@@ -94,7 +92,7 @@
         }
 
         main {
-            margin-top: 80px;
+            margin-top: 75px;
         }
 
         section {
@@ -112,6 +110,7 @@
             margin-bottom: 50px;
             position: relative;
             display: inline-block;
+            letter-spacing: -0.02em;
         }
 
         .section-title::after {
@@ -129,7 +128,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            min-height: calc(85vh - 70px);
+            min-height: calc(85vh - 75px);
             gap: 5%;
         }
 
@@ -140,7 +139,7 @@
         .intro-tag {
             color: var(--primary-color);
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             margin-bottom: 15px;
             display: block;
         }
@@ -151,7 +150,6 @@
             line-height: 1.4;
             margin-bottom: 25px;
             word-break: keep-all;
-            overflow-wrap: break-word;
         }
 
         .intro-text-detail {
@@ -170,49 +168,163 @@
 
         .intro-profile-img {
             width: 100%;
-            max-width: 450px;
-            height: 450px;
+            max-width: 400px;
+            height: 400px;
             object-fit: cover;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
         }
 
-        /* 3. ABOUT ME */
-        .about-grid {
+        /* 3. BOARDS (수치화 대시보드) */
+        #boards {
+            background-color: #ffffff;
+        }
+
+        .stats-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 30px;
-            margin-bottom: 50px;
         }
-
-        .about-card {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
+        
+        .stats-card {
+            background-color: transparent;
+            border: none;
+            padding: 10px 0;
             display: flex;
+            flex-direction: column;
             align-items: flex-start;
-            gap: 15px;
+            position: relative;
         }
 
-        .about-icon {
+        .stat-label {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gray-color);
+            margin-bottom: 12px;
+        }
+
+        .stats-num-wrapper {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 12px;
+        }
+
+        .stats-num {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        .stat-unit {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-left: 2px;
+        }
+
+        .stats-desc {
+            font-size: 0.92rem;
+            line-height: 1.5;
+            color: #374151;
+            word-break: keep-all;
+        }
+
+        /* 4. ABOUT (Develop Universe) */
+        .link-universe-container {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        
+        .universe-header {
+            width: 100%;
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--dark-color);
+            padding-bottom: 12px;
+        }
+        
+        .universe-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .title-divider {
+            color: var(--border-color);
+            font-weight: 300;
+        }
+        
+        .en-title {
+            font-size: 1.3rem;
+            color: var(--gray-color);
+            font-weight: 500;
+        }
+        
+        /* 링크 카드 정렬 방식 수정 (Flex-wrap으로 유연하게 배치) */
+        .about-links-line {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            width: 100%;
+        }
+
+        .icon-link-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            background-color: var(--light-bg);
+            padding: 24px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            border: 1px solid #f3f4f6;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .icon-link-item:hover {
+            background-color: #ffffff;
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 아이콘별 고유 배경색 정의 적용 */
+        .icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            color: #ffffff;
+        }
+        .bg-linkedin { background-color: #0a66c2; }
+        .bg-github   { background-color: #24292e; }
+        .bg-velog    { background-color: #20c997; }
+        .bg-storyboard { background-color: #f59e0b; }
+        
+        .icon-wrapper svg {
             width: 24px;
             height: 24px;
-            flex-shrink: 0;
         }
 
-        .about-info-title {
-            font-size: 0.85rem;
-            color: var(--gray-color);
-            margin-bottom: 5px;
+        .icon-link-label {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1f2937;
+            transition: color 0.2s ease;
+        }
+        
+        .icon-link-item:hover .icon-link-label {
+            color: var(--primary-color);
         }
 
-        .about-info-desc {
-            font-size: 0.95rem;
-            font-weight: 500;
-            word-break: break-all;
-        }
-
+        /* 5. Contributions & Skills 구역 구조 */
         .sub-info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -227,29 +339,23 @@
             color: var(--dark-color);
         }
 
-        /* --- Contributions 태그 영역 전면 수정 --- */
         .strength-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;               /* 태그들 사이의 여유 공간 */
+            gap: 8px;
             margin-bottom: 24px;
             padding-bottom: 16px;
-            border-bottom: 1px solid #f3f4f6;
+            border-bottom: 1px solid var(--border-color);
         }
         
-        /* 억지스러운 동그란 박스를 없애고 깔끔한 해시태그 디자인으로 변경 */
         .strength-tag {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 700;
-            color: #2563eb;          /* 아이덴티티 블루 컬러 사용 */
-            background: none !important; /* 배경 투명화 */
-            border: none !important;     /* 테두리 제거 */
-            padding: 0 !important;       /* 내부 여백 제거로 글자 깨짐 완전 방지 */
-            white-space: nowrap;     /* 어떤 상황에서도 글자 줄바꿈 금지 */
-        }
-
-        .skill-item {
-            margin-bottom: 20px;
+            color: var(--primary-color);
+            background-color: #eff6ff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
         }
 
         .skill-list {
@@ -257,473 +363,46 @@
             flex-direction: column;
             gap: 16px;
         }
+
+        .skill-item {
+            margin-bottom: 5px;
+        }
         
         .skill-info {
             display: flex;
             justify-content: space-between;
             font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 8px;
         }
 
-        .skill-bar {
-            width: 100%;
-            height: 8px;
-            background-color: var(--border-color);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .skill-bar-progress {
-            height: 100%;
-            background-color: var(--primary-color);
-            width: 0%;
-            border-radius: 10px;
-            transition: width 1s ease-in-out;
-        }
-
-        /* 상중하 텍스트 공통 스타일 */
         .skill-level {
             font-size: 0.9rem;
             font-weight: 800;
         }
 
-        /* 1. '상' 상태 (Red) */
-        .level-high {
-            color: #ef4444 !important; /* 상 텍스트 빨간색 */
-        }
-        .skill-step-bar.level-high .step.active {
-            background-color: #ef4444; /* 활성화된 칸 빨간색 */
-        }
+        .level-high { color: #ef4444 !important; }
+        .level-mid  { color: #2563eb !important; }
+        .level-low  { color: #10b981 !important; }
         
-        /* 2. '중' 상태 (Blue) */
-        .level-mid {
-            color: #2563eb !important; /* 중 텍스트 파란색 */
-        }
-        .skill-step-bar.level-mid .step.active {
-            background-color: #2563eb; /* 활성화된 칸 파란색 */
-        }
-        
-        /* 3. '하' 상태 (Green) */
-        .level-low {
-            color: #10b981 !important; /* 하 텍스트 녹색 */
-        }
-        .skill-step-bar.level-low .step.active {
-            background-color: #10b981; /* 활성화된 칸 녹색 */
-        }
-        
-        /* --- 3개로 쪼개진 실전 스텝 바 기본 스타일 --- */
         .skill-step-bar {
             display: flex;
-            gap: 4px; /* 3개의 칸을 완벽하게 분할하는 구분선 역할 */
+            gap: 4px;
             width: 100%;
             height: 10px;
         }
         
-        /* 개별 칸의 기본 상태 (비어있는 회색 칸) */
         .skill-step-bar .step {
             flex: 1;
-            background-color: #e5e7eb; /* 채워지지 않은 칸의 기본 배경 */
+            background-color: #e5e7eb;
             border-radius: 2px;
         }
         
-        .license-item, .edu-item {
-            padding: 15px 0;
-            border-bottom: 1px dashed var(--border-color);
-        }
+        .skill-step-bar.level-high .step.active { background-color: #ef4444; }
+        .skill-step-bar.level-mid .step.active { background-color: #2563eb; }
+        .skill-step-bar.level-low .step.active { background-color: #10b981; }
 
-        /* --- Details 세로 정렬 구조 적용 --- */
-        .edu-list {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;               /* 각 항목 간 격리 여백 */
-        }
-        
-        .edu-item {
-            display: flex;
-            flex-direction: column;  /* 좌우 정렬에서 위(라벨)-아래(내용) 정렬로 전면 수정 */
-            align-items: flex-start; /* 왼쪽 정렬 */
-            gap: 4px;                /* 라벨과 실제 내용 사이의 좁은 간격 */
-        }
-        
-        .edu-label {
-            font-size: 0.85rem;      /* 라벨은 작고 옅게 처리하여 시선 방해 차단 */
-            color: #6b7280;
-            font-weight: 600;
-        }
-        
-        .edu-val {
-            font-size: 1.1rem;       /* 핵심 데이터는 크게 확대 */
-            color: #111827;
-            font-weight: 800;        /* 묵직하게 두께 부여 */
-            display: block;
-        }
-        
-        /* 자격증 두 개가 세로로 이쁘게 쌓이도록 래퍼 클래스 지정 */
-        .edu-val-group {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;                /* 정보처리기사와 SQLD 사이의 간격 */
-        }
-        
-        .edu-item p {
-            color: var(--gray-color);
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-
-        /* 4. EXPERIENCE */
-        .exp-timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            position: relative;
-        }
-
-        .exp-timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background-color: var(--border-color);
-        }
-
-        .exp-row {
-            display: flex;
-            position: relative;
-            padding-left: 60px;
-        }
-
-        .exp-row::before {
-            content: '';
-            position: absolute;
-            left: 12px;
-            top: 8px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background-color: #ffffff;
-            border: 4px solid var(--primary-color);
-            z-index: 2;
-        }
-
-        .exp-time {
-            width: 200px;
-            flex-shrink: 0;
-            font-weight: 700;
-            color: var(--primary-color);
-            font-size: 1.1rem;
-        }
-
-        .exp-body {
-            flex-grow: 1;
-        }
-
-        .exp-company {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .exp-team {
-            font-size: 1rem;
-            color: var(--gray-color);
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-
-        .exp-details {
-            background-color: var(--light-bg);
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        .exp-project-title {
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--dark-color);
-        }
-
-        .exp-desc {
-            font-size: 0.95rem;
-            color: var(--gray-color);
-        }
-
-        /* 5. PROJECT */
-        .proj-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 40px;
-        }
-
-        .proj {
-            background: #ffffff;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .proj:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-        }
-
-        .proj-main-img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-        }
-
-        .proj-content {
-            padding: 30px;
-        }
-
-        .proj-content-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .proj-content-text {
-            color: var(--gray-color);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* 수치화 대시보드 섹션 스타일 */
-        #stats-dashboard {
-            padding: 80px 10%;
-            background-color: #ffffff;
-        }
-        
-        /* 1. 카드를 감싸는 컨테이너 설정 */
-        .stats-container {
-            display: flex;
-            gap: 20px; /* 카드 사이의 간격 */
-            flex-wrap: wrap; /* 화면이 좁아지면 자연스럽게 아래로 떨어지도록 */
-        }
-        
-        /* 2. 개별 스탯 카드 스타일 (하단 쓸데없는 여백 제거) */
-        .stats-card {
-            flex: 1;
-            min-width: 200px;
-            background-color: transparent !important; /* 배경 투명하게 */
-            border: none !important;                  /* 테두리 제거 */
-            box-shadow: none !important;              /* 그림자 제거 */
-            
-            /* 여백 최적화 */
-            padding: 10px 0 !important;               /* 위아래 최소한의 여백만 남김 */
-            height: auto !important;                  /* 고정 높이를 해제하여 하단 공백 제거 */
-            
-            /* 밑줄 원천 차단 */
-            text-decoration: none !important;
-        }
-        
-        /* 숫자가 너무 커서 라벨과 겹치지 않도록 감싸는 박스에 여백 추가 */
-        .resume-stat-item {
-            display: flex;
-            flex-direction: column;           /* 라벨을 위로, 숫자를 아래로 배치하는 것을 추천 (선택) */
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-        
-        /* 3. 상단 작은 라벨 */
-        .stat-label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: #6b7280;                           /* 차분한 회색 */
-            margin-bottom: 6px;                       /* 숫자와의 간격 */
-            text-decoration: none !important;
-        }
-
-        /* 4. 압도적인 대형 숫자 (최소 2배 이상 크기) */
-        .stats-num {
-            font-size: 3.8rem;                        /* 시선을 사로잡는 압도적인 크기 */
-            font-weight: 900;                         /* 가장 두껍게 */
-            color: #1e40af;                           /* 신뢰감을 주는 확실한 블루 계열 */
-            line-height: 1 !important;                /* 행간을 바짝 붙여 불필요한 공백 제거 */
-            letter-spacing: -0.04em;                  /* 자간 밀착 */
-            display: inline-block;
-            text-decoration: none !important;         /* 밑줄 제거 */
-        }
-
-        /* 5. 숫자 옆 % 단위 */
-        .stat-unit {
-            font-size: 1.6rem;                        /* 숫자의 절반 크기 수준 */
-            font-weight: 800;
-            color: #1e40af;                           /* 숫자와 동일한 블루 */
-            margin-left: 2px;
-            vertical-align: baseline;                 /* 숫자 하단 라인에 맞춤 */
-            text-decoration: none !important;         /* 밑줄 제거 */
-        }
-
-        /* 6. 하단 세부 설명 (설명이 끝나면 박스 여백도 딱 끝나도록) */
-        .stats-desc {
-            font-size: 0.9rem;
-            line-height: 1.4;
-            color: #374151;
-            margin-top: 10px;                         /* 숫자와의 최소 간격 */
-            margin-bottom: 0 !important;              /* 하단 여백 완전 제거 */
-            text-decoration: none !important;
-        }
-        
-        /* 마우스 호버 시에도 밑줄이 생기지 않도록 방지 */
-        .stats-card *, .stats-card:hover * {
-            text-decoration: none !important;
-            border-bottom: none !important;
-        }
-        
-        .stats-card::after {
-            content: '';
-            position: absolute;
-            top: 65px;
-            left: 10px;
-            width: 35px;
-            height: 3px;
-            background-color: var(--primary-color);
-        }
-        
-        .stats-label {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--dark-color);
-            margin-top: 15px;
-            margin-bottom: 12px;
-        }
-
-        /* --- Develop Universe 타이틀 및 부연설명 구역 --- */
-        .link-universe-container {
-            width: 100%;
-            margin-top: 20px;
-            margin-bottom: 40px;
-            box-sizing: border-box;
-        }
-        
-       .universe-header {
-            width: 100%;
-            margin-bottom: 24px;
-            border-bottom: 2px solid #111827; /* 타이틀 아래 든든한 경계선 추가 */
-            padding-bottom: 12px;
-        }
-        
-        .universe-title {
-            font-size: 1.65rem; /* 글씨 크기 확대 */
-            font-weight: 800;
-            color: #111827;
-            margin: 0;
-            letter-spacing: -0.03em;
-        }
-        
-        .universe-subtitle {
-            font-size: 0.88rem;
-            color: #6b7280;
-            font-weight: 500;
-        }
-
-        .title-divider {
-            color: #d1d5db;
-            margin: 0 8px;
-            font-weight: 300;
-        }
-        
-        .en-title {
-            font-size: 1.45rem;
-            color: #4b5563;
-            font-weight: 600;
-        }
-        
-        /* --- 한 줄 링크 배치 스타일 --- */
-        .about-links-line {
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* 아이콘과 텍스트 중앙 정렬 */
-            justify-content: center;
-            gap: 12px;
-            background-color: #f9fafb;
-            padding: 24px 16px;
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.25s ease;
-            border: 1px solid #f3f4f6;
-        }
-        
-        /* 개별 텍스트 링크 아이템 구조 */
-        .text-link-item {
-            flex: 1; /* ★ 핵심: 웅장하게 꽉 차도록 영역을 넓힘 */
-            display: flex;
-            flex-direction: column;
-            gap: 8px; /* 라벨과 URL 사이 간격 확대 */
-            text-decoration: none;
-            background-color: #f9fafb; /* 미세한 배경색을 주어 빈 공간 채움 */
-            padding: 16px; /* 내부 여백을 주어 텍스트가 꽉 차 보임 */
-            border-radius: 8px;
-            transition: all 0.2s ease-in-out;
-        }
-        
-        /* 옅은 상단 제목 */
-        .link-label {
-          font-size: 0.95rem;
-            color: #6b7280;
-            font-weight: 700;
-        }
-        
-        /* 강조할 메인 URL 링크 텍스트 */
-        .link-url {
-            font-size: 1.15rem; /* 글씨 크기 확대 */
-            color: #2563eb;
-            font-weight: 800;
-            word-break: break-all; /* 주소가 길어도 영역 밖으로 깨짐 방지 */
-            transition: color 0.2s ease;
-        }
-
-        .icon-link-item:hover {
-            background-color: #ffffff;
-            border-color: #2563eb;
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-        }
-
-        /* 아이콘 원형 배경 래퍼 */
-        .icon-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            color: #ffffff;
-        }
-        
-        .icon-wrapper svg {
-            width: 26px;
-            height: 26px;
-        }
-
-        /* 하단 텍스트 라벨 */
-        .icon-link-label {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #1f2937;
-            transition: color 0.2s ease;
-        }
-        
-        .icon-link-item:hover .icon-link-label {
-            color: #2563eb;
-        }
-        
-        /* 링크 마우스 오버 효과 (깔끔하게 언더라인만 등장) */
-        .text-link-item:hover{
-            background-color: #f3f4f6;
-            transform: translateY(-2px);
-        }
-        
-        /* 반응형 디자인 수립 */
+        /* 📱 반응형 웹 디자인 수립 (태블릿 & 모바일 표준) */
         @media screen and (max-width: 1024px) {
             header { padding: 0 5%; }
             section { padding: 80px 5%; }
@@ -731,128 +410,39 @@
             .intro-image-zone { order: -1; }
             .intro-text { font-size: 2.2rem; }
             .sub-info-grid { grid-template-columns: 1fr; }
-            .exp-row { flex-direction: column; gap: 10px; }
-            .exp-time { width: 100%; }
-            .stats-container { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
+            .about-links-line { grid-template-columns: repeat(2, 1fr); }
         }
 
-        /* 💡 가독성을 극대화한 모바일 반응형 코드 수정 단락 */
         @media screen and (max-width: 600px) {
             header {
                 flex-direction: column;
-                align-items: center; /* 로고와 메뉴 모두 중앙 정렬하여 안정감 확보 */
-                padding: 15px 20px 10px 20px;
-                gap: 12px;
+                align-items: center;
+                padding: 12px 20px;
+                gap: 10px;
             }
         
-            .header-logo {
-                height: 36px;
-            }
-        
-            .header-nav {
-                width: 100%;
-                display: flex;
-                overflow-x: auto;
-                white-space: nowrap;
-                justify-content: flex-start;
-                padding: 4px 10px 10px 10px; /* 아래쪽 패딩을 주어 커스텀 스크롤바 공간 확보 */
-                gap: 12px; /* 칩 사이의 간격을 넓혀 가독성 향상 */
-                -webkit-overflow-scrolling: touch;
-                mask-image: none; /* 답답하게 가리던 그라데이션 제거 */
-                -webkit-mask-image: none;
-            }
+            .header-logo { height: 34px; }
+            .header-nav { gap: 16px; }
+            .header-nav a { font-size: 0.85rem; }
             
-            /* 💡 스크롤이 가능하다는 것을 얇고 깔끔한 바 형태로 직관적 명시 */
-            .header-nav::-webkit-scrollbar {
-                height: 3px;
-            }
-            .header-nav::-webkit-scrollbar-track {
-                background: #f1f3f5;
-            }
-            .header-nav::-webkit-scrollbar-thumb {
-                background: #ced4da;
-                border-radius: 2px;
-            }
-
-            .header-nav a {
-                font-size: 0.88rem; /* 미세하게 크기 조절 */
-                font-weight: 500;
-                color: #495057;
-                background-color: #f1f3f5;
-                padding: 8px 16px; /* 여백을 넓혀 터치 타겟과 텍스트 분리 확보 */
-                border-radius: 30px;
-                transition: all 0.15s ease;
-            }
-
-            .header-nav a:hover, 
-            .header-nav a:active {
-                color: #ffffff;
-                background-color: var(--primary-color);
-                font-weight: 700;
-            }
+            main { margin-top: 110px; }
+            section { padding: 60px 20px; }
             
-            main {
-                margin-top: 130px; /* 헤더 공간만큼 메인 콘텐츠를 여유 있게 내림 */
-            }
-        
-            .intro-text {
-                font-size: 1.7rem;
-                text-align: left;
-            }
-        
-            .intro-text-detail {
-                font-size: 0.95rem;
-                text-align: left;
-            }
+            .intro-text { font-size: 1.8rem; text-align: center; }
+            .intro-text-detail { font-size: 0.95rem; text-align: center; }
             
-            section {
-                padding: 50px 20px;
-            }
-
-            .stats-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .stats-card::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .universe-title {
-                font-size: 1.3rem; /* 모바일 전용 타이틀 크기 축소 */
-            }
-            .en-title {
-                display: block; /* 모바일에선 부제목을 아랫줄로 내려 가독성 확보 */
-                font-size: 1rem;
-                margin-top: 4px;
-            }
-            .title-divider {
-                display: none; /* 모바일용 구분바 제거 */
-            }
+            .stats-container { grid-template-columns: 1fr; text-align: center; }
+            .stats-card { align-items: center; }
             
-            /* 4열 배치를 모바일에서는 깔끔하게 2열 2행(총 4칸) 격자로 전환 */
-            .about-links-line {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
+            .universe-title { font-size: 1.2rem; flex-direction: column; align-items: flex-start; gap: 4px; }
+            .title-divider { display: none; }
+            .en-title { font-size: 0.95rem; }
             
-            .icon-link-item {
-                padding: 20px 12px; /* 패딩 최적화 */
-            }
-            
-            .icon-wrapper {
-                width: 46px;
-                height: 46px;
-            }
-            
-            .icon-wrapper svg {
-                width: 22px;
-                height: 22px;
-            }
-            
-            .icon-link-label {
-                font-size: 0.95rem; /* 모바일 폰트 크기 다운사이징 */
-            }
+            .about-links-line { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .icon-link-item { padding: 16px 8px; gap: 10px; }
+            .icon-wrapper { width: 44px; height: 44px; }
+            .icon-wrapper svg { width: 20px; height: 20px; }
+            .icon-link-label { font-size: 0.88rem; }
         }
     </style>
 </head>
@@ -889,26 +479,25 @@
         <section id="boards">
             <h2 class="section-title">BOARDS</h2>
             <div class="stats-container">
-                
                 <div class="stats-card">
                     <span class="stat-label">실무 프로젝트</span>
-                    <div>
+                    <div class="stats-num-wrapper">
                         <span class="stats-num">5</span><span class="stat-unit">개↑</span>
                     </div>
-                    <p class="stats-desc">금융권 차세대 시스템 개발 등<br />다양한 프로젝트 경력 및 문제 해결 경험 보유</p>
+                    <p class="stats-desc">금융권 차세대 시스템 개발 등 다양한 프로젝트 경력 및 문제 해결 경험 보유</p>
                 </div>
 
                 <div class="stats-card">
                     <span class="stat-label">교육 수료</span>
-                    <div>
+                    <div class="stats-num-wrapper">
                         <span class="stats-num">27</span><span class="stat-unit">개↑</span>
                     </div>
-                    <p class="stats-desc">일단 부딪히면서 도전하고 성장하며<br />행동을 추구하는 사람</p>
+                    <p class="stats-desc">일단 부딪히면서 도전하고 성장하며 행동을 추구하는 사람</p>
                 </div>
                 
                 <div class="stats-card">
                     <span class="stat-label">백로그</span>
-                    <div>
+                    <div class="stats-num-wrapper">
                         <span class="stats-num">726</span><span class="stat-unit">개↑</span>
                     </div>
                     <p class="stats-desc">기록으로 남겨지는 집요함과 꾸준함</p>
@@ -916,7 +505,7 @@
         
                 <div class="stats-card">
                     <span class="stat-label">트러블 슈팅</span>
-                    <div>
+                    <div class="stats-num-wrapper">
                         <span class="stats-num">73</span><span class="stat-unit">%</span>
                     </div>
                     <p class="stats-desc">문제 해결을 위한 사고 및 설계 과정 중심의 기록</p>
@@ -924,12 +513,11 @@
         
                 <div class="stats-card">
                     <span class="stat-label">개발 경력</span>
-                    <div>
+                    <div class="stats-num-wrapper">
                         <span class="stats-num">3</span><span class="stat-unit">년차</span>
                     </div>
                     <p class="stats-desc">작지만 강한 개발자</p>
                 </div>
-        
             </div>
         </section>
         
@@ -938,7 +526,11 @@
         
             <div class="link-universe-container">
                 <div class="universe-header">
-                    <h2 class="universe-title">이효균의 개발 기록 <span class="title-divider">|</span> <span class="en-title">Develop Universe</span></h2>
+                    <h2 class="universe-title">
+                        이효균의 개발 기록 
+                        <span class="title-divider">|</span> 
+                        <span class="en-title">Develop Universe</span>
+                    </h2>
                 </div>
                 
                 <div class="about-links-line">
@@ -974,10 +566,7 @@
         
             <div class="sub-info-grid">
                 <div class="sub-info-box">
-                    <div class="box-header">
-                        <h3>Contributions</h3>
-                    </div>
-                    
+                    <h3>Contributions</h3>
                     <div class="strength-tags">
                         <span class="strength-tag">#0_to_1</span>
                         <span class="strength-tag">#레거시_개선</span>
@@ -989,7 +578,6 @@
                     </div>
                     
                     <div class="skill-list">
-    
                         <div class="skill-item">
                             <div class="skill-info">
                                 <span>Java / Spring</span>
@@ -999,83 +587,6 @@
                                 <div class="step active"></div>
                                 <div class="step active"></div>
                                 <div class="step active"></div>
-                            </div>
-                        </div>
-                    
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>데이터베이스 / 모델링</span>
-                                <span class="skill-level level-high">상</span>
-                            </div>
-                            <div class="skill-step-bar level-high">
-                                <div class="step active"></div>
-                                <div class="step active"></div>
-                                <div class="step active"></div>
-                            </div>
-                        </div>
-                    
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>클린 아키텍처</span>
-                                <span class="skill-level level-high">상</span>
-                            </div>
-                            <div class="skill-step-bar level-high">
-                                <div class="step active"></div>
-                                <div class="step active"></div>
-                                <div class="step active"></div>
-                            </div>
-                        </div>
-                    
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>분산 환경 (Redis / Kafka)</span>
-                                <span class="skill-level level-mid">중</span>
-                            </div>
-                            <div class="skill-step-bar level-mid">
-                                <div class="step active"></div>
-                                <div class="step active"></div>
-                                <div class="step"></div>
-                            </div>
-                        </div>
-                    
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>TDD (테스트 주도 개발)</span>
-                                <span class="skill-level level-mid">중</span>
-                            </div>
-                            <div class="skill-step-bar level-mid">
-                                <div class="step active"></div>
-                                <div class="step active"></div>
-                                <div class="step"></div>
-                            </div>
-                        </div>
-                    
-                    </div>
-                </div>
-            
-                <div class="sub-info-box">
-                    <div class="box-header">
-                        <h3>Details</h3>
-                    </div>
-                    
-                    <div class="edu-list">
-                        <div class="edu-item">
-                            <span class="edu-label">생년월일</span>
-                            <strong class="edu-val">1994.01.06</strong>                                
-                        </div>
-                        <div class="edu-item">
-                            <span class="edu-label">학력</span>
-                            <strong class="edu-val">한양대학교 ERICA 기계공학과</strong>                                
-                        </div>
-                        <div class="edu-item">
-                            <span class="edu-label">전체(전공) 학점</span>
-                            <strong class="edu-val">4.2(4.18) / 4.5</strong>                                
-                        </div>
-                        <div class="edu-item">
-                            <span class="edu-label">자격증</span>
-                            <div class="edu-val-group">
-                                <strong class="edu-val">정보처리기사</strong>
-                                <strong class="edu-val">SQLD</strong>
                             </div>
                         </div>
                     </div>
