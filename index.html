@@ -604,7 +604,8 @@
         /* 7. PROJECTS 섹션 스타일 */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-top: 30px;
         }
@@ -683,7 +684,7 @@
                 left: -60px;
             }
             
-            .project-grid { grid-template-columns: 1fr; }
+            .project-grid { /*grid-template-columns: 1fr; */ grid-template-columns: repeat(3, 1fr);}
         }
 
         @media screen and (max-width: 600px) {
@@ -739,7 +740,7 @@
             .en-title { font-size: 0.95rem; }
 
             .about-links-line { 
-                grid-template-columns: repeat(2, 1fr); 
+                grid-template-columns: repeat(3, 1fr); 
                 gap: 10px;
             }
             .icon-link-item { 
@@ -1202,6 +1203,45 @@
 
         <section id="project">
             <h2 class="section-title">PROJECTS</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3 class="project-title">프로젝트 이름</h3>
+                    <p class="project-period">2023.01 - 2023.06</p>
+                    <p class="project-desc">프로젝트에 대한 간단한 설명입니다.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">REST API</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3 class="project-title">프로젝트 이름</h3>
+                    <p class="project-period">2023.01 - 2023.06</p>
+                    <p class="project-desc">프로젝트에 대한 간단한 설명입니다.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">REST API</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3 class="project-title">프로젝트 이름</h3>
+                    <p class="project-period">2023.01 - 2023.06</p>
+                    <p class="project-desc">프로젝트에 대한 간단한 설명입니다.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">REST API</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="project-grid">
                 <div class="project-card">
                     <h3 class="project-title">프로젝트 이름</h3>
