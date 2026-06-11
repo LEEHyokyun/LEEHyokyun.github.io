@@ -641,10 +641,16 @@
         /* --- 한 줄 링크 배치 스타일 --- */
         .about-links-line {
             display: flex;
-            width: 100%;
-            justify-content: space-between;
-            gap: 32px; /* 아이템 간 여유 공간 */
-            box-sizing: border-box;
+            flex-direction: column;
+            align-items: center; /* 아이콘과 텍스트 중앙 정렬 */
+            justify-content: center;
+            gap: 12px;
+            background-color: #f9fafb;
+            padding: 24px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            border: 1px solid #f3f4f6;
         }
         
         /* 개별 텍스트 링크 아이템 구조 */
@@ -674,6 +680,41 @@
             font-weight: 800;
             word-break: break-all; /* 주소가 길어도 영역 밖으로 깨짐 방지 */
             transition: color 0.2s ease;
+        }
+
+        .icon-link-item:hover {
+            background-color: #ffffff;
+            border-color: #2563eb;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 아이콘 원형 배경 래퍼 */
+        .icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            color: #ffffff;
+        }
+        
+        .icon-wrapper svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        /* 하단 텍스트 라벨 */
+        .icon-link-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1f2937;
+            transition: color 0.2s ease;
+        }
+        
+        .icon-link-item:hover .icon-link-label {
+            color: #2563eb;
         }
         
         /* 링크 마우스 오버 효과 (깔끔하게 언더라인만 등장) */
@@ -776,6 +817,42 @@
                 left: 50%;
                 transform: translateX(-50%);
             }
+
+            .universe-title {
+                font-size: 1.3rem; /* 모바일 전용 타이틀 크기 축소 */
+            }
+            .en-title {
+                display: block; /* 모바일에선 부제목을 아랫줄로 내려 가독성 확보 */
+                font-size: 1rem;
+                margin-top: 4px;
+            }
+            .title-divider {
+                display: none; /* 모바일용 구분바 제거 */
+            }
+            
+            /* 4열 배치를 모바일에서는 깔끔하게 2열 2행(총 4칸) 격자로 전환 */
+            .about-links-line {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .icon-link-item {
+                padding: 20px 12px; /* 패딩 최적화 */
+            }
+            
+            .icon-wrapper {
+                width: 46px;
+                height: 46px;
+            }
+            
+            .icon-wrapper svg {
+                width: 22px;
+                height: 22px;
+            }
+            
+            .icon-link-label {
+                font-size: 0.95rem; /* 모바일 폰트 크기 다운사이징 */
+            }
         }
     </style>
 </head>
@@ -865,21 +942,32 @@
                 </div>
                 
                 <div class="about-links-line">
-                    <a href="https://www.linkedin.com/in/hyokyun/" target="_blank" class="text-link-item">
-                        <span class="link-label">링크드인</span>
-                        <span class="link-url">linkedin.com/in/hyokyun</span>
+                    <a href="https://www.linkedin.com/in/hyokyun/" target="_blank" class="icon-link-item">
+                        <div class="icon-wrapper bg-linkedin">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                        </div>
+                        <span class="icon-link-label">링크드인</span>
                     </a>
-                    <a href="https://github.com/leehyokyun" target="_blank" class="text-link-item">
-                        <span class="link-label">개발내역</span>
-                        <span class="link-url">github.com/leehyokyun</span>
+            
+                    <a href="https://github.com/leehyokyun" target="_blank" class="icon-link-item">
+                        <div class="icon-wrapper bg-github">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.38-1.99 1.03-2.69-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                        </div>
+                        <span class="icon-link-label">개발내역</span>
                     </a>
-                    <a href="https://velog.io/@gyrbs22" target="_blank" class="text-link-item">
-                        <span class="link-label">설계과정</span>
-                        <span class="link-url">velog.io/@gyrbs22</span>
+            
+                    <a href="https://velog.io/@gyrbs22" target="_blank" class="icon-link-item">
+                        <div class="icon-wrapper bg-velog">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                        </div>
+                        <span class="icon-link-label">설계과정</span>
                     </a>
-                    <a href="https://docs.google.com/presentation/d/1VLkLnOUk4nGhi-_sU1PrcWS0rJ16TapmLUh3PrAOAGY/edit?slide=id.g317751bba63_0_150#slide=id.g317751bba63_0_150" target="_blank" class="text-link-item">
-                        <span class="link-label">개발 가치관</span>
-                        <span class="link-url text-highlight">스토리 보드</span>
+            
+                    <a href="https://docs.google.com/presentation/d/1VLkLnOUk4nGhi-_sU1PrcWS0rJ16TapmLUh3PrAOAGY/edit?slide=id.g317751bba63_0_150#slide=id.g317751bba63_0_150" target="_blank" class="icon-link-item">
+                        <div class="icon-wrapper bg-storyboard">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                        </div>
+                        <span class="icon-link-label">스토리보드</span>
                     </a>
                 </div>
             </div>
