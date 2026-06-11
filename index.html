@@ -604,8 +604,7 @@
         /* 7. PROJECTS 섹션 스타일 */
         .project-grid {
             display: grid;
-            /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */ 
-            grid-template-columns: repeat(3, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 30px;
             margin-top: 30px;
         }
@@ -684,7 +683,7 @@
                 left: -60px;
             }
             
-            .project-grid { /*grid-template-columns: 1fr; */ grid-template-columns: repeat(3, minmax(0, 300px));}
+            .project-grid { grid-template-columns: 1fr; }
         }
 
         @media screen and (max-width: 600px) {
