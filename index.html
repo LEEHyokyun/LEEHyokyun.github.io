@@ -265,12 +265,13 @@
             font-weight: 500;
         }
 
-        /* 링크 카드 정렬 방식 수정 (Flex-wrap으로 유연하게 배치) */
+        /* 링크 카드 정렬 방식 - 4 컬럼 고정 */
         .about-links-line {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 16px;
             width: 100%;
+            margin-bottom: 50px;
         }
 
         .icon-link-item {
@@ -330,7 +331,12 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            margin-top: 50px;
+            width: 100%;
+        }
+
+        .sub-info-box {
+            display: flex;
+            flex-direction: column;
         }
 
         .sub-info-box h3 {
@@ -438,7 +444,25 @@
             font-size: 0.95rem;
         }
 
-        /* 6. EXPERIENCES 섹션 스타일 (개선) */
+        /* 6. EXPERIENCES 섹션 스타일 */
+        .exp-domains-summary {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .domain-summary-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            color: var(--primary-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #bfdbfe;
+            white-space: nowrap;
+        }
+
         .exp-timeline {
             display: flex;
             flex-direction: column;
@@ -450,7 +474,7 @@
         .exp-timeline::before {
             content: '';
             position: absolute;
-            left: 44px;
+            left: 100px;
             top: 30px;
             bottom: 0;
             width: 2px;
@@ -465,41 +489,47 @@
             padding-left: 0;
         }
 
-        /* 타임라인 동그라미 (노드) */
+        /* 타임라인 날짜 박스 */
         .exp-time {
             position: relative;
-            min-width: 100px;
-            padding-top: 5px;
+            min-width: 140px;
+        }
+
+        .exp-time-box {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
         }
 
         .exp-time::before {
             content: '';
             position: absolute;
-            left: -58px;
-            top: 8px;
+            left: -20px;
+            top: 12px;
             width: 16px;
             height: 16px;
             background-color: var(--primary-color);
             border: 3px solid #ffffff;
             border-radius: 50%;
             box-shadow: 0 0 0 2px var(--border-color);
+            z-index: 10;
         }
 
         .exp-time::after {
             content: '';
             position: absolute;
-            left: -60px;
-            top: 6px;
+            left: -22px;
+            top: 10px;
             width: 20px;
             height: 20px;
             border-radius: 50%;
             background-color: rgba(37, 99, 235, 0.1);
-        }
-
-        .exp-time-text {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--primary-color);
+            z-index: 5;
         }
 
         .exp-body {
@@ -643,15 +673,15 @@
             .about-links-line { grid-template-columns: repeat(2, 1fr); }
             
             .exp-timeline::before {
-                left: 44px;
+                left: 100px;
             }
             
             .exp-time::before {
-                left: -58px;
+                left: -20px;
             }
             
             .exp-time::after {
-                left: -60px;
+                left: -22px;
             }
             
             .project-grid { grid-template-columns: 1fr; }
@@ -731,25 +761,34 @@
             .stats-num { letter-spacing: -0.02em; }
             .stat-unit { font-size: 1.2rem; }
 
+            .exp-domains-summary {
+                flex-direction: column;
+            }
+
             .exp-timeline::before {
-                left: 32px;
+                left: 80px;
+            }
+
+            .exp-time {
+                min-width: 120px;
+            }
+
+            .exp-time-box {
+                font-size: 0.85rem;
+                padding: 8px 12px;
             }
 
             .exp-time::before {
-                left: -46px;
+                left: -16px;
                 width: 14px;
                 height: 14px;
                 border-width: 2px;
             }
 
             .exp-time::after {
-                left: -48px;
+                left: -18px;
                 width: 18px;
                 height: 18px;
-            }
-
-            .exp-time-text {
-                font-size: 0.85rem;
             }
 
             .exp-body {
@@ -882,7 +921,7 @@
                         <span class="icon-link-label">설계과정</span>
                     </a>
 
-                    <a href="https://docs.google.com/presentation/d/1VLkLnOUk4nGhi-_sU1PrcWS0rJ16TapmLUh3PrAOAGY/edit?slide=id.g317751bba63_0_150#slide=id.g317751bba63_0_150" target="_blank" clas[...]
+                    <a href="https://docs.google.com/presentation/d/1VLkLnOUk4nGhi-_sU1PrcWS0rJ16TapmLUh3PrAOAGY/edit?slide=id.g317751bba63_0_150#slide=id.g317751bba63_0_150" target="_blank" class="icon-link-item">
                         <div class="icon-wrapper bg-storyboard">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2z"/></s[...]
                         </div>
@@ -1000,28 +1039,34 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
         <section id="experience">
             <h2 class="section-title">EXPERIENCES</h2>
-            <div class="exp-timeline">
 
+            <!-- 도메인 요약 -->
+            <div class="exp-domains-summary">
+                <span class="domain-summary-tag">금융(여신/담보 등 수신계 ⦁ 계약/정산)</span>
+                <span class="domain-summary-tag">백오피스(계정 등 정보계)</span>
+                <span class="domain-summary-tag">MIS(경영정보)</span>
+            </div>
+
+            <div class="exp-timeline">
                 <div class="exp-row">
                     <div class="exp-time">
-                        <div class="exp-time-text">2023.01 ~ 2023.06</div>
+                        <div class="exp-time-box">2023.01 ~ 2023.06</div>
                     </div>
                     <div class="exp-body">
-                        <div class="exp-company">식스티헤르츠 주식회사</div>
-                        <div class="exp-team">EAC Registry</div>
+                        <div class="exp-company">식스티헬츠 주식회사</div>
+                        <div class="exp-team">백엔드 개발팀, 인터 개발자 · RESTful API 개발 및 데이터베이스 관리</div>
                         <div class="exp-domains">
                             <span class="domain-tag">백엔드 개발</span>
                             <span class="domain-tag">UI 개선</span>
                             <span class="domain-tag">성능 최적화</span>
                         </div>
                         <div class="exp-details">
-                            <div class="exp-project-title">📂 고객 관리 시스템 개선 프로젝트 (2023.02 ~ 2023.05)</div>
+                            <p class="exp-project-title">📋 고객 관리 시스템 개선 프로젝트 (2023.02 ~ 2023.05)</p>
                             <p class="exp-desc">React를 사용한 대시보드 UI 개선 및 성능 최적화 작업을 주도했습니다.</p>
                         </div>
                     </div>
@@ -1029,42 +1074,22 @@
 
                 <div class="exp-row">
                     <div class="exp-time">
-                        <div class="exp-time-text">2022.08 ~ 2022.11</div>
+                        <div class="exp-time-box">2022.08 ~ 2022.11</div>
                     </div>
                     <div class="exp-body">
                         <div class="exp-company">교보DTS 주식회사</div>
-                        <div class="exp-team">백엔드 개발팀, 인턴 개발자 ∙ RESTful API 개발 및 데이터베이스 관리</div>
+                        <div class="exp-team">백엔드 개발팀, 인터 개발자 · RESTful API 개발 및 데이터베이스 관리</div>
                         <div class="exp-domains">
-                            <span class="domain-tag">API 개발</span>
-                            <span class="domain-tag">금융 시스템</span>
+                            <span class="domain-tag">백엔드 개발</span>
                             <span class="domain-tag">데이터베이스</span>
+                            <span class="domain-tag">시스템 설계</span>
                         </div>
                         <div class="exp-details">
-                            <div class="exp-project-title">📂 소셜 미디어 분석 플랫폼 (2022.09 ~ 2022.11)</div>
-                            <p class="exp-desc">Node.js와 Express를 사용한 API 개발 및 MongoDB 연동 인터페이스를 구축했습니다.</p>
+                            <p class="exp-project-title">📋 거래 관리 시스템 개선 프로젝트</p>
+                            <p class="exp-desc">Legacy 코드 개선 및 새로운 기능 개발을 담당했습니다.</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="exp-row">
-                    <div class="exp-time">
-                        <div class="exp-time-text">2022.05 ~ 2022.07</div>
-                    </div>
-                    <div class="exp-body">
-                        <div class="exp-company">디스콰이엇 주식회사</div>
-                        <div class="exp-team">풀스택 개발팀, 프리랜서 개발자 ∙ 웹 애플리케이션 개발 및 배포</div>
-                        <div class="exp-domains">
-                            <span class="domain-tag">풀스택 개발</span>
-                            <span class="domain-tag">교육 플랫폼</span>
-                            <span class="domain-tag">아키텍처 설계</span>
-                        </div>
-                        <div class="exp-details">
-                            <div class="exp-project-title">📂 온라인 학습 플랫폼 개발 (2022.05 ~ 2022.07)</div>
-                            <p class="exp-desc">React와 Django를 사용한 풀스택 웹 애플리케이션 아키텍처 구현 및 기능을 개발했습니다.</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
 
@@ -1072,51 +1097,17 @@
             <h2 class="section-title">PROJECTS</h2>
             <div class="project-grid">
                 <div class="project-card">
-                    <h3 class="project-title">포트폴리오 웹사이트</h3>
-                    <p class="project-period">2024.01 ~ 진행 중</p>
-                    <p class="project-desc">개인 포트폴리오 웹사이트를 구축하여 프로젝트 경험과 기술 스택을 종합적으로 소개합니다.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTML</span>
-                        <span class="tech-tag">CSS</span>
-                        <span class="tech-tag">반응형</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3 class="project-title">차세대 금융 시스템</h3>
-                    <p class="project-period">2023.01 ~ 2023.06</p>
-                    <p class="project-desc">금융권 차세대 시스템 개발에 백엔드 엔지니어로 참여하여 핵심 API 및 데이터베이스 설계를 담당했습니다.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Java</span>
-                        <span class="tech-tag">Spring</span>
-                        <span class="tech-tag">MySQL</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3 class="project-title">소셜 미디어 분석 플랫폼</h3>
-                    <p class="project-period">2022.09 ~ 2022.11</p>
-                    <p class="project-desc">소셜 미디어 데이터를 수집하고 분석하는 플랫폼을 개발하여 인사이트 도출을 지원합니다.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Express</span>
-                        <span class="tech-tag">MongoDB</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3 class="project-title">온라인 학습 플랫폼</h3>
-                    <p class="project-period">2022.05 ~ 2022.07</p>
-                    <p class="project-desc">풀스택 웹 애플리케이션으로 강의 콘텐츠, 과제 제출, 성적 관리 기능을 제공합니다.</p>
+                    <h3 class="project-title">프로젝트 이름</h3>
+                    <p class="project-period">2023.01 - 2023.06</p>
+                    <p class="project-desc">프로젝트에 대한 간단한 설명입니다.</p>
                     <div class="project-tech">
                         <span class="tech-tag">React</span>
-                        <span class="tech-tag">Django</span>
-                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">REST API</span>
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
 </body>
 
