@@ -447,291 +447,81 @@
             .intro-text { font-size: 2.2rem; }
             .sub-info-grid { grid-template-columns: 1fr; }
             .about-links-line { grid-template-columns: repeat(2, 1fr); }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
         @media screen and (max-width: 600px) {
             header {
-                flex-direction: column;
+                flex-direction: row;
                 align-items: center;
                 padding: 12px 20px;
                 gap: 10px;
-
+                justify-content: space-between;
+                overflow-x: auto;
+                overflow-y: hidden;
             }
 
-            .header-logo { height: 34px; }
-            .header-nav { gap: 16px; }
-            .header-nav a { font-size: 0.85rem; }
-
-
-
-
-
-
-
-
-
-
-
-
-
+            .header-logo { 
+                height: 34px;
+                flex-shrink: 0;
+            }
+            
+            .header-nav { 
+                gap: 16px;
+                flex-shrink: 0;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                scroll-behavior: smooth;
+                padding-bottom: 4px;
+            }
+            
+            .header-nav a { 
+                font-size: 0.85rem;
+                flex-shrink: 0;
+            }
 
             main { margin-top: 110px; }
             section { padding: 60px 20px; }
 
-
-
-
-
-
             .intro-text { font-size: 1.8rem; text-align: center; }
             .intro-text-detail { font-size: 0.95rem; text-align: center; }
 
-
-
-
-
-
-
-
-            .stats-container { grid-template-columns: 1fr; text-align: center; }
-            .stats-card { align-items: center; }
+            .stats-container { 
+                grid-template-columns: 1fr; 
+                text-align: center;
+                gap: 20px;
+            }
+            .stats-card { 
+                align-items: center;
+                padding: 15px 0;
+            }
             .stats-num { font-size: 4rem; }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             .universe-title { font-size: 1.2rem; flex-direction: column; align-items: flex-start; gap: 4px; }
             .title-divider { display: none; }
             .en-title { font-size: 0.95rem; }
 
-
-
-
-
-
-
-
-
-
-
-
-            .about-links-line { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .icon-link-item { padding: 16px 8px; gap: 10px; }
+            .about-links-line { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 10px;
+            }
+            .icon-link-item { 
+                padding: 16px 8px; 
+                gap: 10px;
+            }
             .icon-wrapper { width: 44px; height: 44px; }
             .icon-wrapper svg { width: 20px; height: 20px; }
             .icon-link-label { font-size: 0.88rem; }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            .sub-info-grid { grid-template-columns: 1fr; gap: 30px; }
+            .sub-info-box h3 { font-size: 1.2rem; }
+            
+            .skill-list { gap: 12px; }
+            .skill-info { font-size: 0.9rem; }
+            
+            .stat-label { font-size: 0.95rem; }
+            .stats-num { letter-spacing: -0.02em; }
+            .stat-unit { font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -825,26 +615,26 @@
                 <div class="about-links-line">
                     <a href="https://www.linkedin.com/in/hyokyun/" target="_blank" class="icon-link-item">
                         <div class="icon-wrapper bg-linkedin">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.39v-1.2h-2.5v8.5h2.5v-4.34c0-.77.62-1.4 1.4-1.4.77 0 1.4.63 1.4 1.4v4.34h2.5M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.5H5.5v8.5h2.77z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0[...]
                         </div>
                         <span class="icon-link-label">링크드인</span>
                     </a>
 
                     <a href="https://github.com/leehyokyun" target="_blank" class="icon-link-item">
                         <div class="icon-wrapper bg-github">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.83-2.34 4.68-4.57 4.93.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.1[...]
                         </div>
                         <span class="icon-link-label">개발내역</span>
                     </a>
 
                     <a href="https://velog.io/@gyrbs22" target="_blank" class="icon-link-item">
                         <div class="icon-wrapper bg-velog">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="16" font-weight="bold" fill="white" font-family="Arial">V</text></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="16" font-weight="bold" fill="white" font-famil[...]
                         </div>
                         <span class="icon-link-label">설계과정</span>
                     </a>
 
-                    <a href="https://docs.google.com/presentation/d/1VLkLnOUk4nGhi-_sU1PrcWS0rJ16TapmLUh3PrAOAGY/edit?slide=id.g317751bba63_0_150#slide=id.g317751bba63_0_150" target="_blank" class="icon-link-item">
+                    <a href="https://docs.google.com/presentation/d/1VLkLnOUk4nGhi-_sU1PrcWS0rJ16TapmLUh3PrAOAGY/edit?slide=id.g317751bba63_0_150#slide=id.g317751bba63_0_150" target="_blank" clas[...]
                         <div class="icon-wrapper bg-storyboard">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
                         </div>
@@ -998,113 +788,10 @@
                     </div>
                 </div>
 
-                <div class="exp-row">
-                    <div class="exp-time">2022.05 ~ 2022.07</div>
-                    <div class="exp-body">
-                        <div class="exp-company">삼성전자 주식회사</div>
-                        <div class="exp-team">풀스택 개발팀, 프리랜서 개발자 ∙ 웹 애플리케이션 개발 및 배포</div>
-                        <div class="exp-details">
-                            <div class="exp-project-title">📂 온라인 학습 플랫폼 개발 (2022.05 ~ 2022.07)</div>
-                            <p class="exp-desc">React와 Django를 사용한 풀스택 웹 애플리케이션 아키텍처 구현 및 기능을 개발했습니다.</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <section id="project">
-            <h2 class="section-title">PROJECTS</h2>
-            <div class="proj-container">
-
-                <div class="proj" onclick="location.href='project.html'">
-                    <img src="image/p1.png" alt="프로젝트 이미지" class="proj-main-img" />
-                    <div class="proj-content">
-                        <div class="proj-content-title">이글루 모임 출석 자동화 프로젝트</div>
-                        <p class="proj-content-text">
-                            유학생 커뮤니티 플랫폼 개발을 목표로 하였습니다. 유학생들이 서로 정보를 공유하고 교류할 수 있도록 게시판, 채팅, 이벤트 관[...]
-                        </p>
-                    </div>
-                </div>
-
-                <div class="proj" onclick="location.href='project2.html'">
-                    <img src="image/p2.png" alt="프로젝트 이미지" class="proj-main-img" />
-                    <div class="proj-content">
-                        <div class="proj-content-title">백엔드 엔지니어링 오픈북 프로젝트</div>
-                        <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [...]
-                        </p>
-                    </div>
-                </div>
-
-                <div class="proj" onclick="location.href='project2.html'">
-                    <img src="image/p2.png" alt="프로젝트 이미지" class="proj-main-img" />
-                    <div class="proj-content">
-                        <div class="proj-content-title">식스티헤르츠 신재생 에너지 거래 시스템 구축 및 관리</div>
-                        <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [...]
-                        </p>
-                    </div>
-                </div>
-
-                <div class="proj" onclick="location.href='project2.html'">
-                    <img src="image/p2.png" alt="프로젝트 이미지" class="proj-main-img" />
-                    <div class="proj-content">
-                        <div class="proj-content-title">KIDB 채권 계약 관리 차세대 시스템 구축</div>
-                        <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [...]
-                        </p>
-                    </div>
-                </div>
-
-                <div class="proj" onclick="location.href='project2.html'">
-                    <img src="image/p2.png" alt="프로젝트 이미지" class="proj-main-img" />
-                    <div class="proj-content">
-                        <div class="proj-content-title">KB Bukopin 국외전산 차세대 시스템 구축</div>
-                        <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [...]
-                        </p>
-                    </div>
-                </div>
-
-                <div class="proj" onclick="location.href='project2.html'">
-                    <img src="image/p2.png" alt="프로젝트 이미지" class="proj-main-img" />
-                    <div class="proj-content">
-                        <div class="proj-content-title">교보증권 HTS 시스템 개발 및 운영관리</div>
-                        <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [...]
-                        </p>
-                    </div>
-                </div>    
-
-                <div class="proj" onclick="location.href='project2.html'">
-                    <img src="image/p2.png" alt="프로젝트 이미지" class="proj-main-img" />
-                    <div class="proj-content">
-                        <div class="proj-content-title">이 외 프로젝트</div>
-                        <p class="proj-content-text">
-                            CodeCollaborate는 개발자들을 위한 협업 플랫폼입니다. 개발자들이 프로젝트를 함께 작업하고 코드 리뷰, 실시간 채팅, 이슈 트래킹 [...]
-                        </p>
-                    </div>
-                </div>    
-
-            </div>
-        </section>
     </main>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            animateSkillBars();
-        });
-
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll(".skill-bar");
-            skillBars.forEach((bar) => {
-                const progress = bar.getAttribute("data-progress");
-                const progressBar = bar.querySelector(".skill-bar-progress");
-                if (progressBar) {
-                    progressBar.style.width = `${progress}%`;
-                }
-            });
-        }
-    </script>
 </body>
+
 </html>
