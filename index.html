@@ -66,7 +66,6 @@
             object-fit: contain;
             cursor: pointer;
             transition: transform 0.2s ease;
-
         }
 
         .header-logo:hover {
@@ -235,7 +234,9 @@
         /* 4. ABOUT (Develop Universe) */
         .link-universe-container {
             width: 100%;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .universe-header {
@@ -265,13 +266,12 @@
             font-weight: 500;
         }
 
-        /* 링크 카드 정렬 방식 수정 (Flex-wrap으로 유연하게 배치) */
+        /* 링크 카드 정렬 방식 수정 */
         .about-links-line {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 16px;
             width: 100%;
-            margin-bottom: 50px;
         }
 
         .icon-link-item {
@@ -331,7 +331,11 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            margin-top: 50px;
+            width: 100%;
+        }
+
+        .sub-info-box {
+            width: 100%;
         }
 
         .sub-info-box h3 {
@@ -439,7 +443,7 @@
             font-size: 0.95rem;
         }
 
-        /* 6. EXPERIENCES 섹션 스타일 (개선) */
+        /* 6. EXPERIENCES 섹션 스타일 */
         .exp-domains-summary {
             display: flex;
             gap: 12px;
@@ -893,28 +897,28 @@
                 <div class="about-links-line">
                     <a href="https://www.linkedin.com/in/hyokyun/" target="_blank" class="icon-link-item">
                         <div class="icon-wrapper bg-linkedin">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-[...]
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-1.81 0-3.26 1.46-3.26 3.26v5.3m-7.28-9.48a2.12 2.12 0 1 1 0-4.24 2.12 2.12 0 0 1 0 4.24M3.5 20.25h4.24V9.75H3.5v10.5z"/></svg>
                         </div>
                         <span class="icon-link-label">링크드인</span>
                     </a>
 
                     <a href="https://github.com/leehyokyun" target="_blank" class="icon-link-item">
                         <div class="icon-wrapper bg-github">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.1[...]
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33s1.7.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.83-2.34 4.68-4.57 4.93.36.31.69.92.69 1.85v2.75c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
                         </div>
                         <span class="icon-link-label">개발내역</span>
                     </a>
 
                     <a href="https://velog.io/@gyrbs22" target="_blank" class="icon-link-item">
                         <div class="icon-wrapper bg-velog">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="16" font-weight="bold" fill="white" font-[...]
+                            <svg viewBox="0 0 24 24" fill="currentColor"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="14" font-weight="bold" fill="white">V</text></svg>
                         </div>
                         <span class="icon-link-label">설계과정</span>
                     </a>
 
                     <a href="https://docs.google.com/presentation/d/1VLkLnOUk4nGhi-_sU1PrcWS0rJ16TapmLUh3PrAOAGY/edit?slide=id.g317751bba63_0_150#slide=id.g317751bba63_0_150" target="_blank" class="icon-link-item">
                         <div class="icon-wrapper bg-storyboard">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2z"/></s[...]
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
                         </div>
                         <span class="icon-link-label">스토리보드</span>
                     </a>
