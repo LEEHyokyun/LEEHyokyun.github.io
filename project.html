@@ -6,667 +6,634 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://scccurri.github.io/portfolio/index.html" />
-    <meta property="og:title" content="김르탄 이력서" />
+    <meta property="og:title" content="이효균의 포트폴리오 - 이글루 출결 관리 자동화 프로젝트" />
     <meta property="og:image" content="image/OGimage.png" />
-    <meta property="og:description" content="김르탄 이력서입니다." />
+    <meta property="og:description" content="LEE HYO KYUN PORTFOLIO_IGLOO" />
     <meta property="og:site_name" content="SCC Portfolio" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
-    <title>김르탄 이력서</title>
+    <title>LEEHYOKYUN PORTFOLIO_IGLOO</title>
     <style>
+        /* ==========================================================================
+           1. 변수 선언 및 기본 세팅 (기존 아이덴티티 유지)
+           ========================================================================== */
         :root {
-            --main-bg-color: #fff;
+            --main-bg-color: #ffffff;
             --main-font-color: #1d1f20;
-            font-family: "NanumSquareOTF-Regular", Helvetica;
-            font-weight: 400;
-            --card-margin: 6.1rem 6.8rem 0;
-            --card-height: 30.1rem;
-            --card-border-radius: 0.9rem;
             --text-color-secondary: #4a4a4a;
+            --border-color: #1d1f20; /* 명확한 그리드 경계선을 위한 컬러 */
+            --accent-error: #e74c3c;
+            --accent-success: #2ecc71;
+            --card-border-radius: 0.9rem;
+            
+            font-family: "NanumSquareOTF-Regular", Helvetica, sans-serif;
+            font-weight: 400;
+            font-size: 16px; /* rem 계산 기준선 */
         }
 
         body {
             margin: 0;
+            padding: 0;
             background-image: url("image/bg.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: scroll;
             overflow-x: hidden;
+            color: var(--main-font-color);
         }
 
-        .project-card {
-            margin: var(--card-margin);
-            height: var(--card-height);
-            border-radius: var(--card-border-radius);
+        /* 전체 포트폴리오 카드 아웃라인 래퍼 */
+        .portfolio-container {
+            max-width: 75rem;
+            margin: 4rem auto;
             background: var(--main-bg-color);
-            box-shadow: 0 0.3rem 1.3rem 0 rgba(0, 0, 0, 0.2);
-            display: grid;
-            grid-template-areas:
-                "top top top"
-                "name name image"
-                "icons tool image"
-                "bottom bottom bottom";
-            grid-template-rows: 3.1rem 15.1rem 8.3rem 3.1rem;
-            grid-template-columns: 15.6rem 15.6rem 1fr;
+            border: 1px solid var(--border-color);
+            border-radius: var(--card-border-radius);
+            box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
             overflow: hidden;
         }
 
-        .project-card>* {
-            background-color: var(--main-bg-color);
-            border-right: 1px solid #000;
-            border-bottom: 1px solid #000;
-        }
-
-        .project-card::before,
-        .project-card::after {
-            content: "";
-            background-color: var(--main-bg-color);
-        }
-
-        .project-card::before {
-            grid-area: top;
-            border-bottom: 1px solid #000;
-        }
-
-        .project-card::after {
-            grid-area: bottom;
-            border-top: 1px solid #000;
-            border-bottom: none;
-        }
-
-        .project-card-name {
-            grid-area: name;
-            padding: 0 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 1.5rem;
-            border-left: none;
-        }
-
-        .project-card-image {
-            grid-area: image;
-            padding: 0.6rem;
-            border-right: none;
-            border-bottom: none;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .project-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .project-card-icons {
-            grid-area: icons;
-            padding: 0.6rem;
-            border-left: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-left: 1.5rem;
-            border-bottom: none;
-            gap: 0.6rem;
-        }
-
-        .project-row,
-        .project-github-link {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .project-github-link a {
-            color: var(--main-font-color);
-            font-size: 0.6rem;
-            text-decoration: none;
-        }
-
-        .project-github-link a:hover {
-            text-decoration: underline;
-        }
-
-        .project-icon {
-            width: 1.3rem;
-            height: 1.3rem;
-        }
-
-        .project-content-detail {
-            font-size: 0.6rem;
-        }
-
-        .project-card-tool {
-            grid-area: tool;
-            padding: 0.6rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 0.8rem;
-            border-bottom: none;
-        }
-
-        .project-title {
-            color: var(--main-font-color);
-            font-size: 2.3rem;
-            line-height: normal;
-        }
-
-        .project-content {
-            color: var(--text-color-secondary);
-            font-size: 0.7rem;
-            line-height: 1.4rem;
-        }
-
-        .project-content-detail {
-            color: var(--text-color-secondary);
-            font-size: 0.6rem;
-            line-height: normal;
-        }
-
-        .project-tool-detail {
-            color: var(--main-font-color);
-            font-size: 0.6rem;
-            line-height: normal;
-        }
-
-        .project-tool-point {
-            width: 0.5rem;
-            height: 0.5rem;
-        }
-
-        .project-pictures {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            margin: 3.1rem;
-            overflow: hidden;
-            height: 25rem;
-        }
-
-        .project-picture-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .project-picture {
-            position: absolute;
-            transition: all 0.5s ease-in-out;
-            width: 34rem;
-            height: 19.1rem;
-        }
-
-        .project-picture.side {
-            transform: scale(0.75) translateX(-50%);
-            z-index: 1;
-            opacity: 0.3;
-        }
-
-        .project-picture.side.right {
-            transform: scale(0.75) translateX(50%);
-        }
-
-        .project-picture.center {
-            z-index: 2;
-            transform: scale(1) translateX(0);
-            opacity: 1;
-        }
-
-        .project-div-image {
-            width: 100%;
-            height: 100%;
-            display: block;
-            border-radius: 0.9rem;
-            object-fit: cover;
-        }
-
-        .project-prev,
-        .project-next {
-            position: absolute;
-            cursor: pointer;
-            z-index: 3;
-        }
-
-        .project-prev {
-            left: 0.6rem;
-        }
-
-        .project-next {
-            right: 0.6rem;
-        }
-
-        .detail-card {
-            border-top: 1px solid #000;
-            display: grid;
-            grid-template-areas:
-                "a list ts b"
-                "c d d e";
-            grid-template-columns: 6.8rem 1fr 1fr 6.8rem;
-            grid-template-rows: min-content 2.1rem;
-            overflow: hidden;
-        }
-
-        .detail-card>* {
-            border-right: 1px solid #000;
-            border-bottom: 1px solid #000;
-        }
-
-        .detail-card-a {
-            grid-area: a;
-        }
-
-        .detail-card-b {
-            grid-area: b;
-            border-right: none;
-        }
-
-        .detail-card-c {
-            grid-area: c;
-        }
-
-        .detail-card-d {
-            grid-area: d;
-        }
-
-        .detail-card-e {
-            grid-area: e;
-            border-right: none;
-        }
-
-        .detail-card-list {
-            grid-area: list;
-            padding: 2.1rem;
-            border-right: 1px solid #000;
-            overflow: hidden;
-        }
-
-        .detail-card-wrapper {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .detail-card-title {
-            color: var(--main-font-color);
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            display: inline-block;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;
-        }
-
-        .detail-card-ts {
-            grid-area: ts;
-            padding: 3.1rem;
-            font-size: 0.8rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .detail-card-title {
-            display: inline-flex;
-            padding: 0.3rem 1.3rem;
-            justify-content: center;
-            align-items: center;
-            gap: 0.8rem;
-            border-radius: 1.8rem;
-            font-size: 0.8rem;
-            background: var(--main-font-color);
-            color: white;
-            width: fit-content;
-            margin: 0.9rem 0;
-        }
-
-        .project-card-detail {
-            color: var(--main-font-color);
-            font-size: 0.8rem;
-            line-height: normal;
-        }
-
-        .project-card-ex {
-            color: var(--text-color-secondary);
-            font-family: var(--font-family-main);
-            font-size: 0.8rem;
-            line-height: normal;
-            margin: 0.3rem 0 0.8rem 1.1rem;
-        }
-
-        @media (max-width: 64rem) {
-            .project-card {
-                margin: 3rem;
-                height: auto;
-                grid-template-areas:
-                    "top top"
-                    "name image"
-                    "icons tool"
-                    "bottom bottom";
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: auto;
-            }
-        }
-
-        @media (max-width: 48rem) {
-            .project-card {
-                margin: 1.3rem;
-                grid-template-areas:
-                    "image"
-                    "name"
-                    "icons"
-                    "tool";
-                grid-template-rows: auto auto auto auto;
-                grid-template-columns: 1fr;
-                height: auto;
-            }
-
-            .project-card-image {
-                grid-area: image;
-                width: 100%;
-                height: auto;
-            }
-
-            .project-card-name {
-                grid-area: name;
-                padding: 1rem;
-            }
-
-            .project-content {
-                padding: 0 1rem;
-                font-size: 0.9rem;
-                line-height: 1.5;
-            }
-
-            .project-card-icons {
-                grid-area: icons;
-            }
-
-            .project-card-tool {
-                grid-area: tool;
-            }
-
-            .project-card-name,
-            .project-card-image,
-            .project-card-icons,
-            .project-card-tool {
-                padding: 0.6rem;
-                border-right: none;
-                border-bottom: 1px solid #000;
-            }
-
-            .project-card-tool {
-                border-bottom: none;
-            }
-
-            .project-card-icons,
-            .project-card-tool {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.8rem;
-            }
-
-            .project-row {
-                width: 100%;
-            }
-
-            .project-pictures {
-                margin: 1.5rem;
-            }
-
-            .project-picture-wrapper {
-                width: 100%;
-            }
-
-            .project-div-image {
-                width: 80%;
-                height: auto;
-                display: block;
-                margin: 0 auto;
-                border-radius: 0.9rem;
-            }
-
-            .project-picture.side {
-                display: none;
-            }
-
-            .project-picture.center {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                height: auto;
-            }
-
-            .detail-card {
-                grid-template-areas:
-                    "a list b"
-                    "c ts d"
-                    "e e e";
-                grid-template-columns: 1rem 1fr 1rem;
-                grid-template-rows: auto auto 2.1rem;
-            }
-
-            .detail-card-d {
-                grid-area: d;
-                border-right: none;
-            }
-
-            .detail-card-list,
-            .detail-card-ts {
-                padding: 1.5rem;
-            }
-        }
-
-        a:focus,
-        button:focus,
-        input:focus,
-        select:focus,
-        textarea:focus {
-            outline: 2px solid var(--highlight-color);
+        /* 공통 포커스 링 */
+        a:focus, button:focus {
+            outline: 2px solid var(--main-font-color);
             outline-offset: 2px;
         }
 
-        .project-content,
-        .project-content-detail,
-        .project-card-ex {
+        /* ==========================================================================
+           2. [1단] 프로젝트 헤더 & 개요 세션 (Grid Layout)
+           ========================================================================== */
+        .project-header {
+            display: grid;
+            grid-template-columns: 1fr 22rem; /* 정보 격자 균형 배분 */
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-left {
+            padding: 3rem;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .project-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: -1px;
+        }
+
+        .project-tagline {
+            font-size: 1.1rem;
             color: var(--text-color-secondary);
-            font-size: 0.8rem;
-            line-height: normal;
+            margin: 0 0 2rem 0;
+            font-weight: bold;
         }
 
-        .project-content {
+        .project-description {
+            font-size: 0.9rem;
+            color: var(--text-color-secondary);
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        /* 메타 정보 우측 카드 */
+        .header-right {
+            background-color: #fafafa;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .meta-info-card {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .meta-row {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        .meta-icon {
+            width: 1.4rem;
+            height: 1.4rem;
+            object-fit: contain;
+        }
+
+        .meta-label {
+            font-weight: bold;
+            min-width: 4.5rem;
+            color: var(--main-font-color);
+        }
+
+        .meta-value {
+            color: var(--text-color-secondary);
+        }
+
+        .github-row {
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #ccc;
+        }
+
+        .github-link {
+            color: var(--main-font-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: text-decoration 0.2s;
+        }
+
+        .github-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ==========================================================================
+           3. [2단] 기술 스택 & Key Point 이미지 슬라이더 세션
+           ========================================================================== */
+        .project-gallery-section {
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--main-bg-color);
+        }
+
+        /* 기술 스택 배지 컨테이너 */
+        .tech-stack-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            padding: 0 2rem;
+        }
+
+        .tech-badge {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-weight: bold;
+            border: 1px solid var(--border-color);
+            background-color: #fff;
+        }
+        
+        /* 스택 카테고리별 포인트 컬러링 (선택사항) */
+        .tech-badge.frontend { background-color: #f0f7ff; color: #0066cc; }
+        .tech-badge.backend { background-color: #f2fdf5; color: #15803d; }
+        .tech-badge.database { background-color: #fff7ed; color: #c2410c; }
+        .tech-badge.infra { background-color: #f8fafc; color: #475569; }
+
+        /* 이미지 슬라이더 스테이지 (기존 변형 코드 보강) */
+        .slider-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 24rem;
+            max-width: 64rem;
+            margin: 0 auto;
+        }
+
+        .slider-track {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slider-item {
+            position: absolute;
+            transition: all 0.5s ease-in-out;
+            width: 32rem;
+            height: 18rem;
+            border-radius: 0.6rem;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+            background-color: #fff;
+        }
+
+        .slider-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 카드 왼쪽/오른쪽/중앙 3차원 입체감 부여 */
+        .slider-item.side {
+            transform: scale(0.8) translateX(-45%);
+            z-index: 1;
+            opacity: 0.4;
+            filter: blur(1px);
+        }
+
+        /* CSS만으로 두 번째 side 카드를 우측 배치하기 위한 클래스 규칙 */
+        .slider-item.side:last-child {
+            transform: scale(0.8) translateX(45%);
+        }
+
+        .slider-item.center {
+            z-index: 2;
+            transform: scale(1) translateX(0);
+            opacity: 1;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* 슬라이드 내부 텍스트 배지 */
+        .card-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(29, 31, 32, 0.85);
+            color: #fff;
+            padding: 0.3rem 0.7rem;
             font-size: 0.7rem;
-            line-height: 1.4rem;
+            font-weight: bold;
+            border-radius: 0.3rem;
+            z-index: 3;
+            backdrop-filter: blur(4px);
         }
 
-        .project-content-detail {
-            font-size: 0.6rem;
+        /* 슬라이더 제어 버튼 */
+        .slider-btn {
+            position: absolute;
+            background: var(--main-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 2.8rem;
+            height: 2.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .slider-btn:hover {
+            background-color: #f5f5f5;
+            transform: scale(1.05);
+        }
+
+        .slider-btn img {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .slider-btn.prev { left: 1rem; }
+        .slider-btn.next { right: 1rem; }
+
+        /* ==========================================================================
+           4. [3단] 시스템 흐름도 & 트러블 슈팅 세션
+           ========================================================================== */
+        .project-detail-footer {
+            background-color: var(--main-bg-color);
+        }
+
+        /* 공통 대제목 스타일 */
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--main-font-color);
+            margin: 0 0 1.5rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            display: inline-block;
+        }
+
+        /* 3-1. 아키텍처 다이어그램 세션 */
+        .architecture-container {
+            padding: 3rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .architecture-diagram-placeholder {
+            background: #fafafa;
+            border: 1px dashed #ccc;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .architecture-img {
+            max-width: 100%;
+            height: auto;
+            max-height: 25rem;
+            object-fit: contain;
+        }
+
+        .architecture-caption {
+            font-size: 0.8rem;
+            color: var(--text-color-secondary);
+            margin: 1rem 0 0 0;
+        }
+
+        /* 3-2. 기능 디테일 Grid 세션 */
+        .features-container {
+            padding: 3rem;
+            border-bottom: 1px solid var(--border-color);
+            background-color: #fcfcfc;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .feature-box {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1.8rem;
+        }
+
+        .feature-box h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .feature-box ul {
+            margin: 0;
+            padding-left: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .feature-box li {
+            font-size: 0.85rem;
+            color: var(--text-color-secondary);
+            line-height: 1.5;
+        }
+
+        /* 3-3. 핵심 트러블슈팅 세션 */
+        .troubleshooting-container {
+            padding: 3rem;
+        }
+
+        .ts-card {
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            background: #fff;
+        }
+
+        .ts-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .ts-header {
+            background: var(--main-font-color);
+            color: #fff;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .ts-header h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .ts-badge {
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.2rem;
+            background-color: var(--accent-error);
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .ts-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 좌: 문제, 우: 해결 대칭 배치 */
+        }
+
+        .ts-block {
+            padding: 1.5rem;
+        }
+
+        .ts-block.problem {
+            background-color: #fffbfb;
+            border-right: 1px solid #f0f0f0;
+        }
+
+        .ts-block.solution {
+            background-color: #fbfdfb;
+        }
+
+        .ts-block h4 {
+            margin: 0 0 0.6rem 0;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .ts-block.problem h4 { color: #c0392b; }
+        .ts-block.solution h4 { color: #27ae60; }
+
+        .ts-block p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-color-secondary);
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* ==========================================================================
+           5. 반응형 미디어 쿼리 (Responsive Mobile Layout)
+           ========================================================================== */
+        @media (max-width: 64rem) {
+            .portfolio-container { margin: 1.5rem; }
+            .project-header { grid-template-columns: 1fr; }
+            .header-left { border-right: none; border-bottom: 1px solid var(--border-color); padding: 2rem; }
+            .header-right { padding: 2rem; }
+            .features-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .ts-body { grid-template-columns: 1fr; }
+            .ts-block.problem { border-right: none; border-bottom: 1px solid #f0f0f0; }
+        }
+
+        @media (max-width: 48rem) {
+            .project-title { font-size: 2rem; }
+            .slider-wrapper { height: 18rem; }
+            .slider-item { width: 85%; height: 14rem; }
+            .slider-item.side { display: none; } /* 모바일 환경에선 사이드 아웃하고 센터만 집중 */
+            .slider-item.center { transform: scale(1) translateX(0); width: 90%; }
+            .architecture-container, .features-container, .troubleshooting-container { padding: 1.5rem; }
         }
     </style>
 </head>
 
 <body>
-    <div class="background">
-        <div class="project-card">
-            <div class="project-card-name">
-                <div class="project-title">프로젝트1</div>
-                <div class="project-content">
-                    GlobalConnect는 유학생들을 위한 커뮤니티 플랫폼으로, 유학생들이 정보를 공유하고 네트워킹할 수 있도록 다양한 기능을 제공합니다. 이 프로젝트는 React와
-                    Node.js를 기반으로 개발되었으며, 주요 기능으로는 게시판, 실시간 채팅, 이벤트 관리 등이 있습니다. MongoDB를 사용하여 데이터를 관리하고, Socket.io를 통해
-                    실시간 통신을 구현하였습니다. 또한 AWS를 이용해 안정적인 호스팅과 배포를 지원합니다. GlobalConnect는 유학생들의 생활을 더욱 편리하고 풍요롭게 만드는 것을 목표로
-                    하며, 팀원들의 협업과 기술적 도전을 통해 완성되었습니다.
-                </div>
-            </div>
-            <div class="project-card-image">
-                <img src="image/p1.png" class="project-image" />
-            </div>
-            <div class="project-card-icons">
-                <div class="project-row">
-                    <img src="image/period.svg" class="project-icon" />
-                    <div class="project-content-detail">23.06~23.12 / 6개월</div>
-                </div>
-                <div class="project-row">
-                    <img src="image/people.svg" class="project-icon" />
-                    <div class="project-content-detail">5명</div>
-                </div>
-                <div class="project-row">
-                    <img src="image/role.svg" class="project-icon" />
-                    <div class="project-content-detail">프론트엔드 2명 / 백엔드 2명 / 디자이너 1명</div>
-                </div>
-                <div class="project-github-link">
-                    <img src="image/github.svg" class="project-icon" />
-                    <a href="https://github.com/username/repository" target="_blank" rel="noopener noreferrer">GitHub
-                        Repository</a>
-                </div>
-            </div>
-            <div class="project-card-tool">
-                <div class="project-row">
-                    <img src="image/point.svg" class="project-tool-point" />
-                    <div class="project-tool-detail">React, Redux, HTML5, CSS3, JavaScript</div>
-                </div>
-                <div class="project-row">
-                    <img src="image/point.svg" class="project-tool-point" />
-                    <div class="project-tool-detail">Node.js, Express.js</div>
-                </div>
-                <div class="project-row">
-                    <img src="image/point.svg" class="project-tool-point" />
-                    <div class="project-tool-detail">MongoDB</div>
-                </div>
-                <div class="project-row">
-                    <img src="image/point.svg" class="project-tool-point" />
-                    <div class="project-tool-detail">Socket.io</div>
-                </div>
-            </div>
-        </div>
-        <div class="project-pictures">
-            <img class="project-prev" src="image/prev.svg" onclick="moveImages('prev')" />
-            <div class="project-picture-wrapper">
-                <div class="project-picture side" id="image1">
-                    <img src="image/p1.png" class="project-div-image" />
-                </div>
-                <div class="project-picture center" id="image2">
-                    <img src="image/p1-detail1.png" class="project-div-image" />
-                </div>
-                <div class="project-picture side" id="image3">
-                    <img src="image/p1-detail2.png" class="project-div-image" />
-                </div>
-            </div>
-            <img class="project-next" src="image/next.svg" onclick="moveImages('next')" />
-        </div>
-        <div class="detail-card">
-            <div class="detail-card-a"></div>
-            <div class="detail-card-b"></div>
-            <div class="detail-card-c"></div>
-            <div class="detail-card-d"></div>
-            <div class="detail-card-e"></div>
-            <div class="detail-card-list">
-                <div class="detail-card-wrapper">
-                    <div class="detail-card-title">게시판 기능</div>
-                    <div class="project-row">
-                        <img src="image/point.svg" class="project-tool-point" />
-                        <div class="project-card-detail">사용자들이 다양한 주제에 대해 글을 작성하고, 댓글을 달 수 있는 게시판 기능</div>
-                    </div>
-                    <div class="project-row">
-                        <img src="image/point.svg" class="project-tool-point" />
-                        <div class="project-card-detail">React: 사용자가 글을 작성하고 볼 수 있는 UI 컴포넌트를 설계.</div>
-                    </div>
-                    <div class="project-row">
-                        <img src="image/point.svg" class="project-tool-point" />
-                        <div class="project-card-detail">Redux: 글 목록과 댓글의 상태를 관리.</div>
-                    </div>
-                    <div class="project-row">
-                        <img src="image/point.svg" class="project-tool-point" />
-                        <div class="project-card-detail">Axios: 백엔드 API와 통신하여 글 작성, 수정, 삭제 및 댓글 기능 구현.</div>
-                    </div>
-                    <div class="project-row">
-                        <img src="image/point.svg" class="project-tool-point" />
-                        <div class="project-card-detail">Node.js & Express.js: RESTful API 서버를 구축하여 글 작성, 수정, 삭제 및 댓글
-                            관리를 위한 엔드포인트 제공.</div>
-                    </div>
-                    <div class="project-row">
-                        <img src="image/point.svg" class="project-tool-point" />
-                        <div class="project-card-detail">MongoDB: 글과 댓글 데이터를 저장하는 스키마 설계 및 데이터베이스 연동.</div>
-                    </div>
-                    <div class="project-row">
-                        <img src="image/point.svg" class="project-tool-point" />
-                        <div class="project-card-detail">JWT 인증: 사용자 인증을 통해 글 작성 및 수정 권한을 관리.</div>
-                    </div>
-                    <div class="detail-card-title">실시간 채팅 기능</div>
-                    <div class="project-row">
-                        <img src="image/point.svg" class="project-tool-point" />
-                        <div class="project-card-detail">React: 채팅 인터페이스를 설계하고, 실시간 메시지 업데이트를 위한 컴포넌트 구현.</div>
-                    </div>
-                    <div class="project-row">
-                        <img src="image/point.svg" class="project-tool-point" />
-                        <div class="project-card-detail">Socket.io 클라이언트: 실시간 메시지 송수신을 위한 소켓 연결 및 이벤트 핸들링.</div>
-                    </div>
-                    <div class="project-row">
-                        <img src="image/point.svg" class="project-tool-point" />
-                        <div class="project-card-detail">Node.js & Express.js: 채팅 서버를 구축하고, Socket.io 서버를 설정하여 실시간 통신
-                            지원.</div>
-                    </div>
-                    <div class="project-row">
-                        <img src="image/point.svg" class="project-tool-point" />
-                        <div class="project-card-detail">MongoDB: 채팅 기록을 저장하고 불러오는 기능 구현.</div>
-                    </div>
-                    <div class="project-row">
-                        <img src="image/point.svg" class="project-tool-point" />
-                        <div class="project-card-detail">Socket.io: 실시간 메시지 송수신을 위한 소켓 이벤트 핸들링 및 채팅룸 관리.</div>
-                    </div>
-                </div>
-            </div>
-            <div class="detail-card-ts">
-                <div class="detail-card-title">데이터베이스 성능 문제</div>
-                <div class="project-row">
-                    <img src="image/point.svg" class="project-tool-point" />
-                    <div class="project-card-detail">문제 인식</div>
-                </div>
-                <div class="project-card-ex">게시판 기능이 활성화되면서 글과 댓글의 수가 급격히 증가하여, 데이터베이스 성능 저하 문제가 발생했습니다. 게시글을 불러오는데 시간이
-                    오래 걸리고, 서버 응답 시간이 지연되는 문제가 발생했습니다.
 
+    <div class="portfolio-container">
+        
+        <header class="project-header">
+            <div class="header-left">
+                <h1 class="project-title">GlobalConnect</h1>
+                <p class="project-tagline">유학생들을 위한 실시간 커뮤니티 및 네트워킹 플랫폼</p>
+                <div class="project-description">
+                    GlobalConnect는 유학생들이 정보를 공유하고 네트워킹할 수 있도록 다양한 기능을 제공합니다. 
+                    React와 Node.js를 기반으로 개발되었으며 주요 기능으로는 게시판, 실시간 채팅, 이벤트 관리 등이 있습니다. 
+                    MongoDB를 사용하여 데이터를 관리하고, Socket.io를 통해 실시간 통신을 구현하였습니다. 
+                    또한 AWS를 이용해 안정적인 호스팅และ 배포를 지원합니다. 팀원들의 협업과 기술적 도전을 통해 완성되었습니다.
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="meta-info-card">
+                    <div class="meta-row">
+                        <img src="image/period.svg" class="meta-icon" alt="기간" />
+                        <span class="meta-label">진행 기간</span>
+                        <span class="meta-value">23.06 ~ 23.12 (6개월)</span>
+                    </div>
+                    <div class="meta-row">
+                        <img src="image/people.svg" class="meta-icon" alt="인원" />
+                        <span class="meta-label">팀원 구성</span>
+                        <span class="meta-value">5명</span>
+                    </div>
+                    <div class="meta-row">
+                        <img src="image/role.svg" class="meta-icon" alt="역할" />
+                        <span class="meta-label">상세 역할</span>
+                        <span class="meta-value">프론트엔드 2명 / 백엔드 2명 / 디자이너 1명</span>
+                    </div>
+                    <div class="meta-row github-row">
+                        <img src="image/github.svg" class="meta-icon" alt="깃허브" />
+                        <a href="https://github.com/username/repository" target="_blank" rel="noopener noreferrer" class="github-link">
+                            GitHub Repository →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="project-gallery-section">
+            <div class="tech-stack-container">
+                <span class="tech-badge frontend">React</span>
+                <span class="tech-badge frontend">Redux</span>
+                <span class="tech-badge frontend">Socket.io Client</span>
+                <span class="tech-badge backend">Node.js</span>
+                <span class="tech-badge backend">Express.js</span>
+                <span class="tech-badge database">MongoDB</span>
+                <span class="tech-badge infra">AWS</span>
+            </div>
+
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" onclick="moveImages('prev')" aria-label="이전 슬라이드">
+                    <img src="image/prev.svg" alt="이전" />
+                </button>
+                
+                <div class="slider-track">
+                    <div class="slider-item side" id="image1">
+                        <div class="card-badge">Main View</div>
+                        <img src="image/p1.png" class="slider-img" alt="메인 서비스 화면" />
+                    </div>
+                    
+                    <div class="slider-item center" id="image2">
+                        <div class="card-badge">Real-time Chat</div>
+                        <img src="image/p1-detail1.png" class="slider-img" alt="실시간 채팅 구현 화면" />
+                    </div>
+                    
+                    <div class="slider-item side" id="image3">
+                        <div class="card-badge">DB Optimization</div>
+                        <img src="image/p1-detail2.png" class="slider-img" alt="데이터베이스 성능 최적화 지표" />
+                    </div>
+                </div>
+                
+                <button class="slider-btn next" onclick="moveImages('next')" aria-label="다음 슬라이드">
+                    <img src="image/next.svg" alt="다음" />
+                </button>
+            </div>
+        </section>
+
+        <footer class="project-detail-footer">
+            
+            <div class="architecture-container">
+                <h2 class="section-title">System Architecture</h2>
+                <div class="architecture-diagram-placeholder">
+                    <img src="image/architecture-flow.svg" alt="GlobalConnect 시스템 흐름도" class="architecture-img" />
+                    <p class="architecture-caption">▲ React 클라이언트와 Node.js, Socket.io 서버 및 MongoDB 간의 실시간 데이터 흐름도</p>
+                </div>
+            </div>
+
+            <div class="features-container">
+                <h2 class="section-title">Core Features & Implementation</h2>
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <h3>📋 게시판 기능</h3>
+                        <ul>
+                            <li>React & Redux를 통한 반응형 UI 컴포넌트 설계 및 상태 관리</li>
+                            <li>Axios 기반 RESTful API 통신 (글·댓글 CRUD 및 JWT 권한 검증)</li>
+                            <li>MongoDB 스키마 설계를 통한 효율적인 게시글 데이터 적재</li>
+                        </ul>
+                    </div>
+                    <div class="feature-box">
+                        <h3>💬 실시간 채팅 기능</h3>
+                        <ul>
+                            <li>Socket.io 클라이언트-서버 실시간 양방향 이벤트 핸들링</li>
+                            <li>사용자 맞춤형 채팅룸 생성 및 세션 분리 관리</li>
+                            <li>이전 대화 기록 보존을 위한 MongoDB 채팅 로그 연동</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="troubleshooting-container">
+                <h2 class="section-title">Troubleshooting & Optimization</h2>
+                
+                <div class="ts-card">
+                    <div class="ts-header">
+                        <span class="ts-badge">ISSUE 01</span>
+                        <h3>데이터베이스 성능 저하 및 서버 응답 지연</h3>
+                    </div>
+                    <div class="ts-body">
+                        <div class="ts-block problem">
+                            <h4>🚨 문제 인식</h4>
+                            <p>게시판 활성화로 인해 데이터(글·댓글)가 급증하면서, 특정 메인 피드를 불러올 때 쿼리 속도가 급격히 저하되고 서버 응답 시간이 지연되는 현상이 발생했습니다.</p>
+                        </div>
+                        <div class="ts-block solution">
+                            <h4>✅ 문제 해결 및 성과</h4>
+                            <p>자주 조회되는 주요 필드(작성 날짜, 작성자 ID 등)에 <strong>복합 인덱스(Compound Index)</strong>를 적용하여 검색 속도를 대폭 개선했습니다. 또한 불필요한 필드 조회를 방지하기 위해 프로젝션 쿼리를 최적화했습니다. 이 과정에서 대용량 데이터 관리를 위한 인덱스 설계 원리와 데이터베이스 샤딩(Sharding) 기법에 대한 이해도를 넓혔습니다.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="project-row">
-                    <img src="image/point.svg" class="project-tool-point" />
-                    <div class="project-card-detail">문제 해결</div>
+                <div class="ts-card">
+                    <div class="ts-header">
+                        <span class="ts-badge">ISSUE 02</span>
+                        <h3>동시 접속자 증가에 따른 실시간 채팅 연결 해제 및 지연</h3>
+                    </div>
+                    <div class="ts-body">
+                        <div class="ts-block problem">
+                            <h4>🚨 문제 인식</h4>
+                            <p>사용자 유입이 몰리는 피크 타임에 Socket.io 소켓 연결이 빈번하게 끊기거나, 메시지 전송 및 수신이 수 초 이상 밀리는 등 사용자 경험을 저해하는 불안정성 문제가 발생했습니다.</p>
+                        </div>
+                        <div class="ts-block solution">
+                            <h4>✅ 문제 해결 및 성과</h4>
+                            <p>서버 로그와 네트워크 트래픽 분석을 바탕으로 단일 인스턴스의 부하 한계를 파악, <strong>Socket.io 서버 횡적 확장(Scale-out)</strong>을 단행했습니다. 로드 밸런서를 통해 트래픽을 균등하게 분산시켰으며, 메모리 누수를 방지하기 위해 유휴 소켓 연결 및 점유 데이터 복사본을 주기적으로 정리하는 가비지 컬렉팅 로직을 보완하여 안정성을 확보했습니다.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-card-ex">자주 조회되는 필드(작성 날짜, 작성자 등)에 인덱스를 추가하여 쿼리 속도를 개선하였으며, 불필요한 데이터 조회를 최소화하기 위해
-                    쿼리를 최적화하고, 필요한 데이터만 선택적으로 가져오도록 수정했습니다. 이 과정을 통해 데이터베이스 최적화와 성능 튜닝의 중요성을 이해하게 되었습니다. 또한, 대용량 데이터를
-                    효과적으로 관리하기 위한 인덱스 설계와 샤딩 기법을 익히게 되었습니다. 이를 통해 향후 데이터베이스 관련 문제를 보다 신속하고 효율적으로 해결할 수 있는 역량을 갖추게 되었습니다.
-                </div>
-                <div class="detail-card-title">실시간 채팅 안정성 문제</div>
-                <div class="project-row">
-                    <img src="image/point.svg" class="project-tool-point" />
-                    <div class="project-card-detail">문제 인식</div>
-                </div>
-                <div class="project-card-ex">실시간 채팅 기능 도입 후, 사용자가 많아지면서 채팅 메시지가 지연되거나 연결이 자주 끊기는 문제가 발생했습니다. 이는 사용자 경험을
-                    크게 저해하는 요소로 작용했습니다.</div>
-
-                <div class="project-row">
-                    <img src="image/point.svg" class="project-tool-point" />
-                    <div class="project-card-detail">문제 해결</div>
-                </div>
-                <div class="project-card-ex">서버 로그와 네트워크 트래픽을 분석하여 Socket.io 연결이 끊어지거나 메시지 지연이 발생하는 원인을 파악하여, Socket.io
-                    서버를 여러 대로 확장하고, 로드 밸런서를 사용하여 부하를 분산시키고 메모리 누수 현상을 방지하기 위해 불필요한 데이터와 연결을 주기적으로 정리했습니다. </div>
-
+                
             </div>
-        </div>
+        </footer>
     </div>
-    </div>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             if (document.getElementById("image1")) {
