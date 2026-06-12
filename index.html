@@ -631,7 +631,7 @@
             transform: translateY(-4px);
         }
 
-        .project-title {
+        /* .project-title {
             font-size: 1.2rem;
             font-weight: 700;
             color: var(--dark-color);
@@ -641,7 +641,7 @@
             font-size: 0.88rem;
             color: var(--gray-color);
             font-weight: 500;
-        }
+        } */
 
         /* .project-desc {
             font-size: 0.95rem;
@@ -650,18 +650,63 @@
             word-break: keep-all;
         } */
 
-        .project-desc {
-            margin-top: 1.2rem;
-            padding-left: 0.8rem;
-            border-left: 3px solid var(--main-font-color); /* 기존 그리드 선과 통일감 */
+        /* 소속 및 배지 정렬 */
+        .project-meta-zone {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.6rem;
         }
+        
+        /* 호기심 유발 배지 (기존 그리드 톤에 맞춰 다크하거나 강렬하게 포인트) */
+        .project-badge {
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            background-color: #e74c3c; /* 시선을 끄는 레거시/경고 레드 포인트 */
+            color: #ffffff;
+            letter-spacing: 0.3px;
+        }
+        
+        .project-title {
+            font-size: 1.3rem; /* 가독성을 위해 살짝 확대 */
+            font-weight: 800;  /* 700에서 조금 더 선명하게 변경 */
+            color: var(--dark-color);
+            margin: 0 0 1.2rem 0;
+            line-height: 1.4;
+        }
+        
+        .project-period {
+            font-size: 0.85rem;
+            color: var(--gray-color);
+            font-weight: 500;
+            margin: 0;
+        }
+        
+        /* 2) 내용이 눈에 띄도록 강조한 디스크립션 영역 */
+        .project-desc {
+            margin-top: auto; /* 제목 길이와 상관없이 항상 하단 배치 */
+            padding: 0.8rem 1rem;
+            background-color: #f8fafc; /* 연한 그레이 박스로 영역 분리 */
+            border-left: 4px solid var(--main-font-color); /* 왼쪽 라인 두께 강화 */
+            border-radius: 0 6px 6px 0;
+            transition: border-left-color 0.3s ease, background-color 0.3s ease;
+        }
+        
+        /* 카드가 호버되면 텍스트 박스도 링크처럼 반응 */
+        .project-card:hover .project-desc {
+            border-left-color: #e74c3c; /* 배지 색상과 링크 통일감 */
+            background-color: #fff5f5;  
+        }
+        
         .project-desc p {
             margin: 0;
             color: var(--text-color-secondary);
-            font-size: 0.85rem; /* 살짝 키워서 가독성 확보 */
-            line-height: 1.5;
-            font-weight: 500;
-            word-break: keep-all; /* 한글 단어 단위 줄바꿈으로 깔끔하게 */
+            font-size: 0.88rem;
+            line-height: 1.6;
+            font-weight: 600; /* 글자를 더 눈에 띄게 굵기 업그레이드 */
+            word-break: keep-all;
         }
         
         .project-tech {
@@ -1247,14 +1292,16 @@
             <div class="project-grid">
                 
                 <a href="project.html" class="project-card">
+                    <div class="project-meta-zone">
+                        <span class="project-badge">Legacy Refactoring</span>
+                        <p class="project-period">식스티헤르츠(2025.04 - 2025.07)</p>
+                    </div>
+                    
                     <h3 class="project-title">계약 관리 legacy 시스템 개선</h3>
-                    <p class="project-period">식스티헤르츠(2025.04 - 2025.07)</p>
-                    <div class="project-desc"><p>10년 이상 방치된 신재생e legacy 개선을 위한 고군분투 일대기</p></div>
-                    <!-- <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">REST API</span>
-                    </div> -->
+                    
+                    <div class="project-desc">
+                        <p>10년 이상 방치된 신재생e legacy 개선을 위한 고군분투 일대기</p>
+                    </div>
                 </a>
 
                 <a href="project2.html" class="project-card">
