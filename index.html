@@ -643,13 +643,27 @@
             font-weight: 500;
         }
 
-        .project-desc {
+        /* .project-desc {
             font-size: 0.95rem;
             color: #6b7280;
             line-height: 1.6;
             word-break: keep-all;
-        }
+        } */
 
+        .project-desc {
+            margin-top: 1.2rem;
+            padding-left: 0.8rem;
+            border-left: 3px solid var(--main-font-color); /* 기존 그리드 선과 통일감 */
+        }
+        .project-desc p {
+            margin: 0;
+            color: var(--text-color-secondary);
+            font-size: 0.85rem; /* 살짝 키워서 가독성 확보 */
+            line-height: 1.5;
+            font-weight: 500;
+            word-break: keep-all; /* 한글 단어 단위 줄바꿈으로 깔끔하게 */
+        }
+        
         .project-tech {
             display: flex;
             flex-wrap: wrap;
@@ -1235,7 +1249,7 @@
                 <a href="project.html" class="project-card">
                     <h3 class="project-title">계약 관리 legacy 시스템 개선</h3>
                     <p class="project-period">식스티헤르츠(2025.04 - 2025.07)</p>
-                    <p class="project-desc">10년 이상 방치된 신재생e legacy 개선을 위한 고군분투 일대기</p>
+                    <div class="project-desc"><p>10년 이상 방치된 신재생e legacy 개선을 위한 고군분투 일대기</p></div>
                     <!-- <div class="project-tech">
                         <span class="tech-tag">React</span>
                         <span class="tech-tag">TypeScript</span>
