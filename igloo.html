@@ -208,14 +208,20 @@
 
         .slider-item {
             position: absolute;
-            transition: all 0.5s ease-in-out;
+            /* 스크립트 트랜지션과의 충돌 방지를 위해 ease-in-out 제거, 스크립트의 cubic-bezier 유도 */
             width: 32rem;
             height: 18rem;
             border-radius: 0.6rem;
-            overflow: hidden;
+            overflow: hidden; /* 내부 그라데이션이 라운딩을 벗어나지 않도록 유지 */
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             border: 1px solid var(--border-color);
             background-color: #fff;
+            
+            /* [추가] 내부 콘텐츠들을 완전히 정중앙에 배치하기 위한 flex 선언 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .slider-img {
@@ -226,23 +232,24 @@
         }
 
         /* 카드 왼쪽/오른쪽/중앙 3차원 입체감 부여 */
+        /* 카드 왼쪽/오른쪽/중앙 3차원 입체감 부여 */
         .slider-item.side {
             transform: scale(0.8) translateX(-45%);
             z-index: 1;
             opacity: 0.4;
             filter: blur(1px);
         }
-
+        
         /* CSS만으로 두 번째 side 카드를 우측 배치하기 위한 클래스 규칙 */
         .slider-item.side:last-child {
             transform: scale(0.8) translateX(45%);
         }
-
+        
         .slider-item.center {
             z-index: 2;
             transform: scale(1) translateX(0);
             opacity: 1;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
         /* 슬라이드 내부 텍스트 배지 */
@@ -457,62 +464,53 @@
 
         /* 키워드 카드 내부 레이아웃 완벽 최적화 */
         .keyword-card-content {
+            /* 32rem * 18rem 내부를 빈틈없이 꽉 채우도록 설정 */
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* 수직 정중앙 정렬 */
-            height: 100%;
-            min-height: 280px;       /* 슬라이드 밸런스에 맞춘 높이 고정 */
-            padding: 20px 24px;      /* 좌우 패딩을 조절하여 글자 가동 범위 확보 */
-            
-            /* 부드러운 대리석풍 배경 그라데이션 */
-            background: linear-gradient(135deg, #ffffff 0%, #f9f9fb 60%, #f1f1f4 100%);
-            border-radius: 18px;
-            
-            /* 카드가 고급스럽게 떠 있는 듯한 다층 음영 처리 */
-            box-shadow: 
-                0 12px 30px rgba(0, 0, 0, 0.04),
-                0 4px 10px rgba(0, 0, 0, 0.02),
-                inset 0 1px 0 rgba(255, 255, 255, 0.9),
-                inset 0 0 0 1px rgba(0, 0, 0, 0.03);
-            
-            text-align: center;
+            justify-content: center; /* 수직, 수평 완전 정중앙 정렬 */
+            padding: 0 1.5rem;       /* 내부 여백을 줄여 글자가 움직일 수 있는 가로 폭 최대 확보 */
             box-sizing: border-box;
-            position: relative;
+            
+            /* 딱딱함을 지워줄 은은한 테크니컬 대리석 그라데이션 배경 */
+            background: linear-gradient(135deg, #ffffff 0%, #f7f9fc 50%, #f1f3f7 100%);
         }
         
         /* 아이콘 스타일 */
         .keyword-icon {
-            font-size: 60px; 
-            color: #2d3748; /* 부드러운 다크 그레이 */
-            margin-bottom: 16px;
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.06));
+            font-size: 3.5rem;       /* 박스 비율에 맞춰 시원하게 키움 */
+            color: #4a5568;          /* 세련된 다크 무브 차콜 */
+            margin-bottom: 1rem;     /* 타이틀과의 정밀한 밸런스 조정 */
+            
+            /* 아이콘이 떠 있는 듯한 미세한 음영 처리 */
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08));
         }
         
-        /* 타이틀 폰트: 잘림 방지 및 고급스러운 음영 마감 */
+        /* 타이틀 폰트: 절대 잘리지 않고 꽉 차는 입체 폰트 세팅 */
         .keyword-title {
-            /* 1) 꽉 차되 절대 잘리지 않는 반응형 크기 설계 */
-            font-size: calc(22px + 1.2vw); /* 화면 크기 및 카드 너비에 맞춰 자동 확장 */
-            max-width: 100%;
-            font-weight: 800;             /* 단단하고 밀도 높은 굵기 */
-            letter-spacing: -0.04em;       /* 자간을 좁혀 글자가 퍼져 보이지 않게 세팅 */
-            line-height: 1.15;
+            /* 기존 32px -> 42px로 대폭 확대 (32rem 박스에 가장 꽉 차는 황금 비율) */
+            font-size: 42px; 
+            font-weight: 900;         /* 가장 묵직한 두께로 시인성 압도 */
+            letter-spacing: -0.05em;   /* 자간을 좁혀 밀도 있고 단단한 느낌 부여 */
+            line-height: 1;
             margin: 0;
             padding: 0;
             
-            /* 2) 줄바꿈 제어: 단어가 도중에 쪼개지지 않고 한눈에 박히도록 설정 */
-            white-space: nowrap;           /* 무조건 한 줄 노출 (글자 크기가 맞춤 조절됨) */
+            /* [핵심] 가로 잘림 및 강제 줄바꿈 원천 차단 */
+            white-space: nowrap; 
             word-break: keep-all;
         
-            /* 3) 딱딱한 검은색 탈피: 세련된 차콜 투톤 그라데이션 컬러링 */
-            background: linear-gradient(180deg, #3a3d52 0%, #1a1a24 100%);
+            /* 밋밋한 검은색 탈피: 세련된 프리미엄 다크 그라데이션 적용 */
+            background: linear-gradient(180deg, #33384f 0%, #11131c 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             
-            /* 4) 글자가 완전히 살아나도록 고급스러운 이중 미세 음영(드롭 섀도우) 부여 */
-            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.05)) 
-                    drop-shadow(0 4px 10px rgba(58, 61, 82, 0.1));
+            /* 글자가 뒤쪽 배경과 완전히 분리되어 튀어나오도록 만드는 듀얼 드롭 섀도우 음영 */
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08)) 
+                    drop-shadow(0 4px 12px rgba(51, 56, 79, 0.12));
         }
 
         /* ==========================================================================
@@ -601,20 +599,20 @@
                 </button>
                                 
                 <div class="slider-track">
+
+                    <div class="slider-item center" id="image-center">
+                        <div class="card-badge">Key Feature 02</div>
+                        <div class="keyword-card-content">
+                            <i class="fa-solid fa-wand-magic-sparkles keyword-icon"></i>
+                            <h3 class="keyword-title">간편화</h3>
+                        </div>
+                    </div>
                     
                     <div class="slider-item side" id="image-side">
                         <div class="card-badge">Key Feature 01</div>
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-robot keyword-icon"></i>
                             <h3 class="keyword-title">자동화</h3>
-                        </div>
-                    </div>
-                    
-                    <div class="slider-item center" id="image-center">
-                        <div class="card-badge">Key Feature 02</div>
-                        <div class="keyword-card-content">
-                            <i class="fa-solid fa-wand-magic-sparkles keyword-icon"></i>
-                            <h3 class="keyword-title">간편화</h3>
                         </div>
                     </div>
                     
