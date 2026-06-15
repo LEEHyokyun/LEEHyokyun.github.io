@@ -455,6 +455,44 @@
             text-align: justify;
         }
 
+        /* 키워드 카드 내부 레이아웃 정의 */
+        .keyword-card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 250px; /* 기존 이미지 높이에 맞게 조절 */
+            padding: 30px;
+            background: #ffffff; /* 이글루 본문 톤에 맞춘 화이트 혹은 연한 그레이 */
+            border-radius: 12px;
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        /* 아이콘 스타일 정의 */
+        .keyword-icon {
+            font-size: 48px;
+            color: #333333; /* 기존 검은색 기반 아이콘들과 톤 맞춤 */
+            margin-bottom: 20px;
+        }
+        
+        /* 타이틀 폰트 정의 */
+        .keyword-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #111111;
+            margin-bottom: 12px;
+        }
+        
+        /* 설명문 폰트 정의 */
+        .keyword-desc {
+            font-size: 14px;
+            color: #666666;
+            line-height: 1.5;
+            word-break: keep-all;
+        }
+
         /* ==========================================================================
            5. 반응형 미디어 쿼리 (Responsive Mobile Layout)
            ========================================================================== */
@@ -539,23 +577,45 @@
                 <button class="slider-btn prev" onclick="moveImages('prev')" aria-label="이전 슬라이드">
                     <img src="image/prev.svg" alt="이전" />
                 </button>
-                
+                                
                 <div class="slider-track">
+                    
                     <div class="slider-item side" id="image-side">
-                        <div class="card-badge">Main Backend</div>
-                        <img src="image/igloo_archi.png" class="slider-img" alt="메인 서비스 화면" />
+                        <div class="card-badge">Key Feature 01</div>
+                        <div class="keyword-card-content">
+                            <i class="fa-solid fa-robot keyword-icon"></i>
+                            <h3 class="keyword-title">자동화</h3>
+                            <p class="keyword-desc">반복적인 프로세스를 정밀하게 시스템화</p>
+                        </div>
                     </div>
                     
                     <div class="slider-item center" id="image-center">
-                        <div class="card-badge">Sub Backend</div>
-                        <img src="image/p1-detail1.png" class="slider-img" alt="실시간 채팅 구현 화면" />
+                        <div class="card-badge">Key Feature 02</div>
+                        <div class="keyword-card-content">
+                            <i class="fa-solid fa-wand-magic-sparkles keyword-icon"></i>
+                            <h3 class="keyword-title">간편화</h3>
+                            <p class="keyword-desc">사용자 중심의 직관적이고 단순한 UX 제공</p>
+                        </div>
                     </div>
                     
                     <div class="slider-item side" id="image-side">
-                        <div class="card-badge">Database</div>
-                        <img src="image/p1-detail2.png" class="slider-img" alt="데이터베이스 성능 최적화 지표" />
+                        <div class="card-badge">Key Feature 03</div>
+                        <div class="keyword-card-content">
+                            <i class="fa-solid fa-layer-group keyword-icon"></i>
+                            <h3 class="keyword-title">클린 아키텍칭</h3>
+                            <p class="keyword-desc">유지보수와 확장이 용이한 구조적 설계</p>
+                        </div>
                     </div>
-
+                
+                    <div class="slider-item side" id="image-side">
+                        <div class="card-badge">Key Feature 04</div>
+                        <div class="keyword-card-content">
+                            <i class="fa-solid fa-database keyword-icon"></i>
+                            <h3 class="keyword-title">데이터 배치 작업</h3>
+                            <p class="keyword-desc">대용량 데이터의 주기적이고 안정적인 처리</p>
+                        </div>
+                    </div>
+                
                 </div>
                 
                 <button class="slider-btn next" onclick="moveImages('next')" aria-label="다음 슬라이드">
@@ -640,10 +700,9 @@
     <script>
         // 전역 변수 및 이미지 상태 관리
         let currentImageIndex = 0;
-        const totalSlides = 4; // 슬라이드 총 개수 (4개 기준)
+        const totalSlides = 4; // 슬라이드 총 개수 (4개 기준 일치)
     
         document.addEventListener("DOMContentLoaded", function () {
-            // 개편된 HTML 구조의 클래스명인 '.slider-item'이 존재하는지 체크합니다.
             if (document.querySelector(".slider-item")) {
                 updateImages(false); // 초기 배치 (애니메이션 없이 정렬)
             }
@@ -651,21 +710,20 @@
     
         /**
          * 슬라이드들의 위치와 스타일을 인덱스 기준으로 업데이트하는 함수
-         * @param {boolean} isAnimating - 애니메이션 전환 효과 적용 여부
          */
         function updateImages(isAnimating) {
             const slides = document.querySelectorAll(".slider-item");
             const isMobile = window.innerWidth <= 768;
     
             slides.forEach((slide, index) => {
-                // 현재 활성화된 슬라이드 인덱스 기준으로 상대적 위치 계산 (0, 1, 2)
+                // 현재 활성화된 슬라이드 인덱스 기준으로 상대적 위치 계산
                 const position = (index - currentImageIndex + totalSlides) % totalSlides;
     
-                // 트랜지션 효과 제어 (전환 시에만 부드럽게 움직이도록 설정)
+                // 트랜지션 효과 제어
                 slide.style.transition = isAnimating ? "all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)" : "none";
     
                 if (isMobile) {
-                    // 모바일 환경: 사이드는 숨기고 센터(현재) 슬라이드만 화면 가득 노출
+                    // 모바일 환경
                     if (position === 0) {
                         slide.className = "slider-item center";
                         slide.style.opacity = "1";
@@ -693,13 +751,20 @@
                         slide.style.zIndex = "2";
                         slide.style.transform = "translate(-50%, 0) scale(0.8)";
                         slide.style.left = "75%";
-                    } else {
-                        // 3. 좌측 사이드 카드 (position === 2)
+                    } else if (position === totalSlides - 1) {
+                        // 3. 좌측 사이드 카드 (4개 기준 마지막 인덱스가 좌측에 위치)
                         slide.className = "slider-item side left";
                         slide.style.opacity = "0.4";
                         slide.style.zIndex = "2";
                         slide.style.transform = "translate(-50%, 0) scale(0.8)";
                         slide.style.left = "25%";
+                    } else {
+                        // 나머지 숨겨지는 카드 (4번째 카드 위치 처리)
+                        slide.className = "slider-item side hidden";
+                        slide.style.opacity = "0";
+                        slide.style.zIndex = "1";
+                        slide.style.transform = "translate(-50%, 0) scale(0.6)";
+                        slide.style.left = "50%";
                     }
                 }
             });
@@ -707,30 +772,22 @@
     
         /**
          * 화살표 버튼 클릭 시 인덱스를 변경하고 애니메이션을 트리거하는 함수
-         * @param {string} direction - 'prev' 또는 'next'
          */
         function moveImages(direction) {
-            // 연속 클릭 방지 및 디바운싱을 원하시면 아래 주석을 해제하세요.
-            // if (window.issliding) return;
-            // window.issliding = true;
-    
             if (direction === "next") {
                 currentImageIndex = (currentImageIndex + 1) % totalSlides;
             } else if (direction === "prev") {
                 currentImageIndex = (currentImageIndex - 1 + totalSlides) % totalSlides;
             }
     
-            // 애니메이션을 효과를 true로 주어 부드럽게 회전시킵니다.
             updateImages(true);
     
-            // 애니메이션 완료(500ms) 후 상태 안정화
             setTimeout(() => {
                 updateImages(false);
-                // window.issliding = false;
             }, 500);
         }
     
-        // 윈도우 리사이즈 시 모바일/데스크톱 레이아웃 즉시 대응
+        // 윈도우 리사이즈 시 즉시 대응
         window.addEventListener("resize", function() {
             updateImages(false);
         });
