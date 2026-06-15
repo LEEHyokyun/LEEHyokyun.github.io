@@ -460,43 +460,54 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: center; /* 3) 완전한 수직 정중앙 정렬 보장 */
             height: 100%;
-            min-height: 280px; /* 카드가 더 꽉 차 보이도록 세로 최소 크기 확장 */
-            padding: 40px 20px;
+            min-height: 320px;       /* 카드가 화면에 더 꽉 차 보이도록 높이 상향 */
+            padding: 20px;
             
-            /* 고급스러운 미니멀 화이트 그라데이션 및 볼륨감 있는 그림자 */
-            background: linear-gradient(145deg, #ffffff, #f5f5f7);
-            border-radius: 16px;
+            /* 입체적인 미니멀 대리석풍 그라데이션 배경 및 부드러운 하이라이트 그림자 */
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #eeeded 100%);
+            border-radius: 20px;
             box-shadow: 
-                0 10px 30px rgba(0, 0, 0, 0.04),
-                0 1px 3px rgba(0, 0, 0, 0.02),
+                0 15px 35px rgba(0, 0, 0, 0.05),
+                0 5px 15px rgba(0, 0, 0, 0.02),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
                 inset 0 0 0 1px rgba(0, 0, 0, 0.03);
             
             text-align: center;
             box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
         }
         
-        /* 아이콘 스타일: 크기를 키우고 깊이감 있는 색상 적용 */
+        /* 아이콘 스타일: 텍스트와 완벽한 조화를 이루도록 스케일업 및 다크 차콜 톤 */
         .keyword-icon {
-            font-size: 64px; /* 기존 48px에서 확대 */
-            color: #1d1d1f;  /* 애플 스타일의 깊은 차콜 블랙 */
-            margin-bottom: 24px;
+            font-size: 72px; /* 1) 압도적인 크기로 확대 */
+            color: #212529;  
+            margin-bottom: 20px; /* 3) 정중앙 밸런스를 위한 하단 마진 최적화 */
             
-            /* 아이콘에 살짝 전해지는 부드러운 음영 */
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.06));
+            /* 아이콘 깊이감을 주는 부드러운 드롭 섀도우 */
+            filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.08));
         }
         
-        /* 타이틀 폰트: 한눈에 인지되도록 압도적인 크기와 두께감 부여 */
+        /* 타이틀 폰트: 꽉 찬 크기, 세련된 그라데이션, 입체적 음영 적용 */
         .keyword-title {
-            font-size: 32px; /* 기존 22px에서 대폭 확대 */
-            font-weight: 800; /* 더 두껍게 강조 */
-            color: #000000;
-            letter-spacing: -0.03em; /* 자간을 좁혀서 댄디하고 꽉 찬 느낌 연출 */
-            margin-bottom: 0; /* desc가 제거되므로 하단 여백 여유 확보 */
+            font-size: 46px;   /* 1) 카드에 꽉 차도록 대폭 확대 */
+            font-weight: 900;   /* 가장 두꺼운 굵기로 시인성 극대화 */
+            letter-spacing: -0.04em; /* 자간을 더 조여 단단하고 밀도 높은 느낌 연출 */
+            line-height: 1.2;
+            margin: 0;          /* 3) 불필요한 마진을 제거하여 텍스트가 처지지 않고 정중앙에 고정 */
+            padding: 0;
+        
+            /* 2) 심심하지 않도록 세련된 메탈릭 다크 그라데이션 컬러 적용 */
+            background: linear-gradient(180deg, #2b2d42 0%, #111111 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             
-            /* 글자 자체에도 미세한 입체감 부여 */
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            /* 2) 글자가 배경에서 선명하게 분리되도록 은은하고 투명한 입체 음영 레이어 추가 */
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.06)) 
+                    drop-shadow(0 4px 12px rgba(43, 45, 66, 0.08));
         }
 
         /* ==========================================================================
