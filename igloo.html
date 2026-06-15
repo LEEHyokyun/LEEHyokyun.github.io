@@ -455,59 +455,64 @@
             text-align: justify;
         }
 
-        /* 키워드 카드 내부 레이아웃 고도화 */
+        /* 키워드 카드 내부 레이아웃 완벽 최적화 */
         .keyword-card-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* 3) 완전한 수직 정중앙 정렬 보장 */
+            justify-content: center; /* 수직 정중앙 정렬 */
             height: 100%;
-            min-height: 320px;       /* 카드가 화면에 더 꽉 차 보이도록 높이 상향 */
-            padding: 20px;
+            min-height: 280px;       /* 슬라이드 밸런스에 맞춘 높이 고정 */
+            padding: 20px 24px;      /* 좌우 패딩을 조절하여 글자 가동 범위 확보 */
             
-            /* 입체적인 미니멀 대리석풍 그라데이션 배경 및 부드러운 하이라이트 그림자 */
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #eeeded 100%);
-            border-radius: 20px;
+            /* 부드러운 대리석풍 배경 그라데이션 */
+            background: linear-gradient(135deg, #ffffff 0%, #f9f9fb 60%, #f1f1f4 100%);
+            border-radius: 18px;
+            
+            /* 카드가 고급스럽게 떠 있는 듯한 다층 음영 처리 */
             box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.05),
-                0 5px 15px rgba(0, 0, 0, 0.02),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                0 12px 30px rgba(0, 0, 0, 0.04),
+                0 4px 10px rgba(0, 0, 0, 0.02),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9),
                 inset 0 0 0 1px rgba(0, 0, 0, 0.03);
             
             text-align: center;
             box-sizing: border-box;
             position: relative;
-            overflow: hidden;
         }
         
-        /* 아이콘 스타일: 텍스트와 완벽한 조화를 이루도록 스케일업 및 다크 차콜 톤 */
+        /* 아이콘 스타일 */
         .keyword-icon {
-            font-size: 72px; /* 1) 압도적인 크기로 확대 */
-            color: #212529;  
-            margin-bottom: 20px; /* 3) 정중앙 밸런스를 위한 하단 마진 최적화 */
-            
-            /* 아이콘 깊이감을 주는 부드러운 드롭 섀도우 */
-            filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.08));
+            font-size: 60px; 
+            color: #2d3748; /* 부드러운 다크 그레이 */
+            margin-bottom: 16px;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.06));
         }
         
-        /* 타이틀 폰트: 꽉 찬 크기, 세련된 그라데이션, 입체적 음영 적용 */
+        /* 타이틀 폰트: 잘림 방지 및 고급스러운 음영 마감 */
         .keyword-title {
-            font-size: 46px;   /* 1) 카드에 꽉 차도록 대폭 확대 */
-            font-weight: 900;   /* 가장 두꺼운 굵기로 시인성 극대화 */
-            letter-spacing: -0.04em; /* 자간을 더 조여 단단하고 밀도 높은 느낌 연출 */
-            line-height: 1.2;
-            margin: 0;          /* 3) 불필요한 마진을 제거하여 텍스트가 처지지 않고 정중앙에 고정 */
+            /* 1) 꽉 차되 절대 잘리지 않는 반응형 크기 설계 */
+            font-size: calc(22px + 1.2vw); /* 화면 크기 및 카드 너비에 맞춰 자동 확장 */
+            max-width: 100%;
+            font-weight: 800;             /* 단단하고 밀도 높은 굵기 */
+            letter-spacing: -0.04em;       /* 자간을 좁혀 글자가 퍼져 보이지 않게 세팅 */
+            line-height: 1.15;
+            margin: 0;
             padding: 0;
+            
+            /* 2) 줄바꿈 제어: 단어가 도중에 쪼개지지 않고 한눈에 박히도록 설정 */
+            white-space: nowrap;           /* 무조건 한 줄 노출 (글자 크기가 맞춤 조절됨) */
+            word-break: keep-all;
         
-            /* 2) 심심하지 않도록 세련된 메탈릭 다크 그라데이션 컬러 적용 */
-            background: linear-gradient(180deg, #2b2d42 0%, #111111 100%);
+            /* 3) 딱딱한 검은색 탈피: 세련된 차콜 투톤 그라데이션 컬러링 */
+            background: linear-gradient(180deg, #3a3d52 0%, #1a1a24 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             
-            /* 2) 글자가 배경에서 선명하게 분리되도록 은은하고 투명한 입체 음영 레이어 추가 */
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.06)) 
-                    drop-shadow(0 4px 12px rgba(43, 45, 66, 0.08));
+            /* 4) 글자가 완전히 살아나도록 고급스러운 이중 미세 음영(드롭 섀도우) 부여 */
+            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.05)) 
+                    drop-shadow(0 4px 10px rgba(58, 61, 82, 0.1));
         }
 
         /* ==========================================================================
