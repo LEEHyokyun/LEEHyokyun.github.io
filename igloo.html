@@ -485,13 +485,13 @@
         
         <header class="project-header">
             <div class="header-left">
-                <h1 class="project-title">GlobalConnect</h1>
-                <p class="project-tagline">유학생들을 위한 실시간 커뮤니티 및 네트워킹 플랫폼</p>
+                <h1 class="project-title">이글루봇</h1>
+                <p class="project-tagline">이글루 글쓰기 모임의 호스트 및 멤버들의 간편한 출결 관리 시스템</p>
                 <div class="project-description">
-                    GlobalConnect는 유학생들이 정보를 공유하고 네트워킹할 수 있도록 다양한 기능을 제공합니다. 
-                    React와 Node.js를 기반으로 개발되었으며 주요 기능으로는 게시판, 실시간 채팅, 이벤트 관리 등이 있습니다. 
-                    MongoDB를 사용하여 데이터를 관리하고, Socket.io를 통해 실시간 통신을 구현하였습니다. 
-                    또한 AWS를 이용해 안정적인 호스팅และ 배포를 지원합니다. 팀원들의 협업과 기술적 도전을 통해 완성되었습니다.
+                    이글루봇은 개발자 글쓰기 모임 이글루에서 기존 투표 방식의 출결 관리를 자동화하여, 모임장과 멤버들 모두 간편하게 출결을 진행할 수 있도록 구현한 시스템입니다. 
+                    Spring 프레임워크 및 Java를 기반으로 구현하였으며, 출석 데이터 처리 뿐만 아니라 Spring Batch를 통해 데이터 통계 및 초기화를 진행하기 위한 작업도 주기적으로 진행하고 있습니다. 
+                    서버를 2대로 운용하여, 일반 단톡방에서 이벤트 기반의 명령어 메시지를 수신하는 메신저 챗봇과 메시지를 적절하게 처리하는 API서버를 각각 갤럭시 탭, Render에서 동작하도록 구성하였습니다. 
+                    시스템을 오픈 소스화하여 이글루 팀의 적극적인 참여, 나아가 개발자로서의 기여를 도모하고 있습니다. 
                 </div>
             </div>
             
@@ -500,22 +500,22 @@
                     <div class="meta-row">
                         <img src="image/period.svg" class="meta-icon" alt="기간" />
                         <span class="meta-label">진행 기간</span>
-                        <span class="meta-value">23.06 ~ 23.12 (6개월)</span>
+                        <span class="meta-value">2026.05 ~ </span>
                     </div>
                     <div class="meta-row">
-                        <img src="image/people.svg" class="meta-icon" alt="인원" />
-                        <span class="meta-label">팀원 구성</span>
-                        <span class="meta-value">5명</span>
+                        <img src="image/people.svg" class="meta-icon" alt="환경" />
+                        <span class="meta-label">필요 구동 환경</span>
+                        <span class="meta-value">CPU i5 1 Core & RAM 8.00 GB</span>
                     </div>
                     <div class="meta-row">
-                        <img src="image/role.svg" class="meta-icon" alt="역할" />
-                        <span class="meta-label">상세 역할</span>
-                        <span class="meta-value">프론트엔드 2명 / 백엔드 2명 / 디자이너 1명</span>
+                        <img src="image/role.svg" class="meta-icon" alt="키워드" />
+                        <span class="meta-label">키워드</span>
+                        <span class="meta-value">자동화, 간편화, 클린 아키텍칭, 데이터 배치 작업</span>
                     </div>
                     <div class="meta-row github-row">
                         <img src="image/github.svg" class="meta-icon" alt="깃허브" />
-                        <a href="https://github.com/username/repository" target="_blank" rel="noopener noreferrer" class="github-link">
-                            GitHub Repository →
+                        <a href="https://github.com/LEEHyokyun/igloo" target="_blank" rel="noopener noreferrer" class="github-link">
+                            이글루 GitHub Repository →
                         </a>
                     </div>
                 </div>
@@ -524,13 +524,15 @@
 
         <section class="project-gallery-section">
             <div class="tech-stack-container">
-                <span class="tech-badge frontend">React</span>
-                <span class="tech-badge frontend">Redux</span>
-                <span class="tech-badge frontend">Socket.io Client</span>
-                <span class="tech-badge backend">Node.js</span>
-                <span class="tech-badge backend">Express.js</span>
-                <span class="tech-badge database">MongoDB</span>
-                <span class="tech-badge infra">AWS</span>
+                <span class="tech-badge frontend">Java</span>
+                <span class="tech-badge frontend">Spring</span>
+                <span class="tech-badge backend">KakaoTalk Messanger Chatbot</span>
+                <span class="tech-badge backend">JPA</span>
+                <span class="tech-badge backend">Spring Batch</span>
+                <span class="tech-badge database">Neon(PostgreSQL)</span>
+                <span class="tech-badge infra">Render</span>
+                <span class="tech-badge infra">Gradle</span>
+                <span class="tech-badge infra">Docker</span>
             </div>
 
             <div class="slider-wrapper">
