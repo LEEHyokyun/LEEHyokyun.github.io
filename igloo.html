@@ -464,53 +464,50 @@
 
         /* 키워드 카드 내부 레이아웃 완벽 최적화 */
         .keyword-card-content {
-            /* 32rem * 18rem 내부를 빈틈없이 꽉 채우도록 설정 */
             width: 100%;
             height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* 수직, 수평 완전 정중앙 정렬 */
-            padding: 0 1.5rem;       /* 내부 여백을 줄여 글자가 움직일 수 있는 가로 폭 최대 확보 */
+            justify-content: center; /* 완벽한 상하좌우 중앙 정렬 */
+            padding: 0 1rem;         /* 좌우 패딩을 줄여서 긴 단어가 놀 수 있는 공간 확보 */
             box-sizing: border-box;
             
-            /* 딱딱함을 지워줄 은은한 테크니컬 대리석 그라데이션 배경 */
-            background: linear-gradient(135deg, #ffffff 0%, #f7f9fc 50%, #f1f3f7 100%);
+            /* 세련된 테크니컬 대리석 그라데이션 배경 */
+            background: linear-gradient(135deg, #ffffff 0%, #f6f8fa 60%, #edf0f5 100%);
+            position: relative;
         }
         
         /* 아이콘 스타일 */
         .keyword-icon {
-            font-size: 3.5rem;       /* 박스 비율에 맞춰 시원하게 키움 */
-            color: #4a5568;          /* 세련된 다크 무브 차콜 */
-            margin-bottom: 1rem;     /* 타이틀과의 정밀한 밸런스 조정 */
+            font-size: 3.8rem;       /* 시원한 크기감 유지 */
+            color: #3b4252;          /* 신뢰감을 주는 딥 차콜 블루 */
+            margin-bottom: 1.2rem;
             
-            /* 아이콘이 떠 있는 듯한 미세한 음영 처리 */
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08));
+            /* 아이콘에만 안전하게 드롭섀도우 적용 */
+            filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.08));
         }
         
-        /* 타이틀 폰트: 절대 잘리지 않고 꽉 차는 입체 폰트 세팅 */
+        /* 타이틀 폰트: 그라데이션 깨짐 버그 우회 및 볼륨감 세팅 */
         .keyword-title {
-            /* 기존 32px -> 42px로 대폭 확대 (32rem 박스에 가장 꽉 차는 황금 비율) */
-            font-size: 42px; 
-            font-weight: 900;         /* 가장 묵직한 두께로 시인성 압도 */
-            letter-spacing: -0.05em;   /* 자간을 좁혀 밀도 있고 단단한 느낌 부여 */
-            line-height: 1;
+            /* 1) 32rem 가로폭에 4자~7자 단어가 잘림 없이 들어가도록 서체 크기 밸런싱 */
+            font-size: 36px;          
+            font-weight: 900;         /* 묵직하고 단단한 두께감 */
+            letter-spacing: -0.05em;   /* 자간을 바짝 좁혀서 밀도감 극대화 */
+            line-height: 1.2;
             margin: 0;
             padding: 0;
             
-            /* [핵심] 가로 잘림 및 강제 줄바꿈 원천 차단 */
+            /* 2) 줄바꿈 제어: 영역이 좁아도 임의로 쪼개지거나 아래로 밀리지 않게 고정 */
             white-space: nowrap; 
             word-break: keep-all;
         
-            /* 밋밋한 검은색 탈피: 세련된 프리미엄 다크 그라데이션 적용 */
+            /* 3) 글자 마스킹 색상 세팅 (차콜 투톤 그라데이션) */
             background: linear-gradient(180deg, #33384f 0%, #11131c 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            
-            /* 글자가 뒤쪽 배경과 완전히 분리되어 튀어나오도록 만드는 듀얼 드롭 섀도우 음영 */
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08)) 
-                    drop-shadow(0 4px 12px rgba(51, 56, 79, 0.12));
+            text-shadow: 0px 4px 10px rgba(51, 56, 79, 0.15);
         }
 
         /* ==========================================================================
