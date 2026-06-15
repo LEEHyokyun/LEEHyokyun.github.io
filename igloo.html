@@ -380,21 +380,25 @@
             gap: 2rem;
         }
 
-        /* 전체를 감싸는 단 하나의 대형 박스 */
+        /* 전체를 감싸는 단 하나의 대형 박스 (가로 꽉 채움 버전) */
         .feature-single-box {
+            width: 100% !important;     /* 🚨 부모가 막고 있더라도 무조건 100% 꽉 채움 */
+            max-width: 100% !important; /* 최대 폭 제한 해제 */
             background: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: 0.75rem; /* 조금 더 부드러운 라운딩 */
-            padding: 2.5rem; /* 내부 여백을 넉넉히 주어 고급스러운 느낌 강조 */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02); /* 미니멀한 그림자 */
+            border-radius: 0.75rem; 
+            padding: 2.5rem; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02); 
             display: flex;
             flex-direction: column;
-            gap: 2rem; /* 각 기능 아이템 간의 간격 */
+            gap: 2rem; 
+            box-sizing: border-box;     /* 패딩 때문에 박스가 화면 밖으로 탈출하는 것 방지 */
         }
         
         /* 개별 기능 레이아웃 (1줄에 1개씩 아래로 배치) */
         .feature-item {
-            width: 100%;
+            width: 100% !important;     /* 🚨 내부 아이템도 무조건 가로 100% 사용 */
+            box-sizing: border-box;
         }
         
         /* 마지막 아이템이 아니라면 하단에 부드러운 구분선 추가 */
@@ -406,9 +410,9 @@
         /* 대형 박스 안의 소제목 스타일 */
         .feature-item-title {
             margin: 0 0 0.8rem 0;
-            font-size: 1.2rem; /* 가독성을 위해 살짝 키움 */
+            font-size: 1.2rem; 
             font-weight: 700;
-            color: #1e2235; /* 신뢰감을 주는 다크 네이비 톤 */
+            color: #1e2235; 
         }
         
         /* 설명 리스트 정렬 */
@@ -418,13 +422,15 @@
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+            width: 100%;                /* 🚨 리스트 영역도 100% 확장 */
         }
         
         /* 리스트 본문 텍스트 */
         .feature-item-list li {
-            font-size: 0.9rem; /* 글씨가 눈에 더 잘 띄도록 최적화 */
+            font-size: 0.9rem; 
             color: var(--text-color-secondary);
             line-height: 1.6;
+            word-break: keep-all;       /* 🚨 단어 단위로 깔끔하게 줄바꿈 처리 */
         }
 
         /* 3-3. 핵심 트러블슈팅 세션 */
