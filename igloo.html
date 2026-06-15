@@ -455,42 +455,48 @@
             text-align: justify;
         }
 
-        /* 키워드 카드 내부 레이아웃 정의 */
+        /* 키워드 카드 내부 레이아웃 고도화 */
         .keyword-card-content {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100%;
-            min-height: 250px; /* 기존 이미지 높이에 맞게 조절 */
-            padding: 30px;
-            background: #ffffff; /* 이글루 본문 톤에 맞춘 화이트 혹은 연한 그레이 */
-            border-radius: 12px;
-            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+            min-height: 280px; /* 카드가 더 꽉 차 보이도록 세로 최소 크기 확장 */
+            padding: 40px 20px;
+            
+            /* 고급스러운 미니멀 화이트 그라데이션 및 볼륨감 있는 그림자 */
+            background: linear-gradient(145deg, #ffffff, #f5f5f7);
+            border-radius: 16px;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.04),
+                0 1px 3px rgba(0, 0, 0, 0.02),
+                inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+            
             text-align: center;
+            box-sizing: border-box;
         }
         
-        /* 아이콘 스타일 정의 */
+        /* 아이콘 스타일: 크기를 키우고 깊이감 있는 색상 적용 */
         .keyword-icon {
-            font-size: 48px;
-            color: #333333; /* 기존 검은색 기반 아이콘들과 톤 맞춤 */
-            margin-bottom: 20px;
+            font-size: 64px; /* 기존 48px에서 확대 */
+            color: #1d1d1f;  /* 애플 스타일의 깊은 차콜 블랙 */
+            margin-bottom: 24px;
+            
+            /* 아이콘에 살짝 전해지는 부드러운 음영 */
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.06));
         }
         
-        /* 타이틀 폰트 정의 */
+        /* 타이틀 폰트: 한눈에 인지되도록 압도적인 크기와 두께감 부여 */
         .keyword-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: #111111;
-            margin-bottom: 12px;
-        }
-        
-        /* 설명문 폰트 정의 */
-        .keyword-desc {
-            font-size: 14px;
-            color: #666666;
-            line-height: 1.5;
-            word-break: keep-all;
+            font-size: 32px; /* 기존 22px에서 대폭 확대 */
+            font-weight: 800; /* 더 두껍게 강조 */
+            color: #000000;
+            letter-spacing: -0.03em; /* 자간을 좁혀서 댄디하고 꽉 찬 느낌 연출 */
+            margin-bottom: 0; /* desc가 제거되므로 하단 여백 여유 확보 */
+            
+            /* 글자 자체에도 미세한 입체감 부여 */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
         }
 
         /* ==========================================================================
@@ -585,7 +591,6 @@
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-robot keyword-icon"></i>
                             <h3 class="keyword-title">자동화</h3>
-                            <p class="keyword-desc">반복적인 프로세스를 정밀하게 시스템화</p>
                         </div>
                     </div>
                     
@@ -594,7 +599,6 @@
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-wand-magic-sparkles keyword-icon"></i>
                             <h3 class="keyword-title">간편화</h3>
-                            <p class="keyword-desc">사용자 중심의 직관적이고 단순한 UX 제공</p>
                         </div>
                     </div>
                     
@@ -603,7 +607,6 @@
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-layer-group keyword-icon"></i>
                             <h3 class="keyword-title">클린 아키텍칭</h3>
-                            <p class="keyword-desc">유지보수와 확장이 용이한 구조적 설계</p>
                         </div>
                     </div>
                 
@@ -612,7 +615,6 @@
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-database keyword-icon"></i>
                             <h3 class="keyword-title">데이터 배치 작업</h3>
-                            <p class="keyword-desc">대용량 데이터의 주기적이고 안정적인 처리</p>
                         </div>
                     </div>
                 
@@ -629,7 +631,7 @@
             <div class="architecture-container">
                 <h2 class="section-title">시스템 흐름도</h2>
                 <div class="architecture-diagram-placeholder">
-                    <img src="image/igloo-archi.png" alt="Igloo 시스템 흐름도" class="architecture-img" />
+                    <img src="image/igloo-archi.png" alt="igloo 시스템 흐름도" class="architecture-img" />
                     <p class="architecture-caption">카카오톡 챗봇 메신저 서버가 메시지를 전달받고 이를 API 서버에서 처리합니다.</p>
                 </div>
             </div>
