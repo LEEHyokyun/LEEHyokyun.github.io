@@ -206,24 +206,6 @@
             position: relative;
         }
 
-        .slider-item {
-            position: absolute;
-            /* 스크립트 트랜지션과의 충돌 방지를 위해 ease-in-out 제거, 스크립트의 cubic-bezier 유도 */
-            width: 32rem;
-            height: 18rem;
-            border-radius: 0.6rem;
-            overflow: hidden; /* 내부 그라데이션이 라운딩을 벗어나지 않도록 유지 */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border: 1px solid var(--border-color);
-            background-color: #fff;
-            
-            /* [추가] 내부 콘텐츠들을 완전히 정중앙에 배치하기 위한 flex 선언 */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
         .slider-img {
             width: 100%;
             height: 100%;
@@ -231,25 +213,68 @@
             display: block;
         }
 
-        /* 카드 왼쪽/오른쪽/중앙 3차원 입체감 부여 */
-        /* 카드 왼쪽/오른쪽/중앙 3차원 입체감 부여 */
+        /* 기존 slider-item을 완벽하게 고도화 */
+        .slider-item {
+            position: absolute;
+            width: 32rem;
+            height: 18rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+            
+            /* 1) 심심한 흰색 탈피: 세련된 대리석풍 그라데이션 배경 */
+            background: linear-gradient(135deg, #ffffff 0%, #f7f9fc 70%, #ebedf3 100%);
+            
+            /* 2) 완벽한 상하좌우 정중앙 정렬 배정 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 1.5rem; /* 좌우 여백을 최소화하여 글자 공간 확보 */
+            box-sizing: border-box;
+        }
+        
+        /* 3) 3차원 입체감 슬라이더 효과 유지 */
         .slider-item.side {
             transform: scale(0.8) translateX(-45%);
             z-index: 1;
             opacity: 0.4;
             filter: blur(1px);
         }
-        
-        /* CSS만으로 두 번째 side 카드를 우측 배치하기 위한 클래스 규칙 */
         .slider-item.side:last-child {
             transform: scale(0.8) translateX(45%);
         }
-        
         .slider-item.center {
             z-index: 2;
             transform: scale(1) translateX(0);
             opacity: 1;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 35px rgba(51, 56, 79, 0.2);
+        }
+
+        .slider-item h3 {
+            /* [잘림 방지 부모 잠금] */
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            
+            /* [글씨 크기 및 자간 최소화] 32rem 박스 내부를 빈틈없이 꽉 채우는 크기 */
+            font-size: 40px !important; 
+            font-weight: 800 !important;
+            letter-spacing: -0.05em !important; /* 자간을 좁혀 글자가 옆으로 퍼져 깨지는 것 방지 */
+            line-height: 1.1 !important;
+            
+            /* [글자 잘림 원천 차단 속성] */
+            white-space: nowrap !important;
+            word-break: keep-all !important;
+        
+            /* [신선하고 세련된 색상 변경] 딱딱한 검은색 전면 폐기 -> 신뢰감을 주는 고급스러운 딥 네이비 차콜 */
+            color: #1e2235 !important;
+            
+            /* [고급스러운 음영 처리] 글자가 뒤로 묻히지 않고 눈앞으로 튀어나와 보이게 마감 */
+            text-shadow: 0 4px 12px rgba(30, 34, 53, 0.18), 0 2px 4px rgba(0, 0, 0, 0.08);
         }
 
         /* 슬라이드 내부 텍스트 배지 */
@@ -462,15 +487,19 @@
             text-align: justify;
         }
 
-        /* 키워드 카드 내부 레이아웃 완벽 최적화 */
+        /* 키워드 카드 내부 레이아웃 완벽 최적화 (수정본) */
         .keyword-card-content {
+            /* 🚨 height: 100%를 지우고 flex-grow를 주어 배지(Badge)를 제외한 남은 공간을 정확히 채우게 합니다. */
             width: 100%;
-            height: 100%;
+            flex-grow: 1; 
+            
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* 완벽한 상하좌우 중앙 정렬 */
-            padding: 0 1rem;         /* 좌우 패딩을 줄여서 긴 단어가 놀 수 있는 공간 확보 */
+            justify-content: center; /* 이제 배지와 간섭 없이 진짜 상하좌우 정중앙에 정렬됩니다. */
+            
+            /* 🚨 상하 여백을 확보하고 좌우 패딩을 조절하여 긴 글자가 노출될 수 있는 공간 극대화 */
+            padding: 1.5rem 1rem;    
             box-sizing: border-box;
             
             /* 세련된 테크니컬 대리석 그라데이션 배경 */
