@@ -752,7 +752,7 @@
                             <p>프로젝트를 모두가 이해할 수 있도록 하기 위한 설계 및 모델링의 주안점을 어디에 두는 것이 좋을지 고민하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
-                            <h4>✅ 문제 해결 방안</h4>
+                            <h4>✅ 문제 접근 및 해결 방안</h4>
                             <p>빠르게 의도를 파악할 수 있는 <strong>직관성과 통용성</strong>을 중점적으로 고려하였으며, 이를 확보하기 위해 생명주기에 근거한 <strong>책임 분리와 결합(물리적 거리 등)</strong>을 활용하였습니다. 데이터베이스 역시 엄격한 정규화보다는 필요한 만큼의 엔티티 속성을 모델링하였습니다.</p>
                         </div>
                     </div>
@@ -769,7 +769,7 @@
                             <p>출석 데이터 처리 시 시간에 따른 출석/지각 상태 반영까지 진행하여 서비스 로직이 커지고, 이에 따라 책임 분리 관점에서 모호함이 발생하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
-                            <h4>✅ 문제 해결 방안</h4>
+                            <h4>✅ 문제 접근 및 해결 방안</h4>
                             <p>출석 데이터 처리 간 데이터를 경량화하고 조금이라도 빠르게 출석 데이터를 반영하기 위해 <strong>통계 처리를 별도의 배치 로직으로 구성</strong>하였습니다. 아직 소규모이기에 API의 처리 속도 변화는 미미하였으나, 서비스 로직의 비대화를 방지하여 이에 따른 <strong>가독성 및 직관성</strong>을 확보할 수 있었습니다. 또한 이에 따른 도메인 생명주기를 명확하게 분리할 수 있었습니다.</p>
                         </div>
                     </div>
@@ -786,7 +786,7 @@
                             <p>프로젝트 규모와 목적에 부합한 Spring Batch Reader를 선택하기 위해 설계적/기술적 요소를 고려하고 적용하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
-                            <h4>✅ 문제 해결 방안</h4>
+                            <h4>✅ 문제 접근 및 해결 방안</h4>
                             <p>단순 구현 혹은 Neon의 데이터를 단순히 읽는 Batch Reader가 아닌, Neon/Render의 과금을 피하기 위한 <strong>단시간 Connection 점유 및 구동 환경에 구애받지 않는 요소 선택</strong>이 필요하였습니다. 이를 위해 Connection을 유지하지 않고 적절한 Batch Size 만큼(멤버수) 데이터만 읽어오는 Paging Reader를 선택하였으며, 학습 목적 및 도메인 재활용성 등을 고려하여 JpaPagingItemReader를 최종 채택하였습니다.</p>
                         </div>
                     </div>
@@ -803,8 +803,8 @@
                             <p>Neon/Render가 허용하는 한달 데이터 저장 용량 및 API(Connection) 사용량을 위해 적절한 조절 장치를 구성하는 것이 필요하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
-                            <h4>✅ 문제 해결 방안</h4>
-                            <p>유즈케이스 및 출석 당일 데이터 처리를 고려하였을때 멤버 이름 기반의 출결 데이터 특성 상 기존 내역에 대한 update가 아닌 최초 insert가 적절하다는 판단으로, 출결 처리 후 익일에 모든 데이터를 초기화하도록 하였습니다. 메모리 관점에서 JpaPagingItemReader보다는 JdbcPagingItemReader가 더 유리하였으나, 소규모에서 그 차이가 미미하고 학습 목적에서는 JpaPagingItemReader가 더 유리하다고 판단하여 JpaPagingItemReader를 유지하였습니다.</p>
+                            <h4>✅ 문제 접근 및 해결 방안</h4>
+                            <p>유즈케이스 및 출석 당일 데이터 처리를 고려하였을때 멤버 이름 기반의 출결 데이터 특성 상 <strong>기존 내역에 대한 update가 아닌 최초 insert가 적절</strong>하다는 판단으로, 출결 처리 후 익일에 모든 데이터를 초기화하도록 하였습니다. 메모리 관점에서 JpaPagingItemReader보다는 JdbcPagingItemReader가 더 유리하였으나, 소규모에서 그 차이가 미미하고 학습 목적에서는 JpaPagingItemReader가 더 유리하다고 판단하여 <strong>JpaPagingItemReader를 유지</strong>하였습니다.</p>
                         </div>
                     </div>
                 </div>
