@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://github.com/LEEHyokyun/LEEHyokyun.github.io/igloo.html" />
-    <meta property="og:title" content="이효균의 포트폴리오 - 이글루 출결 관리 자동화 프로젝트" />
+    <meta property="og:url" content="https://github.com/LEEHyokyun/LEEHyokyun.github.io/60hz_legacy.html" />
+    <meta property="og:title" content="이효균의 포트폴리오 - 재생e 사용(계약) 관리시스템 legacy 개선" />
     <meta property="og:image" content="image/OGimage.png" />
     <meta property="og:description" content="LEE HYO KYUN PORTFOLIO_IGLOO" />
     <meta property="og:site_name" content="SCC Portfolio" />
@@ -14,7 +14,7 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
-    <title>LEEHYOKYUN PORTFOLIO_IGLOO</title>
+    <title>LEEHYOKYUN PORTFOLIO_60HZ_LEGACY</title>
     <style>
         /* ==========================================================================
            1. 변수 선언 및 기본 세팅 (기존 아이덴티티 유지)
@@ -596,13 +596,12 @@
         
         <header class="project-header">
             <div class="header-left">
-                <h1 class="project-title">이글루봇</h1>
-                <p class="project-tagline">이글루 글쓰기 모임의 호스트 및 멤버들의 간편한 출결 관리 시스템</p>
+                <h1 class="project-title">재생e 사용(계약) 관리 시스템(legacy) 개선</h1>
+                <p class="project-tagline">7년 이상 방치된 신재생에너지 계약 관리(RE100) 시스템 개선 프로젝트</p>
                 <div class="project-description">
-                    이글루봇은 개발자 글쓰기 모임 이글루의 기존 카카오톡 투표 방식의 출결 관리를 자동화하여, 모임장과 멤버들 모두 간편하게 출결을 진행할 수 있도록 구현한 시스템입니다. 
-                    Spring 프레임워크 및 Java를 기반으로 구현하였으며, 출석 데이터 처리 뿐만 아니라 Spring Batch를 통해 데이터 통계 및 초기화를 진행하기 위한 작업도 주기적으로 진행하고 있습니다. 
-                    서버를 2대로 운용하여, 일반 단톡방에서 이벤트 기반의 명령어 메시지를 수신하는 메신저 챗봇과 메시지를 적절하게 처리하는 API서버를 각각 갤럭시 탭, Render에서 동작하도록 구성하였습니다. 
-                    시스템을 오픈 소스화하여 이글루 팀의 적극적인 참여, 나아가 개발자로서의 기여를 도모하고 있습니다. 
+                    재생e 사용 관리 시스템은 기업의 신재생 에너지(RE100) 계약 및 인증 내역을 관리하기 위한 거래 시스템입니다. 
+                    2019년 개발 이후 유지관리가 이루어지지 않아, 작동은 가능하지만 크고 작은 결함들이 반복적으로 다수 발생한 전형적인 legacy 시스템이기도 합니다. 
+                    지금까지 시스템 분석없이 단발성 결함 처리로 인해 반복적인 작업이 이루어졌기에, 식스티헤르츠 측의 원활한 관리와 유지 비용 최소화를 위해 전면적인 개선 작업을 진행하였습니다. 
                 </div>
             </div>
             
@@ -611,22 +610,22 @@
                     <div class="meta-row">
                         <img src="image/period.svg" class="meta-icon" alt="기간" />
                         <span class="meta-label">진행 기간</span>
-                        <span class="meta-value">2026.05 ~ </span>
+                        <span class="meta-value">2025.04 ~ 2025.07</span>
                     </div>
                     <div class="meta-row">
                         <img src="image/env.svg" class="meta-icon" alt="환경" />
                         <span class="meta-label">구동 환경</span>
-                        <span class="meta-value">i5 1 Core & 8.00 GB</span>
+                        <span class="meta-value">i5 1~2 Core</span>
                     </div>
                     <div class="meta-row">
                         <img src="image/role.svg" class="meta-icon" alt="중점사항" />
                         <span class="meta-label">중점 사항</span>
-                        <span class="meta-value">불편함 개선 및 클린 아키텍칭</span>
+                        <span class="meta-value">legacy 시스템의 전면적 개선</span>
                     </div>
                     <div class="meta-row github-row">
-                        <img src="image/github.svg" class="meta-icon" alt="깃허브" />
-                        <a href="https://github.com/LEEHyokyun/igloo" target="_blank" rel="noopener noreferrer" class="github-link">
-                            이글루 GitHub Repository →
+                        <img src="image/koreae.png" class="meta-icon" alt="사이" />
+                        <a href="https://nr.energy.or.kr/RE/CST/login.do" target="_blank" rel="noopener noreferrer" class="github-link">
+                            재생e 사용 관리 시스템 →
                         </a>
                     </div>
                 </div>
@@ -635,15 +634,14 @@
 
         <section class="project-gallery-section">
             <div class="tech-stack-container">
-                <span class="tech-badge frontend">Java</span>
-                <span class="tech-badge frontend">Spring</span>
-                <span class="tech-badge backend">KakaoTalk Messanger Chatbot</span>
-                <span class="tech-badge backend">JPA</span>
-                <span class="tech-badge backend">Spring Batch</span>
-                <span class="tech-badge database">Neon(PostgreSQL)</span>
-                <span class="tech-badge infra">Render</span>
-                <span class="tech-badge infra">Gradle</span>
-                <span class="tech-badge infra">Docker</span>
+                <span class="tech-badge frontend">Java(jdk1.8)</span>
+                <span class="tech-badge frontend">Spring Boot(2.1)</span>
+                <span class="tech-badge backend">Jsp</span>
+                <span class="tech-badge backend">Oracle Stored Procedure</span>
+                <span class="tech-badge backend">Jeus(8.5)</span>
+                <span class="tech-badge infra">Legacy 리팩토링</span>
+                <span class="tech-badge infra">문서화</span>
+                <span class="tech-badge infra">표준화</span>
             </div>
 
             <div class="slider-wrapper">
@@ -657,7 +655,7 @@
                         <div class="card-badge">Key Feature 01</div>
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-wand-magic-sparkles keyword-icon"></i>
-                            <h3 class="keyword-title">간편화</h3>
+                            <h3 class="keyword-title">legacy 개선</h3>
                         </div>
                     </div>
                     
@@ -665,7 +663,7 @@
                         <div class="card-badge">Key Feature 02</div>
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-robot keyword-icon"></i>
-                            <h3 class="keyword-title">자동화</h3>
+                            <h3 class="keyword-title">시스템 분석</h3>
                         </div>
                     </div>
                     
@@ -673,7 +671,7 @@
                         <div class="card-badge">Key Feature 03</div>
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-layer-group keyword-icon"></i>
-                            <h3 class="keyword-title">클린 아키텍칭</h3>
+                            <h3 class="keyword-title">문서화</h3>
                         </div>
                     </div>
                 
@@ -681,7 +679,7 @@
                         <div class="card-badge">Key Feature 04</div>
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-database keyword-icon"></i>
-                            <h3 class="keyword-title">데이터 배치 작업</h3>
+                            <h3 class="keyword-title">표준화</h3>
                         </div>
                     </div>
                 
