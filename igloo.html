@@ -787,7 +787,7 @@
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>단순 구현 혹은 Neon의 데이터를 단순히 읽는 Batch Reader가 아닌, Neon/Render의 과금을 피하기 위한 <strong>단시간 Connection 점유 및 구동 환경에 구애받지 않는 요소 선택</strong>이 필요하였습니다. 이를 위해 Connection을 유지하지 않고 적절한 Batch Size 만큼(멤버수) 데이터만 읽어오는 Paging Reader를 선택하였으며, 학습 목적 및 도메인 재활용성 등을 고려하여 JpaPagingItemReader를 최종 채택하였습니다.</p>
+                            <p>단순 구현 혹은 Neon의 데이터를 단순히 읽는 Batch Reader가 아닌, Neon/Render의 과금을 피하기 위한 <strong>단시간 Connection 점유 및 구동 환경에 구애받지 않는 요소 선택</strong>이 필요하였습니다. 이를 위해 Connection을 유지하지 않고 적절한 Batch Size 만큼(멤버수) 데이터만 읽어오는 Paging Reader를 선택하였으며, 학습 목적 및 도메인 재활용성 등을 고려하여 <strong>JpaPagingItemReader를 최종 채택</strong>하였습니다.</p>
                         </div>
                     </div>
                 </div>
