@@ -686,7 +686,15 @@
                             <h3 class="keyword-title">문서화</h3>
                         </div>
                     </div>
-                
+
+                    <div class="slider-item side" id="image-side">
+                        <div class="card-badge">Key Feature 05</div>
+                        <div class="keyword-card-content">
+                            <i class="fa-solid fa-database keyword-icon"></i>
+                            <h3 class="keyword-title">표준화</h3>
+                        </div>
+                    </div>
+                    
                 </div>
                 
                 <button class="slider-btn next" onclick="moveImages('next')" aria-label="다음 슬라이드">
@@ -827,7 +835,7 @@
     <script>
         // 전역 변수 및 이미지 상태 관리
         let currentImageIndex = 0;
-        const totalSlides = 4; // 슬라이드 총 개수 (4개 기준 일치)
+        const totalSlides = 5; // 슬라이드 총 개수 (5개 기준 일치)
     
         document.addEventListener("DOMContentLoaded", function () {
             if (document.querySelector(".slider-item")) {
