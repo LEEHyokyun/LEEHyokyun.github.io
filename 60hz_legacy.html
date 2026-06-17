@@ -600,7 +600,7 @@
                 <p class="project-tagline">7년 이상 방치된 신재생에너지 계약 관리(RE100) 시스템 개선 프로젝트</p>
                 <div class="project-description">
                     재생e 사용 관리 시스템은 기업의 신재생 에너지(RE100) 계약 및 인증 내역을 관리하기 위한 거래 시스템입니다. 
-                    2019년 개발 이후 유지관리가 이루어지지 않아, 작동은 가능하지만 크고 작은 결함들이 반복적으로 다수 발생한 전형적인 legacy 시스템이기도 합니다. 
+                    2018년 개발 이후 유지관리가 이루어지지 않아, 작동은 가능하지만 크고 작은 결함들이 반복적으로 다수 발생한 전형적인 legacy 시스템이기도 합니다. 
                     지금까지 시스템 분석없이 단발성 결함 처리로 인해 반복적인 작업이 이루어졌기에, 식스티헤르츠 측의 원활한 관리와 유지 비용 최소화를 위해 전면적인 개선 작업을 진행하였습니다. 
                 </div>
             </div>
@@ -697,8 +697,8 @@
             <div class="architecture-container">
                 <h2 class="section-title">시스템 흐름도</h2>
                 <div class="architecture-diagram-placeholder">
-                    <img src="image/igloo-archi.png" alt="재생e 사용 관리 시스템 흐름도" class="architecture-img" />
-                    <p class="architecture-caption">RE100 거래 및 계약 내역을 관리하며, 이를 한국전력거래소(kpx)에 반영합니다.</p>
+                    <img src="image/koreae-archi.png" alt="재생e 사용 관리 시스템 흐름도" class="architecture-img" />
+                    <p class="architecture-caption">RE100 거래 및 계약 내역을 관리하며, 이를 한국 전력거래소(KPX)에 반영합니다.</p>
                 </div>
             </div>
 
@@ -709,25 +709,17 @@
                     <div class="feature-single-box">
     
                         <div class="feature-item">
-                            <h3 class="feature-item-title">출석체크</h3>
+                            <h3 class="feature-item-title">재생에너지 계약 및 거래 내역 관리</h3>
                             <ul class="feature-item-list">
-                                <li>Spring/Java 기반의 Restful API 통신 및 출석, 불참 등의 챗봇 명령어 처리</li>
-                                <li>출석 체크 및 Neon(PostgreSQL) 데이터 반영</li>
+                                <li>Spring/Java 기반의 재생에너지 계약 및 거래 내역 등록</li>
+                                <li>기업별 재생에너지 사용 내역 관리</li>
                             </ul>
                         </div>
                     
                         <div class="feature-item">
-                            <h3 class="feature-item-title">출석확인</h3>
+                            <h3 class="feature-item-title">재생에너지 거래내역 전송 스케쥴러</h3>
                             <ul class="feature-item-list">
-                                <li>모임장의 출석 내역 파악을 위한 데이터 조회 및 확인</li>
-                            </ul>
-                        </div>
-                    
-                        <div class="feature-item">
-                            <h3 class="feature-item-title">출결 데이터 통계 및 초기화</h3>
-                            <ul class="feature-item-list">
-                                <li>Spring Batch 기반의 출결 데이터 통계 처리(지각 등 상태 반영)</li>
-                                <li>출결 관리 효율화와 Neon 데이터 관리 최소화 / 비용 절약을 위한 내역 초기화</li>
+                                <li>기업별 재생에너지 사용 내역 한국 전력거래소(KPX) 전송</li>
                             </ul>
                         </div>
                     
@@ -743,7 +735,7 @@
                 <div class="ts-card">
                     <div class="ts-header">
                         <span class="ts-badge">ISSUE 01</span>
-                        <h3>미니 오픈 소스 프로젝트 취지에 맞는 유지 관리성 확보 방안</h3>
+                        <h3>API Header Key 및 UUID 하드코딩 등 유지관리를 저해하는 요소 다수 발견</h3>
                     </div>
                     <div class="ts-body">
                         <div class="ts-block problem">
@@ -760,7 +752,7 @@
                 <div class="ts-card">
                     <div class="ts-header">
                         <span class="ts-badge">ISSUE 02</span>
-                        <h3>출석 데이터 반영 시 로직 비대화 및 책임 분리의 모호함 발생</h3>
+                        <h3>특정 결함의 반복적인 발생과 이에 대한 대응 방안</h3>
                     </div>
                     <div class="ts-body">
                         <div class="ts-block problem">
@@ -777,7 +769,7 @@
                 <div class="ts-card">
                     <div class="ts-header">
                         <span class="ts-badge">ISSUE 03</span>
-                        <h3>Spring Batch Reader를 선택하기 위한 고려사항</h3>
+                        <h3>지나친 단일 장애성 로직에 의한 결합도와 보일러 플레이트 간의 딜레마 발생</h3>
                     </div>
                     <div class="ts-body">
                         <div class="ts-block problem">
@@ -794,7 +786,7 @@
                 <div class="ts-card">
                     <div class="ts-header">
                         <span class="ts-badge">ISSUE 04</span>
-                        <h3>Neon/Render의 무과금 정책에 부합하기 위한 데이터 클렌징 방안</h3>
+                        <h3>식스티헤르츠 측의 유지관리 비용을 최소화하기 위한 본질적 대응 방안 모색</h3>
                     </div>
                     <div class="ts-body">
                         <div class="ts-block problem">
