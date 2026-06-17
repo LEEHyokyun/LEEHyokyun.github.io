@@ -640,6 +640,9 @@
                 <span class="tech-badge backend">Oracle Stored Procedure</span>
                 <span class="tech-badge backend">Jeus(8.5)</span>
                 <span class="tech-badge database">Oracle(19c)</span>
+                <span class="tech-badge infra">Jira</span>
+                <span class="tech-badge infra">Confluence</span>
+                <span class="tech-badge infra">Figma</span>
                 <span class="tech-badge infra">Legacy 리팩토링</span>
                 <span class="tech-badge infra">문서화</span>
                 <span class="tech-badge infra">표준화</span>
@@ -717,9 +720,9 @@
                         </div>
                     
                         <div class="feature-item">
-                            <h3 class="feature-item-title">재생에너지 거래내역 전송 스케쥴러</h3>
+                            <h3 class="feature-item-title">재생에너지 사용 내역 한국 전력거래소 반영</h3>
                             <ul class="feature-item-list">
-                                <li>기업별 재생에너지 사용 내역 한국 전력거래소(KPX) 전송</li>
+                                <li>기업별 재생에너지 사용 데이터의 한국 전력거래소 반영</li>
                             </ul>
                         </div>
                     
@@ -740,11 +743,11 @@
                     <div class="ts-body">
                         <div class="ts-block problem">
                             <h4>🚨 문제 인식</h4>
-                            <p>프로젝트를 모두가 이해할 수 있도록 하기 위한 설계 및 모델링의 주안점을 어디에 두는 것이 좋을지 고민하였습니다.</p>
+                            <p>보안성 및 정보성 데이터, 서비스 로직 내 코드성 데이터 등에 하드코딩이 많이 적용되어 시스템 목적을 이해하기 어렵고 유지 관리성을 급격하게 낮추는 요소들을 다수 발견하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>빠르게 의도를 파악할 수 있는 <strong>직관성과 통용성</strong>을 중점적으로 고려하였으며, 이를 확보하기 위해 생명주기에 근거한 <strong>책임 분리와 결합(물리적 거리 등)</strong>을 활용하였습니다. 데이터베이스 역시 엄격한 정규화보다는 필요한 만큼의 엔티티 속성을 모델링하였습니다.</p>
+                            <p>정보성 데이터와 시스템 흐름의 깊은 이해에 기반한 Global Enum보다는 <strong>도메인 및 서비스 로직 부터 상수, util화</strong>하여 서비스 로직에 대한 이해도를 점진적으로 높이는 방향으로 유지관리성을 향상하였습니다. 더불어 이에 대한 문서화와 표준화를 통해 전사적으로 활용할 수 있도록 정리, 공유하여 <strong>시스템 유지 비용을 감소</strong>하는데 기여하였습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -757,11 +760,11 @@
                     <div class="ts-body">
                         <div class="ts-block problem">
                             <h4>🚨 문제 인식</h4>
-                            <p>출석 데이터 처리 시 시간에 따른 출석/지각 상태 반영까지 진행하여 서비스 로직이 커지고, 이에 따라 책임 분리 관점에서 모호함이 발생하였습니다.</p>
+                            <p>특정 결함이 일주일에 1~2번 가량 지속적, 반복적으로 발생하여 시스템 역추적을 통한 원인 분석 및 이에 대한 대응 방안 정립이 필요하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>출석 데이터 처리 간 데이터를 경량화하고 조금이라도 빠르게 출석 데이터를 반영하기 위해 <strong>통계 처리를 별도의 배치 로직으로 구성</strong>하였습니다. 아직 소규모이기에 API의 처리 속도 변화는 미미하였으나, 서비스 로직의 비대화를 방지하여 이에 따른 <strong>가독성 및 직관성</strong>을 확보할 수 있었습니다. 또한 이에 따른 도메인 생명주기를 명확하게 분리할 수 있었습니다.</p>
+                            <p>현재 운영 중인 데이터베이스 및 시스템 체계를 전면 개선하는 것은 현실적으로 제약이 많았기에, 쿼리 수정 및 대응 메뉴얼을 제작하여 <strong>전사적 문서화, 표준화</strong>하는 방향으로 접근하였습니다. 특히 계약 내역 통계 결함의 경우 리팩토링 뿐만 아니라 <strong>전사 메뉴얼화, 쿼리화</strong> 등을 관리하도록 하여 결함 대응에 소모하는 비용을 줄이고 일부 결함의 경우 발생 빈도를 <strong>80~90% 수준으로 감소</strong>시킬 수 있었습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -774,11 +777,11 @@
                     <div class="ts-body">
                         <div class="ts-block problem">
                             <h4>🚨 문제 인식</h4>
-                            <p>프로젝트 규모와 목적에 부합한 Spring Batch Reader를 선택하기 위해 설계적/기술적 요소를 고려하고 적용하였습니다.</p>
+                            <p>리팩토링을 진행하면서 프론트 엔드와 백엔드의 util, 모듈성 단일 로직에 지나치게 결합되어 단일 장애성 결함이 지속 발생하였으나, 이에 대한 개선을 진행하면서 보일러 플레이트 코드가 발생하는 딜레마가 발생하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>단순 구현 혹은 Neon의 데이터를 단순히 읽는 Batch Reader가 아닌, Neon/Render의 과금을 피하기 위한 <strong>단시간 Connection 점유 및 구동 환경에 구애받지 않는 요소 선택</strong>이 필요하였습니다. 이를 위해 Connection을 유지하지 않고 적절한 Batch Size 만큼(멤버수) 데이터만 읽어오는 Paging Reader를 선택하였으며, 학습 목적 및 도메인 재활용성 등을 고려하여 <strong>JpaPagingItemReader를 최종 채택</strong>하였습니다.</p>
+                            <p>당시 결합성 로직으로 인해 단일 장애성 결함이 지속적으로 발생하는 비용이 유지 관리성을 과도하게 저해한다는 판단으로, 일부 로직을 분리하고 새로운 구성 및 서비스를 만들어 대응하였습니다. <strong>보일러 플레이트 코드의 경우 도메인 수준으로 격하 및 분리 운용하거나 별도 문서화</strong>하여 유지 관리성을 향상하였습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -791,11 +794,11 @@
                     <div class="ts-body">
                         <div class="ts-block problem">
                             <h4>🚨 문제 인식</h4>
-                            <p>Neon/Render가 허용하는 한달 데이터 저장 용량 및 API(Connection) 사용량을 위해 적절한 조절 장치를 구성하는 것이 필요하였습니다.</p>
+                            <p>급진적인 표준화, 리팩토링보다는 시스템 이해도를 점진적으로 높이면서 전사적 표준화를 반영할 수 있는 방안에 대해 고민하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>유즈케이스 및 출석 당일 데이터 처리를 고려하였을때 멤버 이름 기반의 출결 데이터 특성 상 <strong>기존 내역에 대한 update가 아닌 최초 insert가 적절</strong>하다는 판단으로, 출결 처리 후 익일에 모든 데이터를 초기화하도록 하였습니다. 메모리 관점에서 JpaPagingItemReader보다는 JdbcPagingItemReader가 더 유리하였으나, 소규모에서 그 차이가 미미하고 학습 목적에서는 JpaPagingItemReader가 더 유리하다고 판단하여 <strong>JpaPagingItemReader를 유지</strong>하였습니다.</p>
+                            <p>단순한 legacy 시스템의 리팩토링보다는, 식스티헤르츠의 원활한 운용과 유지관리를 고려한 <strong>시스템 역추적 및 이에 대한 전사적 문서화, 표준화</strong> 방안을 모색하였습니다. 특히, <strong>반복적인 결함 대응에서의 서비스 흐름 파악과 데이터베이스 및 시퀀스 다이어그램 문서화, 메뉴얼화</strong> 등을 통해 향후 불필요한 비용을 소모하지 않도록 그 근간을 마련하는데 기여하였습니다.</p>
                         </div>
                     </div>
                 </div>
