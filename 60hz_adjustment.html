@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://github.com/LEEHyokyun/LEEHyokyun.github.io/igloo.html" />
-    <meta property="og:title" content="이효균의 포트폴리오 - 이글루 출결 관리 자동화 프로젝트" />
+    <meta property="og:url" content="https://github.com/LEEHyokyun/LEEHyokyun.github.io/60hz_adjustment.html" />
+    <meta property="og:title" content="이효균의 포트폴리오 - 녹색프리미엄 정산 시스템 개선" />
     <meta property="og:image" content="image/OGimage.png" />
     <meta property="og:description" content="LEE HYO KYUN PORTFOLIO_IGLOO" />
     <meta property="og:site_name" content="SCC Portfolio" />
@@ -14,7 +14,7 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
-    <title>LEEHYOKYUN PORTFOLIO_IGLOO</title>
+    <title>LEEHYOKYUN PORTFOLIO_60HZ_ADJUSTMENT</title>
     <style>
         /* ==========================================================================
            1. 변수 선언 및 기본 세팅 (기존 아이덴티티 유지)
@@ -596,13 +596,12 @@
         
         <header class="project-header">
             <div class="header-left">
-                <h1 class="project-title">이글루봇</h1>
-                <p class="project-tagline">이글루 글쓰기 모임의 호스트 및 멤버들의 간편한 출결 관리 시스템</p>
+                <h1 class="project-title">재생e 녹색프리미엄 정산 시스템 개선</h1>
+                <p class="project-tagline">녹색프리미엄 계약 정산 시스템 개선 및 자동화 프로젝트</p>
                 <div class="project-description">
-                    이글루봇은 개발자 글쓰기 모임 이글루의 기존 카카오톡 투표 방식의 출결 관리를 자동화하여, 모임장과 멤버들 모두 간편하게 출결을 진행할 수 있도록 구현한 시스템입니다. 
-                    Spring 프레임워크 및 Java를 기반으로 구현하였으며, 출석 데이터 처리 뿐만 아니라 Spring Batch를 통해 데이터 통계 및 초기화를 진행하기 위한 작업도 주기적으로 진행하고 있습니다. 
-                    서버를 2대로 운용하여, 일반 단톡방에서 이벤트 기반의 명령어 메시지를 수신하는 메신저 챗봇과 메시지를 적절하게 처리하는 API서버를 각각 갤럭시 탭, Render에서 동작하도록 구성하였습니다. 
-                    시스템을 오픈 소스화하여 이글루 팀의 적극적인 참여, 나아가 개발자로서의 기여를 도모하고 있습니다. 
+                    녹색프리미엄 계약 정산 시스템은 재생 에너지 중 하나인 녹색프리미엄 사용 내역에 대한 분기별 정산을 통해 각 기업별 사용량 정산 작업을 진행하는, 일종의 프로그램입니다.
+                    재생e 사용 관리 시스템에 비해 최근 제작되었음에도 legacy 요소가 다수 존재하며 엑셀 기반의 반복적인 작업을 수기로 진행하는 등, 유지 관리성을 저해하는 요소 중 하나였습니다.
+                    이에 대한 정산 시스템 관리 책임을 맡으면서, 해당 프로그램의 자동화를 통한 업무 효율을 대폭 개선하였으며 시스템 리팩토링을 통해 가독성 및 유지관리성을 향상 하였습니다. 
                 </div>
             </div>
             
@@ -611,22 +610,22 @@
                     <div class="meta-row">
                         <img src="image/period.svg" class="meta-icon" alt="기간" />
                         <span class="meta-label">진행 기간</span>
-                        <span class="meta-value">2026.05 ~ </span>
+                        <span class="meta-value">2025.04 ~ 2025.07</span>
                     </div>
                     <div class="meta-row">
                         <img src="image/env.svg" class="meta-icon" alt="환경" />
                         <span class="meta-label">구동 환경</span>
-                        <span class="meta-value">i5 1 Core & 8.00 GB</span>
+                        <span class="meta-value">i-3/5 2 Core</span>
                     </div>
                     <div class="meta-row">
                         <img src="image/role.svg" class="meta-icon" alt="중점사항" />
                         <span class="meta-label">중점 사항</span>
-                        <span class="meta-value">불편함 개선 및 클린 아키텍칭</span>
+                        <span class="meta-value">시스템 클린 아키텍칭 및 자동화</span>
                     </div>
                     <div class="meta-row github-row">
-                        <img src="image/github.svg" class="meta-icon" alt="깃허브" />
-                        <a href="https://github.com/LEEHyokyun/igloo" target="_blank" rel="noopener noreferrer" class="github-link">
-                            이글루 GitHub Repository →
+                        <img src="image/koreae.svg" class="meta-icon" alt="사이" />
+                        <a href="https://nr.energy.or.kr/RE/CST/login.do" target="_blank" rel="noopener noreferrer" class="github-link">
+                            재생e 사용 관리 시스템 →
                         </a>
                     </div>
                 </div>
@@ -635,15 +634,18 @@
 
         <section class="project-gallery-section">
             <div class="tech-stack-container">
-                <span class="tech-badge frontend">Java</span>
-                <span class="tech-badge frontend">Spring</span>
-                <span class="tech-badge backend">KakaoTalk Messanger Chatbot</span>
+                <span class="tech-badge frontend">Java(jdk21)</span>
+                <span class="tech-badge frontend">Spring Boot(3.5.0)</span>
+                <span class="tech-badge backend">Swagger</span>
                 <span class="tech-badge backend">JPA</span>
-                <span class="tech-badge backend">Spring Batch</span>
-                <span class="tech-badge database">Neon(PostgreSQL)</span>
-                <span class="tech-badge infra">Render</span>
-                <span class="tech-badge infra">Gradle</span>
-                <span class="tech-badge infra">Docker</span>
+                <span class="tech-badge database">Oracle(19c)</span>
+                <span class="tech-badge infra">Jira</span>
+                <span class="tech-badge infra">Confluence</span>
+                <span class="tech-badge infra">Figma</span>
+                <span class="tech-badge infra">체계 개선</span>
+                <span class="tech-badge infra">자동화</span>
+                <span class="tech-badge infra">문서화</span>
+                <span class="tech-badge infra">표준화</span>
             </div>
 
             <div class="slider-wrapper">
@@ -657,7 +659,7 @@
                         <div class="card-badge">Key Feature 01</div>
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-wand-magic-sparkles keyword-icon"></i>
-                            <h3 class="keyword-title">간편화</h3>
+                            <h3 class="keyword-title">시스템 분석 및 개선</h3>
                         </div>
                     </div>
                     
@@ -665,7 +667,7 @@
                         <div class="card-badge">Key Feature 02</div>
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-robot keyword-icon"></i>
-                            <h3 class="keyword-title">자동화</h3>
+                            <h3 class="keyword-title">클린 아키텍칭</h3>
                         </div>
                     </div>
                     
@@ -673,7 +675,7 @@
                         <div class="card-badge">Key Feature 03</div>
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-layer-group keyword-icon"></i>
-                            <h3 class="keyword-title">클린 아키텍칭</h3>
+                            <h3 class="keyword-title">자동화</h3>
                         </div>
                     </div>
                 
@@ -681,7 +683,7 @@
                         <div class="card-badge">Key Feature 04</div>
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-database keyword-icon"></i>
-                            <h3 class="keyword-title">데이터 배치 작업</h3>
+                            <h3 class="keyword-title">문서화</h3>
                         </div>
                     </div>
                 
@@ -698,8 +700,8 @@
             <div class="architecture-container">
                 <h2 class="section-title">시스템 흐름도</h2>
                 <div class="architecture-diagram-placeholder">
-                    <img src="image/igloo-archi.png" alt="igloo 시스템 흐름도" class="architecture-img" />
-                    <p class="architecture-caption">카카오톡 챗봇 메신저 서버가 메시지를 전달받고 이를 API 서버에서 처리합니다.</p>
+                    <img src="image/koreae-gp-archi.png" alt="재생e 사용 관리 시스템 흐름도" class="architecture-img" />
+                    <p class="architecture-caption">엑셀 파일 기반의 재생e(녹색 프리미엄)의 사용 내역을 정산합니다.</p>
                 </div>
             </div>
 
@@ -710,25 +712,17 @@
                     <div class="feature-single-box">
     
                         <div class="feature-item">
-                            <h3 class="feature-item-title">출석체크</h3>
+                            <h3 class="feature-item-title">재생에너지(녹색프리미엄) 사용 내역 정산</h3>
                             <ul class="feature-item-list">
-                                <li>Spring/Java 기반의 Restful API 통신 및 출석, 불참 등의 챗봇 명령어 처리</li>
-                                <li>출석 체크 및 Neon(PostgreSQL) 데이터 반영</li>
+                                <li>Spring/Java 기반의 재생에너지(녹색프리미엄) 사용 내역 엑셀 파일 속성 파싱(필터링)</li>
+                                <li>기업별 사용 내역 통계 및 정산</li>
                             </ul>
                         </div>
                     
                         <div class="feature-item">
-                            <h3 class="feature-item-title">출석확인</h3>
+                            <h3 class="feature-item-title">한국에너지공단 제출용 엑셀 파일 규격화 및 생성</h3>
                             <ul class="feature-item-list">
-                                <li>모임장의 출석 내역 파악을 위한 데이터 조회 및 확인</li>
-                            </ul>
-                        </div>
-                    
-                        <div class="feature-item">
-                            <h3 class="feature-item-title">출결 데이터 통계 및 초기화</h3>
-                            <ul class="feature-item-list">
-                                <li>Spring Batch 기반의 출결 데이터 통계 처리(지각 등 상태 반영)</li>
-                                <li>출결 관리 효율화와 Neon 데이터 관리 최소화 / 비용 절약을 위한 내역 초기화</li>
+                                <li>한국에너지 공단 제출을 위한 속성 최종 파싱(규격화) 및 엑셀 파일 생성</li>
                             </ul>
                         </div>
                     
@@ -744,16 +738,16 @@
                 <div class="ts-card">
                     <div class="ts-header">
                         <span class="ts-badge">ISSUE 01</span>
-                        <h3>미니 오픈 소스 프로젝트 취지에 맞는 유지 관리성 확보 방안</h3>
+                        <h3>API Header Key 및 UUID 하드코딩 등 유지관리를 저해하는 요소 다수 발견</h3>
                     </div>
                     <div class="ts-body">
                         <div class="ts-block problem">
                             <h4>🚨 문제 인식</h4>
-                            <p>프로젝트를 모두가 이해할 수 있도록 하기 위한 설계 및 모델링의 주안점을 어디에 두는 것이 좋을지 고민하였습니다.</p>
+                            <p>보안성 및 정보성 데이터, 서비스 로직 내 코드성 데이터 등에 하드코딩이 많이 적용되어 시스템 목적을 이해하기 어렵고 유지 관리성을 급격하게 낮추는 요소들을 다수 발견하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>빠르게 의도를 파악할 수 있는 <strong>직관성과 통용성</strong>을 중점적으로 고려하였으며, 이를 확보하기 위해 생명주기에 근거한 <strong>책임 분리와 결합(물리적 거리 등)</strong>을 활용하였습니다. 데이터베이스 역시 엄격한 정규화보다는 필요한 만큼의 엔티티 속성을 모델링하였습니다.</p>
+                            <p>정보성 데이터와 시스템 흐름의 깊은 이해에 기반한 Global Enum보다는 <strong>도메인 및 서비스 로직 부터 상수, util화</strong>하여 서비스 로직에 대한 이해도를 점진적으로 높이는 방향으로 유지관리성을 향상하였습니다. 더불어 이에 대한 문서화와 표준화를 통해 전사적으로 활용할 수 있도록 정리, 공유하여 <strong>시스템 유지 비용을 감소</strong>하는데 기여하였습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -761,16 +755,16 @@
                 <div class="ts-card">
                     <div class="ts-header">
                         <span class="ts-badge">ISSUE 02</span>
-                        <h3>출석 데이터 반영 시 로직 비대화 및 책임 분리의 모호함 발생</h3>
+                        <h3>특정 결함의 반복적인 발생과 이에 대한 대응 방안</h3>
                     </div>
                     <div class="ts-body">
                         <div class="ts-block problem">
                             <h4>🚨 문제 인식</h4>
-                            <p>출석 데이터 처리 시 시간에 따른 출석/지각 상태 반영까지 진행하여 서비스 로직이 커지고, 이에 따라 책임 분리 관점에서 모호함이 발생하였습니다.</p>
+                            <p>특정 결함이 일주일에 1~2번 가량 지속적, 반복적으로 발생하여 시스템 역추적을 통한 원인 분석 및 이에 대한 대응 방안 정립이 필요하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>출석 데이터 처리 간 데이터를 경량화하고 조금이라도 빠르게 출석 데이터를 반영하기 위해 <strong>통계 처리를 별도의 배치 로직으로 구성</strong>하였습니다. 아직 소규모이기에 API의 처리 속도 변화는 미미하였으나, 서비스 로직의 비대화를 방지하여 이에 따른 <strong>가독성 및 직관성</strong>을 확보할 수 있었습니다. 또한 이에 따른 도메인 생명주기를 명확하게 분리할 수 있었습니다.</p>
+                            <p>현재 운영 중인 데이터베이스 및 시스템 체계를 전면 개선하는 것은 현실적으로 제약이 많았기에, 쿼리 수정 및 대응 메뉴얼을 제작하여 <strong>전사적 문서화, 표준화</strong>하는 방향으로 접근하였습니다. 특히 계약 내역 통계 결함의 경우 리팩토링 뿐만 아니라 <strong>전사 메뉴얼화, 쿼리화</strong> 등을 관리하도록 하여 결함 대응에 소모하는 비용을 줄이고 일부 결함의 경우 발생 빈도를 <strong>80~90% 수준으로 감소</strong>시킬 수 있었습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -778,16 +772,16 @@
                 <div class="ts-card">
                     <div class="ts-header">
                         <span class="ts-badge">ISSUE 03</span>
-                        <h3>Spring Batch Reader를 선택하기 위한 고려사항</h3>
+                        <h3>지나친 단일 장애성 로직에 의한 결합도와 보일러 플레이트 간의 딜레마 발생</h3>
                     </div>
                     <div class="ts-body">
                         <div class="ts-block problem">
                             <h4>🚨 문제 인식</h4>
-                            <p>프로젝트 규모와 목적에 부합한 Spring Batch Reader를 선택하기 위해 설계적/기술적 요소를 고려하고 적용하였습니다.</p>
+                            <p>리팩토링을 진행하면서 프론트 엔드와 백엔드의 util, 모듈성 단일 로직에 지나치게 결합되어 단일 장애성 결함이 지속 발생하였으나, 이에 대한 개선을 진행하면서 보일러 플레이트 코드가 발생하는 딜레마가 발생하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>단순 구현 혹은 Neon의 데이터를 단순히 읽는 Batch Reader가 아닌, Neon/Render의 과금을 피하기 위한 <strong>단시간 Connection 점유 및 구동 환경에 구애받지 않는 요소 선택</strong>이 필요하였습니다. 이를 위해 Connection을 유지하지 않고 적절한 Batch Size 만큼(멤버수) 데이터만 읽어오는 Paging Reader를 선택하였으며, 학습 목적 및 도메인 재활용성 등을 고려하여 <strong>JpaPagingItemReader를 최종 채택</strong>하였습니다.</p>
+                            <p>당시 결합성 로직으로 인해 단일 장애성 결함이 지속적으로 발생하는 비용이 유지 관리성을 과도하게 저해한다는 판단으로, 일부 로직을 분리하고 새로운 구성 및 서비스를 만들어 대응하였습니다. <strong>보일러 플레이트 코드의 경우 도메인 수준으로 격하 및 분리 운용하거나 별도 문서화</strong>하여 유지 관리성을 향상하였습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -795,16 +789,16 @@
                 <div class="ts-card">
                     <div class="ts-header">
                         <span class="ts-badge">ISSUE 04</span>
-                        <h3>Neon/Render의 무과금 정책에 부합하기 위한 데이터 클렌징 방안</h3>
+                        <h3>식스티헤르츠 측의 유지관리 비용을 최소화하기 위한 본질적 대응 방안 모색</h3>
                     </div>
                     <div class="ts-body">
                         <div class="ts-block problem">
                             <h4>🚨 문제 인식</h4>
-                            <p>Neon/Render가 허용하는 한달 데이터 저장 용량 및 API(Connection) 사용량을 위해 적절한 조절 장치를 구성하는 것이 필요하였습니다.</p>
+                            <p>급진적인 표준화, 리팩토링보다는 시스템 이해도를 점진적으로 높이면서 전사적 표준화를 반영할 수 있는 방안에 대해 고민하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>유즈케이스 및 출석 당일 데이터 처리를 고려하였을때 멤버 이름 기반의 출결 데이터 특성 상 <strong>기존 내역에 대한 update가 아닌 최초 insert가 적절</strong>하다는 판단으로, 출결 처리 후 익일에 모든 데이터를 초기화하도록 하였습니다. 메모리 관점에서 JpaPagingItemReader보다는 JdbcPagingItemReader가 더 유리하였으나, 소규모에서 그 차이가 미미하고 학습 목적에서는 JpaPagingItemReader가 더 유리하다고 판단하여 <strong>JpaPagingItemReader를 유지</strong>하였습니다.</p>
+                            <p>단순한 legacy 시스템의 리팩토링보다는, 식스티헤르츠의 원활한 운용과 유지관리를 고려한 <strong>시스템 역추적 및 이에 대한 전사적 문서화, 표준화</strong> 방안을 모색하였습니다. 특히, <strong>반복적인 결함 대응에서의 서비스 흐름 파악과 데이터베이스 및 시퀀스 다이어그램 문서화, 메뉴얼화</strong> 등을 통해 향후 불필요한 비용을 소모하지 않도록 그 근간을 마련하는데 기여하였습니다.</p>
                         </div>
                     </div>
                 </div>
