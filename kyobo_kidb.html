@@ -638,6 +638,7 @@
                 <span class="tech-badge frontend">JavaScript</span>
                 <span class="tech-badge frontend">Spring Boot(2.7.15)</span>
                 <span class="tech-badge frontend">exBuilder6</span>
+                <span class="tech-badge backend">OOP</span>
                 <span class="tech-badge backend">TDD</span>
                 <span class="tech-badge backend">Redis(7.2)</span>
                 <span class="tech-badge backend">Spring Batch(4.3)</span>
@@ -663,9 +664,17 @@
                             <h3 class="keyword-title">차세대</h3>
                         </div>
                     </div>
+
+                    <div class="slider-item center" id="image-center">
+                        <div class="card-badge">Key Feature 02</div>
+                        <div class="keyword-card-content">
+                            <i class="fa-solid fa-wand-magic-sparkles keyword-icon"></i>
+                            <h3 class="keyword-title">OOP</h3>
+                        </div>
+                    </div>
                     
                     <div class="slider-item side" id="image-side">
-                        <div class="card-badge">Key Feature 02</div>
+                        <div class="card-badge">Key Feature 03</div>
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-robot keyword-icon"></i>
                             <h3 class="keyword-title">모델링 개선</h3>
@@ -673,7 +682,7 @@
                     </div>
                     
                     <div class="slider-item side" id="image-side">
-                        <div class="card-badge">Key Feature 03</div>
+                        <div class="card-badge">Key Feature 04</div>
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-layer-group keyword-icon"></i>
                             <h3 class="keyword-title">Redis</h3>
@@ -681,7 +690,7 @@
                     </div>
 
                     <div class="slider-item side" id="image-side">
-                        <div class="card-badge">Key Feature 04</div>
+                        <div class="card-badge">Key Feature 05</div>
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-layer-group keyword-icon"></i>
                             <h3 class="keyword-title">Spring Batch</h3>
@@ -689,7 +698,7 @@
                     </div>
                 
                     <div class="slider-item side" id="image-side">
-                        <div class="card-badge">Key Feature 05</div>
+                        <div class="card-badge">Key Feature 06</div>
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-database keyword-icon"></i>
                             <h3 class="keyword-title">TDD</h3>
@@ -697,7 +706,7 @@
                     </div>
 
                     <div class="slider-item side" id="image-side">
-                        <div class="card-badge">Key Feature 06</div>
+                        <div class="card-badge">Key Feature 07</div>
                         <div class="keyword-card-content">
                             <i class="fa-solid fa-database keyword-icon"></i>
                             <h3 class="keyword-title">문서화</h3>
@@ -762,16 +771,16 @@
                 <div class="ts-card">
                     <div class="ts-header">
                         <span class="ts-badge">ISSUE 01</span>
-                        <h3>파사드 패턴의 복잡한 서비스 로직의 효율적인 구성 방안</h3>
+                        <h3>복잡한 서비스 로직의 파사드 패턴 대체 방안 및 현실적인 구성의 필요성</h3>
                     </div>
                     <div class="ts-body">
                         <div class="ts-block problem">
                             <h4>🚨 문제 인식</h4>
-                            <p>재생e(녹색 프리미엄) 사용 내역을 엑셀 파일로 전달받은 후 정산하는 모든 과정이 지나친 엑셀 수기화로 이루어져, 대규모(약 80~100만건) 데이터 작업에 수일을 소요하여 업무 효율 개선이 필요하였습니다.</p>
+                            <p>Monolithic 시스템에서 복잡한 채권 체결 및 백오피스 데이터 반영 시 서비스 로직이 비대해지는 상태였으나, 파사드 패턴을 직접 적용하기에는 별도 서비스 승인 작업이 필요하여 현실적인 구성 방안이 필요하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>대규모 엑셀 데이터를 byteArray 및 메모리 기반으로 처리하지 않고, row 별 Streaming 방식으로 처리하는 <strong>SXSSF 기반의 구현을 진행</strong>하여 기존 엑셀 수작업을 전수 자동화로 변환하기 위한 근간을 마련하였습니다. open API 및 별도 서버화 등의 부가적인 인프라 요소를 고민하였으나, 정산 작업이 분기별로 이루어지며 부가적인 인프라 관리 비용보다는 기존 체계의 개선 및 유지관리가 더 유리할 것으로 판단하여 <strong>추가적인 구축 비용을 최소화</strong>하였습니다.</p>
+                            <p>프로젝트가 도메인 영역 별로 엄격하게 분리 운용되고, 서비스 추가 시 승인 절차가 필요하는 등 부가 작업으로 인한 비용 소모가 많았기에 <strong>controller가 아닌 service layer에서 부가적인 dto와 mapper 구성 등을 통해 지엽적으로 facade 패턴화</strong>하였습니다. 또한 Mybatis 특성 상 JPA와 달리 도메인 객체 내부에서 정책을 적용할 수 없고, 정책 반영이 완료된 값을 mapper로 넘겨주어야 하였습니다. 이때 도메인 정책 반영은 dto의 책임 영역이 아니었기에, <strong>service layer 내부에서 정책을 적용하여 상태를 반영할 수 있도록 캡슐화 및 util화를 최대한 적용</strong>하여 가독성 및 응집도를 향상하였습니다. <strong>service layer 내부에서 적절한 OOP를 적용하여</strong> 로직의 흐름을 최대한 구조화하였으며, facade 패턴이 지엽화되고 단일책임원칙(SRP) 준수가 현실적으로 힘든 상황에서 최대한 <strong>변경점을 Service layer에 집중</strong>하였습니다. 그 결과, <strong>개방폐쇄원칙(SCP) 및 인터페이스 분리원칙(ISP)를 최대한 준수하여</strong> 서비스 구조화를 진행할 수 있었습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -851,7 +860,7 @@
     <script>
         // 전역 변수 및 이미지 상태 관리
         let currentImageIndex = 0;
-        const totalSlides = 6; // 슬라이드 총 개수 (6개 기준 일치)
+        const totalSlides = 7; // 슬라이드 총 개수 (7개 기준 일치)
     
         document.addEventListener("DOMContentLoaded", function () {
             if (document.querySelector(".slider-item")) {
