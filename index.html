@@ -123,6 +123,17 @@
             background-color: var(--primary-color);
         }
 
+        /* 현재 보고 있는 section 제목 강조 */
+        .section-title.active {
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+        
+        .section-title.active::after {
+            width: 100%;
+            transition: width 0.3s ease;
+        }
+
         /* 2. INTRO (히어로 섹션) */
         #intro {
             display: flex;
@@ -1382,6 +1393,36 @@
             </div>
         </section>
     </main>
+
+    <!-- 스크립트 동작-->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        
+            const sections = document.querySelectorAll("section");
+        
+            const observer = new IntersectionObserver((entries) => {
+        
+                entries.forEach(entry => {
+        
+                    const title = entry.target.querySelector(".section-title");
+                    if (!title) return;
+        
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll(".section-title")
+                            .forEach(t => t.classList.remove("active"));
+        
+                        title.classList.add("active");
+                    }
+                });
+        
+            }, {
+                threshold: 0.4
+            });
+        
+            sections.forEach(section => observer.observe(section));
+        
+        });
+    </script>
 </body>
 
 </html>
