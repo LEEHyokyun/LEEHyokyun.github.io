@@ -836,7 +836,7 @@
             main { margin-top: 110px; }
             section { padding: 60px 20px; }
 
-            /* [추가] 600px 이하 모바일 환경에서도 INTRO 섹션이 완벽하게 좌측 상단 정렬되도록 보장 */
+            /* INTRO 섹션 제거 , 모바일 반응형 유지 */
             #intro {
                 flex-direction: column;
                 align-items: flex-start;   /* 좌측 정렬 고정 */
@@ -844,8 +844,15 @@
                 gap: 40px;
             }
             
-            .intro-text { font-size: 1.8rem; text-align: center; }
-            .intro-text-detail { font-size: 0.95rem; text-align: center; }
+            .intro-content {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .intro-tag {
+                display: block;
+                text-align: center;
+            }
 
             .stats-container { 
                 grid-template-columns: 1fr; 
