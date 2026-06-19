@@ -758,16 +758,16 @@
                 <div class="ts-card">
                     <div class="ts-header">
                         <span class="ts-badge">ISSUE 01</span>
-                        <h3>복잡한 서비스 로직의 파사드 패턴 대체 방안 및 현실적인 구성의 필요성</h3>
+                        <h3>사전 및 담보 도메인 세부 아키텍칭 누락으로 인한 보일러 플레이트 코드 비대화 발생</h3>
                     </div>
                     <div class="ts-body">
                         <div class="ts-block problem">
                             <h4>🚨 문제 인식</h4>
-                            <p>Monolithic 시스템에서 복잡한 채권 체결 및 백오피스 데이터 반영 시 서비스 로직이 비대해지는 상태였으나, 파사드 패턴을 직접 적용하기에는 별도 서비스 승인 작업이 필요하는 등 빠르고 현실적인 대응 방안이 필요하였습니다.</p>
+                            <p>AA팀 주도의 사전 도메인 코드 및 layer 아키텍칭은 완료하였으나, 사소하면서 세부적인 아키텍칭이 부족하여 반복성 코드가 불필요하게 많아지고 있는 상황이 발생하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>프로젝트가 도메인 영역 별로 엄격하게 분리 운용되고, 서비스 추가 시 승인 절차가 필요하는 등 부가 작업으로 인한 비용 소모가 많았기에 <strong>controller가 아닌 service layer에서 부가적인 dto와 mapper 구성 등을 통해 지엽적으로 facade 패턴화</strong>하였습니다. 또한 Mybatis 특성 상 JPA와 달리 도메인 객체 내부에서 정책을 적용할 수 없고, 정책 반영이 완료된 값을 mapper로 넘겨주어야 하였습니다. 이때 도메인 정책 반영은 dto의 책임 영역이 아니었기에, <strong>service layer 내부에서 정책을 적용하여 상태를 반영할 수 있도록 캡슐화 및 util화를 최대한 적용</strong>하여 가독성 및 응집도를 향상하였습니다. <strong>service layer 내부에서 적절한 OOP를 적용하여</strong> 로직의 흐름을 최대한 구조화하였으며, facade 패턴이 지엽화되고 단일책임원칙(SRP) 준수가 현실적으로 힘든 상황에서 최대한 <strong>변경점을 Service layer에 집중</strong>하였습니다. 그 결과, <strong>개방폐쇄원칙(SCP) 및 인터페이스 분리원칙(ISP)를 최대한 준수하여</strong> 서비스 구조화를 진행할 수 있었습니다.</p>
+                            <p>사전팀에서 자주 사용하는 검증 로직이나 날짜 및 Json stringify 등의 <strong>반복성, util성 로직을 별도의 책임으로 분리</strong>하여 불필요한 중복을 제거하였습니다. 특히 <strong>개방폐쇄원칙(OCP)에 기반한</strong> 구조화를 통해, 사전 도메인의 세부 아키텍칭을 정립하는데 기여하였습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -775,16 +775,16 @@
                 <div class="ts-card">
                     <div class="ts-header">
                         <span class="ts-badge">ISSUE 02</span>
-                        <h3>복잡한 서비스 로직의 효율적인 구현 방안</h3>
+                        <h3>UX 개선을 위한 Finastra 프레임워크 맞춤 Global Exception 체계 도입 방안</h3>
                     </div>
                     <div class="ts-body">
                         <div class="ts-block problem">
                             <h4>🚨 문제 인식</h4>
-                            <p>서비스 로직이 복잡해지면서 Redmine 기반의 단순 테스트 및 결과 비교보다는, 테스트 내역을 객관적으로 정립하고 정량화하여 Service layer를 좀 더 효율적으로 구성할 수 있는 방안이 필요하였습니다.</p>
+                            <p>finastra 기반의 사용자 경험을 개선하기 위해 Global 적용이 가능한 Checked Exception 도입이 필요하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>프로젝트 일정 관리 도구로 사용하였던 Redmine의 경우, 필요 기능에 대한 명세에 집중하였기에 복잡한 서비스 로직의 <strong>테스트 커버리지를 명세에 의한 직관성 등 정성적인 요소에 의존</strong>하였습니다. 이에, <strong>TDD 기반의 명확하고 객관적인 테스트 요소 정립 및 기능 개발</strong>을 통해 빠르고 효율적인 개발을 진행하고 그에 대한 일정을 준수 할 수 있었습니다. 다만 시스템 환경 상 Docker Container 기반의 가벼운 테스트는 불가능하였으나, Dev 환경에서의 <strong>빠르고 효율적인 단위 테스트 및 이를 기반으로 한 기능 구현</strong>이 가능하였고 충분히 비용적으로 수용할만한 개발을 진행할 수 있었습니다.</p>
+                            <p>담보의 경우 사전에 속하면서 별도 분리된 특수 도메인으로, 사전 업무 체계에 비해 최초 서비스 로직 및 고객 메시지 처리에 대한 빠른 구성이 필요하였습니다. 특히, 사용자 경험 개선을 위한 Checked Exception 기반의 메시지 처리가 필요하였는데(프레임워크 특성상 Javascript 기반의 동작 불가), <strong>이에 대해 Customized Global Exception 및 상속체계를 도입하여</strong> 사용자 경험을 개선하고 Exception 체계를 개선하는데 기여하였습니다. 다만 Checked Exception의 경우 마이너스 연산 등 정책적인 요소에 대해서만 적용하여, <strong>트랜잭션 진행 및 Rollback 발생 시 원자성과 일관성</strong>을 보장할 수 있도록 구성하였습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -792,16 +792,16 @@
                 <div class="ts-card">
                     <div class="ts-header">
                         <span class="ts-badge">ISSUE 03</span>
-                        <h3>Massive Query 작성 시 특정 속성 누락 및 NULL 허용 등으로 인한 복잡도 증가 및 비효율성 문제</h3>
+                        <h3>Xlink 기반 외부 open API 기반의 통신 시 xml 기반의 비효율성 개선 방안</h3>
                     </div>
                     <div class="ts-body">
                         <div class="ts-block problem">
                             <h4>🚨 문제 인식</h4>
-                            <p>Mybatis native query 작성 시 채권 데이터와 백오피스 데이터의 일부 속성이 없거나, 정책 누락으로 인한 연산 불가 등으로 비효율적인 쿼리 작성 상황이 발생하였습니다.</p>
+                            <p>외부 API 기반 통신 시 최초 xml 기반의 송수신 및 전문 규격의 비일치가 발생하여 상당한 비효율성이 발생하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>연산 불가로 인한 쿼리 비효율화가 심하였기에, <strong>특정 속성에 대한 추가 및 default 정책 정립 등</strong> 모델링을 개선하여 Massive query의 효율성 및 가독성을 향상할 수 있었습니다. 더불어 비즈니스 로직의 정합성을 <strong>service 로직과 데이터베이스 속성 조건</strong> 등을 통해 비교적 안정적으로 확보할 수 있었습니다.</p>
+                            <p>외부 API의 일부는 Json 기반의 전문으로 통신하였음에도, 모든 통신 체계가 xml 기반으로 구성되어있고 이를 묵인하고 있어 체계 개선이 필요하였습니다. 이에 <storng>JSON 기반의 전문 규격 일치 뿐만 아니라 전문 경량화</storng>를 통해 외부사 별 전문 규격에 따라 적절하게 맞춤화할 수 있었고, <strong>xml 대비 전문 파싱이 훨씬 간단</strong>해져 관련 업무를 효율적으로 대응할 수 있었습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -809,16 +809,16 @@
                 <div class="ts-card">
                     <div class="ts-header">
                         <span class="ts-badge">ISSUE 04</span>
-                        <h3>채권 내역 관리 부하 테스트 시 동시성 문제(Lost Update) 발생</h3>
+                        <h3>사전 도메인 내에서의 기술적 의사소통 부재</h3>
                     </div>
                     <div class="ts-body">
                         <div class="ts-block problem">
                             <h4>🚨 문제 인식</h4>
-                            <p>11~12TPS 상황에서 거래 내역 수정 시 일부 연산이 반영되지 않는 동시성(Lost Update) 문제가 발생하였습니다.</p>
+                            <p>아키텍칭 적용 및 사용자 경험 개선 등 기술적 개선 요소를 대입할때 팀 내 의사소통이 심각하게 부재하였습니다.</p>
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>최초 <strong>Redis 분산 환경과 체결ID를 활용</strong>하여 체결 건의 동시성 방지 및 Request Collapsing을 시도하였습니다. 이후 폐쇄망 환경에서 수용 가능한 대기시간 및 아키텍칭의 복잡도, 데이터 정합성 등을 우선적으로 고려하여 <strong>Oracle for update 배타락</strong>으로 서비스 로직을 단순화 하였으며, 이에 대한 유지 비용을 절약하였습니다. 여기에 그치지 않고 체결 건 노출 기준을 직급 및 부서 별이 아닌 개인 별 노출로 강화하고 모델링을 개선하는 등 <strong>설계적 관점에서 동시성 문제를 접근하여</strong> 아키텍칭 비용과 유지 비용을 최소화할 수 있는 개선 방안을 <strong>지속적으로 고민하고 적용</strong>하였습니다.</p>
+                            <p>사전팀의 Finastra 프레임워크에 대한 기술적 이해 부족 및 아키텍칭 비용 등 개인이 해결하기에는 부족한 규모의 이슈가 누적되었으나, <strong>의사소통 누락과 비효율성에 대한 방치</strong>가 날로 심각해졌습니다. 보다 못해 <strong>직접 주간 리뷰를 주최하고 구성하여</strong>, 세부적인 아키텍칭 등 <strong>기술적 요소에 대한 개선점 도출과 공유 및 이에 대한 스쿼드 표준화</strong>할 수 있도록 적극 도모하였습니다. 페어 프로그래밍 및 피어 리뷰 등의 이론적 Agile 요소도 존재하였지만, 일정이 빠듯하고 도입을 할 정도의 충분한 이해도가 없었기에 스쿼드 상황에 부합한 현실적인 방책을 최대한 적용하였습니다.</p>
                         </div>
                     </div>
                 </div>
