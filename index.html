@@ -205,15 +205,22 @@
         }
 
         .intro-highlight {
-            display: inline-flex;      /* 글자 길이만큼만 박스 생성 */
+            align-self: flex-end;     /* 세 번째 div만 아래쪽으로 내림 */
+            margin-top: 40px;
+        
+            display: inline-flex;
             flex-direction: column;
             gap: 8px;
         
-            margin-top: 40px;
-            padding: 18px 24px;
+            padding: 16px 22px;
         
-            background-color: #eff6ff; /* 단색 하늘색 */
-            border-radius: 14px;
+            background: #f8fafc;
+            border: 1px solid #dbeafe;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 10px;
+        
+            width: fit-content;       /* 글자 길이만큼만 */
+            max-width: 420px;         /* 너무 길어지는 것 방지 */
         }
 
         .intro-highlight strong {
@@ -800,9 +807,12 @@
             section { padding: 80px 5%; }
             /* #intro { flex-direction: column; text-align: center; gap: 40px; } */
             #intro {
-                flex-direction: column;
-                align-items: flex-start;   /* 모바일 화면에서도 중앙 정렬 대신 좌측 정렬로 통일 */
-                text-align: left;          /* 글자 정렬을 좌측으로 변경 */
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "image"
+                    "content"
+                    "notes";
+            
                 gap: 40px;
             }
             .intro-image-zone { order: -1; }
@@ -867,22 +877,28 @@
             main { margin-top: 110px; }
             section { padding: 60px 20px; }
 
-            /* INTRO 섹션 제거 , 모바일 반응형 유지 */
             #intro {
-                flex-direction: row;
-                flex-wrap: wrap;
-                align-items: center;
-                gap: 40px;
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "image"
+                    "content"
+                    "notes";
+        
+                row-gap: 40px;
             }
-            
+        
             .intro-content {
-                width: 100%;
                 text-align: center;
             }
-            
+        
             .intro-tag {
-                display: block;
                 text-align: center;
+            }
+        
+            .intro-highlight {
+                justify-self: center;   /* 박스 자체 가운데 */
+                width: fit-content;     /* 글자 길이만큼 */
+                max-width: 100%;
             }
             
             .stats-container { 
