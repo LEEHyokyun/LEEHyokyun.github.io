@@ -213,13 +213,6 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.06);
         }
 
-        /* intro가 활성화(active) 되었을 때 내부 글자나 이미지가 나타나게 처리 */
-        #intro.active .intro-text {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.6s ease;
-        }
-
         /* 3. BOARDS (수치화 대시보드) */
         #boards {
             background-color: #ffffff;
@@ -939,6 +932,8 @@
 
     <main>
         <section id="intro">
+            <h2 class="section-title">INTRO</h2>
+            
             <div class="intro-content">
                 <span class="intro-tag">Welcome to LEE HYO KYUN's Career & Project History !</span>
                 <h1 class="intro-text">
@@ -1447,42 +1442,40 @@
             const observer = new IntersectionObserver((entries) => {
         
                 entries.forEach(entry => {
-                    // [보완] intro 섹션은 내부에 .section-title이 없어도 무조건 동작하도록 예외 처리 추가
-                    const isIntro = entry.target.id === "intro";
+        
                     const title = entry.target.querySelector(".section-title");
                     
-                    if (!title && !isIntro) return;
+                    // [기존 원복] INTRO 섹션 등 타이틀이 없는 경우에 대한 예외 처리 원복
+                    // 대신 INTRO 탭도 네비게이션 애니메이션이 돌아가도록 수정
+                    if (!title && entry.target.id !== "intro") return;
         
                     if (entry.isIntersecting) {
 
                         document.querySelectorAll(".section-title")
-                            .forEach(t => t.classList.remove(\"active\"));
+                            .forEach(t => t.classList.remove("active"));
                     
                         document.querySelectorAll(".header-nav a")
-                            .forEach(a => a.classList.remove(\"active\"));
+                            .forEach(a => a.classList.remove("active"));
                     
                         // 타이틀이 존재하는 일반 섹션만 active 추가
-                        if (title) title.classList.add(\"active\");
-                        
-                        // [추가] intro 섹션 자체에 active 클래스를 부여하여 내부 애니메이션 제어 가능하게 조치
-                        if (isIntro) entry.target.classList.add(\"active\");
+                        if (title) title.classList.add("active");
                     
                         const nav = document.querySelector(
                             `.header-nav a[href="#${entry.target.id}"]`
                         );
                     
                         if (nav) {
-                            nav.classList.add(\"active\");
+                            nav.classList.add("active");
                         }
-                    } else {
-                        // [추가] 다른 섹션으로 이동했다가 다시 INTRO로 올 때 애니메이션이 재동작하도록 active 제거 로직 반영
-                        if (isIntro) entry.target.classList.remove(\"active\");
+                        
                     }
                 });
         
             }, {
-                // [수정] 상단 범위를 0%로 조정하여 페이지를 맨 위로 올렸을 때(INTRO 진입 시) 즉각 감지되도록 보완
-                rootMargin: "0px 0px -60% 0px"
+                /* [수정 핵심] 상단 경계선(0px)에 도달하자마자 정확히 걸쳐졌을 때 
+                  완벽히 인지하여 작동하도록 마진 영역 재설정
+                */
+                rootMargin: "0px 0px -100% 0px"
             });
         
             sections.forEach(section => observer.observe(section));
