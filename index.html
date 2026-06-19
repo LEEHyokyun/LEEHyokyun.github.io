@@ -790,6 +790,11 @@
 
         @media screen and (max-width: 600px) {
             header {
+                /*모바일 헤더 고정*/
+                position: sticky;        /* [추가] 모바일에서도 상단에 고정 */
+                top: 0;                  /* [추가] 고정될 최상단 위치 지정 */
+                z-index: 1000;           /* [추가] 본문 내용이 위로 올라올 때 헤더 뒤로 숨지 않도록 레이어 순서 지정 *
+                
                 flex-direction: row;
                 align-items: center;
                 padding: 12px 20px;
