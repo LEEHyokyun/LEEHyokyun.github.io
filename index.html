@@ -168,6 +168,20 @@
             justify-content: space-between;
             min-height: calc(85vh - 75px);
             gap: 5%;
+
+            flex-wrap: wrap;   /* 추가 */
+        }
+
+        .intro-highlight {
+            width: 100%;
+            flex: 0 0 100%;
+        
+            margin-top: 40px;
+            padding: 18px 24px;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 5px solid var(--primary-color);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.08);
         }
         
         .intro-content {
@@ -993,16 +1007,16 @@
                 </p>
             </div>
             
+            <div class="intro-image-zone">
+                <img class="intro-profile-img" src="image/profile_image.jpg" alt="프로필 이미지" />
+            </div>
+
             <!-- Notes 추가 -->
             <div class="intro-highlight">
                 <strong>⚠️</strong>
                 <span>
                     본 포트폴리오에 기재된 내용들은 온전히 저의 땀과 노력으로 이루어졌습니다.
                 </span>
-            </div>
-            
-            <div class="intro-image-zone">
-                <img class="intro-profile-img" src="image/profile_image.jpg" alt="프로필 이미지" />
             </div>
 
         </section>
