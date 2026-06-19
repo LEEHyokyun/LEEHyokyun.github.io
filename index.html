@@ -168,20 +168,6 @@
             justify-content: space-between;
             min-height: calc(85vh - 75px);
             gap: 5%;
-
-            flex-wrap: wrap;   /* 추가 */
-        }
-
-        .intro-highlight {
-            width: 100%;
-            flex: 0 0 100%;
-        
-            margin-top: 40px;
-            padding: 18px 24px;
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            border-left: 5px solid var(--primary-color);
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.08);
         }
         
         .intro-content {
@@ -218,6 +204,37 @@
             align-items: center;
         }
 
+        .intro-highlight {
+            display: inline-flex;      /* 글자 길이만큼만 박스 생성 */
+            flex-direction: column;
+            gap: 8px;
+        
+            margin-top: 40px;
+            padding: 18px 24px;
+        
+            background-color: #eff6ff; /* 단색 하늘색 */
+            border-radius: 14px;
+        }
+
+        .intro-highlight strong {
+            color: #7c3aed;            /* 보라색 */
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        
+            text-shadow:
+                0 1px 0 #ffffff,
+                0 2px 4px rgba(124, 58, 237, 0.25);
+        }
+
+        .intro-highlight span {
+            color: var(--dark-color);
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.8;
+            word-break: keep-all;
+        }
+                
         .intro-profile-img {
             width: 100%;
             max-width: 400px;
@@ -867,35 +884,6 @@
                 display: block;
                 text-align: center;
             }
-
-            /* intro Notes 추가 */
-            .intro-highlight {
-                margin-top: 40px;
-                padding: 18px 24px;
-                background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-                border-left: 5px solid var(--primary-color);
-                border-radius: 12px;
-                box-shadow: 0 8px 20px rgba(37, 99, 235, 0.08);
-            
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-            }
-            
-            .intro-highlight strong {
-                color: var(--primary-color);
-                font-size: 0.85rem;
-                font-weight: 800;
-                letter-spacing: 1px;
-            }
-            
-            .intro-highlight span {
-                color: var(--dark-color);
-                font-size: 1rem;
-                font-weight: 600;
-                line-height: 1.8;
-                word-break: keep-all;
-            }
             
             .stats-container { 
                 grid-template-columns: 1fr; 
@@ -1013,7 +1001,7 @@
 
             <!-- Notes 추가 -->
             <div class="intro-highlight">
-                <strong>⚠️</strong>
+                <strong>잠깐!</strong>
                 <span>
                     본 포트폴리오에 기재된 내용들은 온전히 저의 땀과 노력으로 이루어졌습니다.
                 </span>
