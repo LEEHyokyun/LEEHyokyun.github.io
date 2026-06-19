@@ -967,9 +967,10 @@
             .stat-unit { font-size: 1.2rem; }
 
             .exp-domains {
-                flex-direction: row;
+                display: flex;
                 flex-wrap: wrap;
-                gap: 8px;
+                gap: 6px;
+                justify-content: flex-start;
             }
             .exp-domains-summary {
                 flex-direction: row;
@@ -1007,13 +1008,11 @@
                 font-size: 1rem;
             }
 
-            .exp-domains {
-                flex-direction: column;
-            }
-
             .domain-tag {
-                font-size: 0.75rem;
-                padding: 4px 10px;
+                font-size: 0.72rem;
+                padding: 4px 8px;
+                border-radius: 16px;
+                white-space: nowrap;
             }
 
             .project-grid { grid-template-columns: auto-fit, minmax(300px, 1fr); }
