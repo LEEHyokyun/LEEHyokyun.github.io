@@ -162,14 +162,23 @@
         }
 
         /* 2. INTRO (히어로 섹션) */
-        #intro {
+        /* #intro {
             display: flex;
             align-items: center;
             justify-content: space-between;
             min-height: calc(85vh - 75px);
             gap: 5%;
-        }
+        } */
 
+        #intro {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;       /* 다른 섹션들처럼 상단 정렬 */
+            justify-content: flex-start;   /* 다른 섹션들처럼 좌측 정렬 */
+            gap: 60px;                     /* 요소 간 간격 */
+            width: 100%;
+        }
+        
         .intro-content {
             flex: 1;
         }
@@ -767,7 +776,13 @@
         @media screen and (max-width: 1024px) {
             header { padding: 0 5%; }
             section { padding: 80px 5%; }
-            #intro { flex-direction: column; text-align: center; gap: 40px; }
+            /* #intro { flex-direction: column; text-align: center; gap: 40px; } */
+            #intro {
+                flex-direction: column;
+                align-items: flex-start;   /* 모바일 화면에서도 중앙 정렬 대신 좌측 정렬로 통일 */
+                text-align: left;          /* 글자 정렬을 좌측으로 변경 */
+                gap: 40px;
+            }
             .intro-image-zone { order: -1; }
             .intro-text { font-size: 2.2rem; }
             .sub-info-grid { grid-template-columns: 1fr; }
@@ -830,6 +845,14 @@
             main { margin-top: 110px; }
             section { padding: 60px 20px; }
 
+            /* [추가] 600px 이하 모바일 환경에서도 INTRO 섹션이 완벽하게 좌측 상단 정렬되도록 보장 */
+            #intro {
+                flex-direction: column;
+                align-items: flex-start;   /* 좌측 정렬 고정 */
+                text-align: left;          /* 텍스트 좌측 정렬 */
+                gap: 40px;
+            }
+            
             .intro-text { font-size: 1.8rem; text-align: center; }
             .intro-text-detail { font-size: 0.95rem; text-align: center; }
 
