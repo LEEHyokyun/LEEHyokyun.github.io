@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://leehyokyun.github.io/my-project.html" />
-    <meta property="og:title" content="이효균의 포트폴리오 - 개인 프로젝" />
+    <meta property="og:title" content="이효균의 포트폴리오 - 개인 프로젝트" />
     <meta property="og:image" content="image/OGimage.png" />
     <meta property="og:description" content="LEE HYO KYUN PORTFOLIO_MY_PROJECT" />
     <meta property="og:site_name" content="SCC Portfolio" />
@@ -252,12 +252,70 @@
     
         text-decoration:underline;
     }
+
+    .repo-list {
     
+        margin-top: 15px;
+        margin-bottom: 30px;
     
+    }
     
+    .repo-item {
     
+        display: block;
     
+        margin-top: 12px;
     
+        padding: 14px 18px;
+    
+        border: 1px solid var(--border);
+    
+        border-radius: 12px;
+    
+        background: #fafafa;
+    
+        text-decoration: none;
+    
+        color: var(--dark);
+    
+        transition: .2s;
+    
+    }
+    
+    .repo-item:hover {
+    
+        border-color: var(--primary);
+    
+        background: #eff6ff;
+    
+        transform: translateX(4px);
+    
+    }
+    
+    .repo-name {
+    
+        display: block;
+    
+        font-weight: 700;
+    
+        margin-bottom: 4px;
+    
+    }
+    
+    .repo-desc {
+    
+        color: var(--gray);
+    
+        font-size: .9rem;
+    
+    }
+    
+    .entry-block li {
+    
+        margin-bottom: 40px;
+    
+    }
+        
     /* 모바일 */
     
     @media (max-width:768px){
@@ -396,7 +454,7 @@
     
     </section>
     
-    <!-- ENTRIES -->
+    <!-- Series -->
     
     <section id="entries">
     
@@ -419,23 +477,151 @@
             </div>
     
             <div class="entry-content">
-    
-                <div class="entry-block">
-    
-                    <ul>
-    
-                        <li>단일(Monolithic) 환경</li>
-    
-                        <li>이벤트 기반 환경</li>
-    
-                        <li>멀티 모듈 환경</li>
-    
-                        <li>MSA 환경</li>
-    
-                    </ul>
 
+                <div class="entry-block">
+            
+                    <ul>
+            
+                        <li>
+            
+                            <strong>단일(Monolithic) 환경</strong>
+            
+                            <div class="repo-list">
+            
+                                <a class="repo-item" href="https://github.com/LEEHyokyun/spring-batch" target="_blank">
+                                    <span class="repo-name">spring-batch</span>
+                                    <span class="repo-desc">Batch Processing</span>
+                                </a>
+            
+                                <a class="repo-item" href="https://github.com/LEEHyokyun/data-modeling" target="_blank">
+                                    <span class="repo-name">data-modeling</span>
+                                    <span class="repo-desc">Database Modeling</span>
+                                </a>
+            
+                                <a class="repo-item" href="https://github.com/LEEHyokyun/system-modeling-1" target="_blank">
+                                    <span class="repo-name">system-modeling-1</span>
+                                    <span class="repo-desc">System Design</span>
+                                </a>
+            
+                                <a class="repo-item" href="https://github.com/LEEHyokyun/system-modeling-2" target="_blank">
+                                    <span class="repo-name">system-modeling-2</span>
+                                    <span class="repo-desc">System Design</span>
+                                </a>
+            
+                                <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-monitoring" target="_blank">
+                                    <span class="repo-name">spring-boot-monitoring</span>
+                                    <span class="repo-desc">Monitoring</span>
+                                </a>
+            
+                            </div>
+            
+                        </li>
+            
+                        <li>
+            
+                            <strong>이벤트 기반 환경</strong>
+            
+                            <div class="repo-list">
+            
+                                <a class="repo-item"
+                                   href="https://github.com/LEEHyokyun/Event-Driven-Architecture-basd-on-Multi-Modules-Configs"
+                                   target="_blank">
+            
+                                    <span class="repo-name">
+                                        Event-Driven-Architecture-basd-on-Multi-Modules-Configs
+                                    </span>
+            
+                                    <span class="repo-desc">
+                                        Event Driven Architecture
+                                    </span>
+            
+                                </a>
+            
+                            </div>
+            
+                        </li>
+            
+                        <li>
+            
+                            <strong>멀티 모듈 환경</strong>
+            
+                            <div class="repo-list">
+            
+                                <a class="repo-item"
+                                   href="https://github.com/LEEHyokyun/igloo"
+                                   target="_blank">
+            
+                                    <span class="repo-name">
+                                        igloo
+                                    </span>
+            
+                                    <span class="repo-desc">
+                                        Multi Module
+                                    </span>
+            
+                                </a>
+            
+                                <a class="repo-item"
+                                   href="https://github.com/LEEHyokyun/Event-Driven-Architecture-basd-on-Multi-Modules-Configs"
+                                   target="_blank">
+            
+                                    <span class="repo-name">
+                                        Event-Driven-Architecture-basd-on-Multi-Modules-Configs
+                                    </span>
+            
+                                    <span class="repo-desc">
+                                        Event Driven Architecture
+                                    </span>
+            
+                                </a>
+            
+                                <a class="repo-item"
+                                   href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-order-with-message-relay-module"
+                                   target="_blank">
+            
+                                    <span class="repo-name">
+                                        spring-boot-kafka-patterns-order-with-message-relay-module
+                                    </span>
+            
+                                    <span class="repo-desc">
+                                        Kafka + Message Relay
+                                    </span>
+            
+                                </a>
+            
+                            </div>
+            
+                        </li>
+            
+                        <li>
+            
+                            <strong>MSA 환경</strong>
+            
+                            <div class="repo-list">
+            
+                                <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-product" target="_blank">
+                                    <span class="repo-name">spring-boot-kafka-patterns-product</span>
+                                    <span class="repo-desc">Product Service</span>
+                                </a>
+            
+                                <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-order-with-message-relay-module" target="_blank">
+                                    <span class="repo-name">spring-boot-kafka-patterns-order-with-message-relay-module</span>
+                                    <span class="repo-desc">Order Service</span>
+                                </a>
+            
+                                <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-event-driven-architecturing" target="_blank">
+                                    <span class="repo-name">spring-boot-event-driven-architecturing</span>
+                                    <span class="repo-desc">Event Driven Architecture</span>
+                                </a>
+            
+                            </div>
+            
+                        </li>
+            
+                    </ul>
+            
                 </div>
-    
+
             </div>
             
         </div>
@@ -453,19 +639,64 @@
             </div>
     
             <div class="entry-content">
-    
+            
                 <div class="entry-block">
-    
+            
                     <ul>
-    
-                        <li>Kafka 체계</li>
-    
-                        <li>Redis 체계</li>
-    
+            
+                        <li>
+            
+                            <strong>Kafka 체계</strong>
+            
+                            <div class="repo-list">
+            
+                                <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-product" target="_blank">
+                                    <span class="repo-name">spring-boot-kafka-patterns-product</span>
+                                    <span class="repo-desc">Product Service</span>
+                                </a>
+            
+                                <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-order-with-message-relay-module" target="_blank">
+                                    <span class="repo-name">spring-boot-kafka-patterns-order-with-message-relay-module</span>
+                                    <span class="repo-desc">Message Relay</span>
+                                </a>
+            
+                                <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-order" target="_blank">
+                                    <span class="repo-name">spring-boot-kafka-patterns-order</span>
+                                    <span class="repo-desc">Order Service</span>
+                                </a>
+            
+                            </div>
+            
+                        </li>
+            
+                        <li>
+            
+                            <strong>Redis 체계</strong>
+            
+                            <div class="repo-list">
+            
+                                <a class="repo-item"
+                                   href="https://github.com/LEEHyokyun/spring-boot-redis-patterns-to-avoid-bottleneck"
+                                   target="_blank">
+            
+                                    <span class="repo-name">
+                                        spring-boot-redis-patterns-to-avoid-bottleneck
+                                    </span>
+            
+                                    <span class="repo-desc">
+                                        Redis Patterns
+                                    </span>
+            
+                                </a>
+            
+                            </div>
+            
+                        </li>
+            
                     </ul>
-
+            
                 </div>
-    
+            
             </div>
             
         </div>
@@ -483,19 +714,63 @@
             </div>
     
             <div class="entry-content">
-    
-                <div class="entry-block">
-    
-                    <ul>
-    
-                        <li>미니 오픈소스 프로젝트</li>
-    
-                        <li>백엔드 엔지니어링 오픈북 프로젝</li>
-    
-                    </ul>
 
+                <div class="entry-block">
+            
+                    <ul>
+            
+                        <li>
+            
+                            <strong>미니 오픈소스 프로젝트</strong>
+            
+                            <div class="repo-list">
+            
+                                <a class="repo-item"
+                                   href="https://github.com/LEEHyokyun/igloo"
+                                   target="_blank">
+            
+                                    <span class="repo-name">
+                                        igloo
+                                    </span>
+            
+                                    <span class="repo-desc">
+                                        Mini Open Source Project
+                                    </span>
+            
+                                </a>
+            
+                            </div>
+            
+                        </li>
+            
+                        <li>
+            
+                            <strong>백엔드 엔지니어링 오픈북 프로젝트</strong>
+            
+                            <div class="repo-list">
+            
+                                <a class="repo-item"
+                                   href="https://leehyokyun.gitbook.io/openbook"
+                                   target="_blank">
+            
+                                    <span class="repo-name">
+                                        OpenBook
+                                    </span>
+            
+                                    <span class="repo-desc">
+                                        GitBook
+                                    </span>
+            
+                                </a>
+            
+                            </div>
+            
+                        </li>
+            
+                    </ul>
+            
                 </div>
-    
+            
             </div>
             
         </div>
