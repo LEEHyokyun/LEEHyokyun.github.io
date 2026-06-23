@@ -824,7 +824,7 @@
                 <div class="ts-card">
                     <div class="ts-header">
                         <span class="ts-badge">ISSUE 04</span>
-                        <h3>채권 내역 관리 부하 테스트 시 동시성 문제(Lost Update) 발생</h3>
+                        <h3>채권 내역 관리 부하 테스트 시 수정 동시성 문제(Lost Update) 발생</h3>
                     </div>
                     <div class="ts-body">
                         <div class="ts-block problem">
@@ -841,6 +841,23 @@
                 <div class="ts-card">
                     <div class="ts-header">
                         <span class="ts-badge">ISSUE 05</span>
+                        <h3>채권 내역 관리 부하 테스트 시 삽입 동시성 문제(Duplicate Insert) 발생</h3>
+                    </div>
+                    <div class="ts-body">
+                        <div class="ts-block problem">
+                            <h4>🚨 문제 인식</h4>
+                            <p>11~12TPS 상황에서 거래 내역 삽입 시 Oracle 채번 테이블 기반 동시성(Duplicate Insert) 문제가 발생하였습니다.</p>
+                        </div>
+                        <div class="ts-block solution">
+                            <h4>✅ 문제 접근 및 해결 방안</h4>
+                            <p>채권 체결 최초 등록 시 Oracle 채번 테이블 기반 PK 생성 및 Oracle 격리 수준(Read Committed)으로 인한 <strong>PK중복</strong> 문제가 발생하였습니다. 최초 비관성 락을 시도하였으나 사용자 경험 측면에서 매우 비효율성을 초래하여, <strong>채번 테이블 모델링 개선을 통해</strong> 중복 및 사용자 경험 저해 문제를 개선하는데 기여하였습니다. 모델링 개선의 핵심은, 자연키 기반이지만 <strong>max count 산출 범위를 제한적으로 조정하여</strong> 동시성 문제를 <strong>본질적, 구조적으로 접근</strong>하였다는 점입니다. 지속적인 개선점과 비용을 고민하면서 팀에 기여할 수 있었던 경험이었습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ts-card">
+                    <div class="ts-header">
+                        <span class="ts-badge">ISSUE 06</span>
                         <h3>이기종(채권/경영정보) 환경에서의 세션 정합성 불일치 문제</h3>
                     </div>
                     <div class="ts-body">
@@ -857,7 +874,7 @@
 
                 <div class="ts-card">
                     <div class="ts-header">
-                        <span class="ts-badge">ISSUE 06</span>
+                        <span class="ts-badge">ISSUE 07</span>
                         <h3>한국 거래소 데이터 전송 시 단순 스케쥴러 및 반복문 방식으로 인한 반영 누락 결함 발생</h3>
                     </div>
                     <div class="ts-body">
