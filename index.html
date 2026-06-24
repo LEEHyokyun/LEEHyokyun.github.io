@@ -856,8 +856,70 @@
             }
             
             .project-grid { grid-template-columns: auto-fit, minmax(300px, 1fr); }
+
+            .welcome-box{
+                width:90%;
+                padding:30px 20px;
+            }
+        
+            .welcome-title{
+                font-size:1.1rem;
+            }
+        
+            .welcome-desc{
+                font-size:0.85rem;
+            }
         }
 
+        /* ===== 시작 모달 ===== */
+        #welcome-modal {
+            position: fixed;
+            inset: 0;
+        
+            background: rgba(0,0,0,0.35);
+            backdrop-filter: blur(5px);
+        
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+            z-index: 9999;
+        
+            transition: opacity .3s ease;
+        }
+        
+        #welcome-modal.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .welcome-box {
+            background: white;
+            padding: 40px 50px;
+            border-radius: 16px;
+        
+            text-align: center;
+        
+            box-shadow:
+                0 15px 40px rgba(0,0,0,.15);
+        
+            max-width: 420px;
+        }
+        
+        .welcome-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            line-height: 1.8;
+            color: var(--dark-color);
+        }
+        
+        .welcome-desc {
+            margin-top: 20px;
+        
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+        
         @media screen and (max-width: 600px) {
             header {
                 /*모바일 헤더 반응형*/
@@ -1016,6 +1078,19 @@
             }
 
             .project-grid { grid-template-columns: auto-fit, minmax(300px, 1fr); }
+
+            .welcome-box{
+                width:90%;
+                padding:30px 20px;
+            }
+        
+            .welcome-title{
+                font-size:1.1rem;
+            }
+        
+            .welcome-desc{
+                font-size:0.85rem;
+            }
         }
     </style>
 </head>
@@ -1567,6 +1642,20 @@
         </section>
     </main>
 
+    <!-- 모달창 -->
+    <div id="welcome-modal">
+        <div class="welcome-box">
+            <p class="welcome-title">
+                반응형 기반 제작,
+                모바일 확인도 가능합니다.
+            </p>
+    
+            <p class="welcome-desc">
+                화면을 터치하거나 ESC 키를 누르십시오.
+            </p>
+        </div>
+    </div>
+    
     <!-- 스크립트 동작-->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -1613,9 +1702,45 @@
             });
         
             sections.forEach(section => observer.observe(section));
+
+            /*
+            * 반응형 notice 모달
+            */
+            const modal = document.getElementById("welcome-modal");
         
+            // 이미 방문한 경우
+            if (localStorage.getItem("portfolioVisited")) {
+                modal.style.display = "none";
+                return;
+            }
+        
+            function closeModal() {
+        
+                localStorage.setItem("portfolioVisited", "true");
+        
+                modal.classList.add("hide");
+        
+                setTimeout(() => {
+                    modal.style.display = "none";
+                }, 300);
+            }
+        
+            // 화면 터치(클릭)
+            window.addEventListener("click", () => {
+                if (modal.style.display !== "none") {
+                    closeModal();
+                }
+            }, { once: true });
+        
+            // ESC
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    closeModal();
+                }
+            });
         });
     </script>
+    
 </body>
 
 </html>
