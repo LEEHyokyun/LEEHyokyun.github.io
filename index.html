@@ -1791,9 +1791,10 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
         
+        
             /*
             =====================================
-            Section Animation Observer
+            Section Animation Controller
             =====================================
             */
         
@@ -1804,149 +1805,257 @@
         
             function activateSection(section) {
         
-                if (currentSection === section) return;
+                if (!section || currentSection === section) {
+                    return;
+                }
+        
         
                 currentSection = section;
         
         
                 sections.forEach(sec => {
+        
                     sec.classList.remove("active");
-                });
         
+                    const title =
+                        sec.querySelector(".section-title");
         
-                section.classList.add("active");
-            }
-        
-        
-            function checkSection() {
-        
-                const viewportCenter = window.innerHeight / 2;
-        
-                let closestSection = null;
-                let minDistance = Infinity;
-        
-        
-                sections.forEach(section => {
-        
-                    const rect = section.getBoundingClientRect();
-        
-                    const sectionCenter =
-                        rect.top + (rect.height / 2);
-        
-        
-                    const distance =
-                        Math.abs(viewportCenter - sectionCenter);
-        
-        
-                    if(distance < minDistance) {
-        
-                        minDistance = distance;
-                        closestSection = section;
-        
+                    if(title){
+                        title.classList.remove("active");
                     }
         
                 });
         
         
-                if(closestSection) {
-                    activateSection(closestSection);
+                section.classList.add("active");
+        
+        
+                const title =
+                    section.querySelector(".section-title");
+        
+        
+                if(title){
+                    title.classList.add("active");
                 }
         
             }
         
         
-            /*
-                IntersectionObserver 대신
-                scroll 위치 기반 판단
         
-                이유:
-                - section height 변화 대응
-                - lazy loading 대응
-                - 천천히 이동 후 역스크롤 문제 방지
-            */
+            function checkCurrentSection(){
+        
+                const center =
+                    window.innerHeight / 2;
+        
+        
+                let target = null;
+        
+                let minDistance = Number.MAX_VALUE;
+        
+        
+        
+                sections.forEach(section => {
+        
+        
+                    const rect =
+                        section.getBoundingClientRect();
+        
+        
+        
+                    /*
+                        화면 밖 section 제외
+        
+                        기존 문제:
+                        about → 위로 이동 → intro가 아닌 boards 유지
+        
+                        원인:
+                        observer entry 상태 유지
+        
+                        해결:
+                        현재 viewport 내부 기준 계산
+                    */
+        
+                    const visible =
+                        rect.bottom > 0 &&
+                        rect.top < window.innerHeight;
+        
+        
+                    if(!visible){
+                        return;
+                    }
+        
+        
+        
+                    const sectionCenter =
+                        rect.top + rect.height / 2;
+        
+        
+        
+                    const distance =
+                        Math.abs(center - sectionCenter);
+        
+        
+        
+                    if(distance < minDistance){
+        
+                        minDistance = distance;
+                        target = section;
+        
+                    }
+        
+        
+                });
+        
+        
+        
+                if(target){
+        
+                    activateSection(target);
+        
+                }
+        
+        
+            }
+        
+        
         
             window.addEventListener(
                 "scroll",
-                checkSection,
+                checkCurrentSection,
                 {
                     passive:true
                 }
             );
         
         
+        
             window.addEventListener(
                 "resize",
-                checkSection
+                checkCurrentSection
             );
         
         
-            // 최초 실행
-            checkSection();
+        
+            checkCurrentSection();
         
         
         
             /*
             =====================================
-            Welcome Modal (First Visit Only)
+            Welcome Modal
+            (PC / Mobile First Visit Only)
             =====================================
             */
-            
-            const welcomeModal = document.getElementById("welcome-modal");
-            
-            const WELCOME_KEY = "welcome_modal_checked";
-            
-            
-            function closeWelcomeModal() {
-            
-                if (!welcomeModal) return;
-            
-            
-                welcomeModal.classList.remove("show");
-            
-            
+        
+            const welcomeModal =
+                document.getElementById(
+                    "welcome-modal"
+                );
+        
+        
+            const WELCOME_KEY =
+                "welcome_modal_checked";
+        
+        
+        
+            function closeWelcomeModal(){
+        
+        
+                if(!welcomeModal){
+                    return;
+                }
+        
+        
+                /*
+                    현재 CSS 구조 반영
+        
+                    #welcome-modal.hide {
+                        opacity:0;
+                        pointer-events:none;
+                    }
+        
+                */
+        
+                welcomeModal.classList.add(
+                    "hide"
+                );
+        
+        
+        
                 localStorage.setItem(
                     WELCOME_KEY,
                     "true"
                 );
-            
+        
+        
             }
-            
-            
-            // 최초 1회 접속 확인
-            if (
+        
+        
+        
+        
+            /*
+                최초 방문만 표시
+        
+                이미 hide 처리된 경우 복원
+            */
+        
+            if(
                 welcomeModal &&
-                !localStorage.getItem(WELCOME_KEY)
-            ) {
-            
-                welcomeModal.classList.add("show");
-            
+                localStorage.getItem(WELCOME_KEY)
+            ){
+        
+                welcomeModal.classList.add(
+                    "hide"
+                );
+        
             }
-            
-            
-            
-            // 화면 터치로 닫기 (PC 클릭 / 모바일 터치 대응)
-            if (welcomeModal) {
-            
+        
+        
+        
+        
+            /*
+                최초 접속
+                기본 CSS(display:flex) 그대로 표시
+            */
+        
+        
+        
+        
+            if(welcomeModal){
+        
+        
+                /*
+                    PC 클릭
+                    모바일 터치
+                */
+        
                 welcomeModal.addEventListener(
                     "click",
                     closeWelcomeModal
                 );
-            
-            
-                // ESC 키 닫기
+        
+        
+        
+                /*
+                    ESC
+                */
+        
                 document.addEventListener(
                     "keydown",
-                    (e) => {
-            
-                        if(e.key === "Escape") {
-            
+                    (event)=>{
+        
+        
+                        if(event.key === "Escape"){
+        
                             closeWelcomeModal();
-            
+        
                         }
-            
+        
+        
                     }
                 );
-            
+        
+        
             }
         
         
