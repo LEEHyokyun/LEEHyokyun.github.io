@@ -1794,63 +1794,92 @@
         
             /*
             =====================================
-            Section Animation Controller
+            Section + Header Navigation Controller
             =====================================
             */
         
-            const sections = document.querySelectorAll("section");
         
-            let currentSection = null;
+            const sections =
+                document.querySelectorAll("section");
         
         
-            function activateSection(section) {
+            const navLinks =
+                document.querySelectorAll(".header-nav a");
         
-                if (!section || currentSection === section) {
+        
+            let currentSectionId = "";
+        
+        
+        
+            function updateNavigation(section){
+        
+        
+                if(!section){
                     return;
                 }
         
         
-                currentSection = section;
+                const id =
+                    section.getAttribute("id");
         
         
-                sections.forEach(sec => {
+                if(!id || currentSectionId === id){
+                    return;
+                }
         
-                    sec.classList.remove("active");
         
-                    const title =
-                        sec.querySelector(".section-title");
+                currentSectionId = id;
         
-                    if(title){
-                        title.classList.remove("active");
-                    }
+        
+        
+                /*
+                    우측 메뉴 active 제거
+                */
+        
+                navLinks.forEach(link => {
+        
+                    link.classList.remove("active");
         
                 });
         
         
-                section.classList.add("active");
+        
+                /*
+                    현재 section 메뉴 active 적용
+                */
+        
+                const activeLink =
+                    document.querySelector(
+                        `.header-nav a[href="#${id}"]`
+                    );
         
         
-                const title =
-                    section.querySelector(".section-title");
+                if(activeLink){
         
+                    activeLink.classList.add(
+                        "active"
+                    );
         
-                if(title){
-                    title.classList.add("active");
                 }
+        
         
             }
         
         
         
-            function checkCurrentSection(){
         
-                const center =
+            function checkSection(){
+        
+        
+                const viewportCenter =
                     window.innerHeight / 2;
+        
         
         
                 let target = null;
         
-                let minDistance = Number.MAX_VALUE;
+                let minDistance =
+                    Infinity;
         
         
         
@@ -1863,42 +1892,36 @@
         
         
                     /*
-                        화면 밖 section 제외
-        
-                        기존 문제:
-                        about → 위로 이동 → intro가 아닌 boards 유지
-        
-                        원인:
-                        observer entry 상태 유지
-        
-                        해결:
-                        현재 viewport 내부 기준 계산
+                        viewport 내부 section만 판단
                     */
         
-                    const visible =
-                        rect.bottom > 0 &&
-                        rect.top < window.innerHeight;
+                    if(
+                        rect.bottom <= 0 ||
+                        rect.top >= window.innerHeight
+                    ){
         
-        
-                    if(!visible){
                         return;
+        
                     }
         
         
         
-                    const sectionCenter =
+                    const center =
                         rect.top + rect.height / 2;
         
         
         
                     const distance =
-                        Math.abs(center - sectionCenter);
+                        Math.abs(
+                            viewportCenter - center
+                        );
         
         
         
                     if(distance < minDistance){
         
                         minDistance = distance;
+        
                         target = section;
         
                     }
@@ -1908,11 +1931,7 @@
         
         
         
-                if(target){
-        
-                    activateSection(target);
-        
-                }
+                updateNavigation(target);
         
         
             }
@@ -1921,31 +1940,31 @@
         
             window.addEventListener(
                 "scroll",
-                checkCurrentSection,
+                checkSection,
                 {
                     passive:true
                 }
             );
         
         
-        
             window.addEventListener(
                 "resize",
-                checkCurrentSection
+                checkSection
             );
         
         
+            checkSection();
         
-            checkCurrentSection();
+        
         
         
         
             /*
             =====================================
             Welcome Modal
-            (PC / Mobile First Visit Only)
             =====================================
             */
+        
         
             const welcomeModal =
                 document.getElementById(
@@ -1953,7 +1972,7 @@
                 );
         
         
-            const WELCOME_KEY =
+            const STORAGE_KEY =
                 "welcome_modal_checked";
         
         
@@ -1961,29 +1980,13 @@
             function closeWelcomeModal(){
         
         
-                if(!welcomeModal){
-                    return;
-                }
-        
-        
-                /*
-                    현재 CSS 구조 반영
-        
-                    #welcome-modal.hide {
-                        opacity:0;
-                        pointer-events:none;
-                    }
-        
-                */
-        
                 welcomeModal.classList.add(
                     "hide"
                 );
         
         
-        
                 localStorage.setItem(
-                    WELCOME_KEY,
+                    STORAGE_KEY,
                     "true"
                 );
         
@@ -1992,16 +1995,9 @@
         
         
         
-        
-            /*
-                최초 방문만 표시
-        
-                이미 hide 처리된 경우 복원
-            */
-        
             if(
                 welcomeModal &&
-                localStorage.getItem(WELCOME_KEY)
+                localStorage.getItem(STORAGE_KEY)
             ){
         
                 welcomeModal.classList.add(
@@ -2013,21 +2009,8 @@
         
         
         
-            /*
-                최초 접속
-                기본 CSS(display:flex) 그대로 표시
-            */
-        
-        
-        
-        
             if(welcomeModal){
         
-        
-                /*
-                    PC 클릭
-                    모바일 터치
-                */
         
                 welcomeModal.addEventListener(
                     "click",
@@ -2036,28 +2019,20 @@
         
         
         
-                /*
-                    ESC
-                */
-        
                 document.addEventListener(
                     "keydown",
-                    (event)=>{
+                    (e)=>{
         
-        
-                        if(event.key === "Escape"){
+                        if(e.key === "Escape"){
         
                             closeWelcomeModal();
         
                         }
         
-        
                     }
                 );
         
-        
             }
-        
         
         
         });
