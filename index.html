@@ -1788,317 +1788,116 @@
     </div>
     
     <!-- 스크립트 동작-->
-    <script>
-
-        document.addEventListener("DOMContentLoaded", () => {
-        
-        
-            /*
-            * Header 높이 자동 계산
-            * fixed header 때문에 title이 가려지는 문제 해결
-            */
-            const header = document.querySelector("header");
-        
-            const headerHeight = () => {
-                return header ? header.offsetHeight : 0;
-            };
-        
-        
-            /*
-            * section / nav
-            */
-            const sections = [
-                ...document.querySelectorAll("section")
-            ];
-        
-            const navLinks = [
-                ...document.querySelectorAll(".header-nav a")
-            ];
-        
-        
-            /*
-            * active 처리 단일 함수
-            */
-            function activateSection(id){
-        
-                document.querySelectorAll(".section-title")
-                    .forEach(title=>{
-                        title.classList.remove("active");
+        <script>
+    
+            document.addEventListener("DOMContentLoaded",()=>{
+            
+            
+                const sections = document.querySelectorAll("section[id]");
+                const navLinks = document.querySelectorAll(".nav a");
+            
+            
+                let current = null;
+            
+            
+                function updateActiveSection(){
+            
+            
+                    const viewportCenter =
+                        window.innerHeight / 2;
+            
+            
+                    let closestSection = null;
+                    let minDistance = Infinity;
+            
+            
+            
+                    sections.forEach(section=>{
+            
+            
+                        const rect = section.getBoundingClientRect();
+            
+            
+                        const sectionCenter =
+                            rect.top + rect.height / 2;
+            
+            
+            
+                        const distance =
+                            Math.abs(viewportCenter - sectionCenter);
+            
+            
+            
+                        if(distance < minDistance){
+            
+                            minDistance = distance;
+                            closestSection = section;
+            
+                        }
+            
                     });
-        
-        
-                navLinks.forEach(nav=>{
-                    nav.classList.remove("active");
-                });
-        
-        
-                const section = document.getElementById(id);
-        
-        
-                if(section){
-        
-                    const title =
-                        section.querySelector(".section-title");
-        
-                    if(title){
-                        title.classList.add("active");
-                    }
-                }
-        
-        
-                const nav =
-                    document.querySelector(
-                        `.header-nav a[href="#${id}"]`
-                    );
-        
-        
-                if(nav){
-                    nav.classList.add("active");
-                }
-        
-            }
-        
-        
-        
-            /*
-            * Intersection Observer
-            */
-        
-            const observer = new IntersectionObserver(
-                entries => {
-        
-        
-                    /*
-                    * 현재 화면에 들어온 section만 추출
-                    */
-                    const visibleSections =
-                        entries.filter(
-                            entry=>entry.isIntersecting
-                        );
-        
-        
-                    if(visibleSections.length === 0)
-                        return;
-        
-        
-        
-                    /*
-                    * 여러개가 들어온 경우
-                    * viewport 상단과 가장 가까운 section 선택
-                    */
-                    const current =
-                        visibleSections.reduce(
-                            (prev,current)=>{
-        
-        
-                                const prevTop =
-                                    Math.abs(
-                                        prev.boundingClientRect.top
-                                    );
-        
-        
-                                const currentTop =
-                                    Math.abs(
-                                        current.boundingClientRect.top
-                                    );
-        
-        
-                                return currentTop < prevTop
-                                    ? current
-                                    : prev;
-        
-                            }
-                        );
-        
-        
-                    activateSection(
-                        current.target.id
-                    );
-        
-        
-                },
-        
-        
-                {
-        
-                    /*
-                    * header 영역만큼 위쪽 제거
-                    *
-                    * 예:
-                    * header 80px
-                    *
-                    * section title이
-                    * header 밑으로 들어오기 전에 감지
-                    */
-                    rootMargin:
-                        `-${headerHeight()}px 0px -60% 0px`,
-        
-                    threshold:0
-        
-                }
-        
-            );
-        
-        
-        
-            sections.forEach(section=>{
-                observer.observe(section);
-            });
-        
-        
-        
-        
-            /*
-            * Navigation 클릭 이동 처리
-            */
-        
-            navLinks.forEach(nav=>{
-        
-        
-                nav.addEventListener(
-                    "click",
-                    e=>{
-        
-        
-                        const targetId =
-                            nav
-                            .getAttribute("href")
-                            .replace("#","");
-        
-        
-                        const target =
-                            document.getElementById(
-                                targetId
-                            );
-        
-        
-                        if(!target)
-                            return;
-        
-        
-        
-                        e.preventDefault();
-        
-        
-        
-                        const position =
-                            target.offsetTop
-                            -
-                            headerHeight()
-                            -
-                            10;
-        
-        
-        
-                        window.scrollTo({
-        
-                            top:position,
-        
-                            behavior:"smooth"
-        
+            
+            
+            
+                    if(closestSection && current !== closestSection){
+            
+            
+                        sections.forEach(section=>{
+                            section.classList.remove("active");
                         });
-        
-        
-        
-                        /*
-                        * 클릭 즉시 active 변경
-                        *
-                        * observer와 충돌 방지
-                        */
-                        activateSection(
-                            targetId
-                        );
-        
-                    }
-                );
-        
-            });
-        
-        
-        
-        
-        
-            /*
-            * Modal
-            */
-        
-            const modal =
-                document.getElementById(
-                    "welcome-modal"
-                );
-        
-        
-            if(modal){
-        
-        
-                if(localStorage.getItem(
-                    "portfolioVisited"
-                )){
-        
-        
-                    modal.style.display="none";
-        
-        
-                }else{
-        
-        
-                    function closeModal(){
-        
-                        localStorage.setItem(
-                            "portfolioVisited",
-                            "true"
-                        );
-        
-        
-                        modal.classList.add(
-                            "hide"
-                        );
-        
-        
-                        setTimeout(()=>{
-        
-                            modal.style.display="none";
-        
-                        },300);
-        
-                    }
-        
-        
-        
-                    window.addEventListener(
-                        "click",
-                        ()=>{
+            
+            
+                        closestSection.classList.add("active");
+            
+            
+                        current = closestSection;
+            
+            
+            
+                        navLinks.forEach(link=>{
+            
+                            link.classList.remove("active");
+            
+            
                             if(
-                                modal.style.display !== "none"
+                                link.getAttribute("href")
+                                === "#" + current.id
                             ){
-                                closeModal();
+            
+                                link.classList.add("active");
+            
                             }
-                        },
-                        {
-                            once:true
-                        }
-                    );
-        
-        
-        
-                    window.addEventListener(
-                        "keydown",
-                        e=>{
-        
-                            if(e.key==="Escape")
-                                closeModal();
-        
-                        }
-                    );
-        
+            
+                        });
+            
+            
+                    }
+            
+            
                 }
-        
-            }
-        
-        
-        
-        });
-        
+            
+            
+            
+                window.addEventListener(
+                    "scroll",
+                    updateActiveSection,
+                    {
+                        passive:true
+                    }
+                );
+            
+            
+                window.addEventListener(
+                    "resize",
+                    updateActiveSection
+                );
+            
+            
+                updateActiveSection();
+            
+            
+            });
+    
     </script>
     
 </body>
