@@ -1836,8 +1836,14 @@
                     sec.classList.remove("active");
         
         
+                    const sectionId =
+                        sec.getAttribute("id");
+        
+        
                     const title =
-                        sec.querySelector(".section-title");
+                        document.querySelector(
+                            `#${sectionId} .section-title`
+                        );
         
         
                     if(title){
@@ -1867,8 +1873,14 @@
                 =========================
                 */
         
+                const sectionId =
+                    section.getAttribute("id");
+        
+        
                 const title =
-                    section.querySelector(".section-title");
+                    document.querySelector(
+                        `#${sectionId} .section-title`
+                    );
         
         
                 if(title){
@@ -1887,9 +1899,6 @@
                 =========================
                 */
         
-                const sectionId =
-                    section.getAttribute("id");
-        
         
                 const nav =
                     document.querySelector(
@@ -1904,8 +1913,8 @@
                 }
         
         
-        
             }
+        
         
         
         
@@ -1918,8 +1927,8 @@
                     window.innerHeight / 2;
         
         
-        
                 let target = null;
+        
         
                 let closest =
                     Infinity;
@@ -1933,10 +1942,6 @@
                         section.getBoundingClientRect();
         
         
-        
-                    /*
-                    viewport 밖 완전 제외
-                    */
         
                     if(
                         rect.bottom <= 0 ||
@@ -1968,7 +1973,6 @@
                         target = section;
         
                     }
-        
         
         
                 });
@@ -2005,6 +2009,7 @@
         
         
         
+        
             /*
             =====================================
             Welcome Modal
@@ -2031,18 +2036,9 @@
                 }
         
         
-                /*
-                기존 CSS:
-                #welcome-modal.hide {
-                    opacity:0;
-                    pointer-events:none;
-                }
-                */
-        
                 welcomeModal.classList.add(
                     "hide"
                 );
-        
         
         
                 localStorage.setItem(
@@ -2052,6 +2048,7 @@
         
         
             }
+        
         
         
         
@@ -2066,6 +2063,7 @@
                 );
         
             }
+        
         
         
         
