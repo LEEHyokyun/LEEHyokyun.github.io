@@ -107,6 +107,11 @@
             background-color: var(--primary-color);
             animation: navWave 0.3s ease;
         }
+
+        /*클릭했을때 애니메이션 추가 적용*/
+        .header-nav a.clicked{
+            color: #8B5A2B;
+        }
         
         @keyframes navWave {
             from {
@@ -1983,26 +1988,34 @@
                 link.addEventListener(
                     "click",
                     () => {
-        
-        
+                
+                        // 기존 clicked 제거
+                        navLinks.forEach(item => {
+                            item.classList.remove("clicked");
+                        });
+                
+                        // 현재 클릭한 메뉴만 clicked 추가
+                        link.classList.add("clicked");
+                
+                
                         const targetId =
                             link.getAttribute("href")
                             .replace("#","");
-        
-        
+                
+                
                         const target =
                             document.getElementById(
                                 targetId
                             );
-        
-        
+                
+                
                         if(target){
-        
+                
                             activateSection(target);
-        
+                
                         }
-        
-        
+                
+                
                     }
                 );
         
