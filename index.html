@@ -1794,7 +1794,8 @@
         
             /*
             =====================================
-            Section + Header Navigation Controller
+            Section Animation Controller
+            (LEFT TITLE + RIGHT NAV)
             =====================================
             */
         
@@ -1807,34 +1808,48 @@
                 document.querySelectorAll(".header-nav a");
         
         
-            let currentSectionId = "";
+            let currentSection = null;
         
         
         
-            function updateNavigation(section){
+            function updateSection(section){
         
         
-                if(!section){
+                if(!section || currentSection === section){
                     return;
                 }
         
         
-                const id =
-                    section.getAttribute("id");
-        
-        
-                if(!id || currentSectionId === id){
-                    return;
-                }
-        
-        
-                currentSectionId = id;
+                currentSection = section;
         
         
         
                 /*
-                    우측 메뉴 active 제거
+                =========================
+                기존 active 제거
+                =========================
                 */
+        
+                sections.forEach(sec => {
+        
+        
+                    sec.classList.remove("active");
+        
+        
+                    const title =
+                        sec.querySelector(".section-title");
+        
+        
+                    if(title){
+        
+                        title.classList.remove("active");
+        
+                    }
+        
+        
+                });
+        
+        
         
                 navLinks.forEach(link => {
         
@@ -1844,23 +1859,50 @@
         
         
         
+        
+        
                 /*
-                    현재 section 메뉴 active 적용
+                =========================
+                LEFT SECTION TITLE
+                =========================
                 */
         
-                const activeLink =
-                    document.querySelector(
-                        `.header-nav a[href="#${id}"]`
-                    );
+                const title =
+                    section.querySelector(".section-title");
         
         
-                if(activeLink){
+                if(title){
         
-                    activeLink.classList.add(
-                        "active"
-                    );
+                    title.classList.add("active");
         
                 }
+        
+        
+        
+        
+        
+                /*
+                =========================
+                RIGHT HEADER NAV
+                =========================
+                */
+        
+                const sectionId =
+                    section.getAttribute("id");
+        
+        
+                const nav =
+                    document.querySelector(
+                        `.header-nav a[href="#${sectionId}"]`
+                    );
+        
+        
+                if(nav){
+        
+                    nav.classList.add("active");
+        
+                }
+        
         
         
             }
@@ -1868,7 +1910,8 @@
         
         
         
-            function checkSection(){
+        
+            function detectSection(){
         
         
                 const viewportCenter =
@@ -1878,7 +1921,7 @@
         
                 let target = null;
         
-                let minDistance =
+                let closest =
                     Infinity;
         
         
@@ -1892,7 +1935,7 @@
         
         
                     /*
-                        viewport 내부 section만 판단
+                    viewport 밖 완전 제외
                     */
         
                     if(
@@ -1918,29 +1961,32 @@
         
         
         
-                    if(distance < minDistance){
+                    if(distance < closest){
         
-                        minDistance = distance;
+                        closest = distance;
         
                         target = section;
         
                     }
         
         
+        
                 });
         
         
         
-                updateNavigation(target);
+                updateSection(target);
         
         
             }
         
         
         
+        
+        
             window.addEventListener(
                 "scroll",
-                checkSection,
+                detectSection,
                 {
                     passive:true
                 }
@@ -1949,11 +1995,11 @@
         
             window.addEventListener(
                 "resize",
-                checkSection
+                detectSection
             );
         
         
-            checkSection();
+            detectSection();
         
         
         
@@ -1980,9 +2026,23 @@
             function closeWelcomeModal(){
         
         
+                if(!welcomeModal){
+                    return;
+                }
+        
+        
+                /*
+                기존 CSS:
+                #welcome-modal.hide {
+                    opacity:0;
+                    pointer-events:none;
+                }
+                */
+        
                 welcomeModal.classList.add(
                     "hide"
                 );
+        
         
         
                 localStorage.setItem(
@@ -1992,6 +2052,7 @@
         
         
             }
+        
         
         
         
@@ -2023,14 +2084,17 @@
                     "keydown",
                     (e)=>{
         
+        
                         if(e.key === "Escape"){
         
                             closeWelcomeModal();
         
                         }
         
+        
                     }
                 );
+        
         
             }
         
