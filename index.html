@@ -1895,12 +1895,13 @@
         
         
             function detectSection(){
-            
-            
+
+
                 let current = null;
             
             
-                let maxVisibleHeight = 0;
+                const triggerPoint =
+                    window.innerHeight * 0.35;
             
             
             
@@ -1913,53 +1914,16 @@
             
             
                     /*
-                    viewport 밖 완전 제외
-                    */
-            
-                    const visibleTop =
-                        Math.max(
-                            rect.top,
-                            0
-                        );
-            
-            
-                    const visibleBottom =
-                        Math.min(
-                            rect.bottom,
-                            window.innerHeight
-                        );
-            
-            
-            
-                    const visibleHeight =
-                        visibleBottom - visibleTop;
-            
-            
-            
-                    if(
-                        visibleHeight <= 0
-                    ){
-            
-                        return;
-            
-                    }
-            
-            
-            
-                    /*
-                    현재 화면에 가장 많이 보이는 section 선택
+                    section 시작점이
+                    trigger 영역을 통과했는지 판단
                     */
             
                     if(
-                        visibleHeight > maxVisibleHeight
+                        rect.top <= triggerPoint &&
+                        rect.bottom > triggerPoint
                     ){
             
-                        maxVisibleHeight =
-                            visibleHeight;
-            
-            
-                        current =
-                            section;
+                        current = section;
             
                     }
             
@@ -1968,7 +1932,11 @@
             
             
             
-                activateSection(current);
+                if(current){
+            
+                    activateSection(current);
+            
+                }
             
             }
         
