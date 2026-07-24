@@ -1895,67 +1895,81 @@
         
         
             function detectSection(){
-        
-        
+            
+            
                 let current = null;
-        
-        
-                let minTop =
-                    Infinity;
-        
-        
-        
+            
+            
+                let maxVisibleHeight = 0;
+            
+            
+            
                 sections.forEach(section => {
-        
-        
+            
+            
                     const rect =
                         section.getBoundingClientRect();
-        
-        
-        
+            
+            
+            
                     /*
-                    현재 viewport 안에 들어온 section만 판단
+                    viewport 밖 완전 제외
                     */
-        
+            
+                    const visibleTop =
+                        Math.max(
+                            rect.top,
+                            0
+                        );
+            
+            
+                    const visibleBottom =
+                        Math.min(
+                            rect.bottom,
+                            window.innerHeight
+                        );
+            
+            
+            
+                    const visibleHeight =
+                        visibleBottom - visibleTop;
+            
+            
+            
                     if(
-                        rect.bottom <= 0 ||
-                        rect.top >= window.innerHeight
+                        visibleHeight <= 0
                     ){
-        
+            
                         return;
-        
+            
                     }
-        
-        
-        
-        
+            
+            
+            
                     /*
-                    section 상단이
-                    viewport 상단에 가장 가까운 것 선택
-        
-                    중앙 기준 문제 해결
+                    현재 화면에 가장 많이 보이는 section 선택
                     */
-        
-                    const distance =
-                        Math.abs(rect.top);
-        
-        
-        
-                    if(distance < minTop){
-        
-                        minTop = distance;
-        
-                        current = section;
-        
+            
+                    if(
+                        visibleHeight > maxVisibleHeight
+                    ){
+            
+                        maxVisibleHeight =
+                            visibleHeight;
+            
+            
+                        current =
+                            section;
+            
                     }
-        
-        
+            
+            
                 });
-        
-        
-        
+            
+            
+            
                 activateSection(current);
-        
+            
             }
         
         
