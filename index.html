@@ -2030,95 +2030,53 @@
         
         
         
-        
-        
-        
-        
             /*
             =====================================
             Welcome Modal
             =====================================
             */
-        
-        
+            
             const welcomeModal =
                 document.getElementById(
                     "welcome-modal"
                 );
-        
-        
-            const STORAGE_KEY =
-                "welcome_modal_checked";
-        
-        
-        
+            
+            
+            
             function closeWelcomeModal(){
-        
-        
+            
+            
                 if(!welcomeModal){
                     return;
                 }
-        
-        
+            
+            
                 welcomeModal.classList.add(
                     "hide"
                 );
-        
-        
-                localStorage.setItem(
-                    STORAGE_KEY,
-                    "true"
-                );
-        
-        
+            
             }
-        
-        
-        
-        
-            if(
-                welcomeModal &&
-                localStorage.getItem(STORAGE_KEY)
-            ){
-        
-                welcomeModal.classList.add(
-                    "hide"
-                );
-        
-            }
-        
-        
-        
-        
-        
+            
+            
+            
+            
             if(welcomeModal){
-        
-        
-                welcomeModal.addEventListener(
-                    "click",
-                    closeWelcomeModal
-                );
-        
-        
-        
-                document.addEventListener(
-                    "keydown",
-                    (e)=>{
-        
-        
-                        if(e.key === "Escape"){
-        
-                            closeWelcomeModal();
-        
-                        }
-        
-        
-                    }
-                );
-        
-        
+            
+            
+                /*
+                페이지 진입 후
+                1초 동안 표시
+                */
+            
+                setTimeout(() => {
+            
+                    closeWelcomeModal();
+            
+                }, 1000);
+            
+            
+            
             }
-        
         
         });
     </script>
