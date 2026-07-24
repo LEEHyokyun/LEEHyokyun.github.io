@@ -1795,7 +1795,7 @@
             /*
             =====================================
             Section Animation Controller
-            (LEFT TITLE + RIGHT NAV)
+            LEFT TITLE + RIGHT NAV
             =====================================
             */
         
@@ -1812,10 +1812,15 @@
         
         
         
-            function updateSection(section){
+            function activateSection(section){
         
         
-                if(!section || currentSection === section){
+                if(!section){
+                    return;
+                }
+        
+        
+                if(currentSection === section){
                     return;
                 }
         
@@ -1825,36 +1830,15 @@
         
         
                 /*
-                =========================
                 기존 active 제거
-                =========================
                 */
         
-                sections.forEach(sec => {
-        
-        
-                    sec.classList.remove("active");
-        
-        
-                    const sectionId =
-                        sec.getAttribute("id");
-        
-        
-                    const title =
-                        document.querySelector(
-                            `#${sectionId} .section-title`
-                        );
-        
-        
-                    if(title){
+                document.querySelectorAll(".section-title")
+                    .forEach(title => {
         
                         title.classList.remove("active");
         
-                    }
-        
-        
-                });
-        
+                    });
         
         
                 navLinks.forEach(link => {
@@ -1866,21 +1850,12 @@
         
         
         
-        
                 /*
-                =========================
-                LEFT SECTION TITLE
-                =========================
+                LEFT TITLE
                 */
         
-                const sectionId =
-                    section.getAttribute("id");
-        
-        
                 const title =
-                    document.querySelector(
-                        `#${sectionId} .section-title`
-                    );
+                    section.querySelector(".section-title");
         
         
                 if(title){
@@ -1894,10 +1869,11 @@
         
         
                 /*
-                =========================
-                RIGHT HEADER NAV
-                =========================
+                RIGHT NAV
                 */
+        
+                const sectionId =
+                    section.getAttribute("id");
         
         
                 const nav =
@@ -1919,18 +1895,13 @@
         
         
         
-        
             function detectSection(){
         
         
-                const viewportCenter =
-                    window.innerHeight / 2;
+                let current = null;
         
         
-                let target = null;
-        
-        
-                let closest =
+                let minTop =
                     Infinity;
         
         
@@ -1943,6 +1914,10 @@
         
         
         
+                    /*
+                    현재 viewport 안에 들어온 section만 판단
+                    */
+        
                     if(
                         rect.bottom <= 0 ||
                         rect.top >= window.innerHeight
@@ -1954,23 +1929,24 @@
         
         
         
-                    const center =
-                        rect.top + rect.height / 2;
         
+                    /*
+                    section 상단이
+                    viewport 상단에 가장 가까운 것 선택
         
+                    중앙 기준 문제 해결
+                    */
         
                     const distance =
-                        Math.abs(
-                            viewportCenter - center
-                        );
+                        Math.abs(rect.top);
         
         
         
-                    if(distance < closest){
+                    if(distance < minTop){
         
-                        closest = distance;
+                        minTop = distance;
         
-                        target = section;
+                        current = section;
         
                     }
         
@@ -1979,8 +1955,7 @@
         
         
         
-                updateSection(target);
-        
+                activateSection(current);
         
             }
         
@@ -2003,7 +1978,56 @@
             );
         
         
+        
+            /*
+            최초 실행
+            */
+        
             detectSection();
+        
+        
+        
+        
+        
+            /*
+            =====================================
+            Navigation Click Sync
+            =====================================
+            */
+        
+        
+            navLinks.forEach(link => {
+        
+        
+                link.addEventListener(
+                    "click",
+                    () => {
+        
+        
+                        const targetId =
+                            link.getAttribute("href")
+                            .replace("#","");
+        
+        
+                        const target =
+                            document.getElementById(
+                                targetId
+                            );
+        
+        
+                        if(target){
+        
+                            activateSection(target);
+        
+                        }
+        
+        
+                    }
+                );
+        
+        
+            });
+        
         
         
         
@@ -2048,7 +2072,6 @@
         
         
             }
-        
         
         
         
