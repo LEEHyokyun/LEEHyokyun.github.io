@@ -875,7 +875,7 @@
                 <div class="ts-card">
                     <div class="ts-header">
                         <span class="ts-badge">ISSUE 07</span>
-                        <h3>한국 거래소 데이터 전송 시 단순 스케쥴러 및 반복문 방식으로 인한 반영 누락 결함 발생</h3>
+                        <h3>한국 거래소 데이터 전송 시 단순 순회 기반의 스케쥴러(반복문 방식)으로 인한 반영 누락 결함 발생</h3>
                     </div>
                     <div class="ts-body">
                         <div class="ts-block problem">
@@ -884,7 +884,7 @@
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>기존 스케쥴링 기반의 동작 특성 상, chunk화 기반의 반복 처리 도중 오류 발생 시 <strong>재시도나 fallback 체계가 미흡</strong>하였습니다. 따라서 본질적인 개선을 위해 <strong>Spring Batch 도입</strong>을 시도하였으며, JPA가 아닌 MyBatis 환경이었기에 <strong>MybatisPagingItemReader 기반의 chunk Batch 및 재시도 3회 시도 등</strong> 최대한 시스템에 부합하는 Batch 로직을 구성하고자 하였습니다. 더불어, Working time이 아닌 새벽 시간에 일어나는 batch임을 고려하여 <strong>미전송 0건을 달성하는 방향으로 접근하였으며,</strong> DB 부하가 충분히 수용할만한 수준임을 확인하고 진행하였습니다. 더불어 단순 통신오류가 아닌 거래소 측 치명적 결함 등 익일 시도가 필요하다는 점을 고려, <strong>상태변경을 반영한 배치 작업의 시도</strong> 등 정합성을 확보하기 위한 방안을 적용하기도 하였습니다.</p>
+                            <p>기존 단순 스케쥴링(for 순회 및 row 기반 slice화 기반의 반복 처리) 도중 오류 발생 시 <strong>재시도나 fallback 체계가 미흡</strong>하였습니다. 따라서 본질적인 개선을 위해 <strong>Spring Batch 도입</strong>을 시도하였으며, JPA가 아닌 MyBatis 환경이었기에 <strong>MybatisPagingItemReader 기반의 chunk Batch 및 재시도 3회 시도 등</strong> 최대한 시스템에 부합하는 Batch 로직을 구성하고자 하였습니다. 더불어, Working time이 아닌 새벽 시간에 일어나는 batch임을 고려하여 <strong>처리 속도보다 미전송 0건을 달성하는 방향으로 접근하였으며,</strong> DB 부하가 충분히 수용할만한 수준임을 확인하고 진행하였습니다. 더불어 단순 통신오류가 아닌 거래소 측 치명적 결함 등 익일 시도가 필요한 체결 내역이 존재함을 고려, <strong>상태변경을 반영한 배치 작업</strong>을 시도하는 등 정합성을 확보하기 위한 방안을 적용하여 3일 누적 미전송 결함 0건을 달성하는데 기여할 수 있었습니다.</p>
                         </div>
                     </div>
                 </div>
