@@ -1019,9 +1019,10 @@
             .title-divider { display: none; }
             .en-title { font-size: 0.95rem; }
 
-            .about-links-line { 
-                grid-template-columns: repeat(3, 1fr); 
-                gap: 10px;
+            .about-links-line{
+                display:grid;
+                grid-template-columns: repeat(2, minmax(0,1fr));
+                gap:12px;
             }
             .icon-link-item { 
                 padding: 16px 8px; 
