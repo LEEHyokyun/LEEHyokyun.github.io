@@ -806,7 +806,8 @@
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>유즈케이스 및 출석 당일 데이터 처리를 고려하였을때 멤버 이름 기반의 출결 데이터 특성 상 <strong>기존 내역에 대한 update가 아닌 최초 insert가 적절</strong>하다는 판단으로, 출결 처리 후 익일에 모든 데이터를 초기화하도록 하였습니다. 메모리 관점에서 JpaPagingItemReader보다는 JdbcPagingItemReader가 더 유리하였으나, 소규모에서 그 차이가 미미하고 학습 목적에서는 JpaPagingItemReader가 더 유리하다고 판단하여 <strong>JpaPagingItemReader를 유지</strong>하였습니다.</p>
+                            <p>유즈케이스 및 출석 당일 데이터 처리를 고려하였을때 멤버 이름 기반의 출결 데이터 특성 상 <strong>기존 내역에 대한 update가 아닌 최초 insert가 적절</strong>하다는 판단으로, 출결 처리 후 익일에 모든 데이터를 초기화하도록 하였습니다. <br/>
+                               메모리 관점에서 JpaPagingItemReader보다는 JdbcPagingItemReader가 더 유리하였으나, 소규모에서 그 차이가 미미하고 학습 목적에서는 JpaPagingItemReader가 더 유리하다고 판단하여 <strong>JpaPagingItemReader를 유지</strong>하였습니다.</p>
                         </div>
                     </div>
                 </div>
