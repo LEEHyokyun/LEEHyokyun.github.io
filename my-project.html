@@ -201,6 +201,16 @@
             outline-offset: 3px;
         }
 
+        /* .short-title: 모바일에서 돋보기 옆에 보일 짧은 제목(기본 숨김, JS로 채움) */
+        .short-title {
+            display: none;
+            color: var(--muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-left: 8px;
+            align-self: center;
+        }
+
         /* 모달 (전체보기) */
         .modal-backdrop {
             position: fixed;
@@ -255,11 +265,15 @@
             .expand-btn { display: inline-flex; }
             .project-slider { gap: 18px; }
             .intro-title { font-size: 2.4rem; }
+
+            /* 모바일에서 .short-title 표시 */
+            .short-title { display: block; }
         }
 
         /* 데스크탑: 확장 버튼은 숨김 (전체 텍스트 노출) */
         @media (min-width: 769px) {
             .expand-btn { display: none; }
+            .short-title { display: none; } /* 데스크탑에서는 보이지 않음 */
         }
 
         /* 소형 기기에서 카드 패딩 축소 */
@@ -340,7 +354,7 @@
     <div class="entry-card">
         <div class="entry-header">
             <div class="expand-container" style="width:100%;">
-                <div class="entry-title expandable">
+                <div class="entry-title expandable" data-summary="상황에 맞는 적절한 환경 구축 방안">
                    Monolithic, Multi-modules, Event-Driven, MSA(Multi-Repo),<br/>
                    Messaging, Cloud-Native, Distribution 등 <br/>
                    상황에 맞게 적절한 환경을 구축하고 도입할 수 있는 방안을 제고하였습니다.
@@ -490,129 +504,6 @@
                         </div>
                     </li>
 
-                    <li>
-
-                        <strong>MSA 환경 #2(with Spring cloud)</strong>
-
-                        <div class="repo-list">
-
-                            <a class="repo-item"
-                               href="https://github.com/LEEHyokyun/spring-boot-event-driven-architecturing"
-                               target="_blank">
-
-                                <span class="repo-name">
-                                    spring-boot-event-driven-architecturing
-                                </span>
-
-                                <span class="repo-desc">
-                                    Spring Cloud 기반의 MSA(Service Registry) 환경 구축 시 발생할 수 있는 DB 병목 및 메시지 유실 상황,<br/>
-                                    이에 대한 Event 기반 Outbox Pattern 등 정합성 확보 방안에 대하여
-                                </span>
-
-                            </a>
-
-                            <a class="repo-item"
-                               href="https://github.com/LEEHyokyun/cloud-native-MSA-gateway"
-                               target="_blank">
-
-                                <span class="repo-name">
-                                    cloud-native-MSA-gateway
-                                </span>
-
-                                <span class="repo-desc">
-                                    Spring Cloud 기반의 MSA(gateway) 환경 구축 시 발생할 수 있는 문제와 관리/운영 비용 최소화(Logical DNS) 관점에서의 접근
-                                </span>
-
-                            </a>
-
-                            <a class="repo-item"
-                               href="https://github.com/LEEHyokyun/cloud-native-MSA-config"
-                               target="_blank">
-
-                                <span class="repo-name">
-                                    cloud-native-MSA-config
-                                </span>
-
-                                <span class="repo-desc">
-                                    Spring Cloud 기반의 MSA(Configs) 환경 구축 시 발생할 수 있는 문제, 편의성 제고 및 보안성 강화 관점에서의 접근
-                                </span>
-
-                            </a>
-
-                            <a class="repo-item"
-                               href="https://github.com/LEEHyokyun/cloud-native-MSA-config-server"
-                               target="_blank">
-
-                                <span class="repo-name">
-                                    cloud-native-MSA-config-server
-                                </span>
-
-                                <span class="repo-desc">
-                                    Spring Cloud 기반의 MSA(Configs) 환경 구축 시 발생할 수 있는 문제, 편의성 제고 및 보안성 강화 관점에서의 접근
-                                </span>
-
-                            </a>
-
-                            <a class="repo-item"
-                               href="https://github.com/LEEHyokyun/cloud-native-MSA-user"
-                               target="_blank">
-
-                                <span class="repo-name">
-                                    cloud-native-MSA-user
-                                </span>
-
-                                <span class="repo-desc">
-                                    MSA 환경으로 분리된 사용자 도메인 서비스에서 메시징 체계 도입 상황을 가정하여 마주하는 설계 비대화 및 데이터 정합성 저해 상황에 대한 대응 방안을 중심으로
-                                </span>
-
-                            </a>
-
-                            <a class="repo-item"
-                               href="https://github.com/LEEHyokyun/cloud-native-MSA-user2"
-                               target="_blank">
-
-                                <span class="repo-name">
-                                    cloud-native-MSA-user2
-                                </span>
-
-                                <span class="repo-desc">
-                                    MSA 환경으로 분리된 사용자 도메인 서비스에서 메시징/Scaled-Up 체계 도입 상황을 가정하여 마주하는 중점적인 실무적 문제 상황 및 모델링에 대하여
-                                </span>
-
-                            </a>
-
-                            <a class="repo-item"
-                               href="https://github.com/LEEHyokyun/cloud-native-MSA-order"
-                               target="_blank">
-
-                                <span class="repo-name">
-                                    cloud-native-MSA-order
-                                </span>
-
-                                <span class="repo-desc">
-                                    비동기 메시징 체계 기반으로 분리된 주문 도메인 영역에서 가정할 수 있는 여러 병목 및 메시지 누락, 멱등성 등 실무 문제 상황과 이에 대한 설계 전략에 대하여
-                                </span>
-
-                            </a>
-
-                            <a class="repo-item"
-                               href="https://github.com/LEEHyokyun/cloud-native-MSA-product"
-                               target="_blank">
-
-                                <span class="repo-name">
-                                    cloud-native-MSA-product
-                                </span>
-
-                                <span class="repo-desc">
-                                    비동기 메시징 체계 기반으로 분리된 상품 도메인 영역에서 가정할 수 있는 여러 병목 및 메시지 누락, 멱등성 등 실무 문제 상황과 이에 대한 설계 전략에 대하여
-                                </span>
-
-                            </a>
-
-                        </div>
-
-                    </li>
-
                 </ul>
 
             </div>
@@ -624,7 +515,7 @@
     <div class="entry-card">
         <div class="entry-header">
             <div class="expand-container" style="width:100%;">
-                <div class="entry-title expandable">
+                <div class="entry-title expandable" data-summary="분산 환경과 정합성 확보 방안">
                    이기종(외부) 체계의 도입과 이를 통해 가정할 수 있는 HTTP/DB level에서의 병목,<br/>
                    나아가 시스템의 메시징 체계에서의 유실 보완 방안, 고가용성, 트래픽 증가를 바라보는 관점과<br/>
                    내결함성, 상태 기반의 멱등성 확보 방안까지 설계 시야를 극대화하였습니다.
@@ -692,7 +583,7 @@
 
         <div class="entry-header">
             <div class="expand-container" style="width:100%;">
-                <div class="entry-title expandable">
+                <div class="entry-title expandable" data-summary="오픈소스와 오픈북">
                    단순하지만 강력하고 튼튼한 시스템, <br/>
                    이를 위해 더 깊게, 더 집요하게 파고들면서 확보한 46가지 설계 역량,<br/>
                    조금은 차별화된 특별한 프로젝트인 미니 오픈소스와 백엔드 엔지니어링 오픈북을 소개 해드립니다.
@@ -767,26 +658,57 @@
 </div>
 
 <script>
-    // 모달 및 전체보기 기능 (간단하고 접근성 고려)
+    // 모달 및 전체보기 기능 (데이터 요약 우선 적용, 모바일 요약 표시)
     (function() {
         const modalBackdrop = document.getElementById('modal-backdrop');
         const modalContent = document.getElementById('modal-content');
         const modalTitle = document.getElementById('modal-title');
         const modalClose = document.getElementById('modal-close');
 
+        // 요약 생성 유틸: 첫 문장 또는 최대 길이로 잘라냄
+        function makeSummary(text, maxLen = 60) {
+            if (!text) return '전체 보기';
+            let s = text.replace(/\s+/g, ' ').trim();
+            // 마침표/물음표/느낌표로 첫 문장 추출
+            const m = s.match(/.*?[.?!](\s|$)/);
+            if (m && m[0]) {
+                s = m[0].trim();
+            } else {
+                if (s.length > maxLen) s = s.slice(0, maxLen).trim() + '...';
+            }
+            if (s.length > maxLen) s = s.slice(0, maxLen).trim() + '...';
+            return s;
+        }
+
+        // 각 expand-container에 모바일용 축약 제목(span.short-title) 삽입 (없으면 생성)
+        document.querySelectorAll('.expand-container').forEach(container => {
+            const expandable = container.querySelector('.expandable');
+            if (!expandable) return;
+            if (!container.querySelector('.short-title')) {
+                const span = document.createElement('div');
+                span.className = 'short-title';
+                span.setAttribute('aria-hidden', 'true');
+                // 보이는 스타일은 CSS에서 처리
+                container.appendChild(span);
+            }
+            const explicit = expandable.dataset && expandable.dataset.summary ? expandable.dataset.summary.trim() : null;
+            const short = explicit || makeSummary(expandable.innerText, 48);
+            container.querySelector('.short-title').textContent = short;
+        });
+
         // 모든 expand-btn 찾기
         document.querySelectorAll('.expand-btn').forEach(btn => {
             btn.addEventListener('click', function (e) {
-                // find the nearest .expandable sibling within .expand-container
                 const container = e.currentTarget.closest('.expand-container');
                 if (!container) return;
                 const target = container.querySelector('.expandable');
                 if (!target) return;
-                // Show modal with full text (preserve markup/newlines as text)
+                // modal 내용
                 modalContent.textContent = target.innerText.trim();
-                // Use first line / trimmed as title (short)
-                const firstLine = modalContent.textContent.split('\n')[0] || '전체 보기';
-                modalTitle.textContent = firstLine.length > 80 ? (firstLine.slice(0, 77) + '...') : firstLine;
+                // 우선순위: data-summary 속성이 있으면 그 값 사용, 없으면 자동 요약
+                const explicit = target.dataset && target.dataset.summary ? target.dataset.summary.trim() : null;
+                const titleText = explicit || makeSummary(target.innerText, 80);
+                modalTitle.textContent = titleText;
                 modalBackdrop.classList.add('open');
                 modalBackdrop.setAttribute('aria-hidden', 'false');
                 modalClose.focus();
