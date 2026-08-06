@@ -211,6 +211,34 @@
             align-self: center;
         }
 
+        /* 모바일 전용: 상단에 전체 요약(데이터-summary)과 돋보기 */
+        .mobile-summary-header {
+            display: none; /* 기본 숨김, 모바일에서 노출 */
+            gap: 10px;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .mobile-summary-title {
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 800;
+            line-height: 1.25;
+            color: var(--text);
+            word-break: break-word;
+        }
+        .summary-search-btn {
+            background: transparent;
+            border: none;
+            padding: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--accent-2);
+            border-radius: 8px;
+        }
+        .summary-search-btn:focus { outline: 2px solid rgba(37,99,235,0.12); }
+
         /* 모달 (전체보기) */
         .modal-backdrop {
             position: fixed;
@@ -253,21 +281,19 @@
             section { padding: 80px 6%; }
             .entry-header { flex-direction: column; align-items: flex-start; gap:12px; }
             .entry-period { white-space: normal; }
-            /* 모바일에서 긴 제목/블록은 3줄까지 보여주고 잘라냄 */
+            /* 모바일에서 긴 제목/블록은 3줄까지 보여주고 잘라냄 (원본은 그대로 유지되나 가려짐) */
             .expandable {
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 3;
-                overflow: hidden;
-                line-height: 1.25;
-                max-height: calc(1.25em * 3);
+                display: none; /* 모바일에서는 데이터-summary를 상단에 노출하므로 원문 블록은 숨김 */
             }
-            .expand-btn { display: inline-flex; }
+            .expand-btn { display: none; } /* 기존 확대 버튼 숨김 (모바일용 돋보기 사용) */
             .project-slider { gap: 18px; }
             .intro-title { font-size: 2.4rem; }
 
-            /* 모바일에서 .short-title 표시 */
+            /* 모바일에서 .short-title 표시 (보조용, 필요시) */
             .short-title { display: block; }
+
+            /* 모바일 전용 summary header 노출 */
+            .mobile-summary-header { display: flex; width: 100%; }
         }
 
         /* 데스크탑: 확장 버튼은 숨김 (전체 텍스트 노출) */
@@ -696,7 +722,47 @@
             container.querySelector('.short-title').textContent = short;
         });
 
-        // 모든 expand-btn 찾기
+        // --- 모바일 전용: 각 entry-card에 mobile summary header를 동적으로 추가 ---
+        document.querySelectorAll('.entry-card').forEach((card) => {
+            const expandable = card.querySelector('.expandable');
+            const entryHeader = card.querySelector('.entry-header');
+            if (!expandable || !entryHeader) return;
+            const dataSummary = (expandable.dataset && expandable.dataset.summary) ? expandable.dataset.summary.trim() : null;
+            const titleText = dataSummary || makeSummary(expandable.innerText, 80);
+
+            // 모바일 헤더 엘리먼트 생성
+            const mobileHeader = document.createElement('div');
+            mobileHeader.className = 'mobile-summary-header';
+            mobileHeader.innerHTML = `
+              <h4 class="mobile-summary-title" aria-hidden="false">${escapeHtml(titleText)}</h4>
+              <button type="button" class="summary-search-btn" aria-label="상세 보기" title="상세 보기">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                  <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            `;
+            // entry-header 바로 앞에 삽입 (모바일에서 보이도록)
+            entryHeader.parentNode.insertBefore(mobileHeader, entryHeader);
+
+            // mobile header의 돋보기 버튼에 동작 연결 (모달 열기)
+            const btn = mobileHeader.querySelector('.summary-search-btn');
+            if (btn) {
+                btn.addEventListener('click', function () {
+                    // modal 내용에 원문 텍스트를 넣음
+                    modalContent.textContent = expandable.innerText.trim();
+                    // 우선순위: data-summary 속성이 있으면 그 값 사용, 없으면 자동 요약
+                    const explicit = expandable.dataset && expandable.dataset.summary ? expandable.dataset.summary.trim() : null;
+                    const title = explicit || makeSummary(expandable.innerText, 80);
+                    modalTitle.textContent = title;
+                    modalBackdrop.classList.add('open');
+                    modalBackdrop.setAttribute('aria-hidden', 'false');
+                    modalClose.focus();
+                });
+            }
+        });
+
+        // 모든 expand-btn 찾기 (데스크탑/기본 동작)
         document.querySelectorAll('.expand-btn').forEach(btn => {
             btn.addEventListener('click', function (e) {
                 const container = e.currentTarget.closest('.expand-container');
@@ -729,6 +795,16 @@
         function closeModal() {
             modalBackdrop.classList.remove('open');
             modalBackdrop.setAttribute('aria-hidden', 'true');
+        }
+
+        // 간단한 XSS 방지: 텍스트를 HTML로 삽입할 때 사용
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
         }
     })();
 </script>
