@@ -16,917 +16,797 @@
 
     <title>LEEHYOKYUN PORTFOLIO_MY_PROJECT</title>
     <style>
-        /* ==========================================================================
-           1. 변수 선언 및 기본 세팅 (기존 아이덴티티 유지)
-           ========================================================================== */
-    :root{
-        --primary:#2563eb;
-        --dark:#111827;
-        --gray:#6b7280;
-        --border:#e5e7eb;
-        --light:#f9fafb;
-    }
-    
-    *{
-        box-sizing:border-box;
-    }
-    
-    body{
-        margin:0;
-        font-family:"Noto Sans KR", sans-serif;
-        color:var(--dark);
-        line-height:1.7;
-    }
-    
-    section{
-        padding:120px 10%;
-    }
-    
-    section:nth-child(even){
-        background:var(--light);
-    }
-    
-    .section-title{
-        font-size:2rem;
-        font-weight:800;
-        margin-bottom:60px;
-    }
-    
-    
-    
-    
-    
-    
-    /* ---------------- INTRO ---------------- */
-    
-    #intro{
-        min-height:100vh;
-    
-        display:flex;
-        justify-content:center;
-        align-items:center;
-    
-        text-align:center;
-    }
-    
-    .intro-title{
-    
-        font-size:5rem;
-        font-weight:900;
-        line-height:1.35;
-        letter-spacing:-0.05em;
-    }
-    
-    
-    
-    
-    
-    /* ---------------- KEYWORDS ---------------- */
-    
-    .keyword-container{
-        display:flex;
-        flex-wrap:wrap;
-        gap:12px;
-        margin-bottom:70px;
-    }
-    
-    .keyword{
-        background:#eff6ff;
-        color:var(--primary);
-        padding:8px 16px;
-        border-radius:30px;
-        font-size:.9rem;
-        font-weight:700;
-    }
-    
-    .project-slider{
-    
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    
-        gap:30px;
-    }
-    
-    .project-card{
-    
-        border:1px solid var(--border);
-        border-radius:16px;
-    
-        padding:35px;
-    
-        background:white;
-    
-        transition:.3s;
-    }
-    
-    .project-card:hover{
-    
-        transform:translateY(-4px);
-    
-        border-color:var(--primary);
-    
-        box-shadow:0 15px 40px rgba(0,0,0,.08);
-    }
-    
-    .project-card h3{
-        margin-top:0;
-        margin-bottom:20px;
-    
-        font-size:1.3rem;
-    }
-    
-    .project-card p{
-        color:var(--gray);
-    }
-    
-    
-    
-    
-    
-    /* ---------------- ENTRIES ---------------- */
-    
-    .entry-card{
-    
-        border:1px solid var(--border);
-    
-        border-radius:18px;
-    
-        padding:40px;
-    
-        margin-bottom:40px;
-    
-        background:white;
-    }
-    
-    .entry-header{
-    
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-    
-        margin-bottom:25px;
-    }
-    
-    .entry-title{
-    
-        font-size:1.7rem;
-        font-weight:800;
-    }
-    
-    .entry-period{
-    
-        color:var(--gray);
-    }
-    
-    .entry-tags{
-    
-        display:flex;
-        flex-wrap:wrap;
-        gap:10px;
-    
-        margin-bottom:30px;
-    }
-    
-    .entry-tags span{
-    
-        background:#eff6ff;
-        color:var(--primary);
-    
-        padding:6px 14px;
-    
-        border-radius:30px;
-    
-        font-size:.85rem;
-    
-        font-weight:700;
-    }
-    
-    .entry-content{
-    
-        display:flex;
-        flex-direction:column;
-        gap:30px;
-    }
-    
-    .entry-block h4{
-    
-        margin-bottom:15px;
-    
-        font-size:1.1rem;
-    
-        font-weight:800;
-    }
-    
-    .entry-block ul{
-    
-        margin:0;
-        padding-left:20px;
-    }
-    
-    .entry-block li{
-    
-        margin-bottom:10px;
-    
-        color:var(--gray);
-    }
-    
-    .repo-list{
-    
-        display:flex;
-    
-        flex-direction:column;
-    
-        gap:10px;
-    }
-    
-    .repo-list a{
-    
-        color:var(--primary);
-    
-        text-decoration:none;
-    
-        font-weight:700;
-    }
-    
-    .repo-list a:hover{
-    
-        text-decoration:underline;
-    }
+        /* =============================================================================
+           디자인 시스템: 컬러/타이포그래피/공간 재정의 (가독성 & 경쾌한 톤)
+           ============================================================================= */
+        :root {
+            --bg: #f6f8fb;              /* 페이지 전체 배경: 연한 아이보리/블루 혼합 */
+            --card-bg: #ffffff;
+            --muted: #6b7280;
+            --text: #0f1723;            /* 딥 네이비(검정보단 부드러움) */
+            --accent: #0f766e;          /* 딥 틸(포인트 색) */
+            --accent-2: #2563eb;        /* 보조 파랑 (링크 등) */
+            --border: #e6eef2;
+            --glass: rgba(15, 23, 35, 0.06);
+            --radius: 14px;
 
-    .repo-list {
-    
-        margin-top: 15px;
-        margin-bottom: 30px;
-    
-    }
-    
-    .repo-item {
-    
-        display: block;
-    
-        margin-top: 12px;
-    
-        padding: 14px 18px;
-    
-        border: 1px solid var(--border);
-    
-        border-radius: 12px;
-    
-        background: #fafafa;
-    
-        text-decoration: none;
-    
-        color: var(--dark);
-    
-        transition: .2s;
-    
-    }
-    
-    .repo-item:hover {
-    
-        border-color: var(--primary);
-    
-        background: #eff6ff;
-    
-        transform: translateX(4px);
-    
-    }
-    
-    .repo-name {
-    
-        display: block;
-    
-        font-weight: 700;
-    
-        margin-bottom: 4px;
-    
-    }
-    
-    .repo-desc {
-    
-        color: var(--gray);
-    
-        font-size: .9rem;
-    
-    }
-    
-    .entry-block li {
-    
-        margin-bottom: 40px;
-    
-    }
-        
-    /* 모바일 */
-    
-    @media (max-width:768px){
-    
-        section{
-            padding:80px 25px;
+            font-family: "Noto Sans KR", "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-    
-        .intro-title{
-            font-size:3rem;
+
+        /* 페이지 전반 */
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, var(--bg), #ffffff 60%);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            font-size: 16px;
         }
-    
-        .entry-header{
-            flex-direction:column;
-            align-items:flex-start;
-            gap:10px;
+
+        section { padding: 120px 10%; }
+        section:nth-child(even) { background: transparent; }
+
+        /* 타이틀 */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: var(--text);
+            letter-spacing: -0.02em;
         }
-    
-    }
-    
+
+        /* 소개(인트로) */
+        #intro {
+            min-height: 72vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 10%;
+        }
+
+        .intro-title {
+            font-size: clamp(2.2rem, 5vw, 4.8rem);
+            font-weight: 900;
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+            color: var(--text);
+            margin: 0;
+        }
+
+        /* 키워드/슬라이더 영역 */
+        .keyword-container { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:28px; }
+        .keyword {
+            background:#ecfdfa;
+            color:var(--accent);
+            padding:8px 16px;
+            border-radius:30px;
+            font-size:.9rem;
+            font-weight:700;
+            border: 1px solid rgba(15,118,110,0.06);
+            box-shadow: 0 6px 18px rgba(15,118,110,0.04);
+        }
+
+        .project-slider {
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+            gap:24px;
+        }
+
+        .project-card{
+            background: linear-gradient(180deg, var(--card-bg), #fbfdff);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            transition: transform .22s ease, box-shadow .22s ease;
+            box-shadow: 0 6px 22px rgba(12,18,24,0.04);
+        }
+
+        .project-card:hover{
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(12,18,24,0.08);
+            border-color: rgba(37,99,235,0.12);
+        }
+
+        .project-card h3{
+            margin-top:0;
+            margin-bottom:12px;
+            font-size:1.15rem;
+            color: var(--accent-2);
+        }
+
+        .project-card p{ color:var(--muted); margin:0; font-size:0.98rem; }
+
+        /* 엔트리(개별 프로젝트) 카드 */
+        .entry-card{
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 28px;
+            background: linear-gradient(180deg, #ffffff, #fbfdff);
+            box-shadow: 0 8px 28px rgba(12,18,24,0.03);
+        }
+
+        .entry-header{ display:flex; justify-content:space-between; align-items:flex-start; gap:20px; margin-bottom:18px; }
+
+        /* entry-title은 원문 텍스트을 그대로 유지 (내용 불변) */
+        .entry-title{
+            font-size:1.35rem;
+            font-weight:800;
+            color:var(--text);
+            line-height:1.25;
+            margin:0;
+            flex: 1 1 auto;
+        }
+
+        /* 확장 가능한(긴) 텍스트 처리 - 기본은 줄제한(모바일) */
+        .expand-container { position: relative; display: flex; align-items: flex-start; gap: 12px; width: 100%; }
+        .expandable {
+            margin: 0;
+        }
+        .expand-btn {
+            background: var(--glass);
+            border: 1px solid rgba(15,23,35,0.06);
+            color: var(--accent);
+            border-radius: 10px;
+            padding: 8px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .15s ease, transform .12s ease;
+            min-width:40px;
+        }
+        .expand-btn:hover { transform: translateY(-2px); background: rgba(15,118,110,0.06); }
+        .expand-btn:focus { outline: 3px solid rgba(37,99,235,0.18); outline-offset: 3px; }
+
+        .entry-period { color:var(--muted); font-size:.95rem; white-space:nowrap; }
+
+        .entry-tags { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
+        .entry-tags span { background:#f1f8ff; color:var(--accent-2); padding:6px 14px; border-radius:20px; font-size:.85rem; font-weight:700; border: 1px solid rgba(37,99,235,0.06); }
+
+        .entry-content { display:flex; flex-direction:column; gap:20px; }
+
+        .entry-block h4 { margin-bottom:10px; font-size:1.05rem; font-weight:800; color:var(--text); }
+        .entry-block ul { margin:0; padding-left:20px; color:var(--muted); }
+        .entry-block li { margin-bottom:12px; color:var(--muted); }
+
+        /* repo-list 개선 (터치 친화적) */
+        .repo-list { display:flex; flex-direction:column; gap:10px; margin-top:12px; margin-bottom:20px; }
+        .repo-item {
+            display:block;
+            padding:12px 16px;
+            border-radius:12px;
+            text-decoration:none;
+            color:var(--text);
+            background: linear-gradient(180deg, #fbfdff, #ffffff);
+            border: 1px solid rgba(15,23,35,0.04);
+            transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+        }
+        .repo-item:hover { transform: translateX(6px); background: #f1fbff; border-color: rgba(37,99,235,0.1); box-shadow: 0 8px 18px rgba(37,99,235,0.04); }
+        .repo-name { font-weight:700; display:block; margin-bottom:6px; }
+        .repo-desc { color:var(--muted); font-size:.95rem; }
+
+        /* Troubleshooting/navigation */
+        .entry-block li { margin-bottom: 18px; }
+
+        /* 포커스 접근성 보강 */
+        a:focus, button:focus {
+            outline: 3px solid rgba(37,99,235,0.18);
+            outline-offset: 3px;
+        }
+
+        /* 모달 (전체보기) */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(8,12,20,0.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1100;
+        }
+        .modal-backdrop.open { display: flex; }
+        .modal {
+            background: var(--card-bg);
+            border-radius: 12px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 88vh;
+            overflow: auto;
+            padding: 22px 26px;
+            box-shadow: 0 24px 80px rgba(2,6,23,0.35);
+            border: 1px solid var(--border);
+        }
+        .modal h3 { margin: 0 0 12px 0; font-size: 1.15rem; color: var(--accent-2); }
+        .modal p { color: var(--text); white-space: pre-wrap; white-space: normal; }
+
+        .modal-close {
+            display:inline-block;
+            margin-top:16px;
+            background: var(--accent-2);
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* 반응형: 모바일에서 긴 텍스트 축약 처리 */
+        @media (max-width: 768px) {
+            section { padding: 80px 6%; }
+            .entry-header { flex-direction: column; align-items: flex-start; gap:12px; }
+            .entry-period { white-space: normal; }
+            /* 모바일에서 긴 제목/블록은 3줄까지 보여주고 잘라냄 */
+            .expandable {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+                line-height: 1.25;
+                max-height: calc(1.25em * 3);
+            }
+            .expand-btn { display: inline-flex; }
+            .project-slider { gap: 18px; }
+            .intro-title { font-size: 2.4rem; }
+        }
+
+        /* 데스크탑: 확장 버튼은 숨김 (전체 텍스트 노출) */
+        @media (min-width: 769px) {
+            .expand-btn { display: none; }
+        }
+
+        /* 소형 기기에서 카드 패딩 축소 */
+        @media (max-width:420px){
+            section { padding: 60px 5%; }
+            .project-card { padding: 20px; }
+            .entry-card { padding: 18px; }
+            .intro-title { font-size: 2rem; }
+        }
     </style>
-    </head>
-    
-    <body>
-    
-    <!-- INTRO -->
-    
-    <section id="intro">
-    
-        <h1 class="intro-title">
-    
-            그냥,<br>
-            일단,<br>
-            한번,<br>
-            해보고 있습니다.
-    
-        </h1>
-    
-    </section>
-    
-    <!-- KEYWORDS -->
-    
-    <section id="keywords">
-    
-        <h2 class="section-title">
-            튼튼한 기본기, 깊은 전문성<br/>
-            높은 기준을 지향합니다.
-        </h2>
-    
-        <!-- <div class="keyword-container">
-    
-            <span class="keyword">Java</span>
-            <span class="keyword">Spring</span>
-            <span class="keyword">Gradle</span>
-            <span class="keyword">Docker</span>
-            <span class="keyword">Jenkins</span>
-            <span class="keyword">Neon</span>
-            <span class="keyword">Render</span>
-            <span class="keyword">Spring Batch</span>
-            <span class="keyword">Redis</span>
-            <span class="keyword">Kafka</span>
-            <span class="keyword">Git</span>
-            <span class="keyword">Github</span>
-            <span class="keyword">MSA</span>
-            <span class="keyword">Devops</span>
-            <span class="keyword">클린아키텍칭</span>
-            <span class="keyword">TDD</span>
-            <span class="keyword">데이터베이스</span>
-            <span class="keyword">설계/모델링</span>
-            <span class="keyword">문서화/표준화</span>
-    
-        </div> -->
-    
-        <div class="project-slider">
-    
-            <div class="project-card">
-    
-                <h3>자바/스프링</h3>
-    
-                <p>
-                    범용적인 프레임워크와 언어, 그 속의 강력한 객체지향성과 유지관리 방안
-                </p>
-    
-            </div>
-    
-            <div class="project-card">
-    
-                <h3>분산/대규모 환경</h3>
-    
-                <p>
-                    Monolithic을 넘어 Scaled-up 환경을 대응하기 위한 설계 방안
-                </p>
-    
-            </div>
-    
-            <div class="project-card">
-    
-                <h3>클린 아키텍처</h3>
-    
-                <p>
-                    유지관리 비용 최소화 관점에서의 프로젝트 구축 방안
-                </p>
-    
-            </div>
+</head>
 
-            <div class="project-card">
-    
-                <h3>TDD</h3>
-    
-                <p>
-                    직관성보다는 정확하고 객관적인 요구사항 구현 방안
-                </p>
-    
-            </div>
+<body>
 
-            <div class="project-card">
-    
-                <h3>모니터링/디버깅</h3>
-    
-                <p>
-                    시스템 상태 변경점의 정량화, 지표화 과정
-                </p>
-    
-            </div>
+<!-- INTRO -->
+<section id="intro">
+    <h1 class="intro-title">
+        그냥,<br>
+        일단,<br>
+        한번,<br>
+        해보고 있습니다.
+    </h1>
+</section>
 
-            <div class="project-card">
-    
-                <h3>문서화/협업화</h3>
-    
-                <p>
-                    명확한 근거에 기반한 시스템 운용 및 관리, 전사적으로 이어지는 협업 과정
-                </p>
-    
-            </div>
+<!-- KEYWORDS -->
+<section id="keywords">
+    <h2 class="section-title">
+        튼튼한 기본기, 깊은 전문성<br/>
+        높은 기준을 지향합니다.
+    </h2>
 
-            <div class="project-card">
-    
-                <h3>What's next?</h3>
-    
-                <p>
-                    성장은 계속됩니다.
-                </p>
-    
-            </div>
-    
+    <div class="project-slider">
+
+        <div class="project-card">
+            <h3>자바/스프링</h3>
+            <p>범용적인 프레임워크와 언어, 그 속의 강력한 객체지향성과 유지관리 방안</p>
         </div>
-    
-    </section>
-    
-    <!-- Series -->
-    
-    <section id="entries">
-    
-        <h2 class="section-title">
-            개인 프로젝트 시리즈
-        </h2>
-    
-    
-    
-        <div class="entry-card">
-    
-            <div class="entry-header">
-    
-                <div class="entry-title">
-    
+
+        <div class="project-card">
+            <h3>분산/대규모 환경</h3>
+            <p>Monolithic을 넘어 Scaled-up 환경을 대응하기 위한 설계 방안</p>
+        </div>
+
+        <div class="project-card">
+            <h3>클린 아키텍처</h3>
+            <p>유지관리 비용 최소화 관점에서의 프로젝트 구축 방안</p>
+        </div>
+
+        <div class="project-card">
+            <h3>TDD</h3>
+            <p>직관성보다는 정확하고 객관적인 요구사항 구현 방안</p>
+        </div>
+
+        <div class="project-card">
+            <h3>모니터링/디버깅</h3>
+            <p>시스템 상태 변경점의 정량화, 지표화 과정</p>
+        </div>
+
+        <div class="project-card">
+            <h3>문서화/협업화</h3>
+            <p>명확한 근거에 기반한 시스템 운용 및 관리, 전사적으로 이어지는 협업 과정</p>
+        </div>
+
+        <div class="project-card">
+            <h3>What's next?</h3>
+            <p>성장은 계속됩니다.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- Series -->
+<section id="entries">
+    <h2 class="section-title">
+        개인 프로젝트 시리즈
+    </h2>
+
+    <div class="entry-card">
+        <div class="entry-header">
+            <div class="expand-container" style="width:100%;">
+                <div class="entry-title expandable">
                    Monolithic, Multi-modules, Event-Driven, MSA(Multi-Repo),<br/>
                    Messaging, Cloud-Native, Distribution 등 <br/>
                    상황에 맞게 적절한 환경을 구축하고 도입할 수 있는 방안을 제고하였습니다.
-    
                 </div>
-    
+                <button class="expand-btn" aria-expanded="false" aria-label="전체보기">🔍</button>
             </div>
-    
-            <div class="entry-content">
-
-                <div class="entry-block">
-            
-                    <ul>
-            
-                        <li>
-            
-                            <strong>단일(Monolithic) 환경</strong>
-            
-                            <div class="repo-list">
-            
-                                <a class="repo-item" href="https://github.com/LEEHyokyun/spring-batch" target="_blank">
-                                    <span class="repo-name">spring-batch</span>
-                                    <span class="repo-desc">스프링 배치에 대한 고찰</span>
-                                </a>
-            
-                                <a class="repo-item" href="https://github.com/LEEHyokyun/data-modeling" target="_blank">
-                                    <span class="repo-name">data-modeling</span>
-                                    <span class="repo-desc">데이터 모델링에 대한 고찰</span>
-                                </a>
-            
-                                <a class="repo-item" href="https://github.com/LEEHyokyun/system-modeling-1" target="_blank">
-                                    <span class="repo-name">system-modeling-1</span>
-                                    <span class="repo-desc">시스템 모델링에 대한 고찰 #1</span>
-                                </a>
-            
-                                <a class="repo-item" href="https://github.com/LEEHyokyun/system-modeling-2" target="_blank">
-                                    <span class="repo-name">system-modeling-2</span>
-                                    <span class="repo-desc">시스템 모델링에 대한 고찰 #2</span>
-                                </a>
-            
-                                <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-monitoring" target="_blank">
-                                    <span class="repo-name">spring-boot-monitoring</span>
-                                    <span class="repo-desc">모니터링 및 디버깅에 대한 고찰</span>
-                                </a>
-            
-                            </div>
-            
-                        </li>
-            
-                        <li>
-            
-                            <strong>이벤트 기반 환경</strong>
-            
-                            <div class="repo-list">
-            
-                                <a class="repo-item"
-                                   href="https://github.com/LEEHyokyun/Event-Driven-Architecture-basd-on-Multi-Modules-Configs"
-                                   target="_blank">
-            
-                                    <span class="repo-name">
-                                        Event-Driven-Architecture-basd-on-Multi-Modules-Configs
-                                    </span>
-            
-                                    <span class="repo-desc">
-                                        Spring Boot Application의 Event 기반 시스템 구축 방안과 이를 바탕으로 내결함성, HTTP level 병목 완화 방안, 나아가 데이터 정합성 확보 방안에 대하여
-                                    </span>
-            
-                                </a>
-            
-                            </div>
-            
-                        </li>
-            
-                        <li>
-            
-                            <strong>멀티 모듈 환경</strong>
-            
-                            <div class="repo-list">
-            
-                                <a class="repo-item"
-                                   href="https://github.com/LEEHyokyun/igloo"
-                                   target="_blank">
-            
-                                    <span class="repo-name">
-                                        igloo
-                                    </span>
-            
-                                    <span class="repo-desc">
-                                        Spring Batch / WebMVC(Service) 기반으로 책임을 분리하고 직관성과 편의성을 극대화한 구축 환경에 대하여
-                                    </span>
-            
-                                </a>
-            
-                                <a class="repo-item"
-                                   href="https://github.com/LEEHyokyun/Event-Driven-Architecture-basd-on-Multi-Modules-Configs"
-                                   target="_blank">
-            
-                                    <span class="repo-name">
-                                        Event-Driven-Architecture-basd-on-Multi-Modules-Configs
-                                    </span>
-            
-                                    <span class="repo-desc">
-                                        멀티모듈 기반 / Multi Was 및 Event 기반의 분산 환경 구축 방안, 나아가 데이터 정합성 확보 방안에 대하여
-                                    </span>
-            
-                                </a>
-            
-                                <a class="repo-item"
-                                   href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-order-with-message-relay-module"
-                                   target="_blank">
-            
-                                    <span class="repo-name">
-                                        spring-boot-kafka-patterns-order-with-message-relay-module
-                                    </span>
-            
-                                    <span class="repo-desc">
-                                        멀티모듈 기반의 kafka 및 message relay pattern를 적용한 비동기 기반 요청/응답 시스템 구축 방안, 나아가 메시징 데이터 정합성 보장 방안에 대하여
-                                    </span>
-            
-                                </a>
-            
-                            </div>
-            
-                        </li>
-        
-                        <li>
-                        
-                            <strong>MSA 환경 #1(with Kafka/Trouble Shootings)</strong>
-                        
-                            <div class="repo-list">
-                        
-                                <a class="repo-item"
-                                   href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-product"
-                                   target="_blank">
-                        
-                                    <span class="repo-name">
-                                        spring-boot-kafka-patterns-product
-                                    </span>
-                        
-                                    <span class="repo-desc">
-                                        MSA 환경으로 분리된 상품 도메인 서비스에서 비동기 메시징 체계를 도입했을때 마주하는 여러 병목 및 메시지 유실, 이에 대한 내결함성 및 멱등성 보장 대응 방안에 대하여
-                                    </span>
-                                    
-                                </a>
-
-                                <a class="repo-item"
-                                   href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-order-with-message-relay-module"
-                                   target="_blank">
-                        
-                                    <span class="repo-name">
-                                        spring-boot-kafka-patterns-order-with-message-relay-module
-                                    </span>
-                        
-                                    <span class="repo-desc">
-                                        MSA 환경으로 분리된 주문 도메인 서비스에서 비동기 메시징 체계를 도입했을때 마주하는 병목, 특히 메시지 유실 상황을 중점적으로 데이터 정합성을 확보하기 위한 방안에 대하여
-                                    </span>
-                        
-                                </a>
-                                
-                            </div>   
-                        </li>
-
-                        <li>
-
-                            <strong>MSA 환경 #2(with Spring cloud)</strong>
-
-                            <div class="repo-list">
-                                
-                                <a class="repo-item"
-                                   href="https://github.com/LEEHyokyun/spring-boot-event-driven-architecturing"
-                                   target="_blank">
-                        
-                                    <span class="repo-name">
-                                        spring-boot-event-driven-architecturing
-                                    </span>
-                        
-                                    <span class="repo-desc">
-                                        Spring Cloud 기반의 MSA(Service Registry) 환경 구축 시 발생할 수 있는 DB 병목 및 메시지 유실 상황과 이에 대한 Event 기반 Outbox Pattern 등 정합성 확보 방안에 대하여
-                                    </span>
-                        
-                                </a>
-                        
-                                <a class="repo-item"
-                                   href="https://github.com/LEEHyokyun/cloud-native-MSA-gateway"
-                                   target="_blank">
-                        
-                                    <span class="repo-name">
-                                        cloud-native-MSA-gateway
-                                    </span>
-                        
-                                    <span class="repo-desc">
-                                        Spring Cloud 기반의 MSA(gateway) 환경 구축 시 발생할 수 있는 문제와 관리/운영 비용 최소화(Logical DNS) 관점에서의 접근
-                                    </span>
-                        
-                                </a>
-                        
-                                <a class="repo-item"
-                                   href="https://github.com/LEEHyokyun/cloud-native-MSA-config"
-                                   target="_blank">
-                        
-                                    <span class="repo-name">
-                                        cloud-native-MSA-config
-                                    </span>
-                        
-                                    <span class="repo-desc">
-                                        Spring Cloud 기반의 MSA(Configs) 환경 구축 시 발생할 수 있는 문제, 편의성 제고 및 보안성 강화 관점에서의 접근
-                                    </span>
-                        
-                                </a>
-                        
-                                <a class="repo-item"
-                                   href="https://github.com/LEEHyokyun/cloud-native-MSA-config-server"
-                                   target="_blank">
-                        
-                                    <span class="repo-name">
-                                        cloud-native-MSA-config-server
-                                    </span>
-                        
-                                    <span class="repo-desc">
-                                        Spring Cloud 기반의 MSA(Configs) 환경 구축 시 발생할 수 있는 문제, 편의성 제고 및 보안성 강화 관점에서의 접근
-                                    </span>
-                        
-                                </a>
-                        
-                                <a class="repo-item"
-                                   href="https://github.com/LEEHyokyun/cloud-native-MSA-user"
-                                   target="_blank">
-                        
-                                    <span class="repo-name">
-                                        cloud-native-MSA-user
-                                    </span>
-                        
-                                    <span class="repo-desc">
-                                        MSA 환경으로 분리된 사용자 도메인 서비스에서 메시징 체계 도입 상황을 가정하여 마주하는 설계 비대화 및 데이터 정합성 저해 상황에 대한 대응 방안을 중심으로
-                                    </span>
-                        
-                                </a>
-                        
-                                <a class="repo-item"
-                                   href="https://github.com/LEEHyokyun/cloud-native-MSA-user2"
-                                   target="_blank">
-                        
-                                    <span class="repo-name">
-                                        cloud-native-MSA-user2
-                                    </span>
-                        
-                                    <span class="repo-desc">
-                                        MSA 환경으로 분리된 사용자 도메인 서비스에서 메시징/Scaled-Up 체계 도입 상황을 가정하여 마주하는 중점적인 실무적 문제 상황 및 모델링에 대하여
-                                    </span>
-                        
-                                </a>
-                        
-                                <a class="repo-item"
-                                   href="https://github.com/LEEHyokyun/cloud-native-MSA-order"
-                                   target="_blank">
-                        
-                                    <span class="repo-name">
-                                        cloud-native-MSA-order
-                                    </span>
-                        
-                                    <span class="repo-desc">
-                                        비동기 메시징 체계 기반으로 분리된 주문 도메인 영역에서 가정할 수 있는 여러 병목 및 메시지 누락, 멱등성 등 실무 문제 상황과 이에 대한 설계 전략에 대하여
-                                    </span>
-                        
-                                </a>
-                        
-                                <a class="repo-item"
-                                   href="https://github.com/LEEHyokyun/cloud-native-MSA-product"
-                                   target="_blank">
-                        
-                                    <span class="repo-name">
-                                        cloud-native-MSA-product
-                                    </span>
-                        
-                                    <span class="repo-desc">
-                                        비동기 메시징 체계 기반으로 분리된 상품 도메인 영역에서 가정할 수 있는 여러 병목 및 메시지 누락, 멱등성 등 실무 문제 상황과 이에 대한 설계 전략에 대하여
-                                    </span>
-                        
-                                </a>
-                                
-                            </div>
-                            
-                        </li>
-            
-                    </ul>
-            
-                </div>
-
-            </div>
-            
         </div>
 
-        <div class="entry-card">
-    
-            <div class="entry-header">
-    
-                <div class="entry-title">
-    
+        <div class="entry-content">
+            <div class="entry-block">
+                <ul>
+                    <li>
+                        <strong>단일(Monolithic) 환경</strong>
+                        <div class="repo-list">
+                            <a class="repo-item" href="https://github.com/LEEHyokyun/spring-batch" target="_blank">
+                                <span class="repo-name">spring-batch</span>
+                                <span class="repo-desc">스프링 배치에 대한 고찰</span>
+                            </a>
+
+                            <a class="repo-item" href="https://github.com/LEEHyokyun/data-modeling" target="_blank">
+                                <span class="repo-name">data-modeling</span>
+                                <span class="repo-desc">데이터 모델링에 대한 고찰</span>
+                            </a>
+
+                            <a class="repo-item" href="https://github.com/LEEHyokyun/system-modeling-1" target="_blank">
+                                <span class="repo-name">system-modeling-1</span>
+                                <span class="repo-desc">시스템 모델링에 대한 고찰 #1</span>
+                            </a>
+
+                            <a class="repo-item" href="https://github.com/LEEHyokyun/system-modeling-2" target="_blank">
+                                <span class="repo-name">system-modeling-2</span>
+                                <span class="repo-desc">시스템 모델링에 대한 고찰 #2</span>
+                            </a>
+
+                            <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-monitoring" target="_blank">
+                                <span class="repo-name">spring-boot-monitoring</span>
+                                <span class="repo-desc">모니터링 및 디버깅에 대한 고찰</span>
+                            </a>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <strong>이벤트 기반 환경</strong>
+                        <div class="repo-list">
+                            <a class="repo-item"
+                               href="https://github.com/LEEHyokyun/Event-Driven-Architecture-basd-on-Multi-Modules-Configs"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    Event-Driven-Architecture-basd-on-Multi-Modules-Configs
+                                </span>
+
+                                <span class="repo-desc">
+                                    Spring Boot Application의 Event 기반 시스템 구축 방안과 이를 바탕으로 내결함성, HTTP level 병목 완화 방안, 나아가 데이터 정합[...]
+                                </span>
+
+                            </a>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <strong>멀티 모듈 환경</strong>
+                        <div class="repo-list">
+                            <a class="repo-item"
+                               href="https://github.com/LEEHyokyun/igloo"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    igloo
+                                </span>
+
+                                <span class="repo-desc">
+                                    Spring Batch / WebMVC(Service) 기반으로 책임을 분리하고 직관성과 편의성을 극대화한 구축 환경에 대하여
+                                </span>
+
+                            </a>
+
+                            <a class="repo-item"
+                               href="https://github.com/LEEHyokyun/Event-Driven-Architecture-basd-on-Multi-Modules-Configs"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    Event-Driven-Architecture-basd-on-Multi-Modules-Configs
+                                </span>
+
+                                <span class="repo-desc">
+                                    멀티모듈 기반 / Multi Was 및 Event 기반의 분산 환경 구축 방안, 나아가 데이터 정합성 확보 방안에 대하여
+                                </span>
+
+                            </a>
+
+                            <a class="repo-item"
+                               href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-order-with-message-relay-module"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    spring-boot-kafka-patterns-order-with-message-relay-module
+                                </span>
+
+                                <span class="repo-desc">
+                                    멀티모듈 기반의 kafka 및 message relay pattern를 적용한 비동기 기반 요청/응답 시스템 구축 방안, 나아가 메시징 데이터 정합[...]
+                                </span>
+
+                            </a>
+
+                        </div>
+                    </li>
+
+                    <li>
+
+                        <strong>MSA 환경 #1(with Kafka/Trouble Shootings)</strong>
+
+                        <div class="repo-list">
+
+                            <a class="repo-item"
+                               href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-product"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    spring-boot-kafka-patterns-product
+                                </span>
+
+                                <span class="repo-desc">
+                                    MSA 환경으로 분리된 상품 도메인 서비스에서 비동기 메시징 체계를 도입했을때 마주하는 여러 병목 및 메시지 유실, 이��[...]
+                                </span>
+
+                            </a>
+
+                            <a class="repo-item"
+                               href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-order-with-message-relay-module"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    spring-boot-kafka-patterns-order-with-message-relay-module
+                                </span>
+
+                                <span class="repo-desc">
+                                    MSA 환경으로 분리된 주문 도메인 서비스에서 비동기 메시징 체계를 도입했을때 마주하는 병목, 특히 메시지 유실 상황을[...]
+                                </span>
+
+                            </a>
+
+                        </div>
+                    </li>
+
+                    <li>
+
+                        <strong>MSA 환경 #2(with Spring cloud)</strong>
+
+                        <div class="repo-list">
+
+                            <a class="repo-item"
+                               href="https://github.com/LEEHyokyun/spring-boot-event-driven-architecturing"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    spring-boot-event-driven-architecturing
+                                </span>
+
+                                <span class="repo-desc">
+                                    Spring Cloud 기반의 MSA(Service Registry) 환경 구축 시 발생할 수 있는 DB 병목 및 메시지 유실 상황과 이에 대한 Event 기반 Outbox P[...]
+                                </span>
+
+                            </a>
+
+                            <a class="repo-item"
+                               href="https://github.com/LEEHyokyun/cloud-native-MSA-gateway"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    cloud-native-MSA-gateway
+                                </span>
+
+                                <span class="repo-desc">
+                                    Spring Cloud 기반의 MSA(gateway) 환경 구축 시 발생할 수 있는 문제와 관리/운영 비용 최소화(Logical DNS) 관점에서의 접근
+                                </span>
+
+                            </a>
+
+                            <a class="repo-item"
+                               href="https://github.com/LEEHyokyun/cloud-native-MSA-config"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    cloud-native-MSA-config
+                                </span>
+
+                                <span class="repo-desc">
+                                    Spring Cloud 기반의 MSA(Configs) 환경 구축 시 발생할 수 있는 문제, 편의성 제고 및 보안성 강화 관점에서의 접근
+                                </span>
+
+                            </a>
+
+                            <a class="repo-item"
+                               href="https://github.com/LEEHyokyun/cloud-native-MSA-config-server"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    cloud-native-MSA-config-server
+                                </span>
+
+                                <span class="repo-desc">
+                                    Spring Cloud 기반의 MSA(Configs) 환경 구축 시 발생할 수 있는 문제, 편의성 제고 및 보안성 강화 관점에서의 접근
+                                </span>
+
+                            </a>
+
+                            <a class="repo-item"
+                               href="https://github.com/LEEHyokyun/cloud-native-MSA-user"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    cloud-native-MSA-user
+                                </span>
+
+                                <span class="repo-desc">
+                                    MSA 환경으로 분리된 사용자 도메인 서비스에서 메시징 체계 도입 상황을 가정하여 마주하는 설계 비대화 및 데이터 정합[...]
+                                </span>
+
+                            </a>
+
+                            <a class="repo-item"
+                               href="https://github.com/LEEHyokyun/cloud-native-MSA-user2"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    cloud-native-MSA-user2
+                                </span>
+
+                                <span class="repo-desc">
+                                    MSA 환경으로 분리된 사용자 도메인 서비스에서 메시징/Scaled-Up 체계 도입 상황을 가정하여 마주하는 중점적인 실무적 문�[...]
+                                </span>
+
+                            </a>
+
+                            <a class="repo-item"
+                               href="https://github.com/LEEHyokyun/cloud-native-MSA-order"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    cloud-native-MSA-order
+                                </span>
+
+                                <span class="repo-desc">
+                                    비동기 메시징 체계 기반으로 분리된 주문 도메인 영역에서 가정할 수 있는 여러 병목 및 메시지 누락, 멱등성 등 실무 ��[...]
+                                </span>
+
+                            </a>
+
+                            <a class="repo-item"
+                               href="https://github.com/LEEHyokyun/cloud-native-MSA-product"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    cloud-native-MSA-product
+                                </span>
+
+                                <span class="repo-desc">
+                                    비동기 메시징 체계 기반으로 분리된 상품 도메인 영역에서 가정할 수 있는 여러 병목 및 메시지 누락, 멱등성 등 실무 ��[...]
+                                </span>
+
+                            </a>
+
+                        </div>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="entry-card">
+        <div class="entry-header">
+            <div class="expand-container" style="width:100%;">
+                <div class="entry-title expandable">
                    이기종(외부) 체계의 도입과 이를 통해 가정할 수 있는 HTTP/DB level에서의 병목,<br/>
                    나아가 시스템의 메시징 체계에서의 유실 보완 방안, 고가용성, 트래픽 증가를 바라보는 관점과<br/>
                    내결함성, 상태 기반의 멱등성 확보 방안까지 설계 시야를 극대화하였습니다.
-    
                 </div>
-    
+                <button class="expand-btn" aria-expanded="false" aria-label="전체보기">🔍</button>
             </div>
-    
-            <div class="entry-content">
-            
-                <div class="entry-block">
-            
-                    <ul>
-            
-                        <li>
-            
-                            <strong>Kafka(메시징/비동기와 HTTP level 병목, 이와 관련한 내결함성 및 멱등성 등)</strong>
-            
-                            <div class="repo-list">
-            
-                                <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-product" target="_blank">
-                                    <span class="repo-name">spring-boot-kafka-patterns-product</span>
-                                    <span class="repo-desc">비동기 메시징 체계 기반으로 분리된 상품 도메인 영역에서 가정할 수 있는 여러 병목 및 메시지 누락, 멱등성 등 실무 문제 상황에 대하여</span>
-                                </a>
-            
-                                <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-order" target="_blank">
-                                    <span class="repo-name">spring-boot-kafka-patterns-order</span>
-                                    <span class="repo-desc">비동기 메시징 체계 기반으로 분리된 주 도메인 영역에서 가정할 수 있는 여러 병목 및 메시지 누락, 멱등성 등 실무 문제 상황에 대하여</span>
-                                </a>
-            
-                                <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-order-with-message-relay-module" target="_blank">
-                                    <span class="repo-name">spring-boot-kafka-patterns-order-with-message-relay-module</span>
-                                    <span class="repo-desc">비동기 메시징 체계 기반으로 분리된 주문 도메인 영역에서 가정할 수 있는 메시지 유실 상황과 이를 방지하고 정합성을 확보할 수 있는 방안에 대하여</span>
-                                </a>
-                                
-                            </div>
-            
-                        </li>
-            
-                        <li>
-            
-                            <strong>Redis(분산 환경/비동기적 상태 활용과 HTTP/DB level 병목, 이와 관련한 내결함성 등)</strong>
-            
-                            <div class="repo-list">
-            
-                                <a class="repo-item"
-                                   href="https://github.com/LEEHyokyun/spring-boot-redis-patterns-to-avoid-bottleneck"
-                                   target="_blank">
-            
-                                    <span class="repo-name">
-                                        spring-boot-redis-patterns-to-avoid-bottleneck
-                                    </span>
-            
-                                    <span class="repo-desc">
-                                        Redis 체계 도입 및 다양한 실무적 상황에 대한 대응 방안
-                                    </span>
-            
-                                </a>
-            
-                            </div>
-            
-                        </li>
-            
-                    </ul>
-            
-                </div>
-            
-            </div>
-            
         </div>
-        
-        <div class="entry-card">
-    
-            <div class="entry-header">
-    
-                <div class="entry-title">
 
+        <div class="entry-content">
+            <div class="entry-block">
+                <ul>
+                    <li>
+                        <strong>Kafka(메시징/비동기와 HTTP level 병목, 이와 관련한 내결함성 및 멱등성 등)</strong>
+                        <div class="repo-list">
+                            <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-product" target="_blank">
+                                <span class="repo-name">spring-boot-kafka-patterns-product</span>
+                                <span class="repo-desc">비동기 메시징 체계 기반으로 분리된 상품 도메인 영역에서 가정할 수 있는 여러 병목 및 메시지 누락, 멱[...]
+                                </span>
+                            </a>
+
+                            <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-order" target="_blank">
+                                <span class="repo-name">spring-boot-kafka-patterns-order</span>
+                                <span class="repo-desc">비동기 메시징 체계 기반으로 분리된 주 도메인 영역에서 가정할 수 있는 여러 병목 및 메시지 누락, 멱등[...]
+                                </span>
+                            </a>
+
+                            <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-order-with-message-relay-module" target="_blank">
+                                <span class="repo-name">spring-boot-kafka-patterns-order-with-message-relay-module</span>
+                                <span class="repo-desc">비동기 메시징 체계 기반으로 분리된 주문 도메인 영역에서 가정할 수 있는 메시지 유실 상황과 이를 방��[...]
+                                </span>
+                            </a>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <strong>Redis(분산 환경/비동기적 상태 활용과 HTTP/DB level 병목, 이와 관련한 내결함성 등)</strong>
+                        <div class="repo-list">
+                            <a class="repo-item"
+                               href="https://github.com/LEEHyokyun/spring-boot-redis-patterns-to-avoid-bottleneck"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    spring-boot-redis-patterns-to-avoid-bottleneck
+                                </span>
+
+                                <span class="repo-desc">
+                                    Redis 체계 도입 및 다양한 실무적 상황에 대한 대응 방안
+                                </span>
+
+                            </a>
+
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="entry-card">
+
+        <div class="entry-header">
+            <div class="expand-container" style="width:100%;">
+                <div class="entry-title expandable">
                    단순하지만 강력하고 튼튼한 시스템, <br/>
                    이를 위해 더 깊게, 더 집요하게 파고들면서 확보한 46가지 설계 역량,<br/>
                    조금은 차별화된 특별한 프로젝트인 미니 오픈소스와 백엔드 엔지니어링 오픈북을 소개드립니다.
-    
                 </div>
-    
+                <button class="expand-btn" aria-expanded="false" aria-label="전체보기">🔍</button>
             </div>
-    
-            <div class="entry-content">
-
-                <div class="entry-block">
-            
-                    <ul>
-            
-                        <li>
-            
-                            <strong>미니 오픈소스 프로젝트</strong>
-            
-                            <div class="repo-list">
-            
-                                <a class="repo-item"
-                                   href="https://github.com/LEEHyokyun/igloo"
-                                   target="_blank">
-            
-                                    <span class="repo-name">
-                                        igloo
-                                    </span>
-            
-                                    <span class="repo-desc">
-                                        강력한 직관성과 편의성을 위해 만들어진 멀티 모듈(Batch/WebMVC) 및 2WAS(Render/Tab-Chatbot)기반의 이글루봇 시스템
-                                    </span>
-            
-                                </a>
-            
-                            </div>
-            
-                        </li>
-            
-                        <li>
-            
-                            <strong>백엔드 엔지니어링 오픈북 프로젝트</strong>
-            
-                            <div class="repo-list">
-            
-                                <a class="repo-item"
-                                   href="https://leehyokyun.gitbook.io/openbook"
-                                   target="_blank">
-            
-                                    <span class="repo-name">
-                                        OpenBook
-                                    </span>
-            
-                                    <span class="repo-desc">
-                                        백엔드 엔지니어링, 시스템 설계를 위해 더 깊게, 더 집요하게 파고들어 확보한 46가지 기본기, 역량 기록과 공유까지
-                                    </span>
-            
-                                </a>
-            
-                            </div>
-            
-                        </li>
-            
-                    </ul>
-            
-                </div>
-            
-            </div>
-            
         </div>
-    
-    </section>
-    
-    </body>
+
+        <div class="entry-content">
+
+            <div class="entry-block">
+                <ul>
+                    <li>
+                        <strong>미니 오픈소스 프로젝트</strong>
+
+                        <div class="repo-list">
+                            <a class="repo-item"
+                               href="https://github.com/LEEHyokyun/igloo"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    igloo
+                                </span>
+
+                                <span class="repo-desc">
+                                    강력한 직관성과 편의성을 위해 만들어진 멀티 모듈(Batch/WebMVC) 및 2WAS(Render/Tab-Chatbot)기반의 이글루봇 시스템
+                                </span>
+
+                            </a>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <strong>백엔드 엔지니어링 오픈북 프로젝트</strong>
+
+                        <div class="repo-list">
+                            <a class="repo-item"
+                               href="https://leehyokyun.gitbook.io/openbook"
+                               target="_blank">
+
+                                <span class="repo-name">
+                                    OpenBook
+                                </span>
+
+                                <span class="repo-desc">
+                                    백엔드 엔지니어링, 시스템 설계를 위해 더 깊게, 더 집요하게 파고들어 확보한 46가지 기본기, 역량 기록과 공유까지
+                                </span>
+
+                            </a>
+
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Modal (전체보기) -->
+<div id="modal-backdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document">
+        <h3 id="modal-title">전체 보기</h3>
+        <div id="modal-content" style="color:var(--text); white-space:pre-wrap;"></div>
+        <button id="modal-close" class="modal-close">닫기</button>
+    </div>
+</div>
+
+<script>
+    // 모달 및 전체보기 기능 (간단하고 접근성 고려)
+    (function() {
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        const modalContent = document.getElementById('modal-content');
+        const modalTitle = document.getElementById('modal-title');
+        const modalClose = document.getElementById('modal-close');
+
+        // 모든 expand-btn 찾기
+        document.querySelectorAll('.expand-btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                // find the nearest .expandable sibling within .expand-container
+                const container = e.currentTarget.closest('.expand-container');
+                if (!container) return;
+                const target = container.querySelector('.expandable');
+                if (!target) return;
+                // Show modal with full text (preserve markup/newlines as text)
+                modalContent.textContent = target.innerText.trim();
+                // Use first line / trimmed as title (short)
+                const firstLine = modalContent.textContent.split('\n')[0] || '전체 보기';
+                modalTitle.textContent = firstLine.length > 80 ? (firstLine.slice(0, 77) + '...') : firstLine;
+                modalBackdrop.classList.add('open');
+                modalBackdrop.setAttribute('aria-hidden', 'false');
+                modalClose.focus();
+            });
+        });
+
+        // Close handlers
+        modalClose.addEventListener('click', closeModal);
+        modalBackdrop.addEventListener('click', function(e) {
+            if (e.target === modalBackdrop) closeModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modalBackdrop.classList.contains('open')) {
+                closeModal();
+            }
+        });
+
+        function closeModal() {
+            modalBackdrop.classList.remove('open');
+            modalBackdrop.setAttribute('aria-hidden', 'true');
+        }
+    })();
+</script>
+
+</body>
 </html>
