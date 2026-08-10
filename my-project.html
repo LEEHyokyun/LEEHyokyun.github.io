@@ -148,24 +148,22 @@
         .expandable { margin: 0; }
         /* Show HTML version by default, hide plain version */
         .expandable.html { display: block; }
-        .expandable.plain { display: none; }
+        .expandable.plain { display: none; } /* plain은 화면에 직접 노출되지 않음 — 모바일 요약은 모바일 헤더로 처리 */
 
-        .expand-btn {
-            background: var(--glass);
-            border: 1px solid rgba(15,23,35,0.06);
-            color: var(--accent);
-            border-radius: 10px;
-            padding: 8px 10px;
-            font-size: 14px;
-            cursor: pointer;
+        /* 모바일에서만 보일 돋보기(Search) 버튼은 summary-search-btn으로 처리 (expand-btn 제거) */
+        .summary-search-btn {
+            background: transparent;
+            border: none;
+            padding: 6px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            transition: background .15s ease, transform .12s ease;
-            min-width:40px;
+            cursor: pointer;
+            color: var(--accent-2);
+            border-radius: 8px;
+            flex-shrink: 0;
         }
-        .expand-btn:hover { transform: translateY(-2px); background: rgba(15,118,110,0.06); }
-        .expand-btn:focus { outline: 3px solid rgba(37,99,235,0.18); outline-offset: 3px; }
+        .summary-search-btn:focus { outline: 2px solid rgba(37,99,235,0.12); }
 
         .entry-period { color:var(--muted); font-size:.95rem; white-space:nowrap; }
 
@@ -218,19 +216,6 @@
             color: var(--text);
             word-break: break-word;
         }
-        .summary-search-btn {
-            background: transparent;
-            border: none;
-            padding: 6px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: var(--accent-2);
-            border-radius: 8px;
-            flex-shrink: 0;
-        }
-        .summary-search-btn:focus { outline: 2px solid rgba(37,99,235,0.12); }
 
         /* 모달 (전체보기) */
         .modal-backdrop {
@@ -280,21 +265,19 @@
             section { padding: 80px 6%; }
             .entry-header { flex-direction: column; align-items: flex-start; gap:12px; }
             .entry-period { white-space: normal; }
-            /* 모바일에서는 HTML 버전 숨기고 plain(줄바꿈 없는) 버전 노출 */
+            /* 모바일에서는 HTML 버전 숨김 (모바일 요약은 mobile-summary-header로 대체) */
             .expandable.html { display: none !important; }
-            .expandable.plain { display: block !important; }
-
-            .expand-btn { display: none; } /* 기존 확대 버튼 숨김 (모바일용 돋보기 사용) */
+            /* .expandable.plain은 화면에 직접 노출하지 않음(모달용/데이터 원본) */
+            .mobile-summary-header { display: flex; width: 100%; }
+            /* 모바일에서 summary-search-btn(돋보기) 노출 — 데스크탑에서는 안 보임 */
+            .summary-search-btn { display: inline-flex; }
             .project-slider { gap: 18px; }
             .intro-title { font-size: 2.4rem; }
-
-            /* 모바일 전용 summary header 노출 */
-            .mobile-summary-header { display: flex; width: 100%; }
         }
 
-        /* 데스크탑: 확장 버튼은 숨김 (전체 텍스트 노출) */
+        /* 데스크탑: summary-search-btn(돋보기 버튼)은 숨김 (모바일 전용) */
         @media (min-width: 769px) {
-            .expand-btn { display: inline-flex; }
+            .summary-search-btn { display: none; }
             .mobile-summary-header { display: none; } /* 데스크탑에서는 mobile header 숨김 */
         }
 
@@ -383,12 +366,12 @@
                    상황에 맞게 적절한 환경을 구축하고 도입할 수 있는 방안을 제고하였습니다.
                 </div>
 
-                <!-- Mobile/plain: 같은 내용, <br/> 제거 (모달/모바일용) -->
+                <!-- Mobile/plain: 같은 내용, <br/> 제거 (모달/모바일용) - 화면에는 직접 노출되지 않음 -->
                 <div class="entry-title expandable plain" data-summary="상황에 맞는 적절한 환경 구축 방안" aria-hidden="true" style="display:none;">
-                   Monolithic, Multi-modules, Event-Driven, MSA(Multi-Repo), Messaging, Cloud-Native, Distribution 등 상황에 맞게 적절한 환경을 구축하고 도입할 수 있는 방안을 제고하였습니다.
+                   Monolithic, Multi-modules, Event-Driven, MSA(Multi-Repo), Messaging, Cloud-Native, Distribution 등 상황에 맞게 적절한 환경을 구축하고 도입할 수 있는 방안을 [...]
                 </div>
 
-                <button class="expand-btn" aria-expanded="false" aria-label="전체보기">🔍</button>
+                <!-- expand-btn들 제거: 모바일 전용 돋보기는 mobile-summary-header에 생성됨 -->
             </div>
         </div>
 
@@ -551,12 +534,11 @@
                    내결함성, 상태 기반의 멱등성 확보 방안까지 설계 시야를 극대화하였습니다.
                 </div>
 
-                <!-- Mobile/plain (no <br/>) -->
+                <!-- Mobile/plain (no <br/>) - 화면에는 직접 노출되지 않음 -->
                 <div class="entry-title expandable plain" data-summary="분산 환경과 정합성 확보 방안" aria-hidden="true" style="display:none;">
-                   이기종(외부) 체계의 도입과 이를 통해 가정할 수 있는 HTTP/DB level에서의 병목, 나아가 시스템의 메시징 체계에서의 유실 보완 방안, 고가용성, 트래픽 증가를 바라보는 관점과 내결함성, 상태 기반의 멱등성 확보 방안까지 설계 시야를 극대화하였습니다.
+                   이기종(외부) 체계의 도입과 이를 통해 가정할 수 있는 HTTP/DB level에서의 병목, 나아가 시스템의 메시징 체계에서의 유실 보완 방안, 고가[...]
                 </div>
 
-                <button class="expand-btn" aria-expanded="false" aria-label="전체보기">🔍</button>
             </div>
         </div>
 
@@ -628,10 +610,9 @@
 
                 <!-- Mobile/plain (no <br/>) -->
                 <div class="entry-title expandable plain" data-summary="오픈소스와 오픈북" aria-hidden="true" style="display:none;">
-                   단순하지만 강력하고 튼튼한 시스템, 이를 위해 더 깊게, 더 집요하게 파고들면서 확보한 46가지 설계 역량, 조금은 차별화된 특별한 프로젝트인 미니 오픈소스와 백엔드 엔지니어링 오픈북을 소개 해드립니다.
+                   단순하지만 강력하고 튼튼한 시스템, 이를 위해 더 깊게, 더 집요하게 파고들면서 확보한 46가지 설계 역량, 조금은 차별화된 특별한 프��[...]
                 </div>
 
-                <button class="expand-btn" aria-expanded="false" aria-label="전체보기">🔍</button>
             </div>
         </div>
 
@@ -790,26 +771,6 @@
             }
         });
 
-        // 모든 expand-btn 찾기 (데스크탑/기본 동작)
-        document.querySelectorAll('.expand-btn').forEach(btn => {
-            btn.addEventListener('click', function (e) {
-                const container = e.currentTarget.closest('.expand-container');
-                if (!container) return;
-                const htmlElem = container.querySelector('.expandable.html');
-                const plainElem = container.querySelector('.expandable.plain');
-                const source = plainElem || htmlElem;
-                if (!source) return;
-                const textForModal = getPlainTextFrom(source);
-                const explicit = source.dataset && source.dataset.summary ? source.dataset.summary.trim() : null;
-                const titleText = explicit || makeSummary(source.innerText, 80);
-                modalContent.textContent = textForModal;
-                modalTitle.textContent = titleText;
-                modalBackdrop.classList.add('open');
-                modalBackdrop.setAttribute('aria-hidden', 'false');
-                modalClose.focus();
-            });
-        });
-
         // Close handlers
         modalClose.addEventListener('click', closeModal);
         modalBackdrop.addEventListener('click', function(e) {
@@ -830,7 +791,8 @@
         function updateAriaHidden() {
             const isMobile = window.matchMedia('(max-width:768px)').matches;
             document.querySelectorAll('.expandable.html').forEach(e => e.setAttribute('aria-hidden', isMobile ? 'true' : 'false'));
-            document.querySelectorAll('.expandable.plain').forEach(e => e.setAttribute('aria-hidden', isMobile ? 'false' : 'true'));
+            // plain 요소는 화면에 직접적으로 노출되지 않으므로 screen reader에서도 기본적으로 숨김 처리
+            document.querySelectorAll('.expandable.plain').forEach(e => e.setAttribute('aria-hidden', 'true'));
         }
         updateAriaHidden();
         window.addEventListener('resize', function() { updateAriaHidden(); });
