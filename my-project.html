@@ -201,16 +201,6 @@
             outline-offset: 3px;
         }
 
-        /* .short-title: 모바일에서 돋보기 옆에 보일 짧은 제목(기본 숨김, JS로 채움) */
-        .short-title {
-            display: none;
-            color: var(--muted);
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-left: 8px;
-            align-self: center;
-        }
-
         /* 모바일 전용: 상단에 전체 요약(데이터-summary)과 돋보기 */
         .mobile-summary-header {
             display: none; /* 기본 숨김, 모바일에서 노출 */
@@ -236,6 +226,7 @@
             cursor: pointer;
             color: var(--accent-2);
             border-radius: 8px;
+            flex-shrink: 0;
         }
         .summary-search-btn:focus { outline: 2px solid rgba(37,99,235,0.12); }
 
@@ -263,7 +254,13 @@
             border: 1px solid var(--border);
         }
         .modal h3 { margin: 0 0 12px 0; font-size: 1.15rem; color: var(--accent-2); }
-        .modal p { color: var(--text); white-space: pre-wrap; white-space: normal; }
+        .modal-text {
+            color: var(--text);
+            white-space: pre-wrap;
+            word-break: break-word;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
 
         .modal-close {
             display:inline-block;
@@ -281,16 +278,13 @@
             section { padding: 80px 6%; }
             .entry-header { flex-direction: column; align-items: flex-start; gap:12px; }
             .entry-period { white-space: normal; }
-            /* 모바일에서 긴 제목/블록은 3줄까지 보여주고 잘라냄 (원본은 그대로 유지되나 가려짐) */
+            /* 모바일에서 원문 expandable은 숨김 */
             .expandable {
                 display: none; /* 모바일에서는 데이터-summary를 상단에 노출하므로 원문 블록은 숨김 */
             }
             .expand-btn { display: none; } /* 기존 확대 버튼 숨김 (모바일용 돋보기 사용) */
             .project-slider { gap: 18px; }
             .intro-title { font-size: 2.4rem; }
-
-            /* 모바일에서 .short-title 표시 (보조용, 필요시) */
-            .short-title { display: block; }
 
             /* 모바일 전용 summary header 노출 */
             .mobile-summary-header { display: flex; width: 100%; }
@@ -299,7 +293,7 @@
         /* 데스크탑: 확장 버튼은 숨김 (전체 텍스트 노출) */
         @media (min-width: 769px) {
             .expand-btn { display: none; }
-            .short-title { display: none; } /* 데스크탑에서는 보이지 않음 */
+            .mobile-summary-header { display: none; } /* 데스크탑에서는 mobile header 숨김 */
         }
 
         /* 소형 기기에서 카드 패딩 축소 */
@@ -435,7 +429,7 @@
                                 </span>
 
                                 <span class="repo-desc">
-                                    Spring Boot Application의 Event 기반 시스템 구축 방안과 이를 바탕으로 내결함성, HTTP level 병목 완화 방안, 나아가 데이터 정합성 확보 방안에 대하여
+                                    Spring Boot Application의 Event 기반 시스템 구축 방안과 이를 바탕으로 내결함성, HTTP level 병목 완화 방안, 나아가 데이터 정합성 [...]
                                 </span>
 
                             </a>
@@ -483,7 +477,7 @@
                                 </span>
 
                                 <span class="repo-desc">
-                                    멀티모듈 기반의 kafka 및 message relay pattern를 적용한 비동기 기반 요청/응답 시스템 구축 방안, 나아가 메시징 데이터 정합성 보장 방안에 대하여
+                                    멀티모듈 기반의 kafka 및 message relay pattern를 적용한 비동기 기반 요청/응답 시스템 구축 방안, 나아가 메시징 데이터 정합성 [...]
                                 </span>
 
                             </a>
@@ -558,19 +552,19 @@
                         <div class="repo-list">
                             <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-product" target="_blank">
                                 <span class="repo-name">spring-boot-kafka-patterns-product</span>
-                                <span class="repo-desc">비동기 메시징 체계 기반으로 분리된 상품 도메인 영역에서 가정할 수 있는 여러 병목 및 메시지 누락, 멱등성 등 실무 문제 상황에 대하여
+                                <span class="repo-desc">비동기 메시징 체계 기반으로 분리된 상품 도메인 영역에서 가정할 수 있는 여러 병목 및 메시지 누락, 멱등성 [...]
                                 </span>
                             </a>
 
                             <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-order" target="_blank">
                                 <span class="repo-name">spring-boot-kafka-patterns-order</span>
-                                <span class="repo-desc">비동기 메시징 체계 기반으로 분리된 주 도메인 영역에서 가정할 수 있는 여러 병목 및 메시지 누락, 멱등성 등 실무 문제 상황에 대하여
+                                <span class="repo-desc">비동기 메시징 체계 기반으로 분리된 주 도메인 영역에서 가정할 수 있는 여러 병목 및 메시지 누락, 멱등성 [...]
                                 </span>
                             </a>
 
                             <a class="repo-item" href="https://github.com/LEEHyokyun/spring-boot-kafka-patterns-order-with-message-relay-module" target="_blank">
                                 <span class="repo-name">spring-boot-kafka-patterns-order-with-message-relay-module</span>
-                                <span class="repo-desc">비동기 메시징 체계 기반으로 분리된 주문 도메인 영역에서 가정할 수 있는 메시지 유실 상황과 이를 방지하고 정합성을 확보할 수 있는 방안에 대하여
+                                <span class="repo-desc">비동기 메시징 체계 기반으로 분리된 주문 도메인 영역에서 가정할 수 있는 메시지 유실 상황과 이를 방지하[...]
                                 </span>
                             </a>
 
@@ -656,7 +650,7 @@
                                 </span>
 
                                 <span class="repo-desc">
-                                    시스템 설계를 위해 더 깊게, 더 집요하게 파고들어 확보한 46가지 백엔드 엔지니어링 및 기본기, 나아가 역량 기록과 공유까지.
+                                    시스템 설계를 위해 더 깊게, 더 집요하게 파고들어 확보한 46가지 백엔드 엔지니어링 및 기본기, 나아가 역량 기록과 공유 [...]
                                 </span>
 
                             </a>
@@ -678,7 +672,7 @@
 <div id="modal-backdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal" role="document">
         <h3 id="modal-title">전체 보기</h3>
-        <div id="modal-content" style="color:var(--text); white-space:pre-wrap;"></div>
+        <div id="modal-content" class="modal-text"></div>
         <button id="modal-close" class="modal-close">닫기</button>
     </div>
 </div>
@@ -706,21 +700,15 @@
             return s;
         }
 
-        // 각 expand-container에 모바일용 축약 제목(span.short-title) 삽입 (없으면 생성)
-        document.querySelectorAll('.expand-container').forEach(container => {
-            const expandable = container.querySelector('.expandable');
-            if (!expandable) return;
-            if (!container.querySelector('.short-title')) {
-                const span = document.createElement('div');
-                span.className = 'short-title';
-                span.setAttribute('aria-hidden', 'true');
-                // 보이는 스타일은 CSS에서 처리
-                container.appendChild(span);
-            }
-            const explicit = expandable.dataset && expandable.dataset.summary ? expandable.dataset.summary.trim() : null;
-            const short = explicit || makeSummary(expandable.innerText, 48);
-            container.querySelector('.short-title').textContent = short;
-        });
+        // 텍스트에서 <br> 제거 및 줄바꿈으로 변환 (가독성 향상)
+        function cleanTextFromElement(elem) {
+            const clone = elem.cloneNode(true);
+            // br 태그를 줄바꿈 문자로 변환
+            Array.from(clone.querySelectorAll('br')).forEach(br => {
+                br.replaceWith('\n');
+            });
+            return clone.innerText.trim();
+        }
 
         // --- 모바일 전용: 각 entry-card에 mobile summary header를 동적으로 추가 ---
         document.querySelectorAll('.entry-card').forEach((card) => {
@@ -749,8 +737,9 @@
             const btn = mobileHeader.querySelector('.summary-search-btn');
             if (btn) {
                 btn.addEventListener('click', function () {
-                    // modal 내용에 원문 텍스트를 넣음
-                    modalContent.textContent = expandable.innerText.trim();
+                    // 텍스트에서 <br> 제거 및 공백 정리
+                    const cleanedText = cleanTextFromElement(expandable);
+                    modalContent.textContent = cleanedText;
                     // 우선순위: data-summary 속성이 있으면 그 값 사용, 없으면 자동 요약
                     const explicit = expandable.dataset && expandable.dataset.summary ? expandable.dataset.summary.trim() : null;
                     const title = explicit || makeSummary(expandable.innerText, 80);
@@ -769,8 +758,9 @@
                 if (!container) return;
                 const target = container.querySelector('.expandable');
                 if (!target) return;
-                // modal 내용
-                modalContent.textContent = target.innerText.trim();
+                // 텍스트에서 <br> 제거 및 공백 정리
+                const cleanedText = cleanTextFromElement(target);
+                modalContent.textContent = cleanedText;
                 // 우선순위: data-summary 속성이 있으면 그 값 사용, 없으면 자동 요약
                 const explicit = target.dataset && target.dataset.summary ? target.dataset.summary.trim() : null;
                 const titleText = explicit || makeSummary(target.innerText, 80);
