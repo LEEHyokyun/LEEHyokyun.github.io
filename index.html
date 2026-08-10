@@ -20,7 +20,7 @@
         @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap");
 
         :root {
-            --primary-color: #2563eb;
+            --primary-color: #2563eb; 
             --dark-color: #111827;
             --gray-color: #4b5563;
             --light-bg: #f9fafb;
@@ -997,21 +997,124 @@
             .intro-tag {
                 text-align: center;
             }
+        
+            .intro-highlight {
+                justify-self: center;   /* 박스 자체 가운데 */
+                width: fit-content;     /* 글자 길이만큼 */
+                max-width: 100%;
+            }
+            
+            .stats-container { 
+                grid-template-columns: 1fr; 
+                text-align: center;
+                gap: 20px;
+            }
+            .stats-card { 
+                align-items: center;
+                padding: 15px 0;
+            }
+            .stats-num { font-size: 4rem; }
 
-            /* === 모바일 전용: CAREERS(Experiences) 간결화 ===
-               요구사항:
-                 - 모바일에서 회사명(.exp-company)만 보이고,
-                 - 직급/키워드/이력 내용은 변경하지 않고 숨김.
-                 - 돋보기를 클릭하면 해당 카드의 숨긴 내용이 보여짐.
-                 - PC(데스크탑)에는 영향을 주지 않음.
-            */
-            /* ensure exp-body is positioned so the button can be absolutely positioned */
-            .exp-body {
-                position: relative;
-                padding-right: 64px; /* 우측 돋보기 공간 확보 */
+            .universe-title { font-size: 1.2rem; flex-direction: column; align-items: flex-start; gap: 4px; }
+            .title-divider { display: none; }
+            .en-title { font-size: 0.95rem; }
+
+            .about-links-line{
+                display:grid;
+                grid-template-columns: repeat(2, minmax(0,1fr));
+                gap:12px;
+            }
+            .icon-link-item { 
+                padding: 16px 8px; 
+                gap: 10px;
+            }
+            .icon-wrapper { width: 44px; height: 44px; }
+            .icon-wrapper svg { width: 20px; height: 20px; }
+            .icon-link-label { font-size: 0.88rem; }
+
+            .sub-info-grid { grid-template-columns: 1fr; gap: 30px; }
+            .sub-info-box h3 { font-size: 1.2rem; }
+            
+            .skill-list { gap: 12px; }
+            .skill-info { font-size: 0.9rem; }
+            
+            .stat-label { font-size: 0.95rem; }
+            .stats-num { letter-spacing: -0.02em; }
+            .stat-unit { font-size: 1.2rem; }
+
+            .exp-domains {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
+                justify-content: flex-start;
+            }
+            .exp-domains-summary {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 8px;
             }
 
-            /* 기본적으로 회사명 외의 요소를 접어 둡니다 (시각적으로 숨김) */
+            .exp-timeline::before {
+                left: 32px;
+            }
+
+            .exp-time::before {
+                left: -46px;
+                width: 14px;
+                height: 14px;
+                border-width: 2px;
+            }
+
+            .exp-time::after {
+                left: -48px;
+                width: 18px;
+                height: 18px;
+            }
+
+            .exp-time-box {
+                font-size: 0.85rem;
+                padding: 8px 12px;
+            }
+
+            .exp-body {
+                padding: 16px;
+            }
+            
+            .exp-company {
+                font-size: 1rem;
+            }
+
+            .domain-tag {
+                font-size: 0.72rem;
+                padding: 4px 8px;
+                border-radius: 16px;
+                white-space: nowrap;
+            }
+
+            .project-grid { grid-template-columns: auto-fit, minmax(300px, 1fr); }
+
+            .welcome-box{
+                width:90%;
+                padding:30px 20px;
+            }
+        
+            .welcome-title{
+                font-size:1.1rem;
+            }
+        
+            .welcome-desc{
+                font-size:0.85rem;
+            }
+
+            /* === 여기서부터 CAREERS 전용 모바일 동작만 추가했습니다 === */
+
+            /* exp-body에 우측 돋보기 공간 확보 */
+            .exp-body {
+                position: relative;
+                padding-right: 60px;
+            }
+
+            /* 기본적으로 회사명 외의 요소들을 시각적으로 숨김 (내용은 DOM에 그대로 남음) */
             .exp-body > .exp-team,
             .exp-body > .exp-domains,
             .exp-body .exp-details {
@@ -1021,7 +1124,7 @@
                 transition: max-height 0.34s ease, opacity 0.24s ease;
             }
 
-            /* 돋보기 버튼 스타일 (모바일에서만 표시) */
+            /* 돋보기 버튼 (모바일에서만 보임) */
             .mag-btn {
                 position: absolute;
                 top: 12px;
@@ -1042,43 +1145,472 @@
             .mag-btn:active { transform: scale(0.98); }
             .mag-btn svg { width: 18px; height: 18px; fill: var(--primary-color); }
 
-            /* 카드가 확장되면 숨겨둔 요소들을 노출한다 */
+            /* 카드가 확장되면 숨겨둔 요소들을 노출 */
             .exp-body.expanded > .exp-team,
             .exp-body.expanded > .exp-domains,
             .exp-body.expanded .exp-details {
-                max-height: 2000px; /* 충분히 큰값 */
+                max-height: 2000px;
                 opacity: 1;
             }
 
-            /* 접근성: 돋보기 버튼에 포커스 스타일 */
             .mag-btn:focus {
                 outline: 3px solid rgba(37,99,235,0.15);
                 outline-offset: 2px;
             }
+
+            /* === CAREERS 전용 모바일 동작 추가 끝 === */
         }
     </style>
 </head>
 
 <body>
     <header>
-        <img src="image/logo.png" class="header-logo" alt="logo">
+        <a href="https://leehyokyun.github.io/">
+            <img class="header-logo" src="image/basiclogo.png" alt="로고" />
+        </a>
         <nav class="header-nav">
             <a href="#intro">INTRO</a>
             <a href="#boards">BOARDS</a>
             <a href="#about">ABOUT</a>
-            <a href="#careers" class="active">CAREERS</a>
-            <a href="#projects">PROJECTS</a>
+            <a href="#careers">CAREERS</a>
+            <a href="#project">PROJECTS</a>
         </nav>
     </header>
 
     <main>
-        <!-- (생략되지 않은 원본 내용들이 여기 그대로 유지됩니다) -->
-        <!-- ... -->
-        <!-- EXPERIENCES 섹션 예시 (실제 원본의 구조를 유지하며 텍스트는 변경하지 않았습니다) -->
+        <section id="intro">
+
+            <div class="intro-top">
+                <div class="intro-content">
+                    <span class="intro-tag">Welcome to LEE HYO KYUN's Career & Project History !</span>
+                    <h1 class="intro-text">
+                        그냥, 일단, 한번 해보는,<br />개발자 이효균입니다.
+                    </h1>
+                    <p class="intro-text-detail">
+                        튼튼한 기본기와 깊은 전문성을 지향하고 있습니다.<br />
+                        개발자 이효균의 성장과정과 가치관을 마음껏 살펴보십시오.
+                    </p>
+                    <span class="intro-notice">
+                        이곳에 기재된 내용들은 온전히 저의 땀과 노력으로 이루어졌습니다.
+                    </span>
+                </div>
+                
+                <div class="intro-image-zone">
+                    <img class="intro-profile-img" src="image/profile_image.jpg" alt="프로필 이미지" />
+                </div>
+            </div>
+
+        </section>
+
+        <section id="boards">
+            <h2 class="section-title">BOARDS</h2>
+            <div class="stats-container">
+                <div class="stats-card">
+                    <span class="stat-label">실무 및 개인 프로젝트</span>
+                    <div class="stats-num-wrapper">
+                        <span class="stats-num">6+15</span><span class="stat-unit">개</span>
+                    </div>
+                    <p class="stats-desc">금융권 차세대 시스템 구축을 비롯한 다양한 실무/개인 프로젝트 및 문제 해결 경험 보유</p>
+                </div>
+                
+                <div class="stats-card">
+                    <span class="stat-label">교육 수료</span>
+                    <div class="stats-num-wrapper">
+                        <span class="stats-num">26</span><span class="stat-unit">개↑</span>
+                    </div>
+                    <p class="stats-desc">일단 도전하면서 부딪히고 성장하며 행동을 추구하는 사람</p>
+                </div>
+
+                <div class="stats-card">
+                    <span class="stat-label">백로그</span>
+                    <div class="stats-num-wrapper">
+                        <span class="stats-num">727</span><span class="stat-unit">개</span>
+                    </div>
+                    <p class="stats-desc">기록으로 남겨지는 집요함과 꾸준함</p>
+                </div>
+
+                <div class="stats-card">
+                    <span class="stat-label">가설과 설계</span>
+                    <div class="stats-num-wrapper">
+                        <span class="stats-num">73.7</span><span class="stat-unit">%</span>
+                    </div>
+                    <p class="stats-desc">다양한 문제 상황에 대한 대응 방안 설계 및 구현 등 실무 중심적인 기록</p>
+                </div>
+
+                <div class="stats-card">
+                    <span class="stat-label">개발 경력</span>
+                    <div class="stats-num-wrapper">
+                        <span class="stats-num">3</span><span class="stat-unit">년차</span>
+                    </div>
+                    <p class="stats-desc">작지만 강한 개발자</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2 class="section-title">ABOUT</h2>
+
+            <div class="link-universe-container">
+                <div class="universe-header">
+                    <h2 class="universe-title">
+                        이효균의 개발 기록 
+                        <span class="title-divider">|</span> 
+                        <span class="en-title">Universe as a Developer</span>
+                    </h2>
+                </div>
+
+                <div class="about-links-line">
+                    <a href="https://www.linkedin.com/in/hyokyun/" target="_blank" class="icon-link-item">
+                        <div class="icon-wrapper bg-linkedin">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </div>
+                        <span class="icon-link-label">링크드인</span>
+                    </a>
+
+                    <a href="https://github.com/leehyokyun" target="_blank" class="icon-link-item">
+                        <div class="icon-wrapper bg-github">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33s1.7.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.83-2.34 4.68-4.57 4.93.36.31.69.92.69 1.85v2.75c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                        </div>
+                        <span class="icon-link-label">개발내역</span>
+                    </a>
+
+                    <a href="https://velog.io/@gyrbs22" target="_blank" class="icon-link-item">
+                        <div class="icon-wrapper bg-velog">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="14" font-weight="bold" fill="white">V</text></svg>
+                        </div>
+                        <span class="icon-link-label">설계과정</span>
+                    </a>
+
+                    <a href="https://docs.google.com/presentation/d/1VLkLnOUk4nGhi-_sU1PrcWS0rJ16TapmLUh3PrAOAGY/edit?slide=id.g317751bba63_0_150#slide=id.g317751bba63_0_150" target="_blank" class="icon-link-item">
+                        <div class="icon-wrapper bg-storyboard">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                        </div>
+                        <span class="icon-link-label">스토리보드</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="sub-info-grid">
+                <div class="sub-info-box">
+                    <h3>프로젝트 기여 및 활용 현황<br/>(*개인/실무 21개 내역 기준)</h3>
+                    <div class="strength-tags">
+                        <span class="strength-tag">#0_to_1</span>
+                        <span class="strength-tag">#레거시_개선</span>
+                        <span class="strength-tag">#차세대_시스템</span>
+                        <span class="strength-tag">#설계</span>
+                        <span class="strength-tag">#자동화</span>
+                        <span class="strength-tag">#문서화</span>
+                        <span class="strength-tag">#표준화</span>
+                        <span class="strength-tag">#협업화</span>
+                    </div>
+
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>범용성과 객체지향성(Java / Spring)</span>
+                                <span class="skill-level level-high">활용이력 100%</span>
+                            </div>
+                            <div class="skill-step-bar level-high">
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>시스템 모델링과 클린 아키텍칭</span>
+                                <span class="skill-level level-high">활용이력 95%</span>
+                            </div>
+                            <div class="skill-step-bar level-high">
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>데이터베이스 엔티티와 모델링</span>
+                                <span class="skill-level level-high">활용이력 90%</span>
+                            </div>
+                            <div class="skill-step-bar level-high">
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>단위 테스트 기반의 객관적 개발(TDD)</span>
+                                <span class="skill-level level-mid">활용이력 81%</span>
+                            </div>
+                            <div class="skill-step-bar level-mid">
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>분산 환경 기반의 다양한 정합성 유지 체계(Redis / 2Domains)</span>
+                                <span class="skill-level level-low">활용이력 38%</span>
+                            </div>
+                            <div class="skill-step-bar level-low">
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>비동기 메시징 체계 기반의 설계 방안(MSA/Kafka/EDA)</span>
+                                <span class="skill-level level-low">활용이력 29%</span>
+                            </div>
+                            <div class="skill-step-bar level-low">
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                                <div class="step"></div>
+                            </div>
+                        </div>    
+                        
+                    </div>
+                </div>
+
+                <div class="sub-info-box">
+                    <h3>Details</h3>
+
+                    <div class="edu-list">
+                        <div class="edu-item">
+                            <span class="edu-label">생년월일</span>
+                            <strong class="edu-val">1994.01.06</strong>                                
+                        </div>
+                        <div class="edu-item">
+                            <span class="edu-label">학력</span>
+                            <strong class="edu-val">한양대학교 ERICA 기계공학과</strong>                                
+                        </div>
+                        <div class="edu-item">
+                            <span class="edu-label">전체(전공) 학점</span>
+                            <strong class="edu-val">4.2(4.18) / 4.5</strong>                                
+                        </div>
+                        <div class="edu-item">
+                            <span class="edu-label">자격증</span>
+                            <div class="edu-val-group">
+                                <strong class="edu-val">정보처리기사</strong>
+                                <strong class="edu-val">SQLD</strong>
+                            </div>
+                        </div>
+                        <div class="edu-item">
+                            <span class="edu-label">참고사항</span>
+                            <div class="edu-val-group">
+                                <strong class="edu-val">다양한 개발 기록 및 고민 과정들을 하나의 체계화로 구성, 관리하고 있습니다.</strong>
+                                <strong class="edu-val">저의 고민, 생각, 가치가 담겨있는 곳을 마음껏 둘러보시길 바랍니다.</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="careers">
             <h2 class="section-title">CAREERS</h2>
 
+            <!-- 도메인 요약 -->
+            <div class="exp-domains-summary">
+                <span class="domain-summary-tag">금융(여신/담보 등 사전계 ⦁ 계약/정산)</span>
+                <span class="domain-summary-tag">백오피스(계정 등 정보계)</span>
+                <span class="domain-summary-tag">MIS(경영정보)</span>
+            </div>
+
             <div class="exp-timeline">
+
+                <div class="exp-row">
+                    <div class="exp-time">
+                        <div class="exp-time-box">2025.10 ~</div>
+                    </div>
+                    <div class="exp-body">
+                        <div class="exp-company">개인 프로젝트 진행</div>
+                        <div class="exp-team">기술적/설계적 역량을 깊고 다양하게 함양하기 위한 전략성 프로젝트</div>
+                        <div class="exp-domains">
+                            <span class="domain-tag">Java</span>
+                            <span class="domain-tag">Spring</span>
+                            <span class="domain-tag">Gradle</span>
+                            <span class="domain-tag">Docker</span>
+                            <span class="domain-tag">Jenkins</span>
+                            <span class="domain-tag">Neon</span>
+                            <span class="domain-tag">Render</span>
+                            <span class="domain-tag">Spring Batch</span>
+                            <span class="domain-tag">Redis</span>
+                            <span class="domain-tag">Kafka</span>
+                            <span class="domain-tag">Git</span>
+                            <span class="domain-tag">Github</span>
+                            <span class="domain-tag">MSA</span>
+                            <span class="domain-tag">Devops</span> 
+                            <span class="domain-tag">클린 아키텍칭</span>
+                            <span class="domain-tag">TDD</span>
+                            <span class="domain-tag">데이터베이스</span>
+                            <span class="domain-tag">설계/모델링</span>
+                            <span class="domain-tag">문서화/표준화</span>
+                        </div>
+                        <div class="exp-details">
+                            <p class="exp-project-title">이글루 출결 관리 자동화 프로젝트</p>
+                            <p class="exp-desc">이글루 글쓰기 모임의 출결 관리 자동화 시스템을 구축하였습니다.</p>
+                            <br />
+                            <p class="exp-project-title">백엔드 엔지니어링 오픈북 프로젝트</p>
+                            <p class="exp-desc">백엔드 엔지니어링에 필요한 기술적/설계적 내용을 정리하고 공유하였습니다.</p>
+                            <br />
+                            <p class="exp-project-title">이 외 개인프로젝트 15개 이상 수행</p>
+                            <p class="exp-desc">실무적으로 발생 가능한 다양한 상황을 가정하면서 이에 대한 대응방안을 설 및 구현하였습니다.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exp-row">
+                    <div class="exp-time">
+                        <div class="exp-time-box">2025.04 ~ 2025.07</div>
+                    </div>
+                    <div class="exp-body">
+                        <div class="exp-company" style="margin: 0 !important;">식스티헤르츠 주식회사</div>
+                        <div class="exp-team">EAC Registry Backend</div>
+                        <div class="exp-domains">
+                            <span class="domain-tag">Java</span>
+                            <span class="domain-tag">Spring</span>
+                            <span class="domain-tag">Maven</span>
+                            <span class="domain-tag">Jeus</span>
+                            <span class="domain-tag">Jira</span>
+                            <span class="domain-tag">Confluence</span>
+                            <span class="domain-tag">Figma</span>
+                            <span class="domain-tag">Git</span>
+                            <span class="domain-tag">Github</span>
+                            <span class="domain-tag">legacy 리팩토링</span> 
+                            <span class="domain-tag">클린 아키텍칭</span>
+                            <span class="domain-tag">자동화</span>
+                            <span class="domain-tag">문서화/표준화</span>
+                        </div>
+                        <div class="exp-details">
+                            <p class="exp-project-title">친환경 에너지 계약 legacy 시스템 개선</p>
+                            <p class="exp-desc">7년 이상 방치된 친환경 에너지 계약 관리 legacy(신재생e) 시스템을 개선하여 유지 관리성을 향상하였습니다.</p>
+                            <p class="exp-desc">친환경 에너지 거래 legacy(신재생e 관리) 시스템의 전사 수준 문서화 및 표준화를 진행하였습니다.</p>
+                            <br />
+                            <p class="exp-project-title">친환경 에너지 계약 정산 시스템 개선 및 자동화 체계 구축</p>
+                            <p class="exp-desc">에너지 거래량 정산 legacy 시스템에 클린 아키텍칭을 도입하고 자동화 체계를 구축하였습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="exp-row">
                     <div class="exp-time">
                         <div class="exp-time-box">2022.07 ~ 2025.03</div>
@@ -1106,76 +1638,546 @@
                             <span class="domain-tag">설계/모델링</span>
                             <span class="domain-tag">문서화/표준화</span>
                         </div>
-
                         <div class="exp-details">
-                            <div class="exp-project-title">KIDB 채권중개 차세대 시스템 구축</div>
-                            <p class="exp-desc">채권 및 백오피스 데이터 모델링을 개선하고, 개선 체계에 대한 스쿼드 수준 표준화를 진행하였습니다. Redis를 활용하여 채권중개 및 MIS 시스템 간의 세션 동기화 체계를 구축하고...</p>
-                            <!-- 실제 원본 내용 그대로 유지 -->
+                            <p class="exp-project-title">KIDB 채권중개 차세대 시스템 구축</p>
+                            <p class="exp-desc">채권 및 백오피스 데이터 모델링을 개선하고, 개선 체계에 대한 스쿼드 수준 표준화를 진행하였습니다.</p>
+                            <p class="exp-desc">Redis를 활용하여 채권 중개 및 MIS 시스템 간의 세션 동기화 체계를 구축하고 정합성을 확보하였습니다.</p>
+                            <p class="exp-desc">Spring Batch를 활용하여 채권 체결 내역 전송 체계를 개선하고 미전송 결함을 제거하였습니다.</p>
+                            <br />
+                            <p class="exp-project-title">KB Bukopin 국외전산 차세대 시스템 구축</p>
+                            <p class="exp-desc">여신(사전/담보) 도메인에 대해 아키텍칭을 진행하고, Global Exception 체계에 대한 스쿼드 수준 표준화를 진행하였습니다.</p>
+                            <p class="exp-desc">Xlink 기반의 외부 API 송수신 체계를 Json 기반으로 경량화하고, 이에 대한 스쿼드 수준 표준화를 진행하였습니다.</p>
+                            <br />
+                            <p class="exp-project-title">교보증권 HTS 시스템 개발 및 관리</p>
+                            <p class="exp-desc">교보증권의 HTS 시스템(거래 및 백오피스)를 개발하고 관리하였습니다.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- 다른 exp-row들도 동일한 구조로 존재 -->
+                <div class="exp-row">
+                    <div class="exp-time">
+                        <div class="exp-time-box">2022.01 ~ 2022.07</div>
+                    </div>
+                    <div class="exp-body">
+                        <div class="exp-company">한국소프트웨어 기술진흥협회 교육 수료</div>
+                        <div class="exp-team">Java 백엔드 엔지니어링 238기</div>
+                        <div class="exp-domains">
+                            <span class="domain-tag">Java</span>
+                            <span class="domain-tag">Spring</span>
+                            <span class="domain-tag">Maven</span>
+                            <span class="domain-tag">Jeus</span>
+                            <span class="domain-tag">AWS</span>
+                            <span class="domain-tag">Git</span>
+                            <span class="domain-tag">Github</span>
+                            <span class="domain-tag">설계/모델링</span>
+                        </div>
+                        <div class="exp-details">
+                            <p class="exp-project-title">Java 백엔드 엔지니어링 교육 및 팀 프로젝트 수행</p>
+                            <p class="exp-desc">Java / Spring을 활용하여 백엔드 엔지니어링에 대한 프로젝트를 진행하였습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exp-row">
+                    <div class="exp-time">
+                        <div class="exp-time-box">2021.10 ~ 2022.01</div>
+                    </div>
+                    <div class="exp-body">
+                        <div class="exp-company">디스콰이엇 주식회사</div>
+                        <div class="exp-team">SW Engineer Backend</div>
+                        <div class="exp-domains">
+                            <span class="domain-tag">NodeJs/React</span>
+                            <span class="domain-tag">백엔드 개발</span>
+                            <span class="domain-tag">프로덕트 관리</span>
+                        </div>
+                        <div class="exp-details">
+                            <p class="exp-project-title">디스콰이엇 프로덕트 개발 및 관리</p>
+                            <p class="exp-desc">NodeJs 기반의 디스콰이엇 프로덕트를 개발 및 관리하였습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exp-row">
+                    <div class="exp-time">
+                        <div class="exp-time-box">2018.01 ~ 2021.07</div>
+                    </div>
+                    <div class="exp-body">
+                        <div class="exp-company">삼성전자 주식회사</div>
+                        <div class="exp-team">Engineer</div>
+                        <div class="exp-domains">
+                            <span class="domain-tag">MP</span>
+                            <span class="domain-tag">Packaging</span>
+                            <span class="domain-tag">Engineering</span>
+                            <span class="domain-tag">공정개선</span>
+                            <span class="domain-tag">제품분석</span>
+                        </div>
+                        <div class="exp-details">
+                            <p class="exp-project-title">Middle Power 차세대 LM301B+ 개발 프로젝트</p>
+                            <p class="exp-desc">차세대 MP 모델에 대한 Packaging 개발 및 공정 개선을 진행하였습니다.</p>
+
+                            <p class="exp-project-title">Middle Power 2835 Packaging</p>
+                            <p class="exp-desc">MP 주력 모델인 2835의 Packaging 개발 및 제품 분석을 진행하였습니다.</p>
+
+                            <p class="exp-project-title">Middle Power 5630 Packaging</p>
+                            <p class="exp-desc">MP 5630 모델의 Packaging 개발 및 결함을 대응하였습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exp-row">
+                    <div class="exp-time">
+                        <div class="exp-time-box">2012.03 ~ 2018.01</div>
+                    </div>
+                    <div class="exp-body">
+                        <div class="exp-company">한양대학교 ERICA 캠퍼스</div>
+                        <div class="exp-team">기계공학과</div>
+                        <div class="exp-domains">
+                            <span class="domain-tag">기계</span>
+                            <span class="domain-tag">역학</span>
+                            <span class="domain-tag">Engineering</span>
+                            <span class="domain-tag">프로그래밍</span>
+                            <span class="domain-tag">해석</span>
+                        </div>
+                        <div class="exp-details">
+                            <p class="exp-project-title">RED(Renovative Engineering Design) 학회 설립 및 운영 등</p>
+                            <p class="exp-desc">프로그래밍에 관심이 많아 관련 학회를 직접 설립하고 운영하였습니다.</p>
+                            <p class="exp-desc">C 기반의 해석 및 임베디드(아두이노) 프로그래밍 멘토링을 진행하였습니다.</p>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </section>
 
-        <!-- 이하 다른 섹션들 -->
+        <section id="project">
+            <h2 class="section-title">PROJECTS</h2>
+            <div class="project-grid">
+
+                <a href="igloo.html" class="project-card">
+                    <div class="project-meta-zone">
+                        <span class="project-badge">개인 프로젝트</span>
+                        <p class="project-period">2025.10 - </p>
+                    </div>
+                    <h3 class="project-title">이글루 출결관리 자동화 시스템 구축</h3>    
+                    <div class="project-desc">
+                        <p>주인장과 멤버들의 편리한 출결 관리를 위해 발벗고 나섰다</p>
+                    </div>
+                </a>
+
+                <a href="openbook.html" class="project-card">
+                    <div class="project-meta-zone">
+                        <span class="project-badge">개인 프로젝트</span>
+                        <p class="project-period">2025.10 - </p>
+                    </div>
+                    <h3 class="project-title">백엔드 엔지니어링 오픈북 프로젝트</h3>    
+                    <div class="project-desc">
+                        <p>더 깊게, 더 집요하게 파고들면서 익힌 백엔드 기본기를 모두와 함께</p>
+                    </div>
+                </a>
+                
+                <a href="60hz_legacy.html" class="project-card">
+                    <div class="project-meta-zone">
+                        <span class="project-badge">식스티헤르츠 주식회사</span>
+                        <p class="project-period">2025.04 - 2025.07</p>
+                    </div>
+                    <h3 class="project-title">계약 관리 legacy 시스템 개선</h3>    
+                    <div class="project-desc">
+                        <p>7년 이상 방치된 신재생e legacy 개선을 위한 고군분투 일대기</p>
+                    </div>
+                </a>
+
+                <a href="60hz_adjustment.html" class="project-card">
+                    <div class="project-meta-zone">
+                        <span class="project-badge">식스티헤르츠 주식회사</span>
+                        <p class="project-period">2025.04 - 2025.07</p>
+                    </div>
+                    <h3 class="project-title">계약 정산 시스템 개선 및 자동화</h3>    
+                    <div class="project-desc">
+                        <p>이대론 안된다, 신재생에너지 계약 정산 시스템 뜯어 고치기</p>
+                    </div>
+                </a>
+
+                <a href="kyobo_kidb.html" class="project-card">
+                    <div class="project-meta-zone">
+                        <span class="project-badge">교보DTS 주식회사</span>
+                        <span class="project-badge">KIDB</span>
+                        <p class="project-period">2024.04 - 2025.03</p>
+                    </div>
+                    <h3 class="project-title">채권중개 차세대 시스템 구축</h3>    
+                    <div class="project-desc">
+                        <p>차세대 채권중개 시스템의 빈틈없는 데이터 정합성을 위한 엔지니어링 서사</p>
+                    </div>
+                </a>
+
+                <a href="kyobo_kb.html" class="project-card">
+                    <div class="project-meta-zone">
+                        <span class="project-badge">교보DTS 주식회사</span>
+                        <span class="project-badge">KB국민은행</span>
+                        <p class="project-period">2023.01 - 2024.03</p>
+                    </div>
+                    <h3 class="project-title">KB Bukopin 국외전산 차세대 시스템 구축</h3>    
+                    <div class="project-desc">
+                        <p>인도네시아 여신 전산화를 위해 무에서 유를 창조한 이야기</p>
+                    </div>
+                </a>
+
+                <a href="my-project.html" class="project-card">
+                    <div class="project-meta-zone">
+                        <span class="project-badge">이 외</span>
+                        <p class="project-period">개인 개발기록</p>
+                    </div>
+                    <h3 class="project-title">다양한 실무적 가정과 대응방안 설계</h3>    
+                    <div class="project-desc">
+                        <p>다양한 문제 상황을 가정하고 이에 대한 고민과 설계 과정이 담겨있습니다.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
     </main>
 
-    <!-- 스크립트: 모바일에서 돋보기를 추가하고 클릭으로 토글합니다 -->
+    <!-- 모달창 -->
+    <div id="welcome-modal">
+        <div class="welcome-box">
+            <p class="welcome-title">
+                ● 반응형 기반 제작 ●
+            </p>
+    
+            <p class="welcome-desc">
+                모바일 확인 가능합니다.
+            </p>
+        </div>
+    </div>
+    
+    <!-- 스크립트 동작-->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        
+        
+            /*
+            =====================================
+            Section Animation Controller
+            LEFT TITLE + RIGHT NAV
+            =====================================
+            */
+        
+        
+            const sections =
+                document.querySelectorAll("section");
+        
+        
+            const navLinks =
+                document.querySelectorAll(".header-nav a");
+        
+        
+            let currentSection = null;
+        
+        
+        
+        
+            function activateSection(section){
+        
+        
+                if(!section){
+                    return;
+                }
+        
+        
+                if(currentSection === section){
+                    return;
+                }
+        
+        
+                currentSection = section;
+        
+        
+        
+        
+                /*
+                기존 active 제거
+                */
+        
+                document.querySelectorAll(".section-title")
+                    .forEach(title => {
+        
+                        title.classList.remove("active");
+        
+                    });
+        
+        
+                navLinks.forEach(link => {
+        
+                    link.classList.remove("active");
+        
+                });
+        
+        
+        
+        
+                /*
+                LEFT TITLE
+                */
+        
+                const title =
+                    section.querySelector(".section-title");
+        
+        
+                if(title){
+        
+                    title.classList.add("active");
+        
+                }
+        
+        
+        
+        
+        
+                /*
+                RIGHT NAV
+                */
+        
+                const sectionId =
+                    section.getAttribute("id");
+        
+        
+                const nav =
+                    document.querySelector(
+                        `.header-nav a[href="#${sectionId}"]`
+                    );
+        
+        
+                if(nav){
+        
+                    nav.classList.add("active");
+        
+                }
+        
+        
+            }
+        
+        
+        
+        
+        
+            function detectSection(){
+
+
+                let current = null;
+            
+            
+                const triggerPoint =
+                    window.innerHeight * 0.35;
+            
+            
+            
+                sections.forEach(section => {
+            
+            
+                    const rect =
+                        section.getBoundingClientRect();
+            
+            
+            
+                    /*
+                    section 시작점이
+                    trigger 영역을 통과했는지 판단
+                    */
+            
+                    if(
+                        rect.top <= triggerPoint &&
+                        rect.bottom > triggerPoint
+                    ){
+            
+                        current = section;
+            
+                    }
+            
+            
+                });
+            
+            
+            
+                if(current){
+            
+                    activateSection(current);
+            
+                }
+            
+            }
+        
+        
+        
+        
+        
+            window.addEventListener(
+                "scroll",
+                detectSection,
+                {
+                    passive:true
+                }
+            );
+        
+        
+            window.addEventListener(
+                "resize",
+                detectSection
+            );
+        
+        
+        
+            /*
+            최초 실행
+            */
+        
+            detectSection();
+        
+        
+        
+            /*
+            =====================================
+            Navigation Click Sync
+            =====================================
+            */
+        
+        
+            navLinks.forEach(link => {
+        
+        
+                link.addEventListener(
+                    "click",
+                    () => {
+                
+                        // 기존 clicked 제거
+                        navLinks.forEach(item => {
+                            item.classList.remove("clicked");
+                        });
+                
+                        // 현재 클릭한 메뉴만 clicked 추가
+                        link.classList.add("clicked");
+                
+                
+                        const targetId =
+                            link.getAttribute("href")
+                            .replace("#","");
+                
+                
+                        const target =
+                            document.getElementById(
+                                targetId
+                            );
+                
+                
+                        if(target){
+                
+                            activateSection(target);
+                
+                        }
+                
+                
+                    }
+                );
+        
+        
+            });
+        
+        
+        
+            /*
+            =====================================
+            Welcome Modal
+            =====================================
+            */
+            
+            const welcomeModal =
+                document.getElementById(
+                    "welcome-modal"
+                );
+            
+            
+            
+            function closeWelcomeModal(){
+            
+            
+                if(!welcomeModal){
+                    return;
+                }
+            
+            
+                welcomeModal.classList.add(
+                    "hide"
+                );
+            
+            }
+            
+            
+            
+            
+            if(welcomeModal){
+            
+            
+                /*
+                페이지 진입 후
+                1초 동안 표시
+                */
+            
+                setTimeout(() => {
+            
+                    closeWelcomeModal();
+            
+                }, 1000);
+            
+            
+            
+            }
+        
+        });
+    </script>
+
+    <!-- CAREERS 전용 모바일 돋보기 토글 (원본의 다른 코드/텍스트는 일체 변경 안 함) -->
     <script>
         (function () {
-            function insertMagnifiersIfMobile() {
-                if (!window.matchMedia) return;
-                if (!window.matchMedia('(max-width: 600px)').matches) return;
-                // 안전하게 모든 .exp-body에 대해 버튼을 추가
+            if (!window.matchMedia) return;
+            var mq = window.matchMedia('(max-width:600px)');
+            function addMagnifiers() {
+                if (!mq.matches) return;
                 var bodies = document.querySelectorAll('.exp-body');
                 bodies.forEach(function (body) {
-                    // 이미 추가되었으면 건너뜀
                     if (body.querySelector('.mag-btn')) return;
-
                     var btn = document.createElement('button');
                     btn.type = 'button';
                     btn.className = 'mag-btn';
                     btn.setAttribute('aria-label', '상세보기');
                     btn.setAttribute('aria-expanded', 'false');
-                    // magnifier svg (경로는 일반적인 돋보기)
                     btn.innerHTML = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM10 14a4 4 0 110-8 4 4 0 010 8z"/></svg>';
-
-                    // 클릭 토글: expanded 클래스 부여/해제
                     btn.addEventListener('click', function (e) {
                         e.stopPropagation();
                         var expanded = body.classList.toggle('expanded');
                         btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
                     });
-
-                    // 버튼을 body에 추가
                     body.appendChild(btn);
                 });
             }
-
-            // DOM 준비되면 실행
             if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', insertMagnifiersIfMobile);
+                document.addEventListener('DOMContentLoaded', addMagnifiers);
             } else {
-                insertMagnifiersIfMobile();
+                addMagnifiers();
             }
-
-            // 화면 회전 등으로 뷰포트가 바뀌면 다시 체크 (필요시 버튼 생성/삭제)
-            var mq = window.matchMedia && window.matchMedia('(max-width:600px)');
             if (mq && mq.addEventListener) {
                 mq.addEventListener('change', function (ev) {
-                    // 단순히 삽입 시도 (이미 있으면 중복 방지 로직이 있음)
-                    insertMagnifiersIfMobile();
-                    // 만약 데스크탑으로 전환되면, 모바일 전용 클래스/버튼을 제거하여 원상복구
-                    if (!ev.matches) {
-                        document.querySelectorAll('.mag-btn').forEach(function (b) { b.parentNode && b.parentNode.removeChild(b); });
-                        document.querySelectorAll('.exp-body.expanded').forEach(function (eb) { eb.classList.remove('expanded'); });
+                    if (ev.matches) {
+                        addMagnifiers();
+                    } else {
+                        document.querySelectorAll('.mag-btn').forEach(function (b) {
+                            if (b.parentNode) b.parentNode.removeChild(b);
+                        });
+                        document.querySelectorAll('.exp-body.expanded').forEach(function (eb) {
+                            eb.classList.remove('expanded');
+                        });
                     }
                 });
             }
         })();
     </script>
+    
 </body>
 
 </html>
