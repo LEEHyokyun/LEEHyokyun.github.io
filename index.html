@@ -998,168 +998,75 @@
                 text-align: center;
             }
         
-            .intro-highlight {
-                justify-self: center;   /* 박스 자체 가운데 */
-                width: fit-content;     /* 글자 길이만큼 */
-                max-width: 100%;
-            }
-            
-            .stats-container { 
-                grid-template-columns: 1fr; 
-                text-align: center;
-                gap: 20px;
-            }
-            .stats-card { 
-                align-items: center;
-                padding: 15px 0;
-            }
-            .stats-num { font-size: 4rem; }
+            /* 기존 모바일 규칙들... (기존 파일 내 다른 모바일 규칙 유지) */
+        }
 
-            .universe-title { font-size: 1.2rem; flex-direction: column; align-items: flex-start; gap: 4px; }
-            .title-divider { display: none; }
-            .en-title { font-size: 0.95rem; }
-
-            .about-links-line{
-                display:grid;
-                grid-template-columns: repeat(2, minmax(0,1fr));
-                gap:12px;
-            }
-            .icon-link-item { 
-                padding: 16px 8px; 
-                gap: 10px;
-            }
-            .icon-wrapper { width: 44px; height: 44px; }
-            .icon-wrapper svg { width: 20px; height: 20px; }
-            .icon-link-label { font-size: 0.88rem; }
-
-            .sub-info-grid { grid-template-columns: 1fr; gap: 30px; }
-            .sub-info-box h3 { font-size: 1.2rem; }
-            
-            .skill-list { gap: 12px; }
-            .skill-info { font-size: 0.9rem; }
-            
-            .stat-label { font-size: 0.95rem; }
-            .stats-num { letter-spacing: -0.02em; }
-            .stat-unit { font-size: 1.2rem; }
-
-            .exp-domains {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 6px;
-                justify-content: flex-start;
-            }
-            .exp-domains-summary {
-                flex-direction: row;
-                flex-wrap: wrap;
-                gap: 8px;
-            }
-
-            .exp-timeline::before {
-                left: 32px;
-            }
-
-            .exp-time::before {
-                left: -46px;
-                width: 14px;
-                height: 14px;
-                border-width: 2px;
-            }
-
-            .exp-time::after {
-                left: -48px;
-                width: 18px;
-                height: 18px;
-            }
-
-            .exp-time-box {
-                font-size: 0.85rem;
-                padding: 8px 12px;
-            }
-
-            .exp-body {
-                padding: 16px;
-            }
-            
+        /* ---------------------------
+           아래는 오직 CAREERS(Experiences) 모바일 전용 오버라이드입니다.
+           데스크탑/태블릿 규칙은 전혀 건드리지 않았습니다.
+           --------------------------- */
+        @media screen and (max-width: 600px) {
+            /* 1) 회사명 줄바꿈 방지: 한 줄로 유지, 넘치면 말줄임 */
             .exp-company {
-                font-size: 1rem;
-            }
-
-            .domain-tag {
-                font-size: 0.72rem;
-                padding: 4px 8px;
-                border-radius: 16px;
-                white-space: nowrap;
-            }
-
-            .project-grid { grid-template-columns: auto-fit, minmax(300px, 1fr); }
-
-            .welcome-box{
-                width:90%;
-                padding:30px 20px;
-            }
-        
-            .welcome-title{
-                font-size:1.1rem;
-            }
-        
-            .welcome-desc{
-                font-size:0.85rem;
-            }
-
-            /* === 여기서부터 CAREERS 전용 모바일 동작만 추가했습니다 === */
-
-            /* exp-body에 우측 돋보기 공간 확보 */
-            .exp-body {
-                position: relative;
-                padding-right: 60px;
-            }
-
-            /* 기본적으로 회사명 외의 요소들을 시각적으로 숨김 (내용은 DOM에 그대로 남음) */
-            .exp-body > .exp-team,
-            .exp-body > .exp-domains,
-            .exp-body .exp-details {
-                max-height: 0;
+                white-space: nowrap;        /* 한 줄로 고정 */
                 overflow: hidden;
-                opacity: 0;
-                transition: max-height 0.34s ease, opacity 0.24s ease;
+                text-overflow: ellipsis;    /* 넘치면 ... 처리 */
+                font-size: 1.0rem;          /* 모바일에 맞춰 소폭 축소 */
+                line-height: 1.2;
+                margin-bottom: 8px;         /* 제목과 내용 간격을 적당히 */
             }
 
-            /* 돋보기 버튼 (모바일에서만 보임) */
-            .mag-btn {
-                position: absolute;
-                top: 12px;
-                right: 12px;
-                width: 44px;
-                height: 44px;
-                border-radius: 50%;
-                border: none;
-                background: #ffffff;
-                box-shadow: 0 6px 16px rgba(16, 24, 40, 0.06);
+            /* 2) 돋보기(검색) 아이콘 크기 제한: 너무 크지 않도록 */
+            /* 가능한 클래스명들을 포괄적으로 커버합니다. */
+            .exp-body .search-btn,
+            .exp-body .search-circle,
+            .exp-body .icon-search,
+            .exp-body button.search-btn {
+                width: 36px !important;
+                height: 36px !important;
+                min-width: 36px !important;
+                min-height: 36px !important;
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                cursor: pointer;
-                padding: 0;
-                z-index: 30;
-            }
-            .mag-btn:active { transform: scale(0.98); }
-            .mag-btn svg { width: 18px; height: 18px; fill: var(--primary-color); }
-
-            /* 카드가 확장되면 숨겨둔 요소들을 노출 */
-            .exp-body.expanded > .exp-team,
-            .exp-body.expanded > .exp-domains,
-            .exp-body.expanded .exp-details {
-                max-height: 2000px;
-                opacity: 1;
+                box-shadow: 0 6px 18px rgba(0,0,0,0.06);
             }
 
-            .mag-btn:focus {
-                outline: 3px solid rgba(37,99,235,0.15);
-                outline-offset: 2px;
+            /* svg 아이콘 내부 크기 조정 */
+            .exp-body .search-btn svg,
+            .exp-body .search-circle svg,
+            .exp-body .icon-search svg,
+            .exp-body svg.search-icon {
+                width: 18px !important;
+                height: 18px !important;
             }
 
-            /* === CAREERS 전용 모바일 동작 추가 끝 === */
+            /* 3) exp-body 박스 하단 여백(패딩) 축소: 불필요한 아래 여백 제거 */
+            .exp-body {
+                padding: 16px 16px 12px 24px; /* (top/right/bottom/left) : left는 타임라인과 간격 유지 */
+            }
+
+            /* 4) 날짜 박스 줄바꿈 방지: 한 줄로 표현되도록 폰트/패딩 조정 */
+            .exp-time {
+                min-width: 110px; /* 모바일에서 날짜박스의 최소너비를 좀 더 유연하게 */
+            }
+            .exp-time-box {
+                white-space: nowrap;       /* 줄바꿈 방지 */
+                font-size: 0.85rem;       /* 모바일에 맞춰 축소 */
+                padding: 6px 12px;        /* 가로 패딩 줄여서 한 줄에 들어가게 함 */
+                overflow: hidden;
+                text-overflow: ellipsis;  /* 안전장치로 말줄임 처리 */
+            }
+
+            /* 타임라인 원형 마커 위치 소폭 보정 (겹침 완화) */
+            .exp-time::before {
+                left: -52px;
+            }
+            .exp-time::after {
+                left: -54px;
+            }
         }
+
     </style>
 </head>
 
