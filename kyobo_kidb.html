@@ -599,9 +599,8 @@
                 <h1 class="project-title">채권중개 차세대 시스템 구축</h1>
                 <p class="project-tagline">채권 체결 내역 관리 차세대 시스템 구축 프로젝트</p>
                 <div class="project-description">
-                    채권중개 차세대 시스템은 채권 체결 중개 및 이에 대한 내역을 관리하는 플랫폼입니다. 
-                    기존 delphi 기반으로 구축되어있는 서버를 Java/Spring 기반의 범용적이고 확장적인 유지관리가 가능하도록 차세대화 하였으며, 
-                    채권 뿐만 아니라 백오피스(정보계), MIS(경영정보) 등 다양한 도메인에서 엔지니어링 및 개선점 적용 등을 통해 안정적인 시스템 구축에 기여하였던 프로젝트입니다. 
+                    채권중개 시스템은 채권 체결 중개 및 이에 대한 내역을 관리하는 플랫폼이며, 기존 delphi 기반으로 구축되어있는 서버를 Java/Spring 기반의 범용적이고 확장적인 유지관리가 가능하도록 전환한 차세대 시스템입니다.<br/> 
+                    채권 체결, 백오피스(정보계), MIS(경영정보)로 이루어진 다양한 도메인 및 분산 환경에서 데이터 정합성을 유지하기 위한 정책, 복잡한 네트워크 환경에서 이루어지는 SAGA Pattern 설계 방안 등 안정적인 시스템 구축을 위해 고민하고 기여하였던 프로젝트입니다. 
                 </div>
             </div>
             
@@ -620,7 +619,7 @@
                     <div class="meta-row">
                         <img src="image/role.svg" class="meta-icon" alt="담당 역할" />
                         <span class="meta-label">담당 역할</span>
-                        <span class="meta-value">채권 일부/백오피스/경영정보 개발 및 관리</span>
+                        <span class="meta-value">채권/백오피스/경영정보 개발</span>
                     </div>
                     <div class="meta-row github-row">
                         <img src="image/kidb.svg" class="meta-icon" alt="사이" />
@@ -734,7 +733,7 @@
             </div>
 
             <div class="features-container">
-                <h2 class="section-title">주요 기능</h2>
+                <h2 class="section-title">개발 내역</h2>
                 <div class="features-grid">
                     
                     <div class="feature-single-box">
@@ -742,22 +741,23 @@
                         <div class="feature-item">
                             <h3 class="feature-item-title">채권 거래 중개</h3>
                             <ul class="feature-item-list">
-                                <li>Spring/Java 및 MVC 구조 기반의 채권 거래 중개 및 관리</li>
-                                <li>거래 내역 리포트 추출</li>
+                                <li>채권 거래 중개 내역 등록</li>
+                                <li>거래 내역 관리</li>
+                                <li>거래 내역 한국거래소 반영</li>
                             </ul>
                         </div>
                     
                         <div class="feature-item">
                             <h3 class="feature-item-title">백오피스</h3>
                             <ul class="feature-item-list">
-                                <li>정보계(공통코드 및 계정 등) 데이터 관리</li>
+                                <li>정보계(공통코드/계정/부서 등) 데이터 관리</li>
                             </ul>
                         </div>
 
                         <div class="feature-item">
                             <h3 class="feature-item-title">경영정보</h3>
                             <ul class="feature-item-list">
-                                <li>거래내역 기반의 경영정보 분석 및 모니터링</li>
+                                <li>거래내역 기반 경영 데이터 통계 및 모니터링</li>
                             </ul>
                         </div>
                         
@@ -782,9 +782,9 @@
                         </div>
                         <div class="ts-block solution">
                             <h4>✅ 문제 접근 및 해결 방안</h4>
-                            <p>프로젝트가 도메인 영역 별로 엄격하게 분리 운용되고, 서비스 추가 시 승인 절차가 필요하는 등 부가 작업으로 인한 비용 소모가 많았기에 <strong>controller가 아닌 service layer에서 부가적인 dto와 mapper 구성 등을 통해 지엽적으로 facade 패턴화</strong>하였습니다.<br/>
-                               또한 Mybatis 특성 상 JPA와 달리 도메인 객체 내부에서 정책을 적용할 수 없고, 정책 반영이 완료된 값을 mapper기반의 매개변수 구성이 필요하였습니다. 즉 도메인 정책 반영은 dto 및 Entity의 책임 영역이 아니었기에, <strong>service layer 내부에서 정책을 적용하여 상태를 반영할 수 있도록 캡슐화 및 util화를 최대한 적용</strong>하여 가독성 및 응집도를 향상하였습니다.<br/>
-                               <strong>service layer 내부에서 적절한 OOP를 적용하여</strong> 로직의 흐름을 최대한 구조화하였으며, facade 패턴이 지엽화되고 단일책임원칙(SRP) 준수가 현실적으로 힘든 상황에서 최대한 <strong>변경점을 Service layer에 집중</strong>하였습니다. 그 결과, <strong>개방폐쇄원칙(SCP) 및 인터페이스 분리원칙(ISP)를 최대한 준수하여</strong> 서비스 구조화를 진행할 수 있었습니다.</p>
+                            <p>프로젝트가 도메인 영역 별로 엄격하게 분리 운용되고, 서비스 추가 시 승인 절차가 필요하는 등 부가 작업으로 인한 비용 소모가 많았기에 <strong>controller가 아닌 service layer에서 부가적인 dto와 mapper 구성 등을 통해 지엽적으로 facade 패턴화</strong>를 최초 시도 하였습니다.<br/>
+                               또한 Mybatis 특성 상 JPA와 달리 도메인 객체 내부에서 정책을 적용할 수 없고, 정책 반영이 완료된 값을 mapper기반의 매개변수 구성이 필요하였습니다. 즉 도메인 정책 반영은 dto 및 Entity의 책임 영역이 아니었기에, service layer 내부에서 정책을 적용하여 상태를 반영할 수 있도록 <strong>정책 자체를 캡슐화하거나 util화</strong>하여 가독성 및 응집도를 향상하는 방안을 적용하였습니다.<br/>
+                               <strong>service layer 내부에서 인터페이스 기반의 Strategy 패턴화를 적용하여</strong> 로직의 흐름을 최대한 구조화하였으며, facade 패턴이 지엽화되고 단일책임원칙(SRP) 준수가 현실적으로 힘든 상황에서 최대한 <strong>변경점을 Service layer에 집중</strong>하였습니다. 그 결과, <strong>개방폐쇄원칙(SCP) 및 인터페이스 분리원칙(ISP)를 최대한 준수하여</strong> 서비스 구조화를 진행할 수 있었습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -822,7 +822,7 @@
                             <h4>✅ 문제 접근 및 해결 방안</h4>
                             <p>
                                 본질적으로 채권 데이터와 백오피스 데이터의 일부 속성이 없거나(NULL), 이로 인한 연산 불가와 CASE query 적용 등 비효율적 작성 상황이 지속적으로 발생하였기에, 이러한 불필요한 비용을 원천적으로 제거하고자 <strong>채권 및 백오피스 일부의 엔티티 모델링을 개선하고, 특히 DB 차원의 제한조건/default 등</strong> 좀 더 raw level에서의 정합성 확보가 이루어지도록 기여하였습니다.<br/>
-                                특히, 개선된 엔티티 모델링을 통해 연산 누락과 이로 인한 case query 등 <strong>불필요한 요소를 상당 부분 제거하여 5~10% 가량 유의미한 수준의 native query 복잡도 감소 등</strong> 유지관리에 수반되는 여러 비용을 제거할 수 있었습니다.<br/>
+                                특히, 개선된 엔티티 모델링을 통해 연산 누락과 이로 인한 case query 등 <strong>불필요한 요소를 상당 부분 제거하여 5~10% 가량 유의미한 수준의 LOC 감소 등</strong> natvie query의 복잡도를 줄이고 유지관리에 수반되는 여러 비용을 제거할 수 있었습니다.<br/>
                                 나아가, ORM(JPA)에서 활용하는 객체 SnapShot 기반이 아닌 철저하게 Value 기반의 처리가 필요한 MyBatis 특성 등 여러 환경적 제약으로 인해 데이터 정합성을 온전하게 service 로직에 집중하는 것이 부담이 많았습니다. 모델링 개선을 통해 <strong>불필요한 검증 로직 제거 및 service layer의 비대화를 방지, 직관적인 정책 적용이 아닌 제한조건에 기반한 정책 로직 구현</strong> 등을 통해 상대적으로 명확하고 안정적으로 데이터 정합성 확보 및 service layer 구현을 진행할 수 있었습니다.
                             </p>
                         </div>
