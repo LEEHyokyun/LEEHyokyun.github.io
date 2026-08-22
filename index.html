@@ -368,7 +368,7 @@
         /* 링크 카드 정렬 방식 수정 */
         .about-links-line {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 16px;
             width: 100%;
         }
@@ -408,6 +408,7 @@
         .bg-github   { background-color: #24292e; }
         .bg-velog    { background-color: #20c997; }
         .bg-storyboard { background-color: #f59e0b; }
+        .bg-engineering { background-color: #6b7280; }
 
         .icon-wrapper svg {
             width: 24px;
@@ -1326,7 +1327,7 @@
             <a href="#boards">BOARDS</a>
             <a href="#about">ABOUT</a>
 <!--            <a href="#careers">CAREERS</a>-->
-            <a href="#project">PROJECTS</a>
+            <a href="#careers">CAREERS</a>
         </nav>
     </header>
 
@@ -1439,6 +1440,30 @@
                         <span class="icon-link-label">설계과정</span>
                     </a>
 
+                    <a href="https://leehyokyun.gitbook.io/" target="_blank" class="icon-link-item">
+                        <div class="icon-wrapper bg-engineering">
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="white"
+                                 stroke-width="1.8"
+                                 stroke-linecap="round"
+                                 stroke-linejoin="round">
+
+                                <!-- Open Book -->
+                                <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H11a2 2 0 0 1 2 2v16a2 2 0 0 0-2-1H6.5A2.5 2.5 0 0 0 4 22V5.5Z"/>
+                                <path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H13a2 2 0 0 0-2 2v16a2 2 0 0 1 2-1h4.5A2.5 2.5 0 0 1 20 22V5.5Z"/>
+
+                                <!-- Book Pages -->
+                                <path d="M6.5 7H9"/>
+                                <path d="M6.5 10H9"/>
+                                <path d="M15 7h2.5"/>
+                                <path d="M15 10h2.5"/>
+                            </svg>
+                        </div>
+
+                        <span class="icon-link-label">엔지니어링</span>
+                    </a>
+
                     <a href="https://docs.google.com/presentation/d/1VLkLnOUk4nGhi-_sU1PrcWS0rJ16TapmLUh3PrAOAGY/edit?slide=id.g317751bba63_0_150#slide=id.g317751bba63_0_150" target="_blank" class="icon-link-item">
                         <div class="icon-wrapper bg-storyboard">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
@@ -1527,7 +1552,7 @@
                         
                         <div class="skill-item">
                             <div class="skill-info">
-                                <span>데이터베이스 엔티티와 모델링</span>
+                                <span>데이터베이스 모델링</span>
                                 <span class="skill-level level-high">활용이력 90%</span>
                             </div>
                             <div class="skill-step-bar level-high">
@@ -1557,7 +1582,7 @@
 
                         <div class="skill-item">
                             <div class="skill-info">
-                                <span>단위 테스트 기반의 객관적 개발(TDD)</span>
+                                <span>테스트 기반 기능 분리 및 개발(TDD)</span>
                                 <span class="skill-level level-mid">활용이력 81%</span>
                             </div>
                             <div class="skill-step-bar level-mid">
@@ -1587,7 +1612,7 @@
                         
                         <div class="skill-item">
                             <div class="skill-info">
-                                <span>분산 환경 기반 데이터 정합성 확보 방안(Redis / 2Domains)</span>
+                                <span>분산 환경 기반의 대규모 트래픽 대응 방안(Redis)</span>
                                 <span class="skill-level level-low">활용이력 38%</span>
                             </div>
                             <div class="skill-step-bar level-low">
@@ -1617,7 +1642,7 @@
 
                         <div class="skill-item">
                             <div class="skill-info">
-                                <span>비동기 이벤트/메시징 체계 기반의 설계 방안(MSA/Kafka/EDA)</span>
+                                <span>비동기 이벤트/메시징 체계 기반의 대규모 데이터 관리 방안(MSA/Kafka/EDA)</span>
                                 <span class="skill-level level-low">활용이력 29%</span>
                             </div>
                             <div class="skill-step-bar level-low">
@@ -1910,8 +1935,8 @@
 <!--            </div>-->
 <!--        </section>-->
 
-        <section id="project">
-            <h2 class="section-title">PROJECTS</h2>
+        <section id="careers">
+            <h2 class="section-title">CAREERS</h2>
             <div class="project-grid">
 
                 <a href="my-project.html" class="project-card">
@@ -2395,118 +2420,7 @@
             }
         })();
     </script>
-
-    <script>
-
-        /* ========================================
-           Portfolio Backend Health Check
-           ======================================== */
-
-        const BACKEND_URL = 'https://portfolio-backend-02ks.onrender.com';
-
-        const loadingScreen = document.getElementById('loading-screen');
-        const loadingStatus = document.getElementById('loading-status');
-
-
-        async function checkBackendHealth() {
-
-            try {
-
-                loadingStatus.textContent =
-                    '백엔드 서버에 연결하고 있습니다.';
-
-
-                const response = await fetch(
-                    `${BACKEND_URL}/health/health-check`,
-                    {
-                        method: 'GET'
-                    }
-                );
-
-
-                if (!response.ok) {
-                    throw new Error(
-                        `Health check failed: ${response.status}`
-                    );
-                }
-
-
-                const result = await response.text();
-
-                console.log(
-                    '[Portfolio] Backend Health Check:',
-                    result
-                );
-
-
-                /*
-                 * Backend Health Check 성공
-                 */
-
-                loadingStatus.textContent =
-                    '서버 연결이 완료되었습니다.';
-
-
-                /*
-                 * 사용자에게 완료 상태를
-                 * 잠시 보여준 후 Portfolio 표시
-                 */
-
-                setTimeout(() => {
-
-                    loadingScreen.classList.add('fade-out');
-
-                    /*
-                     * Fade-out animation 종료 후
-                     * Loading Screen 제거
-                     */
-
-                    setTimeout(() => {
-
-                        loadingScreen.remove();
-
-                    }, 500);
-
-                }, 300);
-
-
-            } catch (error) {
-
-                console.error(
-                    '[Portfolio] Backend Health Check Failed:',
-                    error
-                );
-
-
-                loadingStatus.textContent =
-                    '서버 연결에 실패했습니다. 잠시 후 다시 시도해주세요.';
-
-
-                /*
-                 * Backend가 잠시 sleep 상태였다가
-                 * 깨어나는 경우를 고려하여 재시도
-                 */
-
-                setTimeout(() => {
-
-                    checkBackendHealth();
-
-                }, 3000);
-
-            }
-
-        }
-
-
-        /*
-         * Index Page 최초 진입
-         * → Backend Health Check 시작
-         */
-
-        checkBackendHealth();
-
-    </script>
-
+    
 </body>
 
 </html>
