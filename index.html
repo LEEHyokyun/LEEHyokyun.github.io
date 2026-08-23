@@ -1136,6 +1136,13 @@
                 grid-template-columns: repeat(2, minmax(0,1fr));
                 gap:12px;
             }
+            /* 5번째 카드 중앙 정렬 */
+            .about-links-line .icon-link-item:last-child {
+                grid-column: 1 / -1;
+                justify-self: center;
+                width: calc(50% - 6px);
+            }
+            
             .icon-link-item { 
                 padding: 16px 8px; 
                 gap: 10px;
